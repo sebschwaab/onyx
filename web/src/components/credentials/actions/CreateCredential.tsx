@@ -41,7 +41,7 @@ const CreateButton = ({
     onClick={onClick}
     icon={SvgPlusCircle}
   >
-    Create
+    Créer
   </OpalButton>
 );
 
@@ -142,7 +142,7 @@ export default function CreateCredential({
         if (action === "createAndSwap") {
           onSwap(credential, swapConnector.id, accessType);
         } else {
-          toast.success("Created new credential!");
+          toast.success("Nouvel identifiant créé !");
         }
         onClose();
       } else {
@@ -163,7 +163,7 @@ export default function CreateCredential({
       }
     } catch (error) {
       console.error("Error submitting credential:", error);
-      toast.error("Error submitting credential");
+      toast.error("Erreur lors de la soumission de l'identifiant");
     } finally {
       formikHelpers.setSubmitting(false);
     }
@@ -215,8 +215,8 @@ export default function CreateCredential({
             <CardSection className="w-full items-start dark:bg-neutral-900 mt-4 flex flex-col gap-y-6">
               <TextFormField
                 name="name"
-                placeholder="(Optional) credential name.."
-                label="Name:"
+                placeholder="(Optionnel) nom de l'identifiant..."
+                label="Nom :"
               />
 
               <CredentialFieldsRenderer
@@ -269,7 +269,7 @@ export default function CreateCredential({
                   <FaAccusoft className="fill-text-inverted-05" />
                 )}
               >
-                Create
+                Créer
               </Button>
             )}
           </Form>

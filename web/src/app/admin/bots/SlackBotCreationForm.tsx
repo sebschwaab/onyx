@@ -21,7 +21,7 @@ export function NewSlackBotForm() {
     <SettingsLayouts.Root>
       <SettingsLayouts.Header
         icon={SvgSlack}
-        title="New Slack Bot"
+        title="Nouveau bot Slack"
         separator
         backButton
       />

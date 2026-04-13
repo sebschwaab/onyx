@@ -186,22 +186,21 @@ export function SlackChannelConfigFormFields({
         {isDefault && (
           <>
             <Badge variant="agent" className="bg-blue-100 text-blue-800">
-              Default Configuration
+              Configuration par défaut
             </Badge>
             <p className="mt-2 text-sm">
-              This default configuration will apply to all channels and direct
-              messages (DMs) in your Slack workspace.
+              Cette configuration par défaut s&apos;appliquera à tous les canaux et messages directs (DMs) de votre espace de travail Slack.
             </p>
             <div className="mt-4 p-4 bg-background rounded-md border border-neutral-300">
               <CheckboxField
                 name="disabled"
-                label="Disable Default Configuration"
+                label="Désactiver la configuration par défaut"
                 labelClassName="text-text"
               />
               <p className="mt-2 text-sm italic">
-                Warning: Disabling the default configuration means OnyxBot
-                won&apos;t respond in Slack channels unless they are explicitly
-                configured. Additionally, OnyxBot will not respond to DMs.
+                Avertissement : désactiver la configuration par défaut signifie qu&apos;OnyxBot
+                ne répondra pas dans les canaux Slack sauf s&apos;ils sont explicitement
+                configurés. De plus, OnyxBot ne répondra pas aux DMs.
               </p>
             </div>
           </>
@@ -210,14 +209,14 @@ export function SlackChannelConfigFormFields({
           <>
             <TextFormField
               name="channel_name"
-              label="Slack Channel Name"
-              placeholder="Enter channel name (e.g., general, support)"
-              subtext="Enter the name of the Slack channel (without the # symbol)"
+              label="Nom du canal Slack"
+              placeholder="Entrez le nom du canal (ex. : general, support)"
+              subtext="Entrez le nom du canal Slack (sans le symbole #)"
             />
           </>
         )}
         <div className="space-y-2 mt-4">
-          <Label>Knowledge Source</Label>
+          <Label>Source de connaissances</Label>
           <RadioGroup
             className="flex flex-col gap-y-4"
             value={values.knowledge_source}
@@ -228,28 +227,28 @@ export function SlackChannelConfigFormFields({
             <RadioGroupItemField
               value="all_public"
               id="all_public"
-              label="All Public Knowledge"
-              sublabel="Let OnyxBot respond based on information from all public connectors"
+              label="Toutes les connaissances publiques"
+              sublabel="OnyxBot répond en se basant sur les informations de tous les connecteurs publics"
             />
             {selectableSets.length + unselectableSets.length > 0 && (
               <RadioGroupItemField
                 value="document_sets"
                 id="document_sets"
-                label="Specific Document Sets"
-                sublabel="Control which documents to use for answering questions"
+                label="Ensembles de documents spécifiques"
+                sublabel="Contrôlez quels documents utiliser pour répondre aux questions"
               />
             )}
             <RadioGroupItemField
               value="assistant"
               id="assistant"
-              label="Search Agent"
-              sublabel="Control both the documents and the prompt to use for answering questions"
+              label="Agent de recherche"
+              sublabel="Contrôlez à la fois les documents et le prompt pour répondre aux questions"
             />
             <RadioGroupItemField
               value="non_search_agent"
               id="non_search_agent"
-              label="Non-Search Agent"
-              sublabel="Chat with an agent that does not use documents"
+              label="Agent sans recherche"
+              sublabel="Discutez avec un agent qui n'utilise pas de documents"
             />
           </RadioGroup>
         </div>
@@ -457,7 +456,7 @@ export function SlackChannelConfigFormFields({
         {values.knowledge_source !== "non_search_agent" && (
           <AccordionItem value="search-options">
             <AccordionTrigger className="text-text">
-              Search Configuration
+              Configuration de la recherche
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-4 pb-3">
@@ -465,17 +464,17 @@ export function SlackChannelConfigFormFields({
                   <SelectorFormField
                     name="response_type"
                     label="Answer Type"
-                    tooltip="Controls the format of OnyxBot's responses."
+                    tooltip="Contrôle le format des réponses d'OnyxBot."
                     options={[
                       { name: "Standard", value: "citations" },
-                      { name: "Detailed", value: "quotes" },
+                      { name: "Détaillé", value: "quotes" },
                     ]}
                   />
                 </div>
                 <CheckboxField
                   name="answer_validity_check_enabled"
-                  label="Only respond if citations found"
-                  tooltip="If set, will only answer questions where the model successfully produces citations"
+                  label="Répondre uniquement si des citations sont trouvées"
+                  tooltip="Si activé, répondra uniquement aux questions où le modèle produit des citations"
                 />
               </div>
             </AccordionContent>
@@ -483,13 +482,13 @@ export function SlackChannelConfigFormFields({
         )}
 
         <AccordionItem className="mt-4" value="general-options">
-          <AccordionTrigger>General Configuration</AccordionTrigger>
+          <AccordionTrigger>Configuration générale</AccordionTrigger>
           <AccordionContent className="overflow-visible">
             <div className="space-y-4">
               <CheckboxField
                 name="show_continue_in_web_ui"
-                label="Show Continue in Web UI button"
-                tooltip="If set, will show a button at the bottom of the response that allows the user to continue the conversation in the Onyx Web UI"
+                label="Afficher le bouton Continuer dans l'interface Web"
+                tooltip="Si activé, affiche un bouton en bas de la réponse permettant à l'utilisateur de continuer la conversation dans l'interface Web d'Onyx"
               />
 
               <CheckboxField
@@ -500,9 +499,9 @@ export function SlackChannelConfigFormFields({
                     setFieldValue("follow_up_tags", []);
                   }
                 }}
-                label={'Give a "Still need help?" button'}
-                tooltip={`OnyxBot's response will include a button at the bottom
-                      of the response that asks the user if they still need help.`}
+                label={'Afficher un bouton "Encore besoin d\'aide ?"'}
+                tooltip={`La réponse d'OnyxBot inclura un bouton en bas
+                      demandant à l'utilisateur s'il a encore besoin d'aide.`}
               />
               {values.still_need_help_enabled && (
                 <CollapsibleSection prompt="Configure Still Need Help Button">
@@ -525,22 +524,22 @@ export function SlackChannelConfigFormFields({
 
               <CheckboxField
                 name="questionmark_prefilter_enabled"
-                label="Only respond to questions"
-                tooltip="If set, OnyxBot will only respond to messages that contain a question mark"
+                label="Répondre uniquement aux questions"
+                tooltip="Si activé, OnyxBot répondra uniquement aux messages contenant un point d'interrogation"
               />
               <CheckboxField
                 name="respond_tag_only"
-                label="Respond to @OnyxBot Only"
-                tooltip="If set, OnyxBot will only respond when directly tagged"
+                label="Répondre uniquement à @OnyxBot"
+                tooltip="Si activé, OnyxBot répondra uniquement lorsqu'il est directement mentionné"
               />
               <CheckboxField
                 name="respond_to_bots"
-                label="Respond to Bot messages"
-                tooltip="If not set, OnyxBot will always ignore messages from Bots"
+                label="Répondre aux messages des bots"
+                tooltip="Si désactivé, OnyxBot ignorera toujours les messages provenant des bots"
               />
               <CheckboxField
                 name="is_ephemeral"
-                label="Respond to user in a private (ephemeral) message"
+                label="Répondre à l'utilisateur en message privé (éphémère)"
                 tooltip="If set, OnyxBot will respond only to the user in a private (ephemeral) message. If you also
                 chose 'Search' Agent above, selecting this option will make documents that are private to the user
                 available for their queries."
@@ -548,13 +547,13 @@ export function SlackChannelConfigFormFields({
 
               <TextArrayField
                 name="respond_member_group_list"
-                label="(Optional) Respond to Certain Users / Groups"
+                label="(Optionnel) Répondre à certains utilisateurs / groupes"
                 subtext={
-                  "If specified, OnyxBot responses will only " +
-                  "be visible to the members or groups in this list."
+                  "Si spécifié, les réponses d'OnyxBot ne seront visibles " +
+                  "que par les membres ou groupes de cette liste."
                 }
                 values={values}
-                placeholder="User email or user group name..."
+                placeholder="Email d'utilisateur ou nom de groupe..."
               />
 
               <StandardAnswerCategoryDropdownField
@@ -580,7 +579,7 @@ export function SlackChannelConfigFormFields({
               </TooltipTrigger>
               <TooltipContent side="top" className="bg-background p-4 w-80">
                 <Label className="text-text mb-2 font-semibold">
-                  Privacy Alert
+                  Alerte de confidentialité
                 </Label>
                 <p className="text-sm text-text-darker mb-4">
                   Please note that if the private (ephemeral) response is *not
@@ -594,7 +593,7 @@ export function SlackChannelConfigFormFields({
                 </p>
                 <div className="space-y-2">
                   <h4 className="text-sm text-text font-medium">
-                    Relevant Connectors:
+                    Connecteurs concernés :
                   </h4>
                   <div className="max-h-40 overflow-y-auto border-t border-text-subtle flex-col gap-y-2">
                     {memoizedPrivateConnectors.map((ccpairinfo: any) => (
@@ -620,9 +619,9 @@ export function SlackChannelConfigFormFields({
             </Tooltip>
           </TooltipProvider>
         )}
-        <Button type="submit">{isUpdate ? "Update" : "Create"}</Button>
+        <Button type="submit">{isUpdate ? "Mettre à jour" : "Créer"}</Button>
         <Button prominence="secondary" onClick={() => router.back()}>
-          Cancel
+          Annuler
         </Button>
       </div>
     </>

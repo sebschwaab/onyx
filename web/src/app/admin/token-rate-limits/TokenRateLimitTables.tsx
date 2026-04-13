@@ -76,7 +76,7 @@ export const TokenRateLimitTable = ({
           </>
         )}
         {!hideHeading && <Spacer rem={2} />}
-        <Text as="p">No token rate limits set!</Text>
+        <Text as="p">Aucune limite de jetons définie !</Text>
         {!hideHeading && <Spacer rem={2} />}
       </div>
     );
@@ -99,11 +99,11 @@ export const TokenRateLimitTable = ({
       >
         <TableHeader>
           <TableRow>
-            <TableHead>Enabled</TableHead>
-            {shouldRenderGroupName() && <TableHead>Group Name</TableHead>}
-            <TableHead>Time Window (Hours)</TableHead>
-            <TableHead>Token Budget (Thousands)</TableHead>
-            {isAdmin && <TableHead>Delete</TableHead>}
+            <TableHead>Activé</TableHead>
+            {shouldRenderGroupName() && <TableHead>Nom du groupe</TableHead>}
+            <TableHead>Fenêtre temporelle (heures)</TableHead>
+            <TableHead>Budget de jetons (milliers)</TableHead>
+            {isAdmin && <TableHead>Supprimer</TableHead>}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -135,7 +135,7 @@ export const TokenRateLimitTable = ({
                           }
                         />
                         <p className="ml-2">
-                          {tokenRateLimit.enabled ? "Enabled" : "Disabled"}
+                          {tokenRateLimit.enabled ? "Activé" : "Désactivé"}
                         </p>
                       </div>
                     </div>
@@ -148,11 +148,11 @@ export const TokenRateLimitTable = ({
                 )}
                 <TableCell>
                   {tokenRateLimit.period_hours +
-                    " hour" +
+                    " heure" +
                     (tokenRateLimit.period_hours > 1 ? "s" : "")}
                 </TableCell>
                 <TableCell>
-                  {tokenRateLimit.token_budget + " thousand tokens"}
+                  {tokenRateLimit.token_budget + " milliers de jetons"}
                 </TableCell>
                 {isAdmin && (
                   <TableCell>

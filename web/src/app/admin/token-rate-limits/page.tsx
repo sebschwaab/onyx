@@ -27,16 +27,11 @@ const USER_TOKEN_FETCH_URL = SWR_KEYS.userTokenRateLimits;
 const USER_GROUP_FETCH_URL = SWR_KEYS.userGroupTokenRateLimits;
 
 const GLOBAL_DESCRIPTION =
-  "Global rate limits apply to all users, user groups, and API keys. When the global \
-  rate limit is reached, no more tokens can be spent.";
+  "Les limites globales s'appliquent à tous les utilisateurs, groupes et clés API. Lorsque la limite globale est atteinte, plus aucun jeton ne peut être utilisé.";
 const USER_DESCRIPTION =
-  "User rate limits apply to individual users. When a user reaches a limit, they will \
-  be temporarily blocked from spending tokens.";
+  "Les limites par utilisateur s'appliquent à chaque utilisateur individuellement. Lorsqu'un utilisateur atteint une limite, il sera temporairement bloqué.";
 const USER_GROUP_DESCRIPTION =
-  "User group rate limits apply to all users in a group. When a group reaches a limit, \
-  all users in the group will be temporarily blocked from spending tokens, regardless \
-  of their individual limits. If a user is in multiple groups, the most lenient limit \
-  will apply.";
+  "Les limites par groupe s'appliquent à tous les utilisateurs du groupe. Lorsqu'un groupe atteint une limite, tous ses membres seront temporairement bloqués, indépendamment de leurs limites individuelles. Si un utilisateur appartient à plusieurs groupes, la limite la plus souple s'appliquera.";
 
 const handleCreateTokenRateLimit = async (
   target_scope: Scope,
@@ -94,7 +89,7 @@ function Main() {
     )
       .then(() => {
         setModalIsOpen(false);
-        toast.success("Token rate limit created!");
+        toast.success("Limite de jetons créée !");
         updateTable(target_scope);
       })
       .catch((error) => {
@@ -138,7 +133,7 @@ function Main() {
       </ul>
 
       <CreateButton onClick={() => setModalIsOpen(true)}>
-        Create a Token Rate Limit
+        Créer une limite de jetons
       </CreateButton>
 
       {isPaidEnterpriseFeaturesEnabled ? (
@@ -156,7 +151,7 @@ function Main() {
               ),
             },
             "1": {
-              name: "User",
+              name: "Utilisateur",
               icon: SvgUser,
               content: (
                 <GenericTokenRateLimitTable
@@ -167,7 +162,7 @@ function Main() {
               ),
             },
             "2": {
-              name: "User Groups",
+              name: "Groupes d'utilisateurs",
               icon: SvgUsers,
               content: (
                 <GenericTokenRateLimitTable

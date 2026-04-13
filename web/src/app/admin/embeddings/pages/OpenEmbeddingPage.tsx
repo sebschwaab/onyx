@@ -25,11 +25,11 @@ export default function OpenEmbeddingPage({
   return (
     <div>
       <Title className="mt-8">
-        Here are some locally-hosted models to choose from.
+        Voici quelques modèles hébergés localement.
       </Title>
       <Text as="p">
         {
-          "These models can be used without any API keys, and can leverage a GPU for faster inference."
+          "Ces modèles peuvent être utilisés sans clé API et peuvent exploiter un GPU pour une inférence plus rapide."
         }
       </Text>
       <Spacer rem={1} />
@@ -42,12 +42,12 @@ export default function OpenEmbeddingPage({
       <Spacer rem={1.5} />
       <Text as="p">
         {markdown(
-          "Alternatively, (if you know what you're doing) you can specify a [SentenceTransformers](https://www.sbert.net/)-compatible model of your choice below. The rough list of supported models can be found [here](https://huggingface.co/models?library=sentence-transformers&sort=trending)."
+          "Alternativement, (si vous savez ce que vous faites) vous pouvez spécifier un modèle compatible [SentenceTransformers](https://www.sbert.net/) de votre choix ci-dessous. La liste approximative des modèles pris en charge se trouve [ici](https://huggingface.co/models?library=sentence-transformers&sort=trending)."
         )}
       </Text>
       <Text as="p">
         {markdown(
-          "**NOTE:** not all models listed will work with Onyx, since some have unique interfaces or special requirements. If in doubt, reach out to the Onyx team."
+          "**REMARQUE :** tous les modèles listés ne fonctionneront pas avec Onyx, car certains ont des interfaces uniques ou des exigences particulières. En cas de doute, contactez l'équipe Onyx."
         )}
       </Text>
       {!configureModel && (
@@ -57,7 +57,7 @@ export default function OpenEmbeddingPage({
           className="mt-4"
           secondary
         >
-          Configure custom model
+          Configurer un modèle personnalisé
         </Button>
       )}
       {configureModel && (

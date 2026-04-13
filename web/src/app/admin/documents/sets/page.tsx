@@ -147,8 +147,7 @@ const EditRow = ({
             <TooltipContent width="max-w-sm">
               <div className="flex break-words break-keep whitespace-pre-wrap items-start">
                 <InfoIcon className="mr-2 mt-0.5" />
-                Cannot update while syncing! Wait for the sync to finish, then
-                try again.
+                Impossible de modifier pendant la synchronisation ! Attendez la fin de la synchronisation, puis réessayez.
               </div>
             </TooltipContent>
           )}
@@ -193,15 +192,15 @@ const DocumentSetTable = ({
 
   return (
     <div>
-      <Title>Existing Document Sets</Title>
+      <Title>Ensembles de documents existants</Title>
       <Table className="overflow-visible mt-2">
         <TableHeader>
           <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Connectors</TableHead>
-            <TableHead>Status</TableHead>
+            <TableHead>Nom</TableHead>
+            <TableHead>Connecteurs</TableHead>
+            <TableHead>Statut</TableHead>
             <TableHead>Public</TableHead>
-            <TableHead>Delete</TableHead>
+            <TableHead>Supprimer</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -286,18 +285,18 @@ const DocumentSetTable = ({
                   <TableCell>
                     {documentSet.is_up_to_date ? (
                       <Badge variant="success" icon={FiCheckCircle}>
-                        Up to Date
+                        À jour
                       </Badge>
                     ) : documentSet.cc_pair_summaries.length > 0 ||
                       (documentSet.federated_connector_summaries &&
                         documentSet.federated_connector_summaries.length >
                           0) ? (
                       <Badge variant="in_progress" icon={FiClock}>
-                        Syncing
+                        Synchronisation
                       </Badge>
                     ) : (
                       <Badge variant="destructive" icon={FiAlertTriangle}>
-                        Deleting
+                        Suppression
                       </Badge>
                     )}
                   </TableCell>
@@ -314,7 +313,7 @@ const DocumentSetTable = ({
                         variant={isEditable ? "private" : "default"}
                         icon={FiLock}
                       >
-                        Private
+                        Privé
                       </Badge>
                     )}
                   </TableCell>
@@ -327,12 +326,12 @@ const DocumentSetTable = ({
                           );
                           if (response.ok) {
                             toast.success(
-                              `Document set "${documentSet.name}" scheduled for deletion`
+                              `Ensemble de documents "${documentSet.name}" programmé pour suppression`
                             );
                           } else {
                             const errorMsg = (await response.json()).detail;
                             toast.error(
-                              `Failed to schedule document set for deletion - ${errorMsg}`
+                              `Échec de la programmation de la suppression - ${errorMsg}`
                             );
                           }
                           refresh();
@@ -406,7 +405,7 @@ function Main() {
 
       <div className="flex mb-6">
         <CreateButton href="/admin/documents/sets/new">
-          New Document Set
+          Nouvel ensemble de documents
         </CreateButton>
       </div>
 

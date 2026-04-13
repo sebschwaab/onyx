@@ -52,10 +52,10 @@ export default function UserRoleCell({ user, onMutate }: UserRoleCellProps) {
     setIsUpdating(true);
     try {
       await setUserRole(user.email, newRole);
-      toast.success("Role updated");
+      toast.success("Rôle mis à jour");
       onMutate();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to update role");
+      toast.error(err instanceof Error ? err.message : "Échec de la mise à jour du rôle");
       onMutate();
     } finally {
       setIsUpdating(false);

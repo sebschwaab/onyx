@@ -70,13 +70,13 @@ function CredentialSelectionTable({
               ID
             </th>
             <th className="p-2 text-left font-medium text-neutral-600 dark:text-neutral-400">
-              Name
+              Nom
             </th>
             <th className="p-2 text-left font-medium text-neutral-600 dark:text-neutral-400">
-              Created
+              Créé le
             </th>
             <th className="p-2 text-left font-medium text-neutral-600 dark:text-neutral-400">
-              Last Updated
+              Dernière mise à jour
             </th>
             <th />
           </tr>
@@ -105,12 +105,12 @@ function CredentialSelectionTable({
                         className="form-radio ml-4 h-4 w-4 text-blue-600 transition duration-150 ease-in-out"
                       />
                     ) : (
-                      <Badge>selected</Badge>
+                      <Badge>sélectionné</Badge>
                     )}
                   </td>
                   <td className="p-2">{credential.id}</td>
                   <td className="p-2">
-                    <p>{credential.name ?? "Untitled"}</p>
+                    <p>{credential.name ?? "Sans titre"}</p>
                   </td>
                   <td className="p-2">
                     {new Date(credential.time_created).toLocaleString()}
@@ -144,7 +144,7 @@ function CredentialSelectionTable({
       </table>
 
       {allCredentials.length == 0 && (
-        <p className="mt-4"> No credentials exist for this connector!</p>
+        <p className="mt-4"> Aucun identifiant n'existe pour ce connecteur !</p>
       )}
     </div>
   );
@@ -197,13 +197,13 @@ export default function ModifyCredential({
           <Modal.Content width="sm" height="sm">
             <Modal.Header
               icon={SvgAlertTriangle}
-              title="Confirm Deletion"
+              title="Confirmer la suppression"
               onClose={() => setConfirmDeletionCredential(null)}
             />
             <Modal.Body>
               <Text as="p">
-                Are you sure you want to delete this credential? You cannot
-                delete credentials that are linked to live connectors.
+                Êtes-vous sûr de vouloir supprimer cet identifiant ? Vous ne
+                pouvez pas supprimer des identifiants liés à des connecteurs actifs.
               </Text>
             </Modal.Body>
             <Modal.Footer>
@@ -213,13 +213,13 @@ export default function ModifyCredential({
                   setConfirmDeletionCredential(null);
                 }}
               >
-                Confirm
+                Confirmer
               </Button>
               <Button
                 prominence="secondary"
                 onClick={() => setConfirmDeletionCredential(null)}
               >
-                Cancel
+                Annuler
               </Button>
             </Modal.Footer>
           </Modal.Content>
@@ -228,8 +228,8 @@ export default function ModifyCredential({
 
       <div className="mb-0">
         <Text as="p" className="mb-4">
-          Select a credential as needed! Ensure that you have selected a
-          credential with the proper permissions for this connector!
+          Sélectionnez un identifiant selon vos besoins ! Assurez-vous d'avoir
+          sélectionné un identifiant avec les permissions appropriées pour ce connecteur !
         </Text>
 
         <CredentialSelectionTable
@@ -260,7 +260,7 @@ export default function ModifyCredential({
           <div className="flex mt-8 justify-between">
             {onCreateNew ? (
               <Button onClick={onCreateNew} icon={SvgBubbleText}>
-                Create
+                Créer
               </Button>
             ) : (
               <div />
@@ -281,7 +281,7 @@ export default function ModifyCredential({
               }}
               icon={SvgArrowExchange}
             >
-              Select
+              Sélectionner
             </Button>
           </div>
         )}

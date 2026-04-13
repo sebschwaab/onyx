@@ -43,11 +43,11 @@ export function IndexAttemptsTable({
     return (
       <Callout
         className="mt-4"
-        title="No indexing attempts scheduled yet"
+        title="Aucune tentative d'indexation planifiée pour l'instant"
         type="notice"
       >
-        Index attempts are scheduled in the background, and may take some time
-        to appear. Try refreshing the page in ~30 seconds!
+        Les tentatives d'indexation sont planifiées en arrière-plan et peuvent prendre
+        un peu de temps à apparaître. Essayez de rafraîchir la page dans ~30 secondes !
       </Callout>
     );
   }
@@ -68,21 +68,21 @@ export function IndexAttemptsTable({
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Time Started</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead className="whitespace-nowrap">New Docs</TableHead>
+            <TableHead>Heure de début</TableHead>
+            <TableHead>Statut</TableHead>
+            <TableHead className="whitespace-nowrap">Nouveaux docs</TableHead>
             <TableHead>
               <SimpleTooltip
-                tooltip="Total number of documents replaced in the index during this indexing attempt"
+                tooltip="Nombre total de documents remplacés dans l'index lors de cette tentative d'indexation"
                 side="top"
               >
                 <span className="flex items-center">
-                  Total Docs
+                  Total docs
                   <InfoIcon className="ml-1 w-4 h-4" />
                 </span>
               </SimpleTooltip>
             </TableHead>
-            <TableHead>Error Message</TableHead>
+            <TableHead>Message d'erreur</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -122,7 +122,7 @@ export function IndexAttemptsTable({
                   ) : (
                     indexAttempt.status === "success" && (
                       <div className="text-xs mt-1">
-                        No additional docs processed
+                        Aucun document supplémentaire traité
                       </div>
                     )
                   )}
@@ -133,8 +133,8 @@ export function IndexAttemptsTable({
                       <div>{indexAttempt.new_docs_indexed}</div>
                       {indexAttempt.docs_removed_from_index > 0 && (
                         <div className="text-xs w-52 text-wrap flex italic overflow-hidden whitespace-normal px-1">
-                          (also removed {indexAttempt.docs_removed_from_index}{" "}
-                          docs that were detected as deleted in the source)
+                          (également supprimé {indexAttempt.docs_removed_from_index}{" "}
+                          docs détectés comme supprimés dans la source)
                         </div>
                       )}
                     </div>
@@ -164,7 +164,7 @@ export function IndexAttemptsTable({
                   {indexAttempt.full_exception_trace && (
                     <button
                       type="button"
-                      aria-label="View full trace"
+                      aria-label="Voir la trace complète"
                       onClick={() =>
                         setIndexAttemptTracePopupId(indexAttempt.id)
                       }

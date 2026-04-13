@@ -50,22 +50,22 @@ export default function SlackChannelConfigsTable({
           }}
           icon={SvgSettings}
         >
-          Edit Default Configuration
+          Modifier la configuration par défaut
         </Button>
         <CreateButton href={`/admin/bots/${slackBotId}/channels/new`} secondary>
-          New Channel Configuration
+          Nouvelle configuration de canal
         </CreateButton>
       </div>
 
       <div>
-        <h2 className="text-2xl font- mb-4">Channel-Specific Configurations</h2>
+        <h2 className="text-2xl font- mb-4">Configurations spécifiques aux canaux</h2>
         <Card>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Channel</TableHead>
+                <TableHead>Canal</TableHead>
                 <TableHead>Assistant</TableHead>
-                <TableHead>Document Sets</TableHead>
+                <TableHead>Ensembles de documents</TableHead>
                 <TableHead>Actions</TableHead>
               </TableRow>
             </TableHeader>
@@ -128,12 +128,12 @@ export default function SlackChannelConfigsTable({
                             );
                             if (response.ok) {
                               toast.success(
-                                `Slack bot config "${slackChannelConfig.id}" deleted`
+                                `Configuration du bot Slack "${slackChannelConfig.id}" supprimée`
                               );
                             } else {
                               const errorMsg = await response.text();
                               toast.error(
-                                `Failed to delete Slack bot config - ${errorMsg}`
+                                `Échec de la suppression de la configuration du bot Slack - ${errorMsg}`
                               );
                             }
                             refresh();
@@ -153,8 +153,8 @@ export default function SlackChannelConfigsTable({
                     colSpan={4}
                     className="text-center text-muted-foreground"
                   >
-                    No channel-specific configurations. Add a new configuration
-                    to customize behavior for specific channels.
+                    Aucune configuration spécifique aux canaux. Ajoutez une nouvelle configuration
+                    pour personnaliser le comportement pour des canaux spécifiques.
                   </TableCell>
                 </TableRow>
               )}

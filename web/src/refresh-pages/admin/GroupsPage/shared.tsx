@@ -79,7 +79,7 @@ export const tc = createTableColumns<MemberRow>();
 export const baseColumns = [
   tc.qualifier(),
   tc.column("email", {
-    header: "Name",
+    header: "Nom",
     weight: 25,
     cell: renderNameColumn,
   }),
@@ -95,7 +95,7 @@ export const baseColumns = [
       ) : null,
   }),
   tc.column("role", {
-    header: "Account Type",
+    header: "Type de compte",
     weight: 15,
     cell: renderAccountTypeColumn,
   }),

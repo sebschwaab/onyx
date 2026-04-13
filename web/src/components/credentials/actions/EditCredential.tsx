@@ -42,7 +42,7 @@ export default function EditCredential({
       await onUpdate(credential, values, onClose);
     } catch (error) {
       console.error("Error updating credential:", error);
-      toast.error("Error updating credential");
+      toast.error("Erreur lors de la mise à jour de l'identifiant");
     } finally {
       formikHelpers.setSubmitting(false);
     }
@@ -51,7 +51,7 @@ export default function EditCredential({
   return (
     <div className="flex flex-col gap-y-6">
       <Text as="p">
-        Ensure that you update to a credential with the proper permissions!
+        Assurez-vous de mettre à jour avec un identifiant disposant des permissions appropriées !
       </Text>
 
       <Formik
@@ -65,7 +65,7 @@ export default function EditCredential({
               includeRevert
               name="name"
               placeholder={credential.name || ""}
-              label="Name (optional):"
+              label="Nom (optionnel) :"
             />
 
             {Object.entries(credential.credential_json).map(([key, value]) =>
@@ -94,10 +94,10 @@ export default function EditCredential({
             )}
             <div className="flex justify-between w-full">
               <Button onClick={() => resetForm()} icon={SvgTrash}>
-                Reset Changes
+                Réinitialiser
               </Button>
               <Button disabled={isSubmitting} type="submit" icon={FaNewspaper}>
-                Update
+                Mettre à jour
               </Button>
             </div>
           </Form>

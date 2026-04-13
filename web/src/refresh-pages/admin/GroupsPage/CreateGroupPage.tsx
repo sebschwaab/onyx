@@ -43,7 +43,7 @@ function CreateGroupPage() {
   async function handleCreate() {
     const trimmed = groupName.trim();
     if (!trimmed) {
-      toast.error("Group name is required");
+      toast.error("Le nom du groupe est requis");
       return;
     }
 
@@ -57,10 +57,10 @@ function CreateGroupPage() {
       await updateAgentGroupSharing(groupId, [], selectedAgentIds);
       await updateDocSetGroupSharing(groupId, [], selectedDocSetIds);
       await saveTokenLimits(groupId, tokenLimits, []);
-      toast.success(`Group "${trimmed}" created`);
+      toast.success(`Groupe "${trimmed}" créé`);
       router.push("/admin/groups");
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Failed to create group");
+      toast.error(e instanceof Error ? e.message : "Échec de la création du groupe");
     } finally {
       setIsSubmitting(false);
     }
@@ -72,13 +72,13 @@ function CreateGroupPage() {
         prominence="secondary"
         onClick={() => router.push("/admin/groups")}
       >
-        Cancel
+        Annuler
       </Button>
       <Button
         onClick={handleCreate}
         disabled={!groupName.trim() || isSubmitting}
       >
-        Create
+        Créer
       </Button>
     </Section>
   );
@@ -87,7 +87,7 @@ function CreateGroupPage() {
     <SettingsLayouts.Root>
       <SettingsLayouts.Header
         icon={SvgUsers}
-        title="Create Group"
+        title="Créer un groupe"
         separator
         rightChildren={headerActions}
       />
@@ -101,10 +101,10 @@ function CreateGroupPage() {
           justifyContent="start"
         >
           <Text mainUiBody text04>
-            Group Name
+            Nom du groupe
           </Text>
           <InputTypeIn
-            placeholder="Name your group"
+            placeholder="Nommez votre groupe"
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}
           />
@@ -117,7 +117,7 @@ function CreateGroupPage() {
 
         {error ? (
           <Text as="p" secondaryBody text03>
-            Failed to load users.
+            Échec du chargement des utilisateurs.
           </Text>
         ) : null}
 
@@ -131,7 +131,7 @@ function CreateGroupPage() {
             <InputTypeIn
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search users and accounts..."
+              placeholder="Rechercher des utilisateurs et des comptes..."
               leftSearchIcon
             />
             <Table
@@ -146,8 +146,8 @@ function CreateGroupPage() {
               emptyState={
                 <IllustrationContent
                   illustration={SvgNoResult}
-                  title="No users found"
-                  description="No users match your search."
+                  title="Aucun utilisateur trouvé"
+                  description="Aucun utilisateur ne correspond à votre recherche."
                 />
               }
             />

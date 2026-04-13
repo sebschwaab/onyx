@@ -99,11 +99,11 @@ export default function CloudEmbeddingPage({
   return (
     <div>
       <Title className="mt-8">
-        Here are some cloud-based models to choose from.
+        Voici quelques modèles basés dans le cloud.
       </Title>
       <Text as="p">
         {
-          "These models require API keys and run in the clouds of the respective providers."
+          "Ces modèles nécessitent des clés API et s'exécutent dans les clouds des fournisseurs respectifs."
         }
       </Text>
       <Spacer rem={1} />
@@ -141,7 +141,7 @@ export default function CloudEmbeddingPage({
               }}
               className="mb-2  hover:underline text-sm cursor-pointer"
             >
-              {provider.configured ? "Modify API key" : "Provide API key"}
+              {provider.configured ? "Modifier la clé API" : "Fournir une clé API"}
             </button>
             <div className="flex flex-wrap gap-4">
               {provider.embedding_models.map((model) => (
@@ -163,7 +163,7 @@ export default function CloudEmbeddingPage({
         <Spacer rem={1.5} />
         <Text as="p">
           {markdown(
-            "Alternatively, you can use a self-hosted model using the LiteLLM proxy. This allows you to leverage various LLM providers through a unified interface that you control. [Learn more about LiteLLM](https://docs.litellm.ai/)"
+            "Alternativement, vous pouvez utiliser un modèle auto-hébergé via le proxy LiteLLM. Cela vous permet d'exploiter divers fournisseurs LLM via une interface unifiée que vous contrôlez. [En savoir plus sur LiteLLM](https://docs.litellm.ai/)"
           )}
         </Text>
 
@@ -195,7 +195,7 @@ export default function CloudEmbeddingPage({
                 onClick={() => setShowTentativeProvider(LITELLM_CLOUD_PROVIDER)}
                 className="mb-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm cursor-pointer"
               >
-                Set API Configuration
+                Configurer l'API
               </button>
             ) : (
               <button
@@ -204,7 +204,7 @@ export default function CloudEmbeddingPage({
                 }
                 className="mb-2 hover:underline text-sm cursor-pointer"
               >
-                Modify API Configuration
+                Modifier la configuration API
               </button>
             )}
 
@@ -212,12 +212,12 @@ export default function CloudEmbeddingPage({
               <CardSection className="mt-2 w-full max-w-4xl bg-background-50 border border-background-200">
                 <div className="p-4">
                   <Text as="p" font="heading-h3">
-                    API URL Required
+                    URL d'API requise
                   </Text>
                   <Spacer rem={0.5} />
                   <Text as="p">
                     {
-                      'Before you can add models, you need to provide an API URL for your LiteLLM proxy. Click the "Provide API URL" button above to set up your LiteLLM configuration.'
+                      "Avant d'ajouter des modèles, vous devez fournir une URL d'API pour votre proxy LiteLLM. Cliquez sur le bouton \"Configurer l'API\" ci-dessus pour configurer LiteLLM."
                     }
                   </Text>
                   <Spacer rem={1} />
@@ -226,7 +226,7 @@ export default function CloudEmbeddingPage({
                     <span className="text-blue-500">
                       <Text as="p">
                         {
-                          "Once configured, you'll be able to add and manage your LiteLLM models here."
+                          "Une fois configuré, vous pourrez ajouter et gérer vos modèles LiteLLM ici."
                         }
                       </Text>
                     </span>
@@ -319,17 +319,17 @@ export default function CloudEmbeddingPage({
                 onClick={() => setShowTentativeProvider(AZURE_CLOUD_PROVIDER)}
                 className="mb-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm cursor-pointer"
               >
-                Configure Azure OpenAI
+                Configurer Azure OpenAI
               </button>
               <div className="mt-2 w-full max-w-4xl">
                 <CardSection className="p-4 border border-background-200 rounded-lg shadow-sm">
                   <Text as="p" font="main-ui-action">
-                    Configure Azure OpenAI for Embeddings
+                    Configurer Azure OpenAI pour les embeddings
                   </Text>
                   <Spacer rem={0.5} />
                   <Text as="p">
                     {
-                      'Click "Configure Azure OpenAI" to set up Azure OpenAI for embeddings.'
+                      'Cliquez sur "Configurer Azure OpenAI" pour configurer Azure OpenAI pour les embeddings.'
                     }
                   </Text>
                   <Spacer rem={0.75} />
@@ -337,7 +337,7 @@ export default function CloudEmbeddingPage({
                     <FiInfo className="text-neutral-400 mr-2" size={16} />
                     <Text as="p">
                       {
-                        "You'll need: API version, base URL, API key, model name, and deployment name."
+                        "Vous aurez besoin de : version d'API, URL de base, clé API, nom du modèle et nom du déploiement."
                       }
                     </Text>
                   </div>
@@ -348,7 +348,7 @@ export default function CloudEmbeddingPage({
             <>
               <div className="mb-6 w-full">
                 <Text as="p" font="heading-h3">
-                  Current Azure Configuration
+                  Configuration Azure actuelle
                 </Text>
                 <Spacer rem={0.75} />
 
@@ -356,15 +356,15 @@ export default function CloudEmbeddingPage({
                   <CardSection className="bg-white shadow-sm border border-background-200 rounded-lg">
                     <div className="p-4 space-y-3">
                       <div className="flex justify-between">
-                        <span className="font-medium">API Version:</span>
+                        <span className="font-medium">Version d'API :</span>
                         <span>{azureProviderDetails.api_version}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="font-medium">Base URL:</span>
+                        <span className="font-medium">URL de base :</span>
                         <span>{azureProviderDetails.api_url}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="font-medium">Deployment Name:</span>
+                        <span className="font-medium">Nom du déploiement :</span>
                         <span>{azureProviderDetails.deployment_name}</span>
                       </div>
                     </div>
@@ -374,13 +374,13 @@ export default function CloudEmbeddingPage({
                       }
                       className="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 text-sm"
                     >
-                      Delete Current Azure Provider
+                      Supprimer le fournisseur Azure actuel
                     </button>
                   </CardSection>
                 ) : (
                   <CardSection className="bg-background-50 border border-background-200 rounded-lg">
                     <div className="p-4 text-text-500 text-center">
-                      No Azure provider has been configured yet.
+                      Aucun fournisseur Azure n'a encore été configuré.
                     </div>
                   </CardSection>
                 )}
@@ -453,18 +453,18 @@ export function CloudModelCard({
 
   const deleteModel = async () => {
     if (!model.id) {
-      toast.error("Model cannot be deleted");
+      toast.error("Ce modèle ne peut pas être supprimé");
       return;
     }
 
     const response = await deleteSearchSettings(model.id);
 
     if (response.ok) {
-      toast.success("Model deleted successfully");
+      toast.success("Modèle supprimé avec succès");
       setShowDeleteModel(false);
     } else {
       toast.error(
-        "Failed to delete model. Ensure you are not attempting to delete a curently active model."
+        "Échec de la suppression du modèle. Assurez-vous de ne pas tenter de supprimer un modèle actuellement actif."
       );
     }
   };
@@ -480,7 +480,7 @@ export function CloudModelCard({
       {showDeleteModel && (
         <ConfirmEntityModal
           entityName={model.model_name}
-          entityType="embedding model configuration"
+          entityType="configuration du modèle d'embedding"
           onSubmit={() => deleteModel()}
           onClose={() => setShowDeleteModel(false)}
         />
@@ -542,7 +542,7 @@ export function CloudModelCard({
           }}
           disabled={enabled}
         >
-          {enabled ? "Selected Model" : "Select Model"}
+          {enabled ? "Modèle sélectionné" : "Sélectionner ce modèle"}
         </button>
       </div>
     </div>

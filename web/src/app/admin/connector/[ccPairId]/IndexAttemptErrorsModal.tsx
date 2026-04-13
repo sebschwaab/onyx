@@ -101,10 +101,10 @@ export default function IndexAttemptErrorsModal({
       <Modal.Content width="full" height="full">
         <Modal.Header
           icon={SvgAlertTriangle}
-          title="Indexing Errors"
+          title="Erreurs d'indexation"
           description={
             isResolvingErrors
-              ? "Currently attempting to resolve all errors by performing a full re-index. This may take some time to complete."
+              ? "Tentative de résolution de toutes les erreurs par une réindexation complète en cours. Cela peut prendre un certain temps."
               : undefined
           }
           onClose={onClose}
@@ -114,13 +114,13 @@ export default function IndexAttemptErrorsModal({
           {!isResolvingErrors && (
             <div className="flex flex-col gap-2 flex-shrink-0">
               <Text as="p">
-                Below are the errors encountered during indexing. Each row
-                represents a failed document or entity.
+                Voici les erreurs rencontrées lors de l'indexation. Chaque ligne
+                représente un document ou une entité ayant échoué.
               </Text>
               <Text as="p">
-                Click the button below to kick off a full re-index to try and
-                resolve these errors. This full re-index may take much longer
-                than a normal update.
+                Cliquez sur le bouton ci-dessous pour lancer une réindexation complète
+                afin de tenter de résoudre ces erreurs. Cette réindexation complète peut
+                prendre bien plus de temps qu'une mise à jour normale.
               </Text>
             </div>
           )}
@@ -132,10 +132,10 @@ export default function IndexAttemptErrorsModal({
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Time</TableHead>
-                  <TableHead>Document ID</TableHead>
-                  <TableHead className="w-1/2">Error Message</TableHead>
-                  <TableHead>Status</TableHead>
+                  <TableHead>Heure</TableHead>
+                  <TableHead>ID du document</TableHead>
+                  <TableHead className="w-1/2">Message d'erreur</TableHead>
+                  <TableHead>Statut</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -153,7 +153,7 @@ export default function IndexAttemptErrorsModal({
                             rel="noopener noreferrer"
                             className="text-link hover:underline"
                           >
-                            {error.document_id || error.entity_id || "Unknown"}
+                            {error.document_id || error.entity_id || "Inconnu"}
                           </a>
                         ) : (
                           error.document_id || error.entity_id || "Unknown"
@@ -172,7 +172,7 @@ export default function IndexAttemptErrorsModal({
                               : "bg-red-100 text-red-800"
                           }`}
                         >
-                          {error.is_resolved ? "Resolved" : "Unresolved"}
+                          {error.is_resolved ? "Résolu" : "Non résolu"}
                         </span>
                       </TableCell>
                     </TableRow>
@@ -183,7 +183,7 @@ export default function IndexAttemptErrorsModal({
                       colSpan={4}
                       className="text-center py-8 text-gray-500"
                     >
-                      No errors found on this page
+                      Aucune erreur trouvée sur cette page
                     </TableCell>
                   </TableRow>
                 )}
@@ -205,7 +205,7 @@ export default function IndexAttemptErrorsModal({
           {hasUnresolvedErrors && !isResolvingErrors && (
             // TODO(@raunakab): migrate to opal Button once className/iconClassName is resolved
             <Button onClick={onResolveAll} className="ml-4 whitespace-nowrap">
-              Resolve All
+              Tout résoudre
             </Button>
           )}
         </Modal.Footer>

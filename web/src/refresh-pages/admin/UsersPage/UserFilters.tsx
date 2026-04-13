@@ -128,7 +128,7 @@ export default function UserFilters({
         .slice(0, 2)
         .join(", ") +
       (selectedRoles.length > 2 ? `, +${selectedRoles.length - 2}` : "")
-    : "All Account Types";
+    : "Tous les types de compte";
 
   const groupLabel = hasGroupFilter
     ? groups
@@ -137,7 +137,7 @@ export default function UserFilters({
         .slice(0, 2)
         .join(", ") +
       (selectedGroups.length > 2 ? `, +${selectedGroups.length - 2}` : "")
-    : "All Groups";
+    : "Tous les groupes";
 
   const statusLabel = hasStatusFilter
     ? FILTERABLE_STATUSES.filter(([status]) =>
@@ -147,7 +147,7 @@ export default function UserFilters({
         .slice(0, 2)
         .join(", ") +
       (selectedStatuses.length > 2 ? `, +${selectedStatuses.length - 2}` : "")
-    : "All Status";
+    : "Tous les statuts";
 
   const filteredGroups = groupSearch
     ? groups.filter((g) =>
@@ -161,7 +161,7 @@ export default function UserFilters({
       <Popover>
         <Popover.Trigger asChild>
           <FilterButton
-            aria-label="Filter by role"
+            aria-label="Filtrer par rôle"
             icon={SvgUsers}
             active={hasRoleFilter}
             onClear={() => onRolesChange([])}
@@ -177,7 +177,7 @@ export default function UserFilters({
               emphasized={!hasRoleFilter}
               onClick={() => onRolesChange([])}
             >
-              All Account Types
+              Tous les types de compte
             </LineItem>
             {FILTERABLE_ROLES.map(([role, label]) => {
               const isSelected = selectedRoles.includes(role);
@@ -209,7 +209,7 @@ export default function UserFilters({
       >
         <Popover.Trigger asChild>
           <FilterButton
-            aria-label="Filter by group"
+            aria-label="Filtrer par groupe"
             icon={SvgUsers}
             active={hasGroupFilter}
             onClear={() => onGroupsChange([])}
@@ -222,7 +222,7 @@ export default function UserFilters({
             <InputTypeIn
               value={groupSearch}
               onChange={(e) => setGroupSearch(e.target.value)}
-              placeholder="Search groups..."
+              placeholder="Rechercher des groupes..."
               leftSearchIcon
               variant="internal"
             />
@@ -232,7 +232,7 @@ export default function UserFilters({
               emphasized={!hasGroupFilter}
               onClick={() => onGroupsChange([])}
             >
-              All Groups
+              Tous les groupes
             </LineItem>
             <ShadowDiv className="flex flex-col gap-1 max-h-[240px]">
               {filteredGroups.map((group) => {
@@ -252,7 +252,7 @@ export default function UserFilters({
               })}
               {filteredGroups.length === 0 && (
                 <Text as="span" secondaryBody text03 className="px-2 py-1.5">
-                  No groups found
+                  Aucun groupe trouvé
                 </Text>
               )}
             </ShadowDiv>
@@ -264,7 +264,7 @@ export default function UserFilters({
       <Popover>
         <Popover.Trigger asChild>
           <FilterButton
-            aria-label="Filter by status"
+            aria-label="Filtrer par statut"
             icon={SvgUsers}
             active={hasStatusFilter}
             onClear={() => onStatusesChange([])}
@@ -280,7 +280,7 @@ export default function UserFilters({
               emphasized={!hasStatusFilter}
               onClick={() => onStatusesChange([])}
             >
-              All Status
+              Tous les statuts
             </LineItem>
             {FILTERABLE_STATUSES.map(([status, label]) => {
               const isSelected = selectedStatuses.includes(status);

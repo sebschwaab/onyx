@@ -108,7 +108,7 @@ const AdvancedEmbeddingFormPage = forwardRef<
               .nullable()
               .test(
                 "required-if-contextual-rag",
-                "LLM must be selected when Contextual RAG is enabled",
+                "Un LLM doit être sélectionné lorsque le RAG contextuel est activé",
                 function (value) {
                   const enableContextualRag = this.parent.enable_contextual_rag;
                   console.log("enableContextualRag", enableContextualRag);
@@ -121,12 +121,12 @@ const AdvancedEmbeddingFormPage = forwardRef<
               .nullable()
               .test(
                 "positive",
-                "Must be larger than or equal to 256",
+                "Doit être supérieur ou égal à 256",
                 (value) => value === null || value === undefined || value >= 256
               )
               .test(
                 "openai",
-                "Reduced Dimensions is only supported for OpenAI embedding models",
+                "Les dimensions réduites ne sont prises en charge que pour les modèles d'embedding OpenAI",
                 (value) => {
                   return embeddingProviderType === "openai" || value === null;
                 }
@@ -176,7 +176,7 @@ const AdvancedEmbeddingFormPage = forwardRef<
                       .nullable()
                       .test(
                         "required-if-contextual-rag",
-                        "LLM must be selected when Contextual RAG is enabled",
+                        "Un LLM doit être sélectionné lorsque le RAG contextuel est activé",
                         function (value) {
                           const enableContextualRag =
                             this.parent.enable_contextual_rag;
@@ -188,13 +188,13 @@ const AdvancedEmbeddingFormPage = forwardRef<
                       .nullable()
                       .test(
                         "positive",
-                        "Must be larger than or equal to 256",
+                        "Doit être supérieur ou égal à 256",
                         (value) =>
                           value === null || value === undefined || value >= 256
                       )
                       .test(
                         "openai",
-                        "Reduced Dimensions is only supported for OpenAI embedding models",
+                        "Les dimensions réduites ne sont prises en charge que pour les modèles d'embedding OpenAI",
                         (value) => {
                           return (
                             embeddingProviderType === "openai" || value === null
@@ -223,34 +223,34 @@ const AdvancedEmbeddingFormPage = forwardRef<
           {({ values }) => (
             <Form>
               <BooleanFormField
-                subtext="Enable multipass indexing for both mini and large chunks."
+                subtext="Activer l'indexation multipass pour les mini et grands fragments."
                 optional
-                label="Multipass Indexing"
+                label="Indexation multipass"
                 name="multipass_indexing"
               />
               <BooleanFormField
                 subtext={
                   NEXT_PUBLIC_CLOUD_ENABLED
-                    ? "Contextual RAG disabled in Onyx Cloud"
-                    : "Enable contextual RAG for all chunk sizes."
+                    ? "RAG contextuel désactivé dans Onyx Cloud"
+                    : "Activer le RAG contextuel pour toutes les tailles de fragments."
                 }
                 optional
-                label="Contextual RAG"
+                label="RAG contextuel"
                 name="enable_contextual_rag"
                 disabled={NEXT_PUBLIC_CLOUD_ENABLED}
               />
               <div>
                 <SelectorFormField
                   name="contextual_rag_llm"
-                  label="Contextual RAG LLM"
+                  label="LLM pour le RAG contextuel"
                   subtext={
                     costError
-                      ? "Error loading LLM models. Please try again later."
+                      ? "Erreur lors du chargement des modèles LLM. Veuillez réessayer plus tard."
                       : !contextualCosts
-                        ? "Loading available LLM models..."
+                        ? "Chargement des modèles LLM disponibles..."
                         : values.enable_contextual_rag
-                          ? "Select the LLM model to use for contextual RAG processing."
-                          : "Enable Contextual RAG above to select an LLM model."
+                          ? "Sélectionnez le modèle LLM à utiliser pour le traitement RAG contextuel."
+                          : "Activez le RAG contextuel ci-dessus pour sélectionner un modèle LLM."
                   }
                   options={llmOptions}
                   disabled={
@@ -265,8 +265,8 @@ const AdvancedEmbeddingFormPage = forwardRef<
                     <div className="mt-2 text-sm text-text-600">
                       {contextualCosts ? (
                         <>
-                          Estimated cost for processing{" "}
-                          {COST_CALCULATION_TOKENS.toLocaleString()} tokens:{" "}
+                          Coût estimé pour le traitement de{" "}
+                          {COST_CALCULATION_TOKENS.toLocaleString()} jetons :{" "}
                           <span className="font-medium">
                             {getSelectedModelCost(values.contextual_rag_llm)
                               ? formatCost(
@@ -274,29 +274,29 @@ const AdvancedEmbeddingFormPage = forwardRef<
                                     values.contextual_rag_llm
                                   )!.cost
                                 )
-                              : "Cost information not available"}
+                              : "Informations de coût non disponibles"}
                           </span>
                         </>
                       ) : (
-                        "Loading cost information..."
+                        "Chargement des informations de coût..."
                       )}
                     </div>
                   )}
               </div>
               <SelectorFormField
                 name="embedding_precision"
-                label="Embedding Precision"
+                label="Précision des embeddings"
                 options={embeddingPrecisionOptions}
-                subtext="Select the precision for embedding vectors. Lower precision uses less storage but may reduce accuracy."
+                subtext="Sélectionnez la précision pour les vecteurs d'embedding. Une précision moindre utilise moins de stockage mais peut réduire la précision."
               />
 
               <NumberInput
-                description="Number of dimensions to reduce the embedding to.
-              Will reduce memory usage but may reduce accuracy.
-              If not specified, will just use the selected model's default dimensionality without any reduction.
-              Currently only supported for OpenAI embedding models"
+                description="Nombre de dimensions vers lesquelles réduire l'embedding.
+              Réduira l'utilisation de la mémoire mais peut diminuer la précision.
+              Si non spécifié, utilisera la dimensionnalité par défaut du modèle sélectionné sans réduction.
+              Actuellement uniquement pris en charge pour les modèles d'embedding OpenAI"
                 optional={true}
-                label="Reduced Dimension"
+                label="Dimension réduite"
                 name="reduced_dimension"
               />
             </Form>

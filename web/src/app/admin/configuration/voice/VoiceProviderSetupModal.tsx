@@ -283,7 +283,7 @@ export default function VoiceProviderSetupModal({
       // Test the connection first (skip if reusing LLM provider key - validated on save)
       if (!selectedLlmProviderId) {
         setPhase("validating");
-        setMessage({ kind: "status", text: "Validating API key..." });
+        setMessage({ kind: "status", text: "Validation de la clé API..." });
 
         const testResponse = await testVoiceProvider({
           provider_type: providerType,
@@ -297,7 +297,7 @@ export default function VoiceProviderSetupModal({
           const detail =
             typeof data?.detail === "string"
               ? data.detail
-              : "Connection test failed";
+              : "Échec du test de connexion";
           setPhase("idle");
           setMessage({ kind: "error", text: detail });
           return;
@@ -305,7 +305,7 @@ export default function VoiceProviderSetupModal({
 
         setMessage({
           kind: "status",
-          text: "API key validated. Saving provider...",
+          text: "Clé API validée. Enregistrement du fournisseur...",
         });
       }
 
@@ -333,7 +333,7 @@ export default function VoiceProviderSetupModal({
         const detail =
           typeof data?.detail === "string"
             ? data.detail
-            : "Failed to save provider";
+            : "Échec de l'enregistrement du fournisseur";
         setPhase("idle");
         setMessage({ kind: "error", text: detail });
       }
@@ -348,29 +348,29 @@ export default function VoiceProviderSetupModal({
       <Modal.Content width="sm">
         <Modal.Header
           icon={LogoArrangement}
-          title={isEditing ? `Edit ${label}` : `Set up ${label}`}
-          description={`Connect to ${label} and set up your voice models.`}
+          title={isEditing ? `Modifier ${label}` : `Configurer ${label}`}
+          description={`Connectez-vous à ${label} et configurez vos modèles vocaux.`}
           onClose={onClose}
         />
         <Modal.Body>
           <Section gap={1} alignItems="stretch">
             <FormField name="api_key" state={formFieldState} className="w-full">
-              <FormField.Label>API Key</FormField.Label>
+              <FormField.Label>Clé API</FormField.Label>
               <FormField.Description>
                 {isEditing ? (
-                  "Leave blank to keep existing key"
+                  "Laissez vide pour conserver la clé existante"
                 ) : (
                   <>
-                    Paste your{" "}
+                    Collez votre{" "}
                     <a
                       href={PROVIDER_API_KEY_URLS[providerType]}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="underline"
                     >
-                      API key
+                      clé API
                     </a>{" "}
-                    from {label} to access your models.
+                    de {label} pour accéder à vos modèles.
                   </>
                 )}
               </FormField.Description>
@@ -378,7 +378,7 @@ export default function VoiceProviderSetupModal({
                 {providerType === "openai" &&
                 existingApiKeyOptions.length > 0 ? (
                   <InputComboBox
-                    placeholder={isEditing ? "••••••••" : "Enter API key"}
+                    placeholder={isEditing ? "••••••••" : "Saisir la clé API"}
                     value={apiKey}
                     onChange={(e) => {
                       setApiKey(e.target.value);
@@ -400,13 +400,13 @@ export default function VoiceProviderSetupModal({
                       setMessage(null);
                     }}
                     options={existingApiKeyOptions}
-                    separatorLabel="Reuse OpenAI API Keys"
+                    separatorLabel="Réutiliser les clés API OpenAI"
                     strict={false}
-                    createPrefix="Add"
+                    createPrefix="Ajouter"
                   />
                 ) : (
                   <PasswordInputTypeIn
-                    placeholder={isEditing ? "••••••••" : "Enter API key"}
+                    placeholder={isEditing ? "••••••••" : "Saisir la clé API"}
                     value={apiKey}
                     onChange={(e) => {
                       setApiKey(e.target.value);
@@ -421,7 +421,7 @@ export default function VoiceProviderSetupModal({
                 <FormField.APIMessage
                   state="loading"
                   messages={{
-                    loading: message?.text ?? "Validating API key...",
+                    loading: message?.text ?? "Validation de la clé API...",
                   }}
                 />
               ) : message ? (
@@ -439,14 +439,14 @@ export default function VoiceProviderSetupModal({
               <Vertical
                 title="Target URI"
                 subDescription={markdown(
-                  "Paste the endpoint shown in [Azure Portal (Keys and Endpoint)](https://portal.azure.com/). Onyx extracts the speech region from this URL. Examples: https://westus.api.cognitive.microsoft.com/ or https://westus.tts.speech.microsoft.com/."
+                  "Collez le point d'accès affiché dans le [Portail Azure (Clés et Point de terminaison)](https://portal.azure.com/). Onyx extrait la région vocale de cette URL. Exemples : https://westus.api.cognitive.microsoft.com/ ou https://westus.tts.speech.microsoft.com/."
                 )}
                 nonInteractive
               >
                 <InputTypeIn
                   placeholder={
                     isEditing
-                      ? "Leave blank to keep existing"
+                      ? "Laissez vide pour conserver l'existant"
                       : "https://<region>.api.cognitive.microsoft.com/"
                   }
                   value={targetUri}
@@ -472,8 +472,8 @@ export default function VoiceProviderSetupModal({
 
             {providerType === "openai" && mode === "tts" && (
               <Vertical
-                title="Default Model"
-                subDescription="This model will be used by Onyx by default for text-to-speech."
+                title="Modèle par défaut"
+                subDescription="Ce modèle sera utilisé par Onyx par défaut pour la synthèse vocale."
                 nonInteractive
               >
                 <InputSelect value={ttsModel} onValueChange={setTtsModel}>
@@ -508,8 +508,8 @@ export default function VoiceProviderSetupModal({
                   options={voiceOptions}
                   placeholder={
                     isLoadingVoices
-                      ? "Loading voices..."
-                      : "Select a voice or enter voice ID"
+                      ? "Chargement des voix..."
+                      : "Sélectionner une voix ou saisir un ID de voix"
                   }
                   disabled={isLoadingVoices}
                   strict={false}
@@ -520,14 +520,14 @@ export default function VoiceProviderSetupModal({
         </Modal.Body>
         <Modal.Footer>
           <Button secondary onClick={onClose}>
-            Cancel
+            Annuler
           </Button>
           <Disabled disabled={!canConnect || isProcessing}>
             <Button
               onClick={handleSubmit}
               disabled={!canConnect || isProcessing}
             >
-              {isProcessing ? "Connecting..." : isEditing ? "Save" : "Connect"}
+              {isProcessing ? "Connexion..." : isEditing ? "Enregistrer" : "Connecter"}
             </Button>
           </Disabled>
         </Modal.Footer>

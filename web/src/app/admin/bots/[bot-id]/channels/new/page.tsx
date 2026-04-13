@@ -45,9 +45,9 @@ function NewChannelConfigContent({ slackBotId }: { slackBotId: number }) {
   if (docSetsError || !documentSets) {
     return (
       <ErrorCallout
-        errorTitle="Something went wrong :("
-        errorMsg={`Failed to fetch document sets - ${
-          docSetsError?.message ?? "unknown error"
+        errorTitle="Une erreur s'est produite :("
+        errorMsg={`Impossible de récupérer les ensembles de documents - ${
+          docSetsError?.message ?? "erreur inconnue"
         }`}
       />
     );
@@ -56,9 +56,9 @@ function NewChannelConfigContent({ slackBotId }: { slackBotId: number }) {
   if (agentsError) {
     return (
       <ErrorCallout
-        errorTitle="Something went wrong :("
-        errorMsg={`Failed to fetch agents - ${
-          agentsError?.message ?? "unknown error"
+        errorTitle="Une erreur s'est produite :("
+        errorMsg={`Impossible de récupérer les agents - ${
+          agentsError?.message ?? "erreur inconnue"
         }`}
       />
     );
@@ -108,7 +108,7 @@ export default function Page(props: { params: Promise<{ "bot-id": string }> }) {
     <SettingsLayouts.Root>
       <SettingsLayouts.Header
         icon={SvgSlack}
-        title="Configure OnyxBot for Slack Channel"
+        title="Configurer OnyxBot pour le canal Slack"
         separator
         backButton
       />

@@ -146,11 +146,11 @@ export default function EditUserModal({
       }
 
       onMutate();
-      toast.success("User updated");
+      toast.success("Utilisateur mis à jour");
       onClose();
     } catch (err) {
       onMutate(); // refresh to show partially-applied state
-      toast.error(err instanceof Error ? err.message : "An error occurred");
+      toast.error(err instanceof Error ? err.message : "Une erreur s'est produite");
     } finally {
       setIsSubmitting(false);
     }
@@ -170,7 +170,7 @@ export default function EditUserModal({
       <Modal.Content width="sm" ref={contentRef}>
         <Modal.Header
           icon={SvgUsers}
-          title="Edit User's Groups & Roles"
+          title="Modifier les groupes et rôles de l'utilisateur"
           description={
             user.personal_name
               ? `${user.personal_name} (${user.email})`
@@ -197,7 +197,7 @@ export default function EditUserModal({
                     <InputTypeIn
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      placeholder="Search groups to join..."
+                      placeholder="Rechercher des groupes à rejoindre..."
                       leftSearchIcon
                     />
                   </div>
@@ -208,15 +208,15 @@ export default function EditUserModal({
                   container={contentEl}
                 >
                   {groupsLoading ? (
-                    <LineItem skeleton description="Loading groups...">
-                      Loading...
+                    <LineItem skeleton description="Chargement des groupes...">
+                      Chargement...
                     </LineItem>
                   ) : dropdownGroups.length === 0 ? (
                     <LineItem
                       skeleton
-                      description="Try a different search term."
+                      description="Essayez un autre terme de recherche."
                     >
-                      No groups found
+                      Aucun groupe trouvé
                     </LineItem>
                   ) : (
                     <ShadowDiv
@@ -256,9 +256,9 @@ export default function EditUserModal({
                     icon={SvgUsers}
                     skeleton
                     interactive={false}
-                    description={`${displayName} is not in any groups.`}
+                    description={`${displayName} n'est dans aucun groupe.`}
                   >
-                    No groups found
+                    Aucun groupe trouvé
                   </LineItem>
                 ) : (
                   joinedGroups.map((group) => (
@@ -274,7 +274,7 @@ export default function EditUserModal({
                         }`}
                         rightChildren={
                           <SimpleTooltip
-                            tooltip="Remove from group"
+                            tooltip="Retirer du groupe"
                             side="left"
                           >
                             <SvgLogOut height={16} width={16} />
@@ -294,8 +294,8 @@ export default function EditUserModal({
                 <Separator noPadding />
 
                 <ContentAction
-                  title="User Role"
-                  description="This controls their general permissions."
+                  title="Rôle de l'utilisateur"
+                  description="Ceci contrôle leurs permissions générales."
                   sizePreset="main-ui"
                   variant="section"
                   paddingVariant="fit"
@@ -338,10 +338,10 @@ export default function EditUserModal({
             prominence="secondary"
             onClick={isSubmitting ? undefined : onClose}
           >
-            Cancel
+            Annuler
           </Button>
           <Button disabled={isSubmitting || !hasChanges} onClick={handleSave}>
-            Save Changes
+            Enregistrer
           </Button>
         </Modal.Footer>
       </Modal.Content>

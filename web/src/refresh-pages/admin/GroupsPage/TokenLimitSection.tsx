@@ -70,8 +70,8 @@ function TokenLimitSection({ limits, onLimitsChange }: TokenLimitSectionProps) {
   return (
     <SimpleCollapsible>
       <SimpleCollapsible.Header
-        title="Token Rate Limit"
-        description="Limit number of tokens this group can use within a given time period."
+        title="Limite de jetons"
+        description="Limitez le nombre de jetons que ce groupe peut utiliser sur une période donnée."
       />
       <SimpleCollapsible.Content>
         <Card>
@@ -86,15 +86,15 @@ function TokenLimitSection({ limits, onLimitsChange }: TokenLimitSectionProps) {
             <div className="flex flex-wrap items-center gap-1 pr-[40px]">
               <div className="flex-1 flex items-center min-w-[160px]">
                 <Text mainUiAction text04>
-                  Token Limit
+                  Limite de jetons
                 </Text>
                 <Text mainUiMuted text03 className="ml-0.5">
-                  (thousand tokens)
+                  (milliers de jetons)
                 </Text>
               </div>
               <div className="flex-1 flex items-center min-w-[160px]">
                 <Text mainUiAction text04>
-                  Time Window
+                  Fenêtre temporelle
                 </Text>
                 <Text mainUiMuted text03 className="ml-0.5">
                   (hours)
@@ -110,7 +110,7 @@ function TokenLimitSection({ limits, onLimitsChange }: TokenLimitSectionProps) {
                     value={limit.tokenBudget}
                     onChange={(v) => updateLimit(i, "tokenBudget", v)}
                     min={0}
-                    placeholder="Token limit in thousands"
+                    placeholder="Limite en milliers de jetons"
                   />
                 </div>
                 <div className="flex-1">
@@ -136,7 +136,7 @@ function TokenLimitSection({ limits, onLimitsChange }: TokenLimitSectionProps) {
               size="md"
               onClick={addLimit}
             >
-              Add Limit
+              Ajouter une limite
             </Button>
           </Section>
         </Card>

@@ -96,12 +96,12 @@ export default function CredentialSection({
       mutate(buildSimilarCredentialInfoURL(sourceType));
       refresh();
 
-      toast.success("Swapped credential successfully!");
+      toast.success("Identifiant remplacé avec succès !");
     } else {
       const errorData = await response.json();
       toast.error(
-        `Issue swapping credential: ${
-          errorData.detail || errorData.message || "Unknown error"
+        `Problème lors du remplacement de l'identifiant : ${
+          errorData.detail || errorData.message || "Erreur inconnue"
         }`
       );
     }
@@ -130,10 +130,10 @@ export default function CredentialSection({
       response = await updateCredential(selectedCredential.id, details);
     }
     if (response.ok) {
-      toast.success("Updated credential");
+      toast.success("Identifiant mis à jour");
       onSucces();
     } else {
-      toast.error("Issue updating credential");
+      toast.error("Problème lors de la mise à jour de l'identifiant");
     }
   };
 
@@ -190,7 +190,7 @@ export default function CredentialSection({
                     `Credential #${ccPair.credential.id}`}
                 </Text>
                 <div className="text-xs text-muted-foreground/70">
-                  Created{" "}
+                  Créé le{" "}
                   <i>
                     {new Date(
                       ccPair.credential.time_created
@@ -221,7 +221,7 @@ export default function CredentialSection({
                   transition-colors"
               >
                 <FiEdit2 className="h-4 w-4" />
-                <span className="sr-only">Update Credentials</span>
+                <span className="sr-only">Mettre à jour les identifiants</span>
               </button>
             </div>
           </div>
@@ -233,7 +233,7 @@ export default function CredentialSection({
           <Modal.Content>
             <Modal.Header
               icon={SvgEdit}
-              title="Update Credentials"
+              title="Mettre à jour les identifiants"
               onClose={closeModifyCredential}
             />
             <Modal.Body>
@@ -261,7 +261,7 @@ export default function CredentialSection({
           <Modal.Content>
             <Modal.Header
               icon={SvgEdit}
-              title="Edit Credential"
+              title="Modifier l'identifiant"
               onClose={closeEditingCredential}
             />
             <Modal.Body>
@@ -280,7 +280,7 @@ export default function CredentialSection({
           <Modal.Content>
             <Modal.Header
               icon={SvgKey}
-              title={`Create ${getSourceDisplayName(sourceType)} Credential`}
+              title={`Créer un identifiant ${getSourceDisplayName(sourceType)}`}
               onClose={closeCreateCredential}
             />
             <Modal.Body>

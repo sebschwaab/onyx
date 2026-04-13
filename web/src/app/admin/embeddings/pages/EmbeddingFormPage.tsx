@@ -209,7 +209,7 @@ export default function EmbeddingForm() {
     if (response.ok) {
       return true;
     } else {
-      toast.error("Failed to update search settings");
+      toast.error("Échec de la mise à jour des paramètres de recherche");
       return false;
     }
   }, [
@@ -265,10 +265,10 @@ export default function EmbeddingForm() {
               className="rounded-r-none w-32 h-full"
             >
               {switchoverType == SwitchoverType.REINDEX
-                ? "Re-index"
+                ? "Réindexer"
                 : switchoverType == SwitchoverType.ACTIVE_ONLY
-                  ? "Active Only"
-                  : "Instant Switch"}
+                  ? "Actifs seulement"
+                  : "Bascule instantanée"}
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -289,7 +289,7 @@ export default function EmbeddingForm() {
                 >
                   <SimpleTooltip tooltip="Re-runs all connectors in the background before switching over. Takes longer but ensures no degredation of search during the switch.">
                     <span className="w-full text-left">
-                      (Recommended) Re-index
+                      (Recommandé) Réindexer
                     </span>
                   </SimpleTooltip>
                 </DropdownMenuItem>
@@ -300,7 +300,7 @@ export default function EmbeddingForm() {
                 >
                   <SimpleTooltip tooltip="Re-runs only active (non-paused) connectors in the background before switching over. Paused connectors won't block the switchover.">
                     <span className="w-full text-left">
-                      Active Connectors Only
+                      Connecteurs actifs seulement
                     </span>
                   </SimpleTooltip>
                 </DropdownMenuItem>
@@ -310,7 +310,7 @@ export default function EmbeddingForm() {
                   }}
                 >
                   <SimpleTooltip tooltip="Immediately switches to new settings without re-indexing. Searches will be degraded until the re-indexing is complete.">
-                    <span className="w-full text-left">Instant Switch</span>
+                    <span className="w-full text-left">Bascule instantanée</span>
                   </SimpleTooltip>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -324,10 +324,10 @@ export default function EmbeddingForm() {
                 weight="fill"
               />
               <div className="absolute z-10 invisible group-hover:visible bg-background-800 text-text-200 text-sm rounded-md shadow-md p-2 right-0 mt-1 w-64">
-                <p className="font-semibold mb-2">Needs re-indexing due to:</p>
+                <p className="font-semibold mb-2">Réindexation nécessaire en raison de :</p>
                 <ul className="list-disc pl-5">
                   {currentEmbeddingModel != selectedProvider && (
-                    <li>Changed embedding provider</li>
+                    <li>Fournisseur d'embedding modifié</li>
                   )}
                   {searchSettings?.multipass_indexing !=
                     advancedEmbeddingDetails.multipass_indexing && (
@@ -362,7 +362,7 @@ export default function EmbeddingForm() {
                   weight="fill"
                 />
                 <div className="absolute z-10 invisible group-hover:visible bg-background-800 text-text-200 text-sm rounded-md shadow-md p-2 right-0 mt-1 w-64">
-                  <p className="font-semibold mb-2">Validation Errors:</p>
+                  <p className="font-semibold mb-2">Erreurs de validation :</p>
                   <ul className="list-disc pl-5">
                     {Object.entries(combinedFormErrors).map(
                       ([field, error]) => (
@@ -385,7 +385,7 @@ export default function EmbeddingForm() {
               navigateToEmbeddingPage("search settings");
             }}
           >
-            Update Search
+            Mettre à jour la recherche
           </OpalButton>
           {!isOverallFormValid &&
             Object.keys(combinedFormErrors).length > 0 && (
@@ -420,7 +420,7 @@ export default function EmbeddingForm() {
     return <ThreeDotsLoader />;
   }
   if (currentEmbeddingModelError || !currentEmbeddingModel) {
-    return <ErrorCallout errorTitle="Failed to fetch embedding model status" />;
+    return <ErrorCallout errorTitle="Échec du chargement du statut du modèle d'embedding" />;
   }
 
   const updateCurrentModel = (newModel: string) => {
@@ -478,7 +478,7 @@ export default function EmbeddingForm() {
     if (response.ok) {
       navigateToEmbeddingPage("embedding model");
     } else {
-      toast.error("Failed to update embedding model");
+      toast.error("Échec de la mise à jour du modèle d'embedding");
 
       alert(`Failed to update embedding model - ${await response.text()}`);
     }
@@ -490,7 +490,7 @@ export default function EmbeddingForm() {
         {formStep == 0 && (
           <>
             <h2 className="text-2xl font-bold mb-4 text-text-800">
-              Select an Embedding Model
+              Sélectionner un modèle d'embedding
             </h2>
             <Text as="p" className="mb-4">
               Note that updating the backing model will require a complete
@@ -529,7 +529,7 @@ export default function EmbeddingForm() {
                 }}
                 rightIcon={SvgArrowRight}
               >
-                Continue
+                Continuer
               </OpalButton>
             </div>
           </>
@@ -568,7 +568,7 @@ export default function EmbeddingForm() {
                   prominence="secondary"
                   onClick={() => setShowPoorModel(false)}
                 >
-                  Cancel update
+                  Annuler la mise à jour
                 </OpalButton>
                 <OpalButton
                   onClick={() => {
@@ -578,7 +578,7 @@ export default function EmbeddingForm() {
                     nextFormStep();
                   }}
                 >
-                  {`Continue with ${selectedProvider.model_name}`}
+                  {`Continuer avec ${selectedProvider.model_name}`}
                 </OpalButton>
               </Modal.Footer>
             </Modal.Content>
@@ -599,7 +599,7 @@ export default function EmbeddingForm() {
         {formStep == 1 && (
           <>
             <h2 className="text-2xl font-bold mb-4 text-text-800">
-              Select a Reranking Model
+              Sélectionner un modèle de reclassement
             </h2>
             <Text as="p" className="mb-4">
               Updating the reranking model does not require re-indexing
@@ -630,7 +630,7 @@ export default function EmbeddingForm() {
                 icon={SvgArrowLeft}
                 onClick={() => prevFormStep()}
               >
-                Previous
+                Précédent
               </OpalButton>
 
               <ReIndexingButton needsReIndex={needsReIndex} />
@@ -643,7 +643,7 @@ export default function EmbeddingForm() {
                   }}
                   rightIcon={SvgArrowRight}
                 >
-                  Advanced
+                  Avancé
                 </OpalButton>
               </div>
             </div>
@@ -652,7 +652,7 @@ export default function EmbeddingForm() {
         {formStep == 2 && (
           <>
             <h2 className="text-2xl font-bold mb-4 text-text-800">
-              Advanced Search Configuration
+              Configuration avancée de la recherche
             </h2>
             <Text as="p" className="mb-4">
               Configure advanced embedding and search settings. Changes will
@@ -679,7 +679,7 @@ export default function EmbeddingForm() {
                 }}
                 icon={SvgArrowLeft}
               >
-                Previous
+                Précédent
               </OpalButton>
 
               <ReIndexingButton needsReIndex={needsReIndex} />

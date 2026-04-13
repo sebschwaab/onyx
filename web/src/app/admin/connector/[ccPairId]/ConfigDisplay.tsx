@@ -123,7 +123,7 @@ function ConfigItem({ label, value, onEdit }: ConfigItemProps) {
             icon={isExpanded ? SvgChevronUp : SvgChevronDown}
             onClick={() => setIsExpanded(!isExpanded)}
           >
-            {isExpanded ? "Show less" : `Show all (${value.length} items)`}
+            {isExpanded ? "Afficher moins" : `Tout afficher (${value.length} éléments)`}
           </Button>
         )}
         {onEdit && (
@@ -131,7 +131,7 @@ function ConfigItem({ label, value, onEdit }: ConfigItemProps) {
             prominence="tertiary"
             icon={SvgEdit}
             onClick={onEdit}
-            tooltip="Edit"
+            tooltip="Modifier"
           />
         )}
       </Section>
@@ -202,17 +202,17 @@ export function AdvancedConfigDisplay({
 
   const items = [
     pruneFreq !== null && {
-      label: "Pruning Frequency",
+      label: "Fréquence d'élagage",
       value: formatPruneFrequency(pruneFreq),
       onEdit: onPruningEdit,
     },
     refreshFreq && {
-      label: "Refresh Frequency",
+      label: "Fréquence de rafraîchissement",
       value: formatRefreshFrequency(refreshFreq),
       onEdit: onRefreshEdit,
     },
     indexingStart && {
-      label: "Indexing Start",
+      label: "Début de l'indexation",
       value: formatDate(indexingStart),
     },
   ].filter(Boolean) as ConfigItemProps[];

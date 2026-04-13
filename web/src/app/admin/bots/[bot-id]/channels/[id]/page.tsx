@@ -51,8 +51,8 @@ function EditSlackChannelConfigContent({ id }: { id: string }) {
   );
 
   const title = slackChannelConfig?.is_default
-    ? "Edit Default Slack Config"
-    : "Edit Slack Channel Config";
+    ? "Modifier la config Slack par défaut"
+    : "Modifier la config du canal Slack";
 
   return (
     <SettingsLayouts.Root>
@@ -67,28 +67,28 @@ function EditSlackChannelConfigContent({ id }: { id: string }) {
           <SimpleLoader />
         ) : channelsError || !slackChannelConfigs ? (
           <ErrorCallout
-            errorTitle="Something went wrong :("
-            errorMsg={`Failed to fetch Slack Channels - ${
-              channelsError?.message ?? "unknown error"
+            errorTitle="Une erreur s'est produite :("
+            errorMsg={`Impossible de récupérer les canaux Slack - ${
+              channelsError?.message ?? "erreur inconnue"
             }`}
           />
         ) : !slackChannelConfig ? (
           <ErrorCallout
-            errorTitle="Something went wrong :("
-            errorMsg={`Did not find Slack Channel config with ID: ${id}`}
+            errorTitle="Une erreur s'est produite :("
+            errorMsg={`Configuration du canal Slack introuvable avec l'ID : ${id}`}
           />
         ) : docSetsError || !documentSets ? (
           <ErrorCallout
-            errorTitle="Something went wrong :("
-            errorMsg={`Failed to fetch document sets - ${
-              docSetsError?.message ?? "unknown error"
+            errorTitle="Une erreur s'est produite :("
+            errorMsg={`Impossible de récupérer les ensembles de documents - ${
+              docSetsError?.message ?? "erreur inconnue"
             }`}
           />
         ) : agentsError ? (
           <ErrorCallout
-            errorTitle="Something went wrong :("
-            errorMsg={`Failed to fetch agents - ${
-              agentsError?.message ?? "unknown error"
+            errorTitle="Une erreur s'est produite :("
+            errorMsg={`Impossible de récupérer les agents - ${
+              agentsError?.message ?? "erreur inconnue"
             }`}
           />
         ) : (

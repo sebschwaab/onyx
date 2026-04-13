@@ -44,16 +44,16 @@ export function useReIndexModal(
       if (result.success) {
         toast.success(
           `${
-            fromBeginning ? "Complete re-indexing" : "Indexing update"
-          } started successfully`
+            fromBeginning ? "Réindexation complète" : "Mise à jour de l'indexation"
+          } démarrée avec succès`
         );
       } else {
-        toast.error(result.message || "Failed to start indexing");
+        toast.error(result.message || "Échec du démarrage de l'indexation");
       }
     } catch (error) {
       console.error("Failed to trigger indexing:", error);
       toast.error(
-        "An unexpected error occurred while trying to start indexing"
+        "Une erreur inattendue s'est produite lors du démarrage de l'indexation"
       );
     }
   };
@@ -87,8 +87,8 @@ export default function ReIndexModal({ hide, onRunIndex }: ReIndexModalProps) {
     try {
       // First show immediate feedback with a toast
       toast.info(
-        `Starting ${
-          fromBeginning ? "complete re-indexing" : "indexing update"
+        `Démarrage ${
+          fromBeginning ? "de la réindexation complète" : "de la mise à jour de l'indexation"
         }...`
       );
 
@@ -100,7 +100,7 @@ export default function ReIndexModal({ hide, onRunIndex }: ReIndexModalProps) {
     } catch (error) {
       console.error("Error starting indexing:", error);
       // Show error in toast if needed
-      toast.error("Failed to start indexing process");
+      toast.error("Échec du démarrage du processus d'indexation");
     } finally {
       setIsProcessing(false);
     }
@@ -109,29 +109,29 @@ export default function ReIndexModal({ hide, onRunIndex }: ReIndexModalProps) {
   return (
     <Modal open onOpenChange={hide}>
       <Modal.Content width="sm" height="sm">
-        <Modal.Header icon={SvgRefreshCw} title="Run Indexing" onClose={hide} />
+        <Modal.Header icon={SvgRefreshCw} title="Lancer l'indexation" onClose={hide} />
         <Modal.Body>
           <Text as="p">
-            This will pull in and index all documents that have changed and/or
-            have been added since the last successful indexing run.
+            Ceci récupèrera et indexera tous les documents qui ont changé et/ou
+            ont été ajoutés depuis la dernière indexation réussie.
           </Text>
           <Button disabled={isProcessing} onClick={() => handleRunIndex(false)}>
-            Run Update
+            Lancer la mise à jour
           </Button>
 
           <Separator />
 
           <Text as="p">
-            This will cause a complete re-indexing of all documents from the
-            source.
+            Ceci déclenchera une réindexation complète de tous les documents de
+            la source.
           </Text>
           <Text as="p">
-            <strong>NOTE:</strong> depending on the number of documents stored
-            in the source, this may take a long time.
+            <strong>REMARQUE :</strong> selon le nombre de documents stockés
+            dans la source, cela peut prendre un certain temps.
           </Text>
 
           <Button disabled={isProcessing} onClick={() => handleRunIndex(true)}>
-            Run Complete Re-Indexing
+            Lancer la réindexation complète
           </Button>
         </Modal.Body>
       </Modal.Content>

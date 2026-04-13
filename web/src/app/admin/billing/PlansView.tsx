@@ -57,24 +57,24 @@ interface PlanConfig {
 // ----------------------------------------------------------------------------
 
 const BUSINESS_FEATURES: PlanFeature[] = [
-  { icon: SvgFiles, text: "Inherit Document Permissions" },
-  { icon: SvgHistory, text: "Query History and Usage Dashboard" },
-  { icon: SvgShield, text: "Role Based Access Control (RBAC)" },
-  { icon: SvgLock, text: "Encryption of Secrets" },
-  { icon: SvgKey, text: "Service Account API Keys" },
-  { icon: SvgHardDrive, text: "Self-hosting (Optional)" },
-  { icon: SvgPaintBrush, text: "Custom Theming" },
+  { icon: SvgFiles, text: "Héritage des permissions de documents" },
+  { icon: SvgHistory, text: "Historique des requêtes et tableau de bord d'utilisation" },
+  { icon: SvgShield, text: "Contrôle d'accès basé sur les rôles (RBAC)" },
+  { icon: SvgLock, text: "Chiffrement des secrets" },
+  { icon: SvgKey, text: "Clés API de compte de service" },
+  { icon: SvgHardDrive, text: "Auto-hébergement (optionnel)" },
+  { icon: SvgPaintBrush, text: "Thème personnalisé" },
 ];
 
 const ENTERPRISE_FEATURES: PlanFeature[] = [
-  { icon: SvgUsers, text: "SCIM / Group Sync" },
-  { icon: SvgDashboard, text: "Full White-labeling" },
-  { icon: SvgUserManage, text: "Custom Roles and Permissions" },
-  { icon: SvgSliders, text: "Configurable Usage Limits" },
-  { icon: SvgShareWebhook, text: "Hook Extensions" },
-  { icon: SvgServer, text: "Custom Deployments" },
-  { icon: SvgGlobe, text: "Region-Specific Data Processing" },
-  { icon: SvgHeadsetMic, text: "Enterprise SLAs and Priority Support" },
+  { icon: SvgUsers, text: "SCIM / Synchronisation de groupes" },
+  { icon: SvgDashboard, text: "Marque blanche complète" },
+  { icon: SvgUserManage, text: "Rôles et permissions personnalisés" },
+  { icon: SvgSliders, text: "Limites d'utilisation configurables" },
+  { icon: SvgShareWebhook, text: "Extensions de hooks" },
+  { icon: SvgServer, text: "Déploiements personnalisés" },
+  { icon: SvgGlobe, text: "Traitement des données par région" },
+  { icon: SvgHeadsetMic, text: "SLAs Enterprise et support prioritaire" },
 ];
 
 // ----------------------------------------------------------------------------
@@ -152,7 +152,7 @@ function PlanCard({
             // TODO(@raunakab): migrate to opal Button once className/iconClassName is resolved
             <Button tertiary transient className="pointer-events-none">
               <Text mainUiAction text03>
-                Your Current Plan
+                Votre plan actuel
               </Text>
             </Button>
           ) : href ? (
@@ -172,7 +172,7 @@ function PlanCard({
             // TODO(@raunakab): migrate to opal Button once className/iconClassName is resolved
             <Button tertiary transient className="pointer-events-none">
               <Text mainUiAction text03>
-                Included in your plan
+                Inclus dans votre plan
               </Text>
             </Button>
           )}
@@ -248,24 +248,24 @@ export default function PlansView({
       title: "Business",
       pricing: "$20",
       description:
-        "per seat/month billed annually\nor $25 per seat if billed monthly",
-      buttonLabel: "Get Business Plan",
+        "par siège/mois facturé annuellement\nou 25 $ par siège si facturé mensuellement",
+      buttonLabel: "Obtenir le plan Business",
       buttonVariant: "primary",
       onClick: hasLicense ? undefined : onCheckout,
       features: BUSINESS_FEATURES,
-      featuresPrefix: "Get more work done with AI for your team.",
+      featuresPrefix: "Faites plus avec l'IA pour votre équipe.",
       isCurrentPlan: !!hasSubscription,
     },
     {
       icon: SvgOrganization,
       title: "Enterprise",
       description:
-        "Flexible pricing & deployment options\nfor large organizations",
-      buttonLabel: "Contact Sales",
+        "Options de tarification et de déploiement flexibles\npour les grandes organisations",
+      buttonLabel: "Contacter les ventes",
       buttonVariant: "secondary",
       href: SALES_URL,
       features: ENTERPRISE_FEATURES,
-      featuresPrefix: "Everything in Business Plan, plus:",
+      featuresPrefix: "Tout dans le plan Business, plus :",
       isCurrentPlan: !!hasLicense && !hasSubscription,
     },
   ];

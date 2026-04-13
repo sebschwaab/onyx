@@ -25,8 +25,8 @@ function GroupsList({ groups, searchQuery }: GroupsListProps) {
     return (
       <IllustrationContent
         illustration={SvgNoResult}
-        title="No groups found"
-        description={`No groups matching "${searchQuery}"`}
+        title="Aucun groupe trouvé"
+        description={`Aucun groupe correspondant à "${searchQuery}"`}
       />
     );
   }

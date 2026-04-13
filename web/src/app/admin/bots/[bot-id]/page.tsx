@@ -32,8 +32,8 @@ function SlackBotEditContent({ botId }: { botId: string }) {
   if (slackBotError || !slackBot) {
     return (
       <ErrorCallout
-        errorTitle="Something went wrong :("
-        errorMsg={`Failed to fetch Slack Bot ${botId}: ${getErrorMsg(
+        errorTitle="Une erreur s'est produite :("
+        errorMsg={`Impossible de récupérer le bot Slack ${botId} : ${getErrorMsg(
           slackBotError
         )}`}
       />
@@ -43,8 +43,8 @@ function SlackBotEditContent({ botId }: { botId: string }) {
   if (slackChannelConfigsError || !slackChannelConfigs) {
     return (
       <ErrorCallout
-        errorTitle="Something went wrong :("
-        errorMsg={`Failed to fetch Slack Bot ${botId}: ${getErrorMsg(
+        errorTitle="Une erreur s'est produite :("
+        errorMsg={`Impossible de récupérer le bot Slack ${botId} : ${getErrorMsg(
           slackChannelConfigsError
         )}`}
       />
@@ -80,7 +80,7 @@ export default function Page({
     <SettingsLayouts.Root>
       <SettingsLayouts.Header
         icon={SvgSlack}
-        title="Edit Slack Bot"
+        title="Modifier le bot Slack"
         backButton
         separator
       />

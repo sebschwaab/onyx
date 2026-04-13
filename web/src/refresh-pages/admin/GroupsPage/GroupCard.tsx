@@ -35,10 +35,10 @@ function GroupCard({ group }: GroupCardProps) {
     try {
       await renameGroup(group.id, newName);
       mutate(SWR_KEYS.adminUserGroups);
-      toast.success(`Group renamed to "${newName}"`);
+      toast.success(`Groupe renommé en "${newName}"`);
     } catch (e) {
       console.error("Failed to rename group:", e);
-      toast.error(e instanceof Error ? e.message : "Failed to rename group");
+      toast.error(e instanceof Error ? e.message : "Échec du renommage du groupe");
     }
   }
 
@@ -50,7 +50,7 @@ function GroupCard({ group }: GroupCardProps) {
         description={buildGroupDescription(group)}
         sizePreset="main-content"
         variant="section"
-        tag={isBasic ? { title: "Default" } : undefined}
+        tag={isBasic ? { title: "Par défaut" } : undefined}
         editable={!builtIn && !isSyncing}
         onTitleChange={!builtIn && !isSyncing ? handleRename : undefined}
         rightChildren={
@@ -65,8 +65,8 @@ function GroupCard({ group }: GroupCardProps) {
             <Button
               icon={SvgChevronRight}
               prominence="tertiary"
-              tooltip="View group"
-              aria-label="View group"
+              tooltip="Voir le groupe"
+              aria-label="Voir le groupe"
               onClick={() => router.push(`/admin/groups/${group.id}` as Route)}
             />
           </Section>
