@@ -49,12 +49,12 @@ export default function EmailPasswordForm({
     () => ({
       loading: isSignup
         ? isJoin
-          ? "Joining..."
-          : "Creating account..."
-        : "Signing in...",
+          ? "Rejoindre..."
+          : "Création du compte..."
+        : "Connexion...",
       success: isSignup
-        ? "Account created. Signing in..."
-        : "Signed in successfully.",
+        ? "Compte créé. Connexion..."
+        : "Connecté avec succès.",
       error: errorMessage,
     }),
     [isSignup, isJoin, errorMessage]
@@ -79,7 +79,7 @@ export default function EmailPasswordForm({
           password: Yup.string()
             .min(
               passwordMinLength,
-              `Password must be at least ${passwordMinLength} characters`
+              `Le mot de passe doit contenir au moins ${passwordMinLength} caractères`
             )
             .required(),
         })}
@@ -109,24 +109,24 @@ export default function EmailPasswordForm({
 
               const errorBody: any = await response.json();
               const errorDetail = errorBody.detail;
-              let errorMsg: string = "Unknown error";
+              let errorMsg: string = "Erreur inconnue";
               if (errorDetail === "REGISTER_USER_ALREADY_EXISTS") {
                 errorMsg =
-                  "An account already exists with the specified email.";
+                  "Un compte existe déjà avec cette adresse e-mail.";
               } else if (typeof errorDetail === "string" && errorDetail) {
                 errorMsg = errorDetail;
               }
               if (response.status === 429) {
-                errorMsg = "Too many requests. Please try again later.";
+                errorMsg = "Trop de tentatives. Veuillez réessayer plus tard.";
               }
               setErrorMessage(errorMsg);
               setApiStatus("error");
-              toast.error(`Failed to sign up - ${errorMsg}`);
+              toast.error(`Échec de l'inscription - ${errorMsg}`);
               setIsWorking(false);
               return;
             } else {
               setApiStatus("success");
-              toast.success("Account created successfully. Please log in.");
+              toast.success("Compte créé avec succès. Veuillez vous connecter.");
             }
           }
 
@@ -152,20 +152,20 @@ export default function EmailPasswordForm({
           } else {
             setIsWorking(false);
             const errorDetail: any = (await loginResponse.json()).detail;
-            let errorMsg: string = "Unknown error";
+            let errorMsg: string = "Erreur inconnue";
             if (errorDetail === "LOGIN_BAD_CREDENTIALS") {
-              errorMsg = "Invalid email or password";
+              errorMsg = "E-mail ou mot de passe invalide";
             } else if (errorDetail === "NO_WEB_LOGIN_AND_HAS_NO_PASSWORD") {
-              errorMsg = "Create an account to set a password";
+              errorMsg = "Créez un compte pour définir un mot de passe";
             } else if (typeof errorDetail === "string") {
               errorMsg = errorDetail;
             }
             if (loginResponse.status === 429) {
-              errorMsg = "Too many requests. Please try again later.";
+              errorMsg = "Trop de tentatives. Veuillez réessayer plus tard.";
             }
             setErrorMessage(errorMsg);
             setApiStatus("error");
-            toast.error(`Failed to login - ${errorMsg}`);
+            toast.error(`Échec de la connexion - ${errorMsg}`);
           }
         }}
       >
@@ -176,7 +176,7 @@ export default function EmailPasswordForm({
                 name="email"
                 render={(field, helper, meta, state) => (
                   <FormField name="email" state={state} className="w-full">
-                    <FormField.Label>Email Address</FormField.Label>
+                    <FormField.Label>Adresse e-mail</FormField.Label>
                     <FormField.Control>
                       <InputTypeIn
                         {...field}
@@ -203,7 +203,7 @@ export default function EmailPasswordForm({
                 name="password"
                 render={(field, helper, meta, state) => (
                   <FormField name="password" state={state} className="w-full">
-                    <FormField.Label>Password</FormField.Label>
+                    <FormField.Label>Mot de passe</FormField.Label>
                     <FormField.Control>
                       <PasswordInputTypeIn
                         {...field}
@@ -225,9 +225,9 @@ export default function EmailPasswordForm({
                     {isSignup && !showApiMessage && (
                       <FormField.Message
                         messages={{
-                          idle: `Password must be at least ${passwordMinLength} characters`,
+                          idle: `Le mot de passe doit contenir au moins ${passwordMinLength} caractères`,
                           error: meta.error,
-                          success: `Password must be at least ${passwordMinLength} characters`,
+                          success: `Le mot de passe doit contenir au moins ${passwordMinLength} caractères`,
                         }}
                       />
                     )}
@@ -248,7 +248,7 @@ export default function EmailPasswordForm({
                 width="full"
                 rightIcon={SvgArrowRightCircle}
               >
-                {isJoin ? "Join" : isSignup ? "Create Account" : "Sign In"}
+                {isJoin ? "Rejoindre" : isSignup ? "Créer un compte" : "Se connecter"}
               </Button>
               {user?.is_anonymous_user && (
                 <Link
@@ -256,7 +256,7 @@ export default function EmailPasswordForm({
                   className="text-xs text-action-link-05 cursor-pointer text-center w-full font-medium mx-auto"
                 >
                   <span className="hover:border-b hover:border-dotted hover:border-action-link-05">
-                    or continue as guest
+                    ou continuer en tant qu&apos;invité
                   </span>
                 </Link>
               )}

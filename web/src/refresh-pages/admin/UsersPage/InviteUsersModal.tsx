@@ -109,7 +109,7 @@ export default function InviteUsersModal({
     const validEmails = allChips.filter((c) => !c.error).map((c) => c.label);
 
     if (validEmails.length === 0) {
-      toast.error("Please add at least one valid email address");
+      toast.error("Veuillez ajouter au moins une adresse e-mail valide");
       return;
     }
 
@@ -117,12 +117,12 @@ export default function InviteUsersModal({
     try {
       await inviteUsers(validEmails);
       toast.success(
-        `Invited ${validEmails.length} user${validEmails.length > 1 ? "s" : ""}`
+        `${validEmails.length} utilisateur${validEmails.length > 1 ? "s" : ""} invité${validEmails.length > 1 ? "s" : ""}`
       );
       handleClose();
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Failed to invite users"
+        err instanceof Error ? err.message : "Échec de l'invitation des utilisateurs"
       );
     } finally {
       setIsSubmitting(false);
@@ -134,7 +134,7 @@ export default function InviteUsersModal({
       <Modal.Content width="sm" height="fit">
         <Modal.Header
           icon={SvgUsers}
-          title="Invite Users"
+          title="Inviter des utilisateurs"
           onClose={isSubmitting ? undefined : handleClose}
         />
 
@@ -145,7 +145,7 @@ export default function InviteUsersModal({
             onAdd={addEmail}
             value={inputValue}
             onChange={setInputValue}
-            placeholder="Add an email and press enter"
+            placeholder="Ajoutez un e-mail et appuyez sur Entrée"
             layout="stacked"
           />
           {chips.some((c) => c.error) && (
@@ -155,7 +155,7 @@ export default function InviteUsersModal({
                 className="text-status-warning-05 shrink-0"
               />
               <Text secondaryBody text03>
-                Some email addresses are invalid and will be skipped.
+                Certaines adresses e-mail sont invalides et seront ignorées.
               </Text>
             </div>
           )}
@@ -169,7 +169,7 @@ export default function InviteUsersModal({
                 prominence="tertiary"
                 onClick={handleClose}
               >
-                Cancel
+                Annuler
               </Button>
             }
             submit={
@@ -181,7 +181,7 @@ export default function InviteUsersModal({
                 }
                 onClick={handleInvite}
               >
-                Invite
+                Inviter
               </Button>
             }
           />

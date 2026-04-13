@@ -191,7 +191,7 @@ function Main() {
           <Spacer rem={3} />
           <Text as="p">
             {markdown(
-              "It looks like you don't have any connectors setup yet. Visit the [Add Connector](/admin/add-connector) page to get started!"
+              "Il semble que vous n'ayez pas encore configuré de connecteurs. Visitez la page [Ajouter un connecteur](/admin/add-connector) pour commencer !"
             )}
           </Text>
         </div>
@@ -211,7 +211,7 @@ function Main() {
 export default function Status() {
   useToastFromQuery({
     "connector-created": {
-      message: "Connector created successfully",
+      message: "Connecteur créé avec succès",
       type: "success",
     },
   });
@@ -222,7 +222,7 @@ export default function Status() {
         icon={route.icon}
         title={route.title}
         rightChildren={
-          <Button href="/admin/add-connector">Add Connector</Button>
+          <Button href="/admin/add-connector">Ajouter un connecteur</Button>
         }
         separator
       />

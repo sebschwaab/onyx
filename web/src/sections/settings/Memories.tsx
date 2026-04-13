@@ -24,7 +24,7 @@ export default function Memories({ memories, onSaveMemories }: MemoriesProps) {
       {memories.length === 0 ? (
         <LineItem
           skeleton
-          description="Add personal note or memory that Onyx should remember."
+          description="Ajoutez une note personnelle ou un souvenir qu'Onyx devrait mémoriser."
           onClick={() => {
             setTargetMemoryId(null);
             memoriesModal.toggle(true);
@@ -55,8 +55,8 @@ export default function Memories({ memories, onSaveMemories }: MemoriesProps) {
             ))}
           </div>
           <ButtonTile
-            title="View/Add"
-            description="All Memories"
+            title="Voir/Ajouter"
+            description="Toutes les mémoires"
             icon={SvgAddLines}
             onClick={() => {
               setTargetMemoryId(null);

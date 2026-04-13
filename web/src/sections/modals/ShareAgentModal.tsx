@@ -31,8 +31,8 @@ import { Button } from "@opal/components";
 import { useLabels } from "@/lib/hooks";
 import { PersonaLabel } from "@/app/admin/agents/interfaces";
 
-const YOUR_ORGANIZATION_TAB = "Your Organization";
-const USERS_AND_GROUPS_TAB = "Users & Groups";
+const YOUR_ORGANIZATION_TAB = "Votre organisation";
+const USERS_AND_GROUPS_TAB = "Utilisateurs & Groupes";
 
 // ============================================================================
 // Types
@@ -192,7 +192,7 @@ function ShareAgentFormContent({ agentId }: ShareAgentFormContentProps) {
 
   return (
     <Modal.Content width="sm" height="lg">
-      <Modal.Header icon={SvgShare} title="Share Agent" onClose={handleClose} />
+      <Modal.Header icon={SvgShare} title="Partager l'agent" onClose={handleClose} />
 
       <Modal.Body padding={0.5}>
         <Card variant="borderless" padding={0.5}>
@@ -216,7 +216,7 @@ function ShareAgentFormContent({ agentId }: ShareAgentFormContentProps) {
             <Tabs.Content value={USERS_AND_GROUPS_TAB}>
               <Section gap={0.5} alignItems="start">
                 <InputComboBox
-                  placeholder="Add users and groups"
+                  placeholder="Ajouter des utilisateurs et des groupes"
                   value=""
                   onChange={() => {}}
                   onValueChange={handleComboBoxSelect}
@@ -234,7 +234,7 @@ function ShareAgentFormContent({ agentId }: ShareAgentFormContentProps) {
                         <LineItem
                           key={`user-${user.id}`}
                           icon={SvgUser}
-                          description={isCurrentUser ? "You" : undefined}
+                          description={isCurrentUser ? "Vous" : undefined}
                           rightChildren={
                             isOwner || (isCurrentUser && !agentId) ? (
                               // Owner will always have the agent "shared" with it.
@@ -244,7 +244,7 @@ function ShareAgentFormContent({ agentId }: ShareAgentFormContentProps) {
                               // This user, during creation, is assumed to be the "owner".
                               // That is why the `(isCurrentUser && !agent)` condition exists.
                               <Text secondaryBody text03>
-                                Owner
+                                Propriétaire
                               </Text>
                             ) : (
                               // For all other cases (including for "self-unsharing"),
@@ -290,8 +290,8 @@ function ShareAgentFormContent({ agentId }: ShareAgentFormContentProps) {
                     close={false}
                     static
                     className="w-full"
-                    text="This agent is public to your organization."
-                    description="Everyone in your organization has access to this agent."
+                    text="Cet agent est public pour votre organisation."
+                    description="Toute personne de votre organisation a accès à cet agent."
                   />
                 </Section>
               )}
@@ -300,8 +300,8 @@ function ShareAgentFormContent({ agentId }: ShareAgentFormContentProps) {
             <Tabs.Content value={YOUR_ORGANIZATION_TAB} padding={0.5}>
               <Section gap={1} alignItems="stretch">
                 <InputLayouts.Horizontal
-                  title="Publish This Agent"
-                  description="Make this agent available to everyone in your organization."
+                  title="Publier cet agent"
+                  description="Rendre cet agent disponible pour toute votre organisation."
                 >
                   <SwitchField name="isPublic" />
                 </InputLayouts.Horizontal>
@@ -325,12 +325,11 @@ function ShareAgentFormContent({ agentId }: ShareAgentFormContentProps) {
                   onAdd={addLabel}
                   value={labelInputValue}
                   onChange={setLabelInputValue}
-                  placeholder="Add labels..."
+                  placeholder="Ajouter des étiquettes..."
                   icon={SvgTag}
                 />
                 <Text secondaryBody text04>
-                  Add labels and categories to help people better discover this
-                  agent.
+                  Ajoutez des étiquettes et des catégories pour aider les gens à mieux découvrir cet agent.
                 </Text>
               </Section>
             </Tabs.Content>
@@ -347,7 +346,7 @@ function ShareAgentFormContent({ agentId }: ShareAgentFormContentProps) {
                 icon={SvgLink}
                 onClick={handleCopyLink}
               >
-                Copy Link
+                Copier le lien
               </Button>
             ) : undefined
           }
@@ -357,7 +356,7 @@ function ShareAgentFormContent({ agentId }: ShareAgentFormContentProps) {
               prominence="secondary"
               onClick={handleClose}
             >
-              Cancel
+              Annuler
             </Button>
           }
           submit={
@@ -365,7 +364,7 @@ function ShareAgentFormContent({ agentId }: ShareAgentFormContentProps) {
               disabled={!dirty || isSubmitting}
               onClick={() => handleSubmit()}
             >
-              Save
+              Enregistrer
             </Button>
           }
         />

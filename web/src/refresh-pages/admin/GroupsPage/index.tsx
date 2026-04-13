@@ -29,16 +29,16 @@ function GroupsPage() {
   return (
     <SettingsLayouts.Root>
       <div data-testid="groups-page-heading">
-        <SettingsLayouts.Header icon={SvgUsers} title="Groups" separator>
+        <SettingsLayouts.Header icon={SvgUsers} title="Groupes" separator>
           <Message
             info
             static
             large
             close={false}
             icon
-            text="Upcoming changes to permissions"
-            description="Onyx is transitioning to group-based permissions, enabling more flexible access control through configurable permissions per group. We recommend reviewing your group structure to prepare for this update."
-            actions="Learn more"
+            text="Changements à venir dans les permissions"
+            description="Onyx passe aux permissions basées sur des groupes, permettant un contrôle d'accès plus flexible grâce à des permissions configurables par groupe. Nous recommandons de revoir la structure de vos groupes pour préparer cette mise à jour."
+            actions="En savoir plus"
             actionIcon={SvgExternalLink}
             onAction={() =>
               window.open(
@@ -57,10 +57,10 @@ function GroupsPage() {
           hasItems={!isLoading && !error && (groups?.length ?? 0) > 0}
           searchQuery={searchQuery}
           onSearchQueryChange={setSearchQuery}
-          placeholder="Search groups..."
-          emptyStateText="Create groups to organize users and manage access."
+          placeholder="Rechercher des groupes..."
+          emptyStateText="Créez des groupes pour organiser les utilisateurs et gérer les accès."
           onAction={() => router.push("/admin/groups/create" as Route)}
-          actionLabel="New Group"
+          actionLabel="Nouveau groupe"
         />
 
         {isLoading && <SimpleLoader />}
@@ -68,8 +68,8 @@ function GroupsPage() {
         {error && (
           <IllustrationContent
             illustration={SvgNoResult}
-            title="Failed to load groups."
-            description="Please check the console for more details."
+            title="Échec du chargement des groupes."
+            description="Veuillez vérifier la console pour plus de détails."
           />
         )}
 

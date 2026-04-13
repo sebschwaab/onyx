@@ -27,37 +27,37 @@ function Main() {
     const errorMsg =
       slackBotsError?.info?.message ||
       slackBotsError?.info?.detail ||
-      "An unknown error occurred";
+      "Une erreur inconnue s'est produite";
 
     return (
-      <ErrorCallout errorTitle="Error loading apps" errorMsg={`${errorMsg}`} />
+      <ErrorCallout errorTitle="Erreur lors du chargement des applications" errorMsg={`${errorMsg}`} />
     );
   }
 
   return (
     <div className="mb-8">
       <p className="mb-2 text-sm text-muted-foreground">
-        Setup Slack bots that connect to Onyx. Once setup, you will be able to
-        ask questions to Onyx directly from Slack. Additionally, you can:
+        Configurez des bots Slack connectés à Onyx. Une fois configuré, vous pourrez
+        poser des questions à Onyx directement depuis Slack. Vous pouvez également :
       </p>
 
       <div className="mb-2">
         <ul className="list-disc mt-2 ml-4 text-sm text-muted-foreground">
           <li>
-            Setup OnyxBot to automatically answer questions in certain channels.
+            Configurer OnyxBot pour répondre automatiquement aux questions dans certains canaux.
           </li>
           <li>
-            Choose which document sets OnyxBot should answer from, depending on
-            the channel the question is being asked.
+            Choisir quels ensembles de documents OnyxBot doit utiliser en fonction
+            du canal où la question est posée.
           </li>
           <li>
-            Directly message OnyxBot to search just as you would in the web UI.
+            Envoyer un message direct à OnyxBot pour rechercher comme dans l&apos;interface web.
           </li>
         </ul>
       </div>
 
       <p className="mb-6 text-sm text-muted-foreground">
-        Follow the{" "}
+        Suivez le{" "}
         <a
           className="text-blue-500 hover:underline"
           href={`${DOCS_ADMINS_PATH}/getting_started/slack_bot_setup`}
@@ -66,10 +66,10 @@ function Main() {
         >
           guide{" "}
         </a>
-        found in the Onyx documentation to get started!
+        dans la documentation Onyx pour commencer !
       </p>
 
-      <CreateButton href="/admin/bots/new">New Slack Bot</CreateButton>
+      <CreateButton href="/admin/bots/new">Nouveau bot Slack</CreateButton>
 
       <SlackBotTable slackBots={slackBots} />
     </div>

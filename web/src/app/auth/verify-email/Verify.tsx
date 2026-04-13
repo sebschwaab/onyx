@@ -24,7 +24,7 @@ export default function Verify({ user }: VerifyProps) {
       searchParams?.get("first_user") === "true" && NEXT_PUBLIC_CLOUD_ENABLED;
     if (!token) {
       setError(
-        "Missing verification token. Try requesting a new verification email."
+        "Jeton de vérification manquant. Essayez de demander un nouvel e-mail de vérification."
       );
       return;
     }
@@ -52,7 +52,7 @@ export default function Verify({ user }: VerifyProps) {
         console.error("Failed to parse verification error response:", e);
       }
       setError(
-        `Failed to verify your email - ${errorDetail}. Please try requesting a new verification email.`
+        `Échec de la vérification de votre e-mail - ${errorDetail}. Veuillez demander un nouvel e-mail de vérification.`
       );
     }
   }, [searchParams]);
@@ -68,7 +68,7 @@ export default function Verify({ user }: VerifyProps) {
         {!error ? (
           <>
             <Spacer rem={0.5} />
-            <Text as="p">Verifying your email...</Text>
+            <Text as="p">Vérification de votre e-mail...</Text>
           </>
         ) : (
           <div>
@@ -80,7 +80,7 @@ export default function Verify({ user }: VerifyProps) {
                 <RequestNewVerificationEmail email={user.email}>
                   {/* TODO(@raunakab): migrate to @opal/components Text */}
                   <p className="text-sm mt-2 text-link">
-                    Get new verification email
+                    Recevoir un nouvel e-mail de vérification
                   </p>
                 </RequestNewVerificationEmail>
               </div>

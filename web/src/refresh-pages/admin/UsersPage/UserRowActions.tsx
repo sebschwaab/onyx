@@ -83,17 +83,17 @@ export default function UserRowActions({
               icon={SvgUsers}
               onClick={() => openModal(Modal.EDIT_GROUPS)}
             >
-              Groups &amp; Roles
+              Groupes &amp; Rôles
             </LineItem>
           )}
           <Disabled disabled>
             <LineItem danger icon={SvgUserX}>
-              Deactivate User
+              Désactiver l&apos;utilisateur
             </LineItem>
           </Disabled>
           <Separator paddingXRem={0.5} />
           <Text as="p" secondaryBody text03 className="px-3 py-1">
-            This is a synced SCIM user managed by your identity provider.
+            Cet utilisateur est synchronisé via SCIM et géré par votre fournisseur d&apos;identité.
           </Text>
         </>
       );
@@ -107,7 +107,7 @@ export default function UserRowActions({
             icon={SvgXCircle}
             onClick={() => openModal(Modal.CANCEL_INVITE)}
           >
-            Cancel Invite
+            Annuler l&apos;invitation
           </LineItem>
         );
 
@@ -121,16 +121,16 @@ export default function UserRowActions({
                 try {
                   await approveRequest(user.email);
                   onMutate();
-                  toast.success("Request approved");
+                  toast.success("Demande approuvée");
                 } catch (err) {
                   toast.error(
-                    err instanceof Error ? err.message : "An error occurred"
+                    err instanceof Error ? err.message : "Une erreur s'est produite"
                   );
                 }
               })();
             }}
           >
-            Approve
+            Approuver
           </LineItem>
         );
 
@@ -142,14 +142,14 @@ export default function UserRowActions({
                 icon={SvgUsers}
                 onClick={() => openModal(Modal.EDIT_GROUPS)}
               >
-                Groups &amp; Roles
+                Groupes &amp; Rôles
               </LineItem>
             )}
             <LineItem
               icon={SvgKey}
               onClick={() => openModal(Modal.RESET_PASSWORD)}
             >
-              Reset Password
+              Réinitialiser le mot de passe
             </LineItem>
             <Separator paddingXRem={0.5} />
             <LineItem
@@ -157,7 +157,7 @@ export default function UserRowActions({
               icon={SvgUserX}
               onClick={() => openModal(Modal.DEACTIVATE)}
             >
-              Deactivate User
+              Désactiver l&apos;utilisateur
             </LineItem>
           </>
         );
@@ -170,21 +170,21 @@ export default function UserRowActions({
                 icon={SvgUsers}
                 onClick={() => openModal(Modal.EDIT_GROUPS)}
               >
-                Groups &amp; Roles
+                Groupes &amp; Rôles
               </LineItem>
             )}
             <LineItem
               icon={SvgKey}
               onClick={() => openModal(Modal.RESET_PASSWORD)}
             >
-              Reset Password
+              Réinitialiser le mot de passe
             </LineItem>
             <Separator paddingXRem={0.5} />
             <LineItem
               icon={SvgUserPlus}
               onClick={() => openModal(Modal.ACTIVATE)}
             >
-              Activate User
+              Activer l&apos;utilisateur
             </LineItem>
             <Separator paddingXRem={0.5} />
             <LineItem
@@ -192,7 +192,7 @@ export default function UserRowActions({
               icon={SvgUserX}
               onClick={() => openModal(Modal.DELETE)}
             >
-              Delete User
+              Supprimer l&apos;utilisateur
             </LineItem>
           </>
         );

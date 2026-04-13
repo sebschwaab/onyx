@@ -48,15 +48,15 @@ const NameStep = React.memo(
       >
         <ContentAction
           icon={SvgUser}
-          title="What should Onyx call you?"
-          description="We will display this name in the app."
+          title="Comment Onyx doit-il vous appeler ?"
+          description="Ce nom sera affiché dans l'application."
           sizePreset="main-ui"
           variant="section"
           paddingVariant="fit"
           rightChildren={
             <InputTypeIn
               ref={inputRef}
-              placeholder="Your name"
+              placeholder="Votre nom"
               value={userName || ""}
               onChange={(e) => updateName(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -97,7 +97,7 @@ const NameStep = React.memo(
           <div className="p-1 flex items-center gap-1">
             {/* TODO(@raunakab): migrate to opal Button once className/iconClassName is resolved */}
             <Hoverable.Item group="nameStep" variant="opacity-on-hover">
-              <IconButton internal icon={SvgEdit} tooltip="Edit" />
+              <IconButton internal icon={SvgEdit} tooltip="Modifier" />
             </Hoverable.Item>
             <SvgCheckCircle
               className={cn(

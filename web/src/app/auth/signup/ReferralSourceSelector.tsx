@@ -14,17 +14,17 @@ export default function ReferralSourceSelector({
   const [referralSource, setReferralSource] = useState(defaultValue);
 
   const referralOptions = [
-    { value: "search", label: "Search Engine (Google/Bing)" },
-    { value: "friend", label: "Friend/Colleague" },
+    { value: "search", label: "Moteur de recherche (Google/Bing)" },
+    { value: "friend", label: "Ami / Collègue" },
     { value: "linkedin", label: "LinkedIn" },
     { value: "twitter", label: "Twitter" },
     { value: "hackernews", label: "HackerNews" },
     { value: "reddit", label: "Reddit" },
     { value: "youtube", label: "YouTube" },
     { value: "podcast", label: "Podcast" },
-    { value: "blog", label: "Article/Blog" },
-    { value: "ads", label: "Advertisements" },
-    { value: "other", label: "Other" },
+    { value: "blog", label: "Article / Blog" },
+    { value: "ads", label: "Publicité" },
+    { value: "other", label: "Autre" },
   ];
 
   const handleChange = (value: string) => {
@@ -40,10 +40,10 @@ export default function ReferralSourceSelector({
   return (
     <div className="w-full gap-y-2 flex flex-col">
       <Label className="text-text-950" small={false}>
-        How did you hear about us?
+        Comment avez-vous entendu parler de nous ?
       </Label>
       <InputSelect value={referralSource} onValueChange={handleChange}>
-        <InputSelect.Trigger placeholder="Select an option" />
+        <InputSelect.Trigger placeholder="Sélectionner une option" />
 
         <InputSelect.Content>
           {referralOptions.map((option) => (

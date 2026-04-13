@@ -236,7 +236,7 @@ export default function AddConnector({
   const onDeleteCredential = async (credential: Credential<any | null>) => {
     const response = await deleteCredential(credential.id, true);
     if (response.ok) {
-      toast.success("Credential deleted successfully!");
+      toast.success("Identifiant supprimé avec succès !");
     } else {
       const errorData = await response.json();
       toast.error(errorData.detail || errorData.message);
@@ -246,7 +246,7 @@ export default function AddConnector({
   const onSwap = async (selectedCredential: Credential<any>) => {
     setCurrentCredential(selectedCredential);
     setAllowCreate(true);
-    toast.success("Swapped credential successfully!");
+    toast.success("Identifiant changé avec succès !");
     refresh();
   };
 
@@ -270,7 +270,7 @@ export default function AddConnector({
         setOauthUrl(response.url);
         window.open(response.url, "_blank", "noopener,noreferrer");
       } else {
-        toast.error("Failed to fetch OAuth URL");
+        toast.error("Échec de la récupération de l'URL OAuth");
       }
     } catch (error: unknown) {
       // Narrow the type of error
@@ -278,7 +278,7 @@ export default function AddConnector({
         toast.error(`Error: ${error.message}`);
       } else {
         // Handle non-standard errors
-        toast.error("An unknown error occurred");
+        toast.error("Une erreur inconnue s'est produite");
       }
     } finally {
       setIsAuthorizing(false);
@@ -374,7 +374,7 @@ export default function AddConnector({
               onSuccess();
             }
           } catch (error) {
-            toast.error("Error uploading files");
+            toast.error("Erreur lors du téléchargement des fichiers");
           } finally {
             setUploading(false);
           }
@@ -466,9 +466,9 @@ export default function AddConnector({
           if (result.isTimeout) {
             timeoutErrorHappenedRef.current = true;
             toast.error(
-              `Operation timed out after ${
+              `L'opération a expiré après ${
                 CONNECTOR_CREATION_TIMEOUT_MS / 1000
-              } seconds. Check your configuration for errors?`
+              } secondes. Vérifiez votre configuration.`
             );
 
             if (connectorIdRef.current) {
@@ -499,15 +499,15 @@ export default function AddConnector({
                     tooltip={
                       <div className="flex flex-col gap-2">
                         <Text as="p" textLight05>
-                          A federated search option is available for this
-                          connector. It will result in greater latency and
-                          reduced search quality.
+                          Une option de recherche fédérée est disponible pour ce
+                          connecteur. Elle entraîne une latence plus élevée et
+                          une qualité de recherche réduite.
                         </Text>
                         <Link
                           href={`/admin/connectors/${connector}?mode=federated`}
                           className="text-action-link-04 hover:underline text-sm"
                         >
-                          Use federated version instead →
+                          Utiliser la version fédérée →
                         </Link>
                       </div>
                     }
@@ -527,7 +527,7 @@ export default function AddConnector({
           {formStep == 0 && (
             <CardSection>
               <Text as="p" headingH3 className="pb-2">
-                Select a credential
+                Sélectionnez un identifiant
               </Text>
 
               {connector == ValidSources.Gmail ? (
@@ -574,7 +574,7 @@ export default function AddConnector({
                           }
                         }}
                       >
-                        Create New
+                        Créer un nouveau
                       </Button>
                       {/* Button to sign in via OAuth */}
                       {oauthSupportedSources.includes(connector) &&
@@ -586,8 +586,8 @@ export default function AddConnector({
                             hidden={!isAuthorizeVisible}
                           >
                             {isAuthorizing
-                              ? "Authorizing..."
-                              : `Authorize with ${getSourceDisplayName(
+                              ? "Autorisation..."
+                              : `Autoriser avec ${getSourceDisplayName(
                                   connector
                                 )}`}
                           </Button>
@@ -603,9 +603,9 @@ export default function AddConnector({
                       <Modal.Content>
                         <Modal.Header
                           icon={SvgKey}
-                          title={`Create a ${getSourceDisplayName(
+                          title={`Créer un identifiant ${getSourceDisplayName(
                             connector
-                          )} credential`}
+                          )}`}
                           onClose={() => setCreateCredentialFormToggle(false)}
                         />
                         <Modal.Body>

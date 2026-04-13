@@ -42,7 +42,7 @@ function StatCell({ value, label, onFilter }: StatCellProps) {
               <IconButton
                 tertiary
                 icon={SvgFilterPlus}
-                tooltip="Add Filter"
+                tooltip="Ajouter un filtre"
                 toolTipPosition="left"
                 tooltipSize="sm"
                 onClick={(e) => {
@@ -67,15 +67,15 @@ function ScimCard() {
     <Card gap={0.5} padding={0.75}>
       <ContentAction
         icon={SvgUserSync}
-        title="SCIM Sync"
-        description="Users are synced from your identity provider."
+        title="Synchronisation SCIM"
+        description="Les utilisateurs sont synchronisés depuis votre fournisseur d'identité."
         sizePreset="main-ui"
         variant="section"
         paddingVariant="fit"
         rightChildren={
           <Link href={ADMIN_ROUTES.SCIM.path}>
             <Button prominence="tertiary" rightIcon={SvgArrowUpRight} size="sm">
-              Manage
+              Gérer
             </Button>
           </Link>
         }
@@ -114,18 +114,18 @@ export default function UsersSummary({
       <Section flexDirection="row" gap={0}>
         <StatCell
           value={activeUsers}
-          label="active users"
+          label="utilisateurs actifs"
           onFilter={onFilterActive}
         />
         <StatCell
           value={pendingInvites}
-          label="pending invites"
+          label="invitations en attente"
           onFilter={onFilterInvites}
         />
         {showRequests && (
           <StatCell
             value={requests}
-            label="requests to join"
+            label="demandes d'accès"
             onFilter={onFilterRequests}
           />
         )}
@@ -153,14 +153,14 @@ export default function UsersSummary({
       <Card padding={0.5}>
         <StatCell
           value={activeUsers}
-          label="active users"
+          label="utilisateurs actifs"
           onFilter={onFilterActive}
         />
       </Card>
       <Card padding={0.5}>
         <StatCell
           value={pendingInvites}
-          label="pending invites"
+          label="invitations en attente"
           onFilter={onFilterInvites}
         />
       </Card>
@@ -168,7 +168,7 @@ export default function UsersSummary({
         <Card padding={0.5}>
           <StatCell
             value={requests}
-            label="requests to join"
+            label="demandes d'accès"
             onFilter={onFilterRequests}
           />
         </Card>

@@ -1,4 +1,4 @@
-export const GREETING_MESSAGES = ["How can I help?", "Let's get started."];
+export const GREETING_MESSAGES = ["Comment puis-je vous aider ?", "Commençons !"];
 
 export function getRandomGreeting(): string {
   return GREETING_MESSAGES[

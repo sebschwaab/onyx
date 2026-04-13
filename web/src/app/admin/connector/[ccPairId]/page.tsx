@@ -70,20 +70,20 @@ import { useUser } from "@/providers/UserProvider";
 // centralized schema for both frontend and backend
 const RefreshFrequencySchema = Yup.object().shape({
   propertyValue: Yup.number()
-    .typeError("Property value must be a valid number")
-    .integer("Property value must be an integer")
-    .min(1, "Property value must be greater than or equal to 1 minute")
-    .required("Property value is required"),
+    .typeError("La valeur doit être un nombre valide")
+    .integer("La valeur doit être un entier")
+    .min(1, "La valeur doit être supérieure ou égale à 1 minute")
+    .required("La valeur est requise"),
 });
 
 const PruneFrequencySchema = Yup.object().shape({
   propertyValue: Yup.number()
-    .typeError("Property value must be a valid number")
+    .typeError("La valeur doit être un nombre valide")
     .min(
       0.083,
-      "Property value must be greater than or equal to 0.083 hours (5 minutes)"
+      "La valeur doit être supérieure ou égale à 0.083 heures (5 minutes)"
     )
-    .required("Property value is required"),
+    .required("La valeur est requise"),
 });
 
 const ITEMS_PER_PAGE = 8;
@@ -169,7 +169,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
 
     deleteCCPair(ccPair.connector.id, ccPair.credential.id).catch((error) => {
       toast.error(
-        "Failed to schedule deletion of connector - " + error.message
+        "Échec de la planification de suppression du connecteur - " + error.message
       );
     });
     finishConnectorDeletion();
@@ -215,16 +215,16 @@ function Main({ ccPairId }: { ccPairId: number }) {
       if (result.success) {
         toast.success(
           `${
-            fromBeginning ? "Complete re-indexing" : "Indexing update"
-          } started successfully`
+            fromBeginning ? "Réindexation complète" : "Mise à jour de l'indexation"
+          } démarrée avec succès`
         );
       } else {
-        toast.error(result.message || "Failed to start indexing");
+        toast.error(result.message || "Échec du démarrage de l'indexation");
       }
     } catch (error) {
       console.error("Failed to trigger indexing:", error);
       toast.error(
-        "An unexpected error occurred while trying to start indexing"
+        "Une erreur inattendue s'est produite lors du démarrage de l'indexation"
       );
     } finally {
       setShowIsResolvingKickoffLoader(false);
@@ -264,9 +264,9 @@ function Main({ ccPairId }: { ccPairId: number }) {
         throw new Error(await response.text());
       }
       mutate(buildCCPairInfoUrl(ccPairId));
-      toast.success("Connector name updated successfully");
+      toast.success("Nom du connecteur mis à jour avec succès");
     } catch (error) {
-      toast.error("Failed to update connector name");
+      toast.error("Échec de la mise à jour du nom du connecteur");
     }
   };
 
@@ -285,7 +285,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
     const parsedRefreshFreqMinutes = parseInt(propertyValue, 10);
 
     if (isNaN(parsedRefreshFreqMinutes)) {
-      toast.error("Invalid refresh frequency: must be an integer");
+      toast.error("Fréquence de rafraîchissement invalide : doit être un entier");
       return;
     }
 
@@ -302,9 +302,9 @@ function Main({ ccPairId }: { ccPairId: number }) {
         throw new Error(await response.text());
       }
       mutate(buildCCPairInfoUrl(ccPairId));
-      toast.success("Connector refresh frequency updated successfully");
+      toast.success("Fréquence de rafraîchissement mise à jour avec succès");
     } catch (error) {
-      toast.error("Failed to update connector refresh frequency");
+      toast.error("Échec de la mise à jour de la fréquence de rafraîchissement");
     }
   };
 
@@ -315,7 +315,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
     const parsedFreqHours = parseFloat(propertyValue);
 
     if (isNaN(parsedFreqHours)) {
-      toast.error("Invalid pruning frequency: must be a valid number");
+      toast.error("Fréquence d'élagage invalide : doit être un nombre valide");
       return;
     }
 
@@ -332,9 +332,9 @@ function Main({ ccPairId }: { ccPairId: number }) {
         throw new Error(await response.text());
       }
       mutate(buildCCPairInfoUrl(ccPairId));
-      toast.success("Connector pruning frequency updated successfully");
+      toast.success("Fréquence d'élagage mise à jour avec succès");
     } catch (error) {
-      toast.error("Failed to update connector pruning frequency");
+      toast.error("Échec de la mise à jour de la fréquence d'élagage");
     }
   };
 
@@ -345,11 +345,11 @@ function Main({ ccPairId }: { ccPairId: number }) {
   if (!ccPair || (!hasLoadedOnce && ccPairError)) {
     return (
       <ErrorCallout
-        errorTitle={`Failed to fetch info on Connector with ID ${ccPairId}`}
+        errorTitle={`Échec de la récupération des informations du connecteur ID ${ccPairId}`}
         errorMsg={
           ccPairError?.info?.detail ||
           ccPairError?.toString() ||
-          "Unknown error"
+          "Erreur inconnue"
         }
       />
     );
@@ -372,9 +372,9 @@ function Main({ ccPairId }: { ccPairId: number }) {
       {showDeleteConnectorConfirmModal && (
         <ConfirmEntityModal
           danger
-          entityType="connector"
+          entityType="connecteur"
           entityName={ccPair.name}
-          additionalDetails="Deleting this connector schedules a deletion job that removes its indexed documents and deletes it for every user."
+          additionalDetails="La suppression de ce connecteur planifie une tâche qui supprime ses documents indexés pour tous les utilisateurs."
           onClose={() => {
             setShowDeleteConnectorConfirmModal(false);
           }}
@@ -384,8 +384,8 @@ function Main({ ccPairId }: { ccPairId: number }) {
 
       {editingRefreshFrequency && (
         <EditPropertyModal
-          propertyTitle="Refresh Frequency"
-          propertyDetails="How often the connector should refresh (in minutes)"
+          propertyTitle="Fréquence de rafraîchissement"
+          propertyDetails="Fréquence de rafraîchissement du connecteur (en minutes)"
           propertyName="refresh_frequency"
           propertyValue={String(Math.round((refreshFreq || 0) / 60))}
           validationSchema={RefreshFrequencySchema}
@@ -396,8 +396,8 @@ function Main({ ccPairId }: { ccPairId: number }) {
 
       {editingPruningFrequency && (
         <EditPropertyModal
-          propertyTitle="Pruning Frequency"
-          propertyDetails="How often the connector should be pruned (in hours)"
+          propertyTitle="Fréquence d'élagage"
+          propertyDetails="Fréquence d'élagage du connecteur (en heures)"
           propertyName="pruning_frequency"
           propertyValue={String(
             ((pruneFreq || 0) / 3600).toFixed(3).replace(/\.?0+$/, "")
@@ -450,7 +450,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button prominence="secondary" icon={SvgSettings}>
-                  Manage
+                  Gérer
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
@@ -472,17 +472,17 @@ function Main({ ccPairId }: { ccPairId: number }) {
                   className="flex items-center gap-x-2 cursor-pointer px-3 py-2"
                   tooltip={
                     ccPair.indexing
-                      ? "Cannot re-index while indexing is already in progress"
+                      ? "Impossible de réindexer pendant qu'une indexation est déjà en cours"
                       : ccPair.status === ConnectorCredentialPairStatus.PAUSED
-                        ? "Resume the connector before re-indexing"
+                        ? "Relancez le connecteur avant de réindexer"
                         : ccPair.status ===
                             ConnectorCredentialPairStatus.INVALID
-                          ? "Fix the connector configuration before re-indexing"
+                          ? "Corrigez la configuration du connecteur avant de réindexer"
                           : undefined
                   }
                 >
                   <RefreshCwIcon className="h-4 w-4" />
-                  <span>Re-Index</span>
+                  <span>Réindexer</span>
                 </DropdownMenuItemWithTooltip>
                 {!isDeleting && (
                   <DropdownMenuItemWithTooltip
@@ -496,7 +496,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
                     disabled={isStatusUpdating}
                     className="flex items-center gap-x-2 cursor-pointer px-3 py-2"
                     tooltip={
-                      isStatusUpdating ? "Status update in progress" : undefined
+                      isStatusUpdating ? "Mise à jour du statut en cours" : undefined
                     }
                   >
                     {statusIsNotCurrentlyActive(ccPair.status) ? (
@@ -506,7 +506,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
                     )}
                     <span>
                       {statusIsNotCurrentlyActive(ccPair.status)
-                        ? "Resume"
+                        ? "Reprendre"
                         : "Pause"}
                     </span>
                   </DropdownMenuItemWithTooltip>
@@ -520,12 +520,12 @@ function Main({ ccPairId }: { ccPairId: number }) {
                     className="flex items-center gap-x-2 cursor-pointer px-3 py-2 text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
                     tooltip={
                       !statusIsNotCurrentlyActive(ccPair.status)
-                        ? "Pause the connector before deleting"
+                        ? "Mettez le connecteur en pause avant de le supprimer"
                         : undefined
                     }
                   >
                     <Trash2Icon className="h-4 w-4" />
-                    <span>Delete</span>
+                    <span>Supprimer</span>
                   </DropdownMenuItemWithTooltip>
                 )}
               </DropdownMenuContent>
@@ -546,9 +546,8 @@ function Main({ ccPairId }: { ccPairId: number }) {
 
       {ccPair.status === ConnectorCredentialPairStatus.INVALID && (
         <div className="mt-6">
-          <Callout type="warning" title="Invalid Connector State">
-            This connector is in an invalid state. Please update your
-            credentials or create a new connector before re-indexing.
+          <Callout type="warning" title="État du connecteur invalide">
+            Ce connecteur est dans un état invalide. Veuillez mettre à jour vos identifiants ou créer un nouveau connecteur avant de réindexer.
           </Callout>
         </div>
       )}
@@ -557,23 +556,23 @@ function Main({ ccPairId }: { ccPairId: number }) {
         <Alert className="border-alert bg-yellow-50 dark:bg-yellow-800 my-2 mt-6">
           <AlertCircle className="h-4 w-4 text-yellow-700 dark:text-yellow-500" />
           <AlertTitle className="text-yellow-950 dark:text-yellow-200 font-semibold">
-            Some documents failed to index
+            Certains documents n&apos;ont pas pu être indexés
           </AlertTitle>
           <AlertDescription className="text-yellow-900 dark:text-yellow-300">
             {isResolvingErrors ? (
               <span>
                 <span className="text-sm text-yellow-700 dark:text-yellow-400 da animate-pulse">
-                  Resolving failures
+                  Résolution des échecs en cours
                 </span>
               </span>
             ) : (
               <>
-                We ran into some issues while processing some documents.{" "}
+                Des problèmes sont survenus lors du traitement de certains documents.{" "}
                 <b
                   className="text-link cursor-pointer dark:text-blue-300"
                   onClick={() => setShowIndexAttemptErrors(true)}
                 >
-                  View details.
+                  Voir les détails.
                 </b>
               </>
             )}
@@ -582,13 +581,13 @@ function Main({ ccPairId }: { ccPairId: number }) {
       )}
 
       <Title className="mb-2 mt-6" size="md">
-        Indexing
+        Indexation
       </Title>
 
       <Card className="px-8 py-12">
         <div className="flex">
           <div className="w-[200px]">
-            <div className="text-sm font-medium mb-1">Status</div>
+            <div className="text-sm font-medium mb-1">Statut</div>
             <CCPairStatus
               ccPairStatus={ccPair.status}
               inRepeatedErrorState={ccPair.in_repeated_error_state}
@@ -597,7 +596,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
           </div>
 
           <div className="w-[200px]">
-            <div className="text-sm font-medium mb-1">Documents Indexed</div>
+            <div className="text-sm font-medium mb-1">Documents indexés</div>
             <div className="text-sm text-text-default flex items-center gap-x-1">
               {ccPair.num_docs_indexed.toLocaleString()}
               {ccPair.status ===
@@ -612,7 +611,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
           </div>
 
           <div className="w-[200px]">
-            <div className="text-sm font-medium mb-1">Last Indexed</div>
+            <div className="text-sm font-medium mb-1">Dernière indexation</div>
             <div className="text-sm text-text-default">
               {timeAgo(ccPair?.last_indexed) ?? "-"}
             </div>
@@ -623,7 +622,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
               <div className="w-[200px]">
                 {/* TODO: Remove className and switch to text03 once Text is fully integrated across this page */}
                 <Text as="p" className="text-sm font-medium mb-1">
-                  Permission Syncing
+                  Synchronisation des permissions
                 </Text>
                 {ccPair.permission_syncing ||
                 ccPair.last_permission_sync_attempt_status ? (
@@ -639,7 +638,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
               <div className="w-[200px]">
                 {/* TODO: Remove className and switch to text03 once Text is fully integrated across this page */}
                 <Text as="p" className="text-sm font-medium mb-1">
-                  Last Synced
+                  Dernière synchronisation
                 </Text>
                 <Text as="p" className="text-sm text-text-default">
                   {ccPair.last_permission_sync_attempt_finished
@@ -656,7 +655,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
         ccPair.is_editable_for_current_user && (
           <>
             <Title size="md" className="mt-10 mb-2">
-              Credential
+              Identifiant
             </Title>
 
             <div className="mt-2">
@@ -673,7 +672,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
         Object.keys(ccPair.connector.connector_specific_config).length > 0 && (
           <>
             <Title size="md" className="mt-10 mb-2">
-              Connector Configuration
+              Configuration du connecteur
             </Title>
 
             <Card className="px-8 py-4">
@@ -702,7 +701,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
           <AdvancedOptionsToggle
             showAdvancedOptions={showAdvancedOptions}
             setShowAdvancedOptions={setShowAdvancedOptions}
-            title="Advanced"
+            title="Avancé"
           />
         </div>
         {showAdvancedOptions && (
@@ -710,7 +709,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
             {(pruneFreq || indexingStart || refreshFreq) && (
               <>
                 <Title size="md" className="mt-3 mb-2">
-                  Advanced Configuration
+                  Configuration avancée
                 </Title>
                 <Card className="px-8 py-4">
                   <div>
@@ -727,7 +726,7 @@ function Main({ ccPairId }: { ccPairId: number }) {
             )}
 
             <Title size="md" className="mt-6 mb-2">
-              Indexing Attempts
+              Tentatives d&apos;indexation
             </Title>
             {indexAttempts && (
               <IndexAttemptsTable

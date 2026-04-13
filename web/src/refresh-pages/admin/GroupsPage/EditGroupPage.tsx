@@ -192,7 +192,7 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
 
     const trimmed = groupName.trim();
     if (!trimmed) {
-      toast.error("Group name is required");
+      toast.error("Le nom du groupe est requis");
       return;
     }
 
@@ -203,7 +203,7 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
     const freshGroup = freshGroups.find((g: UserGroup) => g.id === groupId);
     if (freshGroup && !freshGroup.is_up_to_date) {
       toast.error(
-        "This group is currently syncing. Please wait a moment and try again."
+        "Ce groupe est en cours de synchronisation. Veuillez patienter un moment et réessayer."
       );
       return;
     }
@@ -242,10 +242,10 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
 
       mutate(SWR_KEYS.adminUserGroups);
       mutate(SWR_KEYS.userGroupTokenRateLimit(groupId));
-      toast.success(`Group "${trimmed}" updated`);
+      toast.success(`Groupe "${trimmed}" mis à jour`);
       router.push("/admin/groups");
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Failed to update group");
+      toast.error(e instanceof Error ? e.message : "Échec de la mise à jour du groupe");
     } finally {
       isSubmittingRef.current = false;
       setIsSubmitting(false);
@@ -257,10 +257,10 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
     try {
       await deleteGroup(groupId);
       mutate(SWR_KEYS.adminUserGroups);
-      toast.success(`Group "${group?.name}" deleted`);
+      toast.success(`Groupe "${group?.name}" supprimé`);
       router.push("/admin/groups");
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Failed to delete group");
+      toast.error(e instanceof Error ? e.message : "Échec de la suppression du groupe");
     } finally {
       setIsDeleting(false);
       setShowDeleteModal(false);
@@ -273,14 +273,14 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
       <SettingsLayouts.Root>
         <SettingsLayouts.Header
           icon={SvgUsers}
-          title="Group Not Found"
+          title="Groupe introuvable"
           separator
         />
         <SettingsLayouts.Body>
           <IllustrationContent
             illustration={SvgNoResult}
-            title="Group not found"
-            description="This group doesn't exist or may have been deleted."
+            title="Groupe introuvable"
+            description="Ce groupe n'existe pas ou a peut-être été supprimé."
           />
         </SettingsLayouts.Body>
       </SettingsLayouts.Root>
@@ -293,18 +293,18 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
         prominence="secondary"
         onClick={() => router.push("/admin/groups")}
       >
-        Cancel
+        Annuler
       </Button>
       <Button
         onClick={handleSave}
         disabled={!groupName.trim() || isSubmitting || isSyncing}
         tooltip={
           isSyncing
-            ? "Document embeddings are being updated due to recent changes to this group."
+            ? "Les embeddings des documents sont mis à jour suite aux récentes modifications de ce groupe."
             : undefined
         }
       >
-        {isSubmitting ? "Saving..." : isSyncing ? "Syncing..." : "Save Changes"}
+        {isSubmitting ? "Sauvegarde..." : isSyncing ? "Synchronisation..." : "Enregistrer"}
       </Button>
     </Section>
   );
@@ -314,7 +314,7 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
       <SettingsLayouts.Root>
         <SettingsLayouts.Header
           icon={SvgUsers}
-          title="Edit Group"
+          title="Modifier le groupe"
           separator
           rightChildren={headerActions}
         />
@@ -324,7 +324,7 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
 
           {error && (
             <Text as="p" secondaryBody text03>
-              Failed to load group data.
+              Échec du chargement des données du groupe.
             </Text>
           )}
 
@@ -338,10 +338,10 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
                 justifyContent="start"
               >
                 <Text mainUiBody text04>
-                  Group Name
+                  Nom du groupe
                 </Text>
                 <InputTypeIn
-                  placeholder="Name your group"
+                  placeholder="Nommez votre groupe"
                   value={groupName}
                   onChange={(e) => setGroupName(e.target.value)}
                 />
@@ -368,8 +368,8 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder={
                       isAddingMembers
-                        ? "Search users and accounts..."
-                        : "Search members..."
+                        ? "Rechercher des utilisateurs et des comptes..."
+                        : "Rechercher des membres..."
                     }
                     leftSearchIcon
                     className="flex-1"
@@ -379,7 +379,7 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
                       prominence="secondary"
                       onClick={() => setIsAddingMembers(false)}
                     >
-                      Done
+                      Terminé
                     </Button>
                   ) : (
                     <Button
@@ -387,7 +387,7 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
                       icon={SvgPlusCircle}
                       onClick={() => setIsAddingMembers(true)}
                     >
-                      Add
+                      Ajouter
                     </Button>
                   )}
                 </Section>
@@ -407,8 +407,8 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
                     emptyState={
                       <IllustrationContent
                         illustration={SvgNoResult}
-                        title="No users found"
-                        description="No users match your search."
+                        title="Aucun utilisateur trouvé"
+                        description="Aucun utilisateur ne correspond à votre recherche."
                       />
                     }
                   />
@@ -423,8 +423,8 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
                     emptyState={
                       <IllustrationContent
                         illustration={SvgNoResult}
-                        title="No members"
-                        description="Add members to this group."
+                        title="Aucun membre"
+                        description="Ajoutez des membres à ce groupe."
                       />
                     }
                   />
@@ -448,8 +448,8 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
               {/* Delete This Group */}
               <Card>
                 <InputLayouts.Horizontal
-                  title="Delete This Group"
-                  description="Members will lose access to any resources shared with this group."
+                  title="Supprimer ce groupe"
+                  description="Les membres perdront l'accès aux ressources partagées avec ce groupe."
                   center
                   nonInteractive
                 >
@@ -459,7 +459,7 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
                     icon={SvgTrash}
                     onClick={() => setShowDeleteModal(true)}
                   >
-                    Delete Group
+                    Supprimer le groupe
                   </Button>
                 </InputLayouts.Horizontal>
               </Card>
@@ -471,7 +471,7 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
       {showDeleteModal && (
         <ConfirmationModalLayout
           icon={SvgTrash}
-          title="Delete Group"
+          title="Supprimer le groupe"
           onClose={() => setShowDeleteModal(false)}
           submit={
             <Button
@@ -479,17 +479,16 @@ function EditGroupPage({ groupId }: EditGroupPageProps) {
               onClick={handleDelete}
               disabled={isDeleting}
             >
-              {isDeleting ? "Deleting..." : "Delete"}
+              {isDeleting ? "Suppression..." : "Supprimer"}
             </Button>
           }
         >
           <Text as="p" text03>
-            Members of group{" "}
+            Les membres du groupe{" "}
             <Text as="span" text05>
               {group?.name}
             </Text>{" "}
-            will lose access to any resources shared with this group, unless
-            they have been granted access directly. Deletion cannot be undone.
+            perdront l&apos;accès aux ressources partagées avec ce groupe, sauf s&apos;ils ont reçu un accès direct. La suppression est irréversible.
           </Text>
         </ConfirmationModalLayout>
       )}

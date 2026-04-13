@@ -56,16 +56,16 @@ export default function AccessRestricted() {
       used_seats != null && seat_count != null
         ? ` (${used_seats} users / ${seat_count} seats)`
         : "";
-    return `Your organization has exceeded its licensed seat count${counts}. Access is restricted until the number of users is reduced or your license is upgraded.`;
+    return `Votre organisation a dépassé le nombre de licences autorisé${counts}. L'accès est restreint jusqu'à ce que le nombre d'utilisateurs soit réduit ou que votre licence soit mise à niveau.`;
   }
 
   const initialModalMessage = isSeatLimitExceeded
     ? getSeatLimitMessage()
     : showRenewalMessage
       ? NEXT_PUBLIC_CLOUD_ENABLED
-        ? "Your access to Onyx has been temporarily suspended due to a lapse in your subscription."
-        : "Your access to Onyx has been temporarily suspended due to a lapse in your license."
-      : "An Enterprise license is required to use Onyx. Your data is protected and will be available once a license is activated.";
+        ? "Votre accès à Onyx a été temporairement suspendu en raison d'une interruption de votre abonnement."
+        : "Votre accès à Onyx a été temporairement suspendu en raison d'une interruption de votre licence."
+      : "Une licence Enterprise est requise pour utiliser Onyx. Vos données sont protégées et seront disponibles une fois la licence activée.";
 
   const handleResubscribe = async () => {
     setIsLoading(true);
@@ -91,7 +91,7 @@ export default function AccessRestricted() {
   return (
     <ErrorPageLayout>
       <div className="flex items-center gap-2">
-        <Text headingH2>Access Restricted</Text>
+        <Text headingH2>Accès restreint</Text>
         <SvgLock className="stroke-status-error-05 w-[1.5rem] h-[1.5rem]" />
       </div>
 
@@ -102,13 +102,13 @@ export default function AccessRestricted() {
           <Text text03>
             If you are an administrator, you can manage users on the{" "}
             <Link className={linkClassName} href="/admin/users">
-              User Management
+              Gestion des utilisateurs
             </Link>{" "}
-            page or upgrade your license on the{" "}
+            ou mettre à niveau votre licence sur la page{" "}
             <Link className={linkClassName} href="/admin/billing">
-              Admin Billing
-            </Link>{" "}
-            page.
+              Facturation Admin
+            </Link>
+            .
           </Text>
 
           <div className="flex flex-row gap-2">
@@ -118,26 +118,26 @@ export default function AccessRestricted() {
                 window.location.reload();
               }}
             >
-              Log out
+              Se déconnecter
             </Button>
           </div>
         </>
       ) : NEXT_PUBLIC_CLOUD_ENABLED ? (
         <>
           <Text text03>
-            To reinstate your access and continue benefiting from Onyx&apos;s
-            powerful features, please update your payment information.
+            Pour rétablir votre accès et continuer à bénéficier des fonctionnalités d&apos;Onyx,
+            veuillez mettre à jour vos informations de paiement.
           </Text>
 
           <Text text03>
-            If you&apos;re an admin, you can manage your subscription by
-            clicking the button below. For other users, please reach out to your
-            administrator to address this matter.
+            Si vous êtes administrateur, vous pouvez gérer votre abonnement en
+            cliquant sur le bouton ci-dessous. Pour les autres utilisateurs, contactez votre
+            administrateur.
           </Text>
 
           <div className="flex flex-row gap-2">
             <Button disabled={isLoading} onClick={handleResubscribe}>
-              {isLoading ? "Loading..." : "Resubscribe"}
+              {isLoading ? "Chargement..." : "Se réabonner"}
             </Button>
             <Button
               prominence="secondary"

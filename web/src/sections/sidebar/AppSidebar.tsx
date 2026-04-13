@@ -161,10 +161,10 @@ function RecentsSection({
         isOver && "bg-background-tint-03"
       )}
     >
-      <SidebarSection title="Recents">
+      <SidebarSection title="Récents">
         {chatSessions.length === 0 ? (
           <Text as="p" text01 className="px-3">
-            Try sending a message! Your chat history will appear here.
+            Envoyez un message ! Votre historique de conversation apparaîtra ici.
           </Text>
         ) : (
           <>
@@ -503,7 +503,7 @@ const MemoizedAppSidebarInner = memo(function AppSidebarInner() {
             reset();
           }}
         >
-          New Session
+          Nouvelle session
         </SidebarTab>
       </div>
     );
@@ -536,7 +536,7 @@ const MemoizedAppSidebarInner = memo(function AppSidebarInner() {
       <ChatSearchCommandMenu
         trigger={
           <SidebarTab icon={SvgSearchMenu} folded={folded}>
-            Search Chats
+            Rechercher des conversations
           </SidebarTab>
         }
       />
@@ -557,7 +557,7 @@ const MemoizedAppSidebarInner = memo(function AppSidebarInner() {
           selected={activeSidebarTab.isMoreAgents()}
           variant={folded ? "sidebar-heavy" : "sidebar-light"}
         >
-          {visibleAgents.length === 0 ? "Explore Agents" : "More Agents"}
+          {visibleAgents.length === 0 ? "Explorer les agents" : "Plus d'agents"}
         </SidebarTab>
       </div>
     ),
@@ -572,7 +572,7 @@ const MemoizedAppSidebarInner = memo(function AppSidebarInner() {
         folded={folded}
         variant={folded ? "sidebar-heavy" : "sidebar-light"}
       >
-        New Project
+        Nouveau projet
       </SidebarTab>
     ),
     [folded, createProjectModal.toggle, createProjectModal.isOpen]
@@ -590,7 +590,7 @@ const MemoizedAppSidebarInner = memo(function AppSidebarInner() {
             icon={SvgSettings}
             folded={folded}
           >
-            {isAdmin ? "Admin Panel" : "Curator Panel"}
+            {isAdmin ? "Panneau d'administration" : "Panneau curateur"}
           </SidebarTab>
         )}
         <AccountPopover
@@ -633,7 +633,7 @@ const MemoizedAppSidebarInner = memo(function AppSidebarInner() {
               try {
                 await performChatMove(target, chat);
               } catch (error) {
-                showErrorNotification("Failed to move chat. Please try again.");
+                showErrorNotification("Impossible de déplacer la conversation. Veuillez réessayer.");
               }
             }
           }}
@@ -685,7 +685,7 @@ const MemoizedAppSidebarInner = memo(function AppSidebarInner() {
               collisionDetection={closestCenter}
               onDragEnd={handleAgentDragEnd}
             >
-              <SidebarSection title="Agents">
+              <SidebarSection title="Agents" >
                 <SortableContext
                   items={visibleAgentIds}
                   strategy={verticalListSortingStrategy}
@@ -710,13 +710,13 @@ const MemoizedAppSidebarInner = memo(function AppSidebarInner() {
             >
               {/* Projects */}
               <SidebarSection
-                title="Projects"
+                title="Projets"
                 action={
                   <OpalButton
                     icon={SvgFolderPlus}
                     prominence="tertiary"
                     size="sm"
-                    tooltip="New Project"
+                    tooltip="Nouveau projet"
                     onClick={() => createProjectModal.toggle(true)}
                   />
                 }

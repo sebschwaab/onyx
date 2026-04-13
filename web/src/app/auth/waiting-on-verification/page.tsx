@@ -40,15 +40,15 @@ export default async function Page() {
         <div className="flex flex-col gap-2">
           <Text as="span">
             {markdown(
-              `Hey, *${currentUser.email}*, it looks like you haven't verified your email yet.\nCheck your inbox for an email from us to get started!`
+              `Bonjour, *${currentUser.email}*, il semble que vous n'ayez pas encore vérifié votre e-mail.\nVérifiez votre boîte de réception pour un e-mail de notre part !`
             )}
           </Text>
           <div className="flex flex-row items-center gap-1">
-            <Text as="span">If you don't see anything, click</Text>
+            <Text as="span">Si vous ne voyez rien, cliquez</Text>
             <RequestNewVerificationEmail email={currentUser.email}>
-              <Text as="span">here</Text>
+              <Text as="span">ici</Text>
             </RequestNewVerificationEmail>
-            <Text as="span">to request a new email.</Text>
+            <Text as="span">pour recevoir un nouvel e-mail.</Text>
           </div>
         </div>
       </div>

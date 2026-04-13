@@ -70,11 +70,11 @@ export default function UsersPage() {
   return (
     <SettingsLayouts.Root width="lg">
       <SettingsLayouts.Header
-        title="Users & Requests"
+        title="Utilisateurs & Demandes"
         icon={SvgUser}
         rightChildren={
           <Button icon={SvgUserPlus} onClick={() => setInviteOpen(true)}>
-            Invite Users
+            Inviter des utilisateurs
           </Button>
         }
       >
@@ -84,9 +84,9 @@ export default function UsersPage() {
           large
           close={false}
           icon
-          text="Upcoming changes to permissions"
-          description="Onyx is transitioning to group-based permissions for more granular access control. Curator and Global Curator roles will be replaced by configurable group permissions. We recommend reviewing current role assignments to ensure a smooth transition."
-          actions="Learn more"
+          text="Changements à venir dans les permissions"
+          description="Onyx passe aux permissions basées sur des groupes pour un contrôle d'accès plus granulaire. Les rôles Curateur et Curateur global seront remplacés par des permissions de groupe configurables. Nous recommandons de revoir les attributions de rôles actuelles pour assurer une transition en douceur."
+          actions="En savoir plus"
           actionIcon={SvgExternalLink}
           onAction={() =>
             window.open(

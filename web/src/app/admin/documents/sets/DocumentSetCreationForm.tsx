@@ -74,7 +74,7 @@ export const DocumentSetCreationForm = ({
         }}
         validationSchema={Yup.object()
           .shape({
-            name: Yup.string().required("Please enter a name for the set"),
+            name: Yup.string().required("Veuillez saisir un nom pour l'ensemble"),
             description: Yup.string().optional(),
             cc_pair_ids: Yup.array().of(Yup.number().required()),
             federated_connectors: Yup.array().of(
@@ -86,7 +86,7 @@ export const DocumentSetCreationForm = ({
           })
           .test(
             "at-least-one-connector",
-            "Please select at least one connector (regular or federated)",
+            "Veuillez sélectionner au moins un connecteur (standard ou fédéré)",
             function (values) {
               const hasRegularConnectors =
                 values.cc_pair_ids && values.cc_pair_ids.length > 0;
@@ -118,8 +118,8 @@ export const DocumentSetCreationForm = ({
           if (response.ok) {
             toast.success(
               isUpdate
-                ? "Successfully updated document set!"
-                : "Successfully created document set!"
+                ? "Ensemble de documents mis à jour avec succès !"
+                : "Ensemble de documents créé avec succès !"
             );
             await Promise.all([
               mutate(SWR_KEYS.documentSets),
@@ -130,8 +130,8 @@ export const DocumentSetCreationForm = ({
             const errorMsg = await response.text();
             toast.error(
               isUpdate
-                ? `Error updating document set - ${errorMsg}`
-                : `Error creating document set - ${errorMsg}`
+                ? `Erreur lors de la mise à jour de l'ensemble de documents - ${errorMsg}`
+                : `Erreur lors de la création de l'ensemble de documents - ${errorMsg}`
             );
           }
         }}
@@ -178,13 +178,13 @@ export const DocumentSetCreationForm = ({
               <div className="space-y-4 w-full">
                 <TextFormField
                   name="name"
-                  label="Name:"
-                  placeholder="A name for the document set"
+                  label="Nom :"
+                  placeholder="Un nom pour l'ensemble de documents"
                 />
                 <TextFormField
                   name="description"
-                  label="Description:"
-                  placeholder="Describe what the document set represents"
+                  label="Description :"
+                  placeholder="Décrivez ce que représente l'ensemble de documents"
                   optional={true}
                 />
 
@@ -213,7 +213,7 @@ export const DocumentSetCreationForm = ({
                       onChange={(selectedIds) => {
                         props.setFieldValue("cc_pair_ids", selectedIds);
                       }}
-                      placeholder="Search for connectors..."
+                      placeholder="Rechercher des connecteurs..."
                     />
 
                     <NonSelectableConnectors
@@ -231,13 +231,13 @@ export const DocumentSetCreationForm = ({
                 ) : (
                   <ConnectorMultiSelect
                     name="cc_pair_ids"
-                    label="Pick your connectors"
+                    label="Choisissez vos connecteurs"
                     connectors={visibleCcPairs}
                     selectedIds={props.values.cc_pair_ids}
                     onChange={(selectedIds) => {
                       props.setFieldValue("cc_pair_ids", selectedIds);
                     }}
-                    placeholder="Search for connectors..."
+                    placeholder="Rechercher des connecteurs..."
                   />
                 )}
 
@@ -247,7 +247,7 @@ export const DocumentSetCreationForm = ({
                     <div className="my-4 border-t border-border-02" />
                     <FederatedConnectorSelector
                       name="federated_connectors"
-                      label="Federated Connectors"
+                      label="Connecteurs fédérés"
                       federatedConnectors={federatedConnectors}
                       selectedConfigs={props.values.federated_connectors}
                       onChange={(selectedConfigs) => {
@@ -256,7 +256,7 @@ export const DocumentSetCreationForm = ({
                           selectedConfigs
                         );
                       }}
-                      placeholder="Search for federated connectors..."
+                      placeholder="Rechercher des connecteurs fédérés..."
                     />
                   </>
                 )}
@@ -270,7 +270,7 @@ export const DocumentSetCreationForm = ({
                   className="w-56 mx-auto"
                   primary
                 >
-                  {isUpdate ? "Update Document Set" : "Create Document Set"}
+                  {isUpdate ? "Mettre à jour l'ensemble" : "Créer l'ensemble"}
                 </Button>
               </div>
             </Form>

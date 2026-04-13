@@ -268,7 +268,7 @@ export default function MessageToolbar({
               variant="select-light"
               state={isFeedbackTransient("like") ? "selected" : "empty"}
               tooltip={
-                currentFeedback === "like" ? "Remove Like" : "Good Response"
+                currentFeedback === "like" ? "Retirer le like" : "Bonne réponse"
               }
               data-testid="AgentMessage/like-button"
             />
@@ -279,8 +279,8 @@ export default function MessageToolbar({
               state={isFeedbackTransient("dislike") ? "selected" : "empty"}
               tooltip={
                 currentFeedback === "dislike"
-                  ? "Remove Dislike"
-                  : "Bad Response"
+                  ? "Retirer le dislike"
+                  : "Mauvaise réponse"
               }
               data-testid="AgentMessage/dislike-button"
             />

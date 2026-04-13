@@ -73,10 +73,10 @@ export default function AgentRowActions({
     try {
       await action();
       onMutate();
-      toast.success(`${agent.name} updated successfully.`);
+      toast.success(`${agent.name} mis à jour avec succès.`);
       close();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "An error occurred");
+      toast.error(err instanceof Error ? err.message : "Une erreur s'est produite");
     } finally {
       setIsSubmitting(false);
     }
@@ -100,7 +100,7 @@ export default function AgentRowActions({
       );
 
       if (shareError) {
-        toast.error(`Failed to share agent: ${shareError}`);
+        toast.error(`Échec du partage de l'agent : ${shareError}`);
         return;
       }
 
@@ -110,7 +110,7 @@ export default function AgentRowActions({
           isFeatured
         );
         if (featuredError) {
-          toast.error(`Failed to update featured status: ${featuredError}`);
+          toast.error(`Échec de la mise à jour du statut vedette : ${featuredError}`);
           refreshAgent();
           return;
         }
@@ -153,7 +153,7 @@ export default function AgentRowActions({
             <Button
               prominence="tertiary"
               icon={SvgEdit}
-              tooltip="Edit Agent"
+              tooltip="Modifier l'agent"
               onClick={() =>
                 router.push(
                   `/app/agents/edit/${
@@ -168,7 +168,7 @@ export default function AgentRowActions({
           <Button
             prominence="tertiary"
             icon={SvgEyeOff}
-            tooltip="Re-list Agent"
+            tooltip="Remettre en liste l'agent"
             onClick={() =>
               handleAction(
                 () => toggleAgentListed(agent.id, agent.is_listed),
@@ -188,7 +188,7 @@ export default function AgentRowActions({
               icon={SvgStar}
               interaction={featuredOpen ? "hover" : "rest"}
               tooltip={
-                agent.is_featured ? "Remove Featured" : "Set as Featured"
+                agent.is_featured ? "Retirer de la sélection" : "Mettre en vedette"
               }
               onClick={() => {
                 setPopoverOpen(false);
@@ -228,7 +228,7 @@ export default function AgentRowActions({
                     }
                   }}
                 >
-                  {agent.is_listed ? "Unlist Agent" : "List Agent"}
+                  {agent.is_listed ? "Retirer de la liste" : "Lister l'agent"}
                 </LineItem>,
                 <LineItem
                   key="share"
@@ -238,7 +238,7 @@ export default function AgentRowActions({
                     shareModal.toggle(true);
                   }}
                 >
-                  Share
+                  Partager
                 </LineItem>,
                 isPaidEnterpriseFeaturesEnabled ? (
                   <LineItem
@@ -249,7 +249,7 @@ export default function AgentRowActions({
                       router.push(`/ee/agents/stats/${agent.id}` as Route);
                     }}
                   >
-                    Stats
+                    Statistiques
                   </LineItem>
                 ) : undefined,
                 !agent.builtin_persona ? null : undefined,
@@ -263,7 +263,7 @@ export default function AgentRowActions({
                       setDeleteOpen(true);
                     }}
                   >
-                    Delete
+                    Supprimer
                   </LineItem>
                 ) : undefined,
               ]}
@@ -275,7 +275,7 @@ export default function AgentRowActions({
       {deleteOpen && (
         <ConfirmationModalLayout
           icon={SvgTrash}
-          title="Delete Agent"
+          title="Supprimer l'agent"
           onClose={isSubmitting ? undefined : () => setDeleteOpen(false)}
           submit={
             <Button
@@ -288,16 +288,16 @@ export default function AgentRowActions({
                 );
               }}
             >
-              Delete
+              Supprimer
             </Button>
           }
         >
           <Text as="p" text03>
-            Are you sure you want to delete{" "}
+            Êtes-vous sûr de vouloir supprimer{" "}
             <Text as="span" text05>
               {agent.name}
             </Text>
-            ? This action cannot be undone.
+            ? Cette action est irréversible.
           </Text>
         </ConfirmationModalLayout>
       )}
@@ -307,8 +307,8 @@ export default function AgentRowActions({
           icon={agent.is_featured ? SvgStarOff : SvgStar}
           title={
             agent.is_featured
-              ? `Remove ${agent.name} from Featured`
-              : `Feature ${agent.name}`
+              ? `Retirer ${agent.name} de la sélection`
+              : `Mettre ${agent.name} en vedette`
           }
           onClose={isSubmitting ? undefined : () => setFeaturedOpen(false)}
           submit={
@@ -321,18 +321,18 @@ export default function AgentRowActions({
                 );
               }}
             >
-              {agent.is_featured ? "Unfeature" : "Feature"}
+              {agent.is_featured ? "Retirer" : "Mettre en vedette"}
             </Button>
           }
         >
           <div className="flex flex-col gap-2">
             <Text as="p" text03>
               {agent.is_featured
-                ? `This will remove ${agent.name} from the featured section on top of the explore agents list. New users will no longer see it pinned to their sidebar, but existing pins are unaffected.`
-                : "Featured agents appear at the top of the explore agents list and are automatically pinned to the sidebar for new users with access. Use this to highlight recommended agents across your organization."}
+                ? `Cela retirera ${agent.name} de la section vedette en haut de la liste des agents. Les nouveaux utilisateurs ne le verront plus épinglé dans leur barre latérale, mais les épingles existantes ne sont pas affectées.`
+                : "Les agents en vedette apparaissent en haut de la liste des agents et sont automatiquement épinglés dans la barre latérale pour les nouveaux utilisateurs ayant accès. Utilisez cela pour mettre en avant les agents recommandés dans votre organisation."}
             </Text>
             <Text as="p" text03>
-              This does not change who can access this agent.
+              Cela ne modifie pas qui peut accéder à cet agent.
             </Text>
           </div>
         </ConfirmationModalLayout>
@@ -341,7 +341,7 @@ export default function AgentRowActions({
       {unlistOpen && (
         <ConfirmationModalLayout
           icon={SvgEyeOff}
-          title={markdown(`Unlist *${agent.name}*`)}
+          title={markdown(`Retirer *${agent.name}* de la liste`)}
           onClose={isSubmitting ? undefined : () => setUnlistOpen(false)}
           submit={
             <Button
@@ -353,18 +353,16 @@ export default function AgentRowActions({
                 );
               }}
             >
-              Unlist
+              Retirer de la liste
             </Button>
           }
         >
           <div className="flex flex-col gap-2">
             <Text as="p" text03>
-              Unlisted agents don&apos;t appear in the explore agents list but
-              remain accessible via direct link, and to users who have
-              previously used or pinned them.
+              Les agents retirés de la liste n&apos;apparaissent pas dans la liste des agents, mais restent accessibles via un lien direct et pour les utilisateurs qui les ont déjà utilisés ou épinglés.
             </Text>
             <Text as="p" text03>
-              This does not change who can access this agent.
+              Cela ne modifie pas qui peut accéder à cet agent.
             </Text>
           </div>
         </ConfirmationModalLayout>

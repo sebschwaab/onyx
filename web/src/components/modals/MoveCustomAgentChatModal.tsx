@@ -20,17 +20,17 @@ export default function MoveCustomAgentChatModal({
   return (
     <ConfirmationModalLayout
       icon={SvgAlertCircle}
-      title="Move Custom Agent Chat"
+      title="Déplacer la conversation avec agent personnalisé"
       onClose={onCancel}
       submit={
-        <Button onClick={() => onConfirm(doNotShowAgain)}>Confirm Move</Button>
+        <Button onClick={() => onConfirm(doNotShowAgain)}>Confirmer le déplacement</Button>
       }
     >
       <div className="flex flex-col gap-4">
         <Text as="p" text03>
-          This chat uses a <b>custom agent</b> and moving it to a <b>project</b>{" "}
-          will not override the agent&apos;s prompt or knowledge configurations.
-          This should only be used for organization purposes.
+          Cette conversation utilise un <b>agent personnalisé</b> et son déplacement vers un <b>projet</b>{" "}
+          ne remplacera pas les configurations de prompt ou de connaissances de l&apos;agent.
+          Cela ne doit être utilisé qu&apos;à des fins d&apos;organisation.
         </Text>
         <div className="flex items-center gap-1">
           <Checkbox
@@ -42,7 +42,7 @@ export default function MoveCustomAgentChatModal({
             htmlFor="move-custom-agent-do-not-show"
             className="text-text-03 text-sm"
           >
-            Do not show this again
+            Ne plus afficher ce message
           </label>
         </div>
       </div>

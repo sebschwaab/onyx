@@ -53,7 +53,7 @@ export function SearchAndFilterControls({
   return (
     <div className="flex items-center gap-x-2">
       <InputTypeIn
-        placeholder="Search Connectors"
+        placeholder="Rechercher des connecteurs"
         type="text"
         value={localSearchValue}
         onChange={(event) => setLocalSearchValue(event.target.value)}
@@ -61,7 +61,7 @@ export function SearchAndFilterControls({
       />
 
       <Button onClick={hasExpandedSources ? onCollapseAll : onExpandAll}>
-        {hasExpandedSources ? "Collapse All" : "Expand All"}
+        {hasExpandedSources ? "Tout réduire" : "Tout développer"}
       </Button>
 
       <div className="flex items-center gap-2">
@@ -75,14 +75,14 @@ export function SearchAndFilterControls({
             {filterOptions.accessType &&
               filterOptions.accessType.length > 0 && (
                 <Badge variant="secondary" className="px-2 py-0.5 text-xs">
-                  Access: {filterOptions.accessType.join(", ")}
+                  Accès : {filterOptions.accessType.join(", ")}
                 </Badge>
               )}
 
             {filterOptions.lastStatus &&
               filterOptions.lastStatus.length > 0 && (
                 <Badge variant="secondary" className="px-2 py-0.5 text-xs">
-                  Status:{" "}
+                  Statut :{" "}
                   {filterOptions.lastStatus
                     .map((s) => s.replace(/_/g, " "))
                     .join(", ")}
@@ -93,14 +93,14 @@ export function SearchAndFilterControls({
               filterOptions.docsCountFilter.value !== null && (
                 <Badge variant="secondary" className="px-2 py-0.5 text-xs">
                   Docs {filterOptions.docsCountFilter.operator}{" "}
-                  {filterOptions.docsCountFilter.value}
+                  {filterOptions.docsCountFilter.value} docs
                 </Badge>
               )}
 
             {filterOptions.docsCountFilter.operator &&
               filterOptions.docsCountFilter.value === null && (
                 <Badge variant="secondary" className="px-2 py-0.5 text-xs">
-                  Docs {filterOptions.docsCountFilter.operator} any
+                  Docs {filterOptions.docsCountFilter.operator} tout
                 </Badge>
               )}
 
@@ -109,7 +109,7 @@ export function SearchAndFilterControls({
               className="px-2 py-0.5 text-xs border-red-400  bg-red-100 hover:border-red-600 cursor-pointer hover:bg-red-100 dark:hover:bg-red-900"
               onClick={onClearFilters}
             >
-              <span className="text-red-500 dark:text-red-400">Clear</span>
+              <span className="text-red-500 dark:text-red-400">Effacer</span>
             </Badge>
           </div>
         )}

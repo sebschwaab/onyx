@@ -36,12 +36,12 @@ export default function SignInButton({
   let icon: React.FunctionComponent<IconProps> | undefined;
 
   if (authType === AuthType.GOOGLE_OAUTH || authType === AuthType.CLOUD) {
-    button = "Continue with Google";
+    button = "Continuer avec Google";
     icon = FcGoogle;
   } else if (authType === AuthType.OIDC) {
-    button = "Continue with OIDC SSO";
+    button = "Continuer avec OIDC SSO";
   } else if (authType === AuthType.SAML) {
-    button = "Continue with SAML SSO";
+    button = "Continuer avec SAML SSO";
   }
 
   if (!button) {

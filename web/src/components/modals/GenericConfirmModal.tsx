@@ -13,7 +13,7 @@ export interface GenericConfirmModalProps {
 export default function GenericConfirmModal({
   title,
   message,
-  confirmText = "Confirm",
+  confirmText = "Confirmer",
   onClose,
   onConfirm,
 }: GenericConfirmModalProps) {

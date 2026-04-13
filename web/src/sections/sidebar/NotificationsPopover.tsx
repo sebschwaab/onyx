@@ -121,7 +121,7 @@ export default function NotificationsPopover({
           <div className="h-48">
             <Section>
               <Text as="p" text03>
-                No notifications
+                Aucune notification
               </Text>
             </Section>
           </div>
@@ -142,7 +142,7 @@ export default function NotificationsPopover({
                         size="sm"
                         icon={SvgX}
                         onClick={(e) => handleDismiss(notification.id, e)}
-                        tooltip="Dismiss"
+                        tooltip="Ignorer"
                       />
                     ) : undefined
                   }

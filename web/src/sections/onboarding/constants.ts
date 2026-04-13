@@ -11,26 +11,26 @@ type StepConfig = {
 export const STEP_CONFIG: Record<OnboardingStep, StepConfig> = {
   [OnboardingStep.Welcome]: {
     index: 0,
-    title: "Let's take a moment to get you set up.",
-    buttonText: "Let's Go",
+    title: "Prenons un moment pour vous configurer.",
+    buttonText: "Commencer",
     iconPercentage: 10,
   },
   [OnboardingStep.Name]: {
     index: 1,
-    title: "Let's take a moment to get you set up.",
-    buttonText: "Next",
+    title: "Prenons un moment pour vous configurer.",
+    buttonText: "Suivant",
     iconPercentage: 40,
   },
   [OnboardingStep.LlmSetup]: {
     index: 2,
-    title: "Almost there! Connect your models to start chatting.",
-    buttonText: "Next",
+    title: "Presque ! Connectez vos modèles pour commencer à discuter.",
+    buttonText: "Suivant",
     iconPercentage: 70,
   },
   [OnboardingStep.Complete]: {
     index: 3,
-    title: "You're all set, review the optional settings or click Finish Setup",
-    buttonText: "Finish Setup",
+    title: "Vous êtes prêt ! Consultez les paramètres optionnels ou cliquez sur Terminer la configuration",
+    buttonText: "Terminer la configuration",
     iconPercentage: 100,
   },
 } as const;
@@ -55,24 +55,24 @@ export const STEP_NAVIGATION: Record<
 
 export const FINAL_SETUP_CONFIG: FinalStepItemProps[] = [
   {
-    title: "Select web search provider",
-    description: "Enable Onyx to search the internet for information.",
+    title: "Sélectionner un fournisseur de recherche web",
+    description: "Permettre à Onyx de rechercher des informations sur internet.",
     icon: SvgGlobe,
-    buttonText: "Web Search",
+    buttonText: "Recherche web",
     buttonHref: "/admin/configuration/web-search",
   },
   {
-    title: "Enable image generation",
-    description: "Set up models to create images in your chats.",
+    title: "Activer la génération d'images",
+    description: "Configurer des modèles pour créer des images dans vos conversations.",
     icon: SvgImage,
-    buttonText: "Image Generation",
+    buttonText: "Génération d'images",
     buttonHref: "/admin/configuration/image-generation",
   },
   {
-    title: "Invite your team",
-    description: "Manage users and permissions for your team",
+    title: "Inviter votre équipe",
+    description: "Gérer les utilisateurs et les permissions de votre équipe",
     icon: SvgUsers,
-    buttonText: "Manage Users",
+    buttonText: "Gérer les utilisateurs",
     buttonHref: "/admin/users",
   },
 ];

@@ -79,10 +79,10 @@ function ExistingProviderCard({
       await deleteLlmProvider(provider.id, isLastProvider);
       await refreshLlmProviderCaches(mutate);
       deleteModal.toggle(false);
-      toast.success("Provider deleted successfully!");
+      toast.success("Fournisseur supprimé avec succès !");
     } catch (e) {
-      const message = e instanceof Error ? e.message : "Unknown error";
-      toast.error(`Failed to delete provider: ${message}`);
+      const message = e instanceof Error ? e.message : "Erreur inconnue";
+      toast.error(`Échec de la suppression du fournisseur : ${message}`);
     }
   };
 
@@ -105,26 +105,25 @@ function ExistingProviderCard({
               onClick={handleDelete}
               disabled={isDefault && !isLastProvider}
             >
-              Delete
+              Supprimer
             </Button>
           }
         >
           <Section alignItems="start" gap={0.5}>
             {isDefault && !isLastProvider ? (
               <Text font="main-ui-body" color="text-03">
-                Cannot delete the default provider. Select another provider as
-                the default prior to deleting this one.
+                Impossible de supprimer le fournisseur par défaut. Sélectionnez un autre fournisseur par défaut avant de supprimer celui-ci.
               </Text>
             ) : (
               <>
                 <Text font="main-ui-body" color="text-03">
                   {markdown(
-                    `All LLM models from provider **${provider.name}** will be removed and unavailable for future chats. Chat history will be preserved.`
+                    `Tous les modèles LLM du fournisseur **${provider.name}** seront supprimés et indisponibles pour les futures conversations. L'historique des conversations sera conservé.`
                   )}
                 </Text>
                 {isLastProvider && (
                   <Text font="main-ui-body" color="text-03">
-                    Connect another provider to continue using chats.
+                    Connecterez un autre fournisseur pour continuer à utiliser les conversations.
                   </Text>
                 )}
               </>
@@ -149,7 +148,7 @@ function ExistingProviderCard({
             description={companyName}
             sizePreset="main-ui"
             variant="section"
-            tag={isDefault ? { title: "Default", color: "blue" } : undefined}
+            tag={isDefault ? { title: "Par défaut", color: "blue" } : undefined}
             rightChildren={
               <div className="flex flex-row">
                 <Hoverable.Item
@@ -266,7 +265,7 @@ function NewCustomProviderCard({
               setIsOpen(true);
             }}
           >
-            Set Up
+            Configurer
           </Button>
         }
       />

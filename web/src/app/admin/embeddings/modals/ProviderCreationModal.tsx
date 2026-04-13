@@ -56,25 +56,25 @@ export default function ProviderCreationModal({
   };
 
   const validationSchema = Yup.object({
-    provider_type: Yup.string().required("Provider type is required"),
+    provider_type: Yup.string().required("Le type de fournisseur est requis"),
     api_key:
       isProxy || isAzure
         ? Yup.string()
         : useFileUpload
           ? Yup.string()
-          : Yup.string().required("API Key is required"),
+          : Yup.string().required("La clé API est requise"),
     model_name: isProxy
-      ? Yup.string().required("Model name is required")
+      ? Yup.string().required("Le nom du modèle est requis")
       : Yup.string().nullable(),
     api_url:
       isProxy || isAzure
-        ? Yup.string().required("API URL is required")
+        ? Yup.string().required("L'URL de l'API est requise")
         : Yup.string(),
     deployment_name: isAzure
-      ? Yup.string().required("Deployment name is required")
+      ? Yup.string().required("Le nom du déploiement est requis")
       : Yup.string(),
     api_version: isAzure
-      ? Yup.string().required("API Version is required")
+      ? Yup.string().required("La version de l'API est requise")
       : Yup.string(),
     custom_config: Yup.array().of(Yup.array().of(Yup.string()).length(2)),
   });
@@ -96,7 +96,7 @@ export default function ProviderCreationModal({
           jsonContent = JSON.parse(fileContent);
         } catch (parseError) {
           throw new Error(
-            "Failed to parse JSON file. Please ensure it's a valid JSON."
+            "Échec de l'analyse du fichier JSON. Veuillez vous assurer qu'il est valide."
           );
         }
         setFieldValue("api_key", JSON.stringify(jsonContent));
@@ -165,7 +165,7 @@ export default function ProviderCreationModal({
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(
-          errorData.detail || "Failed to update provider- check your API key"
+          errorData.detail || "Échec de la mise à jour du fournisseur - vérifiez votre clé API"
         );
       }
 
@@ -174,7 +174,7 @@ export default function ProviderCreationModal({
       if (error instanceof Error) {
         setErrorMsg(error.message);
       } else {
-        setErrorMsg("An unknown error occurred");
+        setErrorMsg("Une erreur inconnue s'est produite");
       }
     } finally {
       setSubmitting(false);
@@ -202,24 +202,24 @@ export default function ProviderCreationModal({
             {({ isSubmitting, handleSubmit, setFieldValue }) => (
               <Form onSubmit={handleSubmit} className="space-y-4">
                 <Text as="p">
-                  You are setting the credentials for this provider. To access
-                  this information, follow the instructions{" "}
+                  Vous configurez les identifiants pour ce fournisseur. Pour accéder
+                  à ces informations, suivez les instructions{" "}
                   <a
                     className="cursor-pointer underline"
                     target="_blank"
                     href={selectedProvider.docsLink}
                     rel="noreferrer"
                   >
-                    here
+                    ici
                   </a>{" "}
-                  and gather your{" "}
+                  et récupérez votre{" "}
                   <a
                     className="cursor-pointer underline"
                     target="_blank"
                     href={selectedProvider.apiLink}
                     rel="noreferrer"
                   >
-                    {isProxy || isAzure ? "API URL" : "API KEY"}
+                    {isProxy || isAzure ? "URL API" : "CLÉ API"}
                   </a>
                 </Text>
 
@@ -236,8 +236,8 @@ export default function ProviderCreationModal({
                   {isProxy && (
                     <TextFormField
                       name="model_name"
-                      label={`Model Name ${isProxy ? "(for testing)" : ""}`}
-                      placeholder="Model Name"
+                      label={`Nom du modèle ${isProxy ? "(pour les tests)" : ""}`}
+                      placeholder="Nom du modèle"
                       type="text"
                     />
                   )}
@@ -245,8 +245,8 @@ export default function ProviderCreationModal({
                   {isAzure && (
                     <TextFormField
                       name="deployment_name"
-                      label="Deployment Name"
-                      placeholder="Deployment Name"
+                      label="Nom du déploiement"
+                      placeholder="Nom du déploiement"
                       type="text"
                     />
                   )}
@@ -254,15 +254,15 @@ export default function ProviderCreationModal({
                   {isAzure && (
                     <TextFormField
                       name="api_version"
-                      label="API Version"
-                      placeholder="API Version"
+                      label="Version de l'API"
+                      placeholder="Version de l'API"
                       type="text"
                     />
                   )}
 
                   {useFileUpload ? (
                     <>
-                      <Label>Upload JSON File</Label>
+                      <Label>Téléverser un fichier JSON</Label>
                       <input
                         ref={fileInputRef}
                         type="file"
@@ -270,15 +270,15 @@ export default function ProviderCreationModal({
                         onChange={(e) => handleFileUpload(e, setFieldValue)}
                         className="text-lg w-full p-1"
                       />
-                      {fileName && <p>Uploaded file: {fileName}</p>}
+                      {fileName && <p>Fichier téléversé : {fileName}</p>}
                     </>
                   ) : (
                     <TextFormField
                       name="api_key"
-                      label={`API Key ${
-                        isProxy ? "(for non-local deployments)" : ""
+                      label={`Clé API ${
+                        isProxy ? "(pour les déploiements non locaux)" : ""
                       }`}
-                      placeholder="API Key"
+                      placeholder="Clé API"
                       type="password"
                     />
                   )}
@@ -289,12 +289,12 @@ export default function ProviderCreationModal({
                     className="underline cursor-pointer"
                     rel="noreferrer"
                   >
-                    Learn more here
+                    En savoir plus
                   </a>
                 </div>
 
                 {errorMsg && (
-                  <Callout title="Error" type="danger">
+                  <Callout title="Erreur" type="danger">
                     {errorMsg}
                   </Callout>
                 )}
@@ -306,10 +306,10 @@ export default function ProviderCreationModal({
                   icon={isSubmitting ? SimpleLoader : undefined}
                 >
                   {isSubmitting
-                    ? "Submitting"
+                    ? "Envoi..."
                     : existingProvider
-                      ? "Update"
-                      : "Create"}
+                      ? "Mettre à jour"
+                      : "Créer"}
                 </Button>
               </Form>
             )}

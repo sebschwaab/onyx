@@ -153,8 +153,8 @@ const LLMStep = memo(
           >
             <ContentAction
               icon={SvgCpu}
-              title="Connect your LLM models"
-              description="Onyx supports both self-hosted models and popular providers."
+              title="Connectez vos modèles LLM"
+              description="Onyx prend en charge les modèles auto-hébergés et les fournisseurs populaires."
               sizePreset="main-ui"
               variant="section"
               paddingVariant="lg"
@@ -165,7 +165,7 @@ const LLMStep = memo(
                   rightIcon={SvgExternalLink}
                   href="/admin/configuration/llm"
                 >
-                  View in Admin Panel
+                  Voir dans le panneau d&apos;administration
                 </Button>
               }
             />
@@ -216,8 +216,8 @@ const LLMStep = memo(
                   {/* Custom provider card */}
                   <div className="basis-[calc(50%-theme(spacing.1)/2)] grow">
                     <LLMProviderCard
-                      title="Custom LLM Provider"
-                      subtitle="LiteLLM Compatible APIs"
+                      title="Fournisseur LLM personnalisé"
+                      subtitle="APIs compatibles LiteLLM"
                       disabled={disabled}
                       isConnected={onboardingState.data.llmProviders?.some(
                         (provider) => provider === "custom"
@@ -250,9 +250,9 @@ const LLMStep = memo(
           <Text as="p" text04 mainUiAction>
             {onboardingState.data.llmProviders?.length || 0}{" "}
             {(onboardingState.data.llmProviders?.length || 0) === 1
-              ? "model"
-              : "models"}{" "}
-            connected
+              ? "modèle"
+              : "modèles"}{" "}
+            connecté(s)
           </Text>
         </div>
         <div className="p-1">

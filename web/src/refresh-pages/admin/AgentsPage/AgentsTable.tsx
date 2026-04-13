@@ -60,8 +60,8 @@ function renderCreatedByColumn(
 
 function getAccessTitle(row: AgentRow): string {
   if (row.is_public) return "Public";
-  if (row.groups.length > 0 || row.users.length > 0) return "Shared";
-  return "Private";
+  if (row.groups.length > 0 || row.users.length > 0) return "Partagé";
+  return "Privé";
 }
 
 function renderAccessColumn(_isPublic: boolean, row: AgentRow) {
@@ -71,7 +71,7 @@ function renderAccessColumn(_isPublic: boolean, row: AgentRow) {
       variant="section"
       title={getAccessTitle(row)}
       description={
-        !row.is_listed ? "Unlisted" : row.is_featured ? "Featured" : undefined
+        !row.is_listed ? "Non listé" : row.is_featured ? "En vedette" : undefined
       }
     />
   );
@@ -96,7 +96,7 @@ function buildColumns(onMutate: () => void) {
       ),
     }),
     tc.column("name", {
-      header: "Name",
+      header: "Nom",
       weight: 25,
       cell: (value) => (
         <Text as="span" mainUiBody text05>
@@ -114,12 +114,12 @@ function buildColumns(onMutate: () => void) {
       ),
     }),
     tc.column("owner", {
-      header: "Created By",
+      header: "Créé par",
       weight: 20,
       cell: renderCreatedByColumn,
     }),
     tc.column("is_public", {
-      header: "Access",
+      header: "Accès",
       weight: 12,
       cell: renderAccessColumn,
     }),
@@ -156,7 +156,7 @@ export default function AgentsTable() {
       refresh();
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Failed to update agent order"
+        err instanceof Error ? err.message : "Échec de la mise à jour de l'ordre des agents"
       );
       refresh();
     }
@@ -174,7 +174,7 @@ export default function AgentsTable() {
     console.error("Failed to load agents:", error);
     return (
       <Text as="p" secondaryBody text03>
-        Failed to load agents. Please try refreshing the page.
+        Échec du chargement des agents. Veuillez rafraîchir la page.
       </Text>
     );
   }
@@ -184,7 +184,7 @@ export default function AgentsTable() {
       <InputTypeIn
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search agents..."
+        placeholder="Rechercher des agents..."
         leftSearchIcon
       />
       <Table
@@ -199,8 +199,8 @@ export default function AgentsTable() {
         emptyState={
           <IllustrationContent
             illustration={SvgNoResult}
-            title="No agents found"
-            description="No agents match the current search."
+            title="Aucun agent trouvé"
+            description="Aucun agent ne correspond à la recherche actuelle."
           />
         }
         footer={{}}

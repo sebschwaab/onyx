@@ -27,34 +27,34 @@ export const getErrorIcon = (errorCode?: string) => {
 export const getErrorTitle = (errorCode?: string) => {
   switch (errorCode) {
     case "RATE_LIMIT":
-      return "Rate Limit Exceeded";
+      return "Limite de débit dépassée";
     case "AUTH_ERROR":
-      return "Authentication Error";
+      return "Erreur d'authentification";
     case "PERMISSION_DENIED":
-      return "Permission Denied";
+      return "Permission refusée";
     case "CONTEXT_TOO_LONG":
-      return "Message Too Long";
+      return "Message trop long";
     case "TOOL_CALL_FAILED":
-      return "Tool Error";
+      return "Erreur d'outil";
     case "CONNECTION_ERROR":
-      return "Connection Error";
+      return "Erreur de connexion";
     case "SERVICE_UNAVAILABLE":
-      return "Service Unavailable";
+      return "Service indisponible";
     case "INIT_FAILED":
-      return "Initialization Error";
+      return "Erreur d'initialisation";
     case "VALIDATION_ERROR":
-      return "Validation Error";
+      return "Erreur de validation";
     case "BUDGET_EXCEEDED":
-      return "Budget Exceeded";
+      return "Budget dépassé";
     case "CONTENT_POLICY":
-      return "Content Policy Violation";
+      return "Violation de la politique de contenu";
     case "BAD_REQUEST":
-      return "Invalid Request";
+      return "Requête invalide";
     case "NOT_FOUND":
-      return "Resource Not Found";
+      return "Ressource introuvable";
     case "API_ERROR":
-      return "API Error";
+      return "Erreur API";
     default:
-      return "Error";
+      return "Erreur";
   }
 };

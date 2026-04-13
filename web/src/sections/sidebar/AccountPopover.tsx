@@ -63,7 +63,7 @@ function SettingsPopover({
     logout()
       .then((response) => {
         if (!response?.ok) {
-          alert("Failed to logout");
+          alert("Échec de la déconnexion");
           return;
         }
 
@@ -79,7 +79,7 @@ function SettingsPopover({
       })
 
       .catch(() => {
-        toast.error("Failed to logout");
+        toast.error("Échec de la déconnexion");
       });
   };
 
@@ -93,7 +93,7 @@ function SettingsPopover({
               href="/app/settings"
               onClick={onUserSettingsClick}
             >
-              User Settings
+              Paramètres utilisateur
             </LineItem>
           </div>,
           <LineItem
@@ -112,12 +112,12 @@ function SettingsPopover({
             target="_blank"
             rel="noopener noreferrer"
           >
-            Help & FAQ
+            Aide & FAQ
           </LineItem>,
           null,
           showLogin && (
             <LineItem key="log-in" icon={SvgUser} onClick={handleLogin}>
-              Log in
+              Se connecter
             </LineItem>
           ),
           showLogout && (
@@ -127,7 +127,7 @@ function SettingsPopover({
               danger
               onClick={handleLogout}
             >
-              Log out
+              Se déconnecter
             </LineItem>
           ),
         ]}

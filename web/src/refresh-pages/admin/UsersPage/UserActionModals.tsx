@@ -30,7 +30,7 @@ async function runAction(
     onDone();
     toast.success(successMessage);
   } catch (err) {
-    toast.error(err instanceof Error ? err.message : "An error occurred");
+    toast.error(err instanceof Error ? err.message : "Une erreur s'est produite");
   } finally {
     setIsSubmitting(false);
   }
@@ -58,7 +58,7 @@ export function CancelInviteModal({
       icon={(props) => (
         <SvgUserX {...props} className="text-action-danger-05" />
       )}
-      title="Cancel Invite"
+      title="Annuler l'invitation"
       onClose={isSubmitting ? undefined : onClose}
       submit={
         <Button
@@ -67,7 +67,7 @@ export function CancelInviteModal({
           onClick={() =>
             runAction(
               () => cancelInvite(email),
-              "Invite cancelled",
+              "Invitation annulée",
               () => {
                 onMutate();
                 onClose();
@@ -76,7 +76,7 @@ export function CancelInviteModal({
             )
           }
         >
-          Cancel Invite
+          Annuler l&apos;invitation
         </Button>
       }
     >
@@ -84,7 +84,7 @@ export function CancelInviteModal({
         <Text as="span" text05>
           {email}
         </Text>{" "}
-        will no longer be able to join Onyx with this invite.
+        ne pourra plus rejoindre Onyx avec cette invitation.
       </Text>
     </ConfirmationModalLayout>
   );
@@ -112,7 +112,7 @@ export function DeactivateUserModal({
       icon={(props) => (
         <SvgUserX {...props} className="text-action-danger-05" />
       )}
-      title="Deactivate User"
+      title="Désactiver l'utilisateur"
       onClose={isSubmitting ? undefined : onClose}
       submit={
         <Button
@@ -121,7 +121,7 @@ export function DeactivateUserModal({
           onClick={() =>
             runAction(
               () => deactivateUser(email),
-              "User deactivated",
+              "Utilisateur désactivé",
               () => {
                 onMutate();
                 onClose();
@@ -130,7 +130,7 @@ export function DeactivateUserModal({
             )
           }
         >
-          Deactivate
+          Désactiver
         </Button>
       }
     >
@@ -138,9 +138,7 @@ export function DeactivateUserModal({
         <Text as="span" text05>
           {email}
         </Text>{" "}
-        will immediately lose access to Onyx. Their sessions and agents will be
-        preserved. Their license seat will be freed. You can reactivate this
-        account later.
+        perdra immédiatement l&apos;accès à Onyx. Ses sessions et agents seront conservés. Son siège de licence sera libéré. Vous pourrez réactiver ce compte ultérieurement.
       </Text>
     </ConfirmationModalLayout>
   );
@@ -166,7 +164,7 @@ export function ActivateUserModal({
   return (
     <ConfirmationModalLayout
       icon={SvgUserPlus}
-      title="Activate User"
+      title="Activer l'utilisateur"
       onClose={isSubmitting ? undefined : onClose}
       submit={
         <Button
@@ -174,7 +172,7 @@ export function ActivateUserModal({
           onClick={() =>
             runAction(
               () => activateUser(email),
-              "User activated",
+              "Utilisateur activé",
               () => {
                 onMutate();
                 onClose();
@@ -183,7 +181,7 @@ export function ActivateUserModal({
             )
           }
         >
-          Activate
+          Activer
         </Button>
       }
     >
@@ -191,7 +189,7 @@ export function ActivateUserModal({
         <Text as="span" text05>
           {email}
         </Text>{" "}
-        will regain access to Onyx.
+        retrouvera l&apos;accès à Onyx.
       </Text>
     </ConfirmationModalLayout>
   );
@@ -219,7 +217,7 @@ export function DeleteUserModal({
       icon={(props) => (
         <SvgUserX {...props} className="text-action-danger-05" />
       )}
-      title="Delete User"
+      title="Supprimer l'utilisateur"
       onClose={isSubmitting ? undefined : onClose}
       submit={
         <Button
@@ -228,7 +226,7 @@ export function DeleteUserModal({
           onClick={() =>
             runAction(
               () => deleteUser(email),
-              "User deleted",
+              "Utilisateur supprimé",
               () => {
                 onMutate();
                 onClose();
@@ -237,7 +235,7 @@ export function DeleteUserModal({
             )
           }
         >
-          Delete
+          Supprimer
         </Button>
       }
     >
@@ -245,8 +243,7 @@ export function DeleteUserModal({
         <Text as="span" text05>
           {email}
         </Text>{" "}
-        will be permanently removed from Onyx. All of their session history will
-        be deleted. Deletion cannot be undone.
+        sera définitivement supprimé d&apos;Onyx. Tout l&apos;historique de ses sessions sera effacé. La suppression est irréversible.
       </Text>
     </ConfirmationModalLayout>
   );
@@ -276,11 +273,11 @@ export function ResetPasswordModal({
   return (
     <ConfirmationModalLayout
       icon={SvgKey}
-      title={newPassword ? "Password Reset" : "Reset Password"}
+      title={newPassword ? "Mot de passe réinitialisé" : "Réinitialiser le mot de passe"}
       onClose={isSubmitting ? undefined : handleClose}
       submit={
         newPassword ? (
-          <Button onClick={handleClose}>Done</Button>
+          <Button onClick={handleClose}>Terminé</Button>
         ) : (
           <Button
             disabled={isSubmitting}
@@ -294,14 +291,14 @@ export function ResetPasswordModal({
                 toast.error(
                   err instanceof Error
                     ? err.message
-                    : "Failed to reset password"
+                    : "Échec de la réinitialisation du mot de passe"
                 );
               } finally {
                 setIsSubmitting(false);
               }
             }}
           >
-            Reset Password
+            Réinitialiser le mot de passe
           </Button>
         )
       }
@@ -309,12 +306,11 @@ export function ResetPasswordModal({
       {newPassword ? (
         <div className="flex flex-col gap-2">
           <Text as="p" text03>
-            The password for{" "}
+            Le mot de passe de{" "}
             <Text as="span" text05>
               {email}
             </Text>{" "}
-            has been reset. Copy the new password below — it will not be shown
-            again.
+            a été réinitialisé. Copiez le nouveau mot de passe ci-dessous — il ne sera plus affiché.
           </Text>
           <code className="rounded-sm bg-background-neutral-02 px-3 py-2 text-sm select-all">
             {newPassword}
@@ -322,11 +318,11 @@ export function ResetPasswordModal({
         </div>
       ) : (
         <Text as="p" text03>
-          This will generate a new random password for{" "}
+          Cela générera un nouveau mot de passe aléatoire pour{" "}
           <Text as="span" text05>
             {email}
           </Text>
-          . Their current password will stop working immediately.
+          . Le mot de passe actuel cessera de fonctionner immédiatement.
         </Text>
       )}
     </ConfirmationModalLayout>

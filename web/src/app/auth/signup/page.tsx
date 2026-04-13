@@ -74,10 +74,10 @@ const Page = async (props: {
         >
           <div className="w-full">
             <Text as="p" headingH2 text05>
-              {cloud ? "Complete your sign up" : "Create account"}
+              {cloud ? "Finalisez votre inscription" : "Créer un compte"}
             </Text>
             <Text as="p" text03>
-              Get started with Onyx
+              Commencez avec Onyx
             </Text>
           </div>
           {cloud && authUrl && (
@@ -86,7 +86,7 @@ const Page = async (props: {
               <div className="flex items-center w-full my-4">
                 <div className="flex-grow border-t border-border-01" />
                 <Text as="p" mainUiMuted text03 className="mx-2">
-                  or
+                  ou
                 </Text>
                 <div className="flex-grow border-t border-border-01" />
               </div>

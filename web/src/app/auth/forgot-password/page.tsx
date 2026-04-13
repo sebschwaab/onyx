@@ -27,7 +27,7 @@ const ForgotPasswordPage: React.FC = () => {
     <AuthFlowContainer>
       <div className="flex flex-col w-full justify-center">
         <div className="flex">
-          <Title className="mb-2 mx-auto font-bold">Forgot Password</Title>
+          <Title className="mb-2 mx-auto font-bold">Mot de passe oublié</Title>
         </div>
         {isWorking && <Spinner />}
         <Formik
@@ -42,14 +42,14 @@ const ForgotPasswordPage: React.FC = () => {
             try {
               await forgotPassword(values.email);
               toast.success(
-                "Password reset email sent. Please check your inbox."
+                "E-mail de réinitialisation envoyé. Veuillez vérifier votre boîte de réception."
               );
             } catch (error) {
               const errorMessage =
                 error instanceof Error
                   ? error.message
-                  : "An error occurred. Please try again.";
-              toast.error(errorMessage);
+                  : "Une erreur est survenue. Veuillez réessayer.";
+              toast.error(errorMessage || "Une erreur est survenue. Veuillez réessayer.");
             } finally {
               setIsWorking(false);
             }
@@ -59,14 +59,14 @@ const ForgotPasswordPage: React.FC = () => {
             <Form className="w-full flex flex-col items-stretch mt-2">
               <TextFormField
                 name="email"
-                label="Email"
+                label="E-mail"
                 type="email"
                 placeholder="email@yourcompany.com"
               />
 
               <div className="flex">
                 <Button disabled={isSubmitting} type="submit" width="full">
-                  Reset Password
+                  Réinitialiser le mot de passe
                 </Button>
               </div>
             </Form>
@@ -75,7 +75,7 @@ const ForgotPasswordPage: React.FC = () => {
         <Spacer rem={1} />
         <div className="flex">
           <div className="mx-auto">
-            <Text as="p">{markdown("[Back to Login](/auth/login)")}</Text>
+            <Text as="p">{markdown("[Retour à la connexion](/auth/login)")}</Text>
           </div>
         </div>
       </div>

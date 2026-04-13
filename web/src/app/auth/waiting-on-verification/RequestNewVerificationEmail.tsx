@@ -24,11 +24,11 @@ export function RequestNewVerificationEmail({
         setIsRequestingVerification(false);
 
         if (response.ok) {
-          toast.success("A new verification email has been sent!");
+          toast.success("Un nouvel e-mail de vérification a été envoyé !");
         } else {
           const errorDetail = (await response.json()).detail;
           toast.error(
-            `Failed to send a new verification email - ${errorDetail}`
+            `Échec de l'envoi d'un nouvel e-mail de vérification - ${errorDetail}`
           );
         }
       }}

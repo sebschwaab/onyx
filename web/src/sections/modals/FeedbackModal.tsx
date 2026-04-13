@@ -34,7 +34,7 @@ export default function FeedbackModal({
   const validationSchema = Yup.object({
     additional_feedback:
       feedbackType === "dislike"
-        ? Yup.string().trim().required("Feedback is required")
+        ? Yup.string().trim().required("Un retour est requis")
         : Yup.string().trim(),
   });
 
@@ -78,12 +78,12 @@ export default function FeedbackModal({
                 <Modal.Body>
                   <InputLayouts.Vertical
                     name="additional_feedback"
-                    title="Provide Additional Details"
-                    suffix={feedbackType === "like" ? "optional" : undefined}
+                    title="Fournir des détails supplémentaires"
+                    suffix={feedbackType === "like" ? "optionnel" : undefined}
                   >
                     <InputTextAreaField
                       name="additional_feedback"
-                      placeholder={`What did you ${feedbackType} about this response?`}
+                      placeholder={feedbackType === "like" ? "Qu'avez-vous apprécié dans cette réponse ?" : "Qu'est-ce qui n'allait pas dans cette réponse ?"}
                     />
                   </InputLayouts.Vertical>
                 </Modal.Body>
@@ -94,7 +94,7 @@ export default function FeedbackModal({
                     onClick={() => modal.toggle(false)}
                     type="button"
                   >
-                    Cancel
+                    Annuler
                   </Button>
                   <Button
                     disabled={
@@ -103,7 +103,7 @@ export default function FeedbackModal({
                     }
                     onClick={() => formikHandleSubmit()}
                   >
-                    {isSubmitting ? "Submitting..." : "Submit"}
+                    {isSubmitting ? "Envoi..." : "Envoyer"}
                   </Button>
                 </Modal.Footer>
               </>

@@ -47,7 +47,7 @@ export default function CreateRateLimitModal({
         setModalUserGroups(options);
         setShouldFetchUserGroups(false);
       } catch (error) {
-        toast.error(`Failed to fetch user groups: ${error}`);
+        toast.error(`Échec de la récupération des groupes : ${error}`);
       }
     };
 
@@ -61,7 +61,7 @@ export default function CreateRateLimitModal({
       <Modal.Content width="sm" height="sm">
         <Modal.Header
           icon={SvgSettings}
-          title="Create a Token Rate Limit"
+          title="Créer une limite de jetons"
           onClose={() => setIsOpen(false)}
         />
         <Formik
@@ -74,17 +74,17 @@ export default function CreateRateLimitModal({
           }}
           validationSchema={Yup.object().shape({
             period_hours: Yup.number()
-              .required("Time Window is a required field")
-              .min(1, "Time Window must be at least 1 hour"),
+              .required("La fenêtre temporelle est requise")
+              .min(1, "La fenêtre temporelle doit être d'au moins 1 heure"),
             token_budget: Yup.number()
-              .required("Token Budget is a required field")
-              .min(1, "Token Budget must be at least 1"),
+              .required("Le budget de jetons est requis")
+              .min(1, "Le budget de jetons doit être d'au moins 1"),
             target_scope: Yup.string().required(
-              "Target Scope is a required field"
+              "La portée cible est requise"
             ),
             user_group_id: Yup.string().test(
               "user_group_id",
-              "User Group is a required field",
+              "Le groupe d'utilisateurs est requis",
               (value, context) => {
                 return (
                   context.parent.target_scope !== "user_group" ||
@@ -111,11 +111,11 @@ export default function CreateRateLimitModal({
                 {!forSpecificScope && (
                   <SelectorFormField
                     name="target_scope"
-                    label="Target Scope"
+                    label="Portée cible"
                     options={[
                       { name: "Global", value: Scope.GLOBAL },
-                      { name: "User", value: Scope.USER },
-                      { name: "User Group", value: Scope.USER_GROUP },
+                      { name: "Utilisateur", value: Scope.USER },
+                      { name: "Groupe d'utilisateurs", value: Scope.USER_GROUP },
                     ]}
                     includeDefault={false}
                     onSelect={(selected) => {
@@ -130,27 +130,27 @@ export default function CreateRateLimitModal({
                   values.target_scope === Scope.USER_GROUP && (
                     <SelectorFormField
                       name="user_group_id"
-                      label="User Group"
+                      label="Groupe d'utilisateurs"
                       options={modalUserGroups}
                       includeDefault={false}
                     />
                   )}
                 <TextFormField
                   name="period_hours"
-                  label="Time Window (Hours)"
+                  label="Fenêtre temporelle (heures)"
                   type="number"
                   placeholder=""
                 />
                 <TextFormField
                   name="token_budget"
-                  label="Token Budget (Thousands)"
+                  label="Budget de jetons (milliers)"
                   type="number"
                   placeholder=""
                 />
               </Modal.Body>
               <Modal.Footer>
                 <Button disabled={isSubmitting} type="submit">
-                  Create
+                  Créer
                 </Button>
               </Modal.Footer>
             </Form>

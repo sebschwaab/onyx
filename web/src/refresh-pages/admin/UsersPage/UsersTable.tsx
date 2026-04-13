@@ -89,12 +89,12 @@ function buildColumns(onMutate: () => void) {
       },
     }),
     tc.column("email", {
-      header: "Name",
+      header: "Nom",
       weight: 22,
       cell: renderNameColumn,
     }),
     tc.column("groups", {
-      header: "Groups",
+      header: "Groupes",
       weight: 24,
       enableSorting: false,
       cell: (value, row) => (
@@ -102,17 +102,17 @@ function buildColumns(onMutate: () => void) {
       ),
     }),
     tc.column("role", {
-      header: "Account Type",
+      header: "Type de compte",
       weight: 16,
       cell: (_value, row) => <UserRoleCell user={row} onMutate={onMutate} />,
     }),
     tc.column("status", {
-      header: "Status",
+      header: "Statut",
       weight: 14,
       cell: renderStatusColumn,
     }),
     tc.column("updated_at", {
-      header: "Last Updated",
+      header: "Dernière mise à jour",
       weight: 14,
       cell: renderLastUpdatedColumn,
     }),
@@ -195,7 +195,7 @@ export default function UsersTable({
   if (error) {
     return (
       <Text as="p" secondaryBody text03>
-        Failed to load users. Please try refreshing the page.
+        Échec du chargement des utilisateurs. Veuillez rafraîchir la page.
       </Text>
     );
   }
@@ -205,7 +205,7 @@ export default function UsersTable({
       <InputTypeIn
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search users..."
+        placeholder="Rechercher des utilisateurs..."
         leftSearchIcon
       />
       <UserFilters
@@ -228,8 +228,8 @@ export default function UsersTable({
         emptyState={
           <IllustrationContent
             illustration={SvgNoResult}
-            title="No users found"
-            description="No users match the current filters."
+            title="Aucun utilisateur trouvé"
+            description="Aucun utilisateur ne correspond aux filtres actuels."
           />
         }
         footer={{
@@ -238,14 +238,14 @@ export default function UsersTable({
               icon={SvgDownload}
               prominence="tertiary"
               size="sm"
-              tooltip="Download CSV"
-              aria-label="Download CSV"
+              tooltip="Télécharger CSV"
+              aria-label="Télécharger CSV"
               onClick={() => {
                 downloadUsersCsv().catch((err) => {
                   toast.error(
                     err instanceof Error
                       ? err.message
-                      : "Failed to download CSV"
+                      : "Échec du téléchargement du CSV"
                   );
                 });
               }}

@@ -20,12 +20,12 @@ export default function AuthFlowContainer({
         <div className="text-sm mt-6 text-center w-full text-text-03 mainUiBody mx-auto">
           {footerContent ?? (
             <>
-              New to Onyx?{" "}
+              Nouveau sur Onyx ?{" "}
               <Link
                 href="/auth/signup"
                 className="text-text-05 mainUiAction underline transition-colors duration-200"
               >
-                Create an Account
+                Créer un compte
               </Link>
             </>
           )}
@@ -33,12 +33,12 @@ export default function AuthFlowContainer({
       )}
       {authState === "signup" && (
         <div className="text-sm mt-6 text-center w-full text-text-03 mainUiBody mx-auto">
-          Already have an account?{" "}
+          Vous avez déjà un compte ?{" "}
           <Link
             href="/auth/login?autoRedirectToSignup=false"
             className="text-text-05 mainUiAction underline transition-colors duration-200"
           >
-            Sign In
+            Se connecter
           </Link>
         </div>
       )}
