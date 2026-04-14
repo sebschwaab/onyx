@@ -482,7 +482,7 @@ class LitellmLLM(LLM):
 
         # If no tools are provided, tool_choice should be None
         if not tools:
-            tool_choice = None
+            tool_choice = ToolChoiceOptions.NONE
 
         # Temperature
         temperature = 1 if is_reasoning else self._temperature
@@ -625,7 +625,7 @@ class LitellmLLM(LLM):
 
                 # Only pass tool_choice when tools are present — some providers (e.g. Fireworks)
                 # reject requests where tool_choice is explicitly null.
-                if tools and tool_choice is not None:
+                if tool_choice is not None:
                     optional_kwargs["tool_choice"] = tool_choice
 
                 response = litellm.completion(
