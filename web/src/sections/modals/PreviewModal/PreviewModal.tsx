@@ -101,7 +101,7 @@ export default function PreviewModal({
         setFileContent(await blob.text());
       }
     } catch {
-      setLoadError("Failed to load document.");
+      setLoadError("Échec du chargement du document.");
     } finally {
       setIsLoading(false);
     }

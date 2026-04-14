@@ -508,7 +508,7 @@ const AppInputBar = React.memo(
               <Button
                 disabled={disabled}
                 icon={SvgPaperclip}
-                tooltip="Attach Files"
+                tooltip="Joindre des fichiers"
                 interaction={open ? "hover" : "rest"}
                 prominence="tertiary"
               />
@@ -548,8 +548,8 @@ const AppInputBar = React.memo(
                           return currentTabUrl;
                         }
                       })()
-                    : "Reading tab..."
-                  : "Read this tab"}
+                    : "Lecture de l'onglet..."
+                  : "Lire cet onglet"}
               </SelectButton>
             ) : (
               showDeepResearch && (
@@ -561,7 +561,7 @@ const AppInputBar = React.memo(
                   state={deepResearchEnabled ? "selected" : "empty"}
                   foldable={!deepResearchEnabled}
                 >
-                  Deep Research
+                  Recherche approfondie
                 </SelectButton>
               )
             )}
@@ -623,7 +623,7 @@ const AppInputBar = React.memo(
                 icon={SvgMicrophone}
                 aria-label="Set up voice"
                 prominence="tertiary"
-                tooltip="Voice not configured. Set up in admin settings."
+                tooltip="Voix non configurée. À configurer dans les paramètres d'administration."
               />
             ))}
 
@@ -755,12 +755,12 @@ const AppInputBar = React.memo(
                     aria-multiline={true}
                     placeholder={
                       isRecording
-                        ? "Listening..."
+                        ? "Écoute en cours..."
                         : isVoicePlaybackActive
-                          ? "Onyx is speaking..."
+                          ? "Onyx parle..."
                           : isSearchMode
-                            ? "Search connected sources"
-                            : "How can I help you today?"
+                            ? "Rechercher dans les sources connectées"
+                            : "Comment puis-je vous aider ?"
                     }
                     value={message}
                     onKeyDown={(event) => {

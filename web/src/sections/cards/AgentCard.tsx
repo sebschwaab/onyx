@@ -82,7 +82,7 @@ export default function AgentCard({ agent }: AgentCardProps) {
       );
 
       if (shareError) {
-        toast.error(`Failed to share agent: ${shareError}`);
+        toast.error(`Échec du partage de l'agent : ${shareError}`);
         return;
       }
 
@@ -92,7 +92,7 @@ export default function AgentCard({ agent }: AgentCardProps) {
           isFeatured
         );
         if (featuredError) {
-          toast.error(`Failed to update featured status: ${featuredError}`);
+          toast.error(`Échec de la mise à jour du statut mis en avant : ${featuredError}`);
           refreshAgent();
           return;
         }
@@ -152,7 +152,7 @@ export default function AgentCard({ agent }: AgentCardProps) {
                       onClick={noProp(() =>
                         router.push(`/ee/agents/stats/${agent.id}` as Route)
                       )}
-                      tooltip="View Agent Stats"
+                      tooltip="Voir les statistiques"
                       className="hidden group-hover/AgentCard:flex"
                     />
                   )}
@@ -164,7 +164,7 @@ export default function AgentCard({ agent }: AgentCardProps) {
                       onClick={noProp(() =>
                         router.push(`/app/agents/edit/${agent.id}` as Route)
                       )}
-                      tooltip="Edit Agent"
+                      tooltip="Modifier l'agent"
                       className="hidden group-hover/AgentCard:flex"
                     />
                   )}
@@ -174,7 +174,7 @@ export default function AgentCard({ agent }: AgentCardProps) {
                       icon={SvgShare}
                       tertiary
                       onClick={noProp(() => shareAgentModal.toggle(true))}
-                      tooltip="Share Agent"
+                      tooltip="Partager l'agent"
                       className="hidden group-hover/AgentCard:flex"
                     />
                   )}
@@ -183,7 +183,7 @@ export default function AgentCard({ agent }: AgentCardProps) {
                     icon={pinned ? SvgPinned : SvgPin}
                     tertiary
                     onClick={noProp(() => togglePinnedAgent(agent, !pinned))}
-                    tooltip={pinned ? "Unpin from Sidebar" : "Pin to Sidebar"}
+                    tooltip={pinned ? "Détacher de la barre latérale" : "Épingler à la barre latérale"}
                     className={cn(
                       !pinned && "hidden group-hover/AgentCard:flex"
                     )}
@@ -211,7 +211,7 @@ export default function AgentCard({ agent }: AgentCardProps) {
                     ? `${agent.tools.length} Action${
                         agent.tools.length > 1 ? "s" : ""
                       }`
-                    : "No Actions"
+                    : "Aucune action"
                 }
                 sizePreset="secondary"
                 variant="body"
@@ -226,7 +226,7 @@ export default function AgentCard({ agent }: AgentCardProps) {
                 rightIcon={SvgBubbleText}
                 onClick={noProp(handleStartChat)}
               >
-                Start Chat
+                Démarrer
               </Button>
             </div>
           </div>

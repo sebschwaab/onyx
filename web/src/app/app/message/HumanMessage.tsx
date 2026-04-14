@@ -75,9 +75,9 @@ function MessageEditing({
           }}
         />
         <div className="flex justify-end gap-1">
-          <Button onClick={handleSubmit}>Submit</Button>
+          <Button onClick={handleSubmit}>Envoyer</Button>
           <Button prominence="secondary" onClick={handleCancel}>
-            Cancel
+            Annuler
           </Button>
         </div>
       </div>
@@ -182,7 +182,7 @@ const HumanMessage = React.memo(function HumanMessage({
         <Button
           icon={SvgEdit}
           prominence="tertiary"
-          tooltip="Edit"
+          tooltip="Modifier"
           onClick={() => setIsEditing(true)}
           data-testid="HumanMessage/edit-button"
         />

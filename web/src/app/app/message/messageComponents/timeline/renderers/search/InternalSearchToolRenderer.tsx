@@ -69,7 +69,7 @@ export const InternalSearchToolRenderer: MessageRenderer<
 
   const hasResults = results.length > 0;
 
-  const queriesHeader = "Searching internal documents";
+  const queriesHeader = "Recherche dans les documents internes";
 
   if (queries.length === 0) {
     return children([
@@ -114,7 +114,7 @@ export const InternalSearchToolRenderer: MessageRenderer<
                   <BlinkingBar />
                 ) : (
                   <Text as="p" text04 mainUiMuted>
-                    No results found
+                    Aucun résultat trouvé
                   </Text>
                 )
               }
@@ -155,7 +155,7 @@ export const InternalSearchToolRenderer: MessageRenderer<
     return children([
       {
         icon: null,
-        status: "Reading",
+        status: "Lecture",
         supportsCollapsible: true,
         timelineLayout: "content",
         content: (
@@ -234,7 +234,7 @@ export const InternalSearchToolRenderer: MessageRenderer<
                     <BlinkingBar />
                   ) : (
                     <Text as="p" text03 mainUiMuted>
-                      No results found
+                      Aucun résultat trouvé
                     </Text>
                   )
                 }

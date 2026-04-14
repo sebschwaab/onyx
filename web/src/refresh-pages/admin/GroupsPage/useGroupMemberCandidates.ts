@@ -60,13 +60,13 @@ function serviceAccountToMemberRow(
 ): MemberRow {
   return {
     id: snapshot.id,
-    email: "Service Account",
+    email: "Compte de service",
     role: apiKey?.api_key_role ?? snapshot.role,
     status: UserStatus.ACTIVE,
     is_active: true,
     is_scim_synced: false,
     personal_name:
-      apiKey?.api_key_name ?? snapshot.personal_name ?? "Unnamed Key",
+      apiKey?.api_key_name ?? snapshot.personal_name ?? "Clé sans nom",
     created_at: null,
     updated_at: null,
     groups: [],

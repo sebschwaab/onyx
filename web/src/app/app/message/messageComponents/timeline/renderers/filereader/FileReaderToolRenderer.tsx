@@ -75,12 +75,12 @@ export const FileReaderToolRenderer: MessageRenderer<
   }, [state.isComplete, onComplete]);
 
   const statusText = state.fileName
-    ? `Read ${state.fileName} (${formatCharRange(
+    ? `Lecture de ${state.fileName} (${formatCharRange(
         state.startChar,
         state.endChar,
         state.totalChars
       )})`
-    : "Reading file";
+    : "Lecture du fichier";
 
   const isCompact = renderType === RenderType.COMPACT;
 

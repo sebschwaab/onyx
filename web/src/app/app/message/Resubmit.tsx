@@ -13,9 +13,9 @@ export const Resubmit: React.FC<ResubmitProps> = ({ resubmit }) => {
   return (
     <div className="flex flex-col items-center justify-center gap-y-2 mt-4">
       <p className="text-sm text-neutral-700 dark:text-neutral-300">
-        There was an error with the response.
+        Une erreur s&apos;est produite avec la réponse.
       </p>
-      <Button onClick={resubmit}>Regenerate</Button>
+      <Button onClick={resubmit}>Régénérer</Button>
     </div>
   );
 };
@@ -46,13 +46,13 @@ export const ErrorBanner = ({
           <span>{error}</span>
           {details?.model && (
             <span className="text-xs text-muted-foreground">
-              Model: {details.model}
+              Modèle : {details.model}
               {details.provider && ` (${details.provider})`}
             </span>
           )}
           {details?.tool_name && (
             <span className="text-xs text-muted-foreground">
-              Tool: {details.tool_name}
+              Outil : {details.tool_name}
             </span>
           )}
           {stackTrace && (
@@ -63,7 +63,7 @@ export const ErrorBanner = ({
                   icon={isStackTraceExpanded ? SvgChevronDown : SvgChevronRight}
                   onClick={() => setIsStackTraceExpanded(!isStackTraceExpanded)}
                 >
-                  Stack trace
+                  Trace d&apos;erreur
                 </Button>
                 <CopyIconButton
                   prominence="tertiary"

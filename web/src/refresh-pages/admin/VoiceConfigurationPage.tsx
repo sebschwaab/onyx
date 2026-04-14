@@ -202,7 +202,7 @@ function VoiceDisconnectModal({
     <ConfirmationModalLayout
       icon={SvgUnplug}
       title={markdown(`Disconnect *${disconnectTarget.providerLabel}*`)}
-      description="Voice models"
+      description="Modèles vocaux"
       onClose={onClose}
       submit={
         <Button
@@ -212,7 +212,7 @@ function VoiceDisconnectModal({
             needsReplacement && hasReplacements && !replacementProviderId
           }
         >
-          Disconnect
+          Déconnecter
         </Button>
       }
     >
@@ -221,18 +221,18 @@ function VoiceDisconnectModal({
           <Section alignItems="start">
             <Text as="p" color="text-03">
               {markdown(
-                `**${disconnectTarget.providerLabel}** models will no longer be used for speech-to-text or text-to-speech, and it will no longer be your default. Session history will be preserved.`
+                `Les modèles **${disconnectTarget.providerLabel}** ne seront plus utilisés pour la reconnaissance ou la synthèse vocale, et ne seront plus votre choix par défaut. L'historique des sessions sera conservé.`
               )}
             </Text>
             <Section alignItems="start" gap={0.25}>
               <Text as="p" color="text-04">
-                Set New Default
+                Définir un nouveau fournisseur par défaut
               </Text>
               <InputSelect
                 value={replacementProviderId ?? undefined}
                 onValueChange={(v) => onReplacementChange(v)}
               >
-                <InputSelect.Trigger placeholder="Select a replacement provider" />
+                <InputSelect.Trigger placeholder="Sélectionner un fournisseur de remplacement" />
                 <InputSelect.Content>
                   {replacementOptions.map((p) => (
                     <InputSelect.Item
@@ -246,8 +246,8 @@ function VoiceDisconnectModal({
                   <InputSelect.Separator />
                   <InputSelect.Item value={NO_DEFAULT_VALUE} icon={SvgSlash}>
                     <span>
-                      <b>No Default</b>
-                      <span className="text-text-03"> (Disable Voice)</span>
+                      <b>Aucun défaut</b>
+                      <span className="text-text-03"> (Désactiver la voix)</span>
                     </span>
                   </InputSelect.Item>
                 </InputSelect.Content>
@@ -258,11 +258,11 @@ function VoiceDisconnectModal({
           <>
             <Text as="p" color="text-03">
               {markdown(
-                `**${disconnectTarget.providerLabel}** models will no longer be used for speech-to-text or text-to-speech, and it will no longer be your default.`
+                `Les modèles **${disconnectTarget.providerLabel}** ne seront plus utilisés pour la reconnaissance ou la synthèse vocale, et ne seront plus votre choix par défaut.`
               )}
             </Text>
             <Text as="p" color="text-03">
-              Connect another provider to continue using voice.
+              Connectez un autre fournisseur pour continuer à utiliser la voix.
             </Text>
           </>
         )
@@ -270,11 +270,11 @@ function VoiceDisconnectModal({
         <>
           <Text as="p" color="text-03">
             {markdown(
-              `**${disconnectTarget.providerLabel}** models will no longer be available for voice.`
+              `Les modèles **${disconnectTarget.providerLabel}** ne seront plus disponibles pour la voix.`
             )}
           </Text>
           <Text as="p" color="text-03">
-            Session history will be preserved.
+            L&apos;historique des sessions sera conservé.
           </Text>
         </>
       )}
@@ -534,7 +534,7 @@ export default function VoiceConfigurationPage() {
           description={pageDescription}
         />
         <SettingsLayouts.Body>
-          <Callout type="danger" title="Failed to load voice settings">
+          <Callout type="danger" title="Échec du chargement des paramètres vocaux">
             {message}
             {detail && (
               <Text as="p" font="main-content-body" color="text-03">
@@ -572,14 +572,14 @@ export default function VoiceConfigurationPage() {
       <SettingsLayouts.Body>
         <div className="flex flex-col gap-6">
           <Content
-            title="Speech to Text"
-            description="Select a model to transcribe speech to text in chats."
+            title="Reconnaissance vocale"
+            description="Sélectionnez un modèle pour transcrire la parole en texte dans les chats."
             sizePreset="main-content"
             variant="section"
           />
 
           {sttActivationError && (
-            <Callout type="danger" title="Unable to update STT provider">
+            <Callout type="danger" title="Impossible de mettre à jour le fournisseur STT">
               {sttActivationError}
             </Callout>
           )}
@@ -590,7 +590,7 @@ export default function VoiceConfigurationPage() {
               static
               large
               close={false}
-              text="Connect a speech to text provider to use in chat."
+              text="Connectez un fournisseur de reconnaissance vocale pour l'utiliser dans le chat."
               className="w-full"
             />
           )}
@@ -602,14 +602,14 @@ export default function VoiceConfigurationPage() {
 
         <div className="flex flex-col gap-6">
           <Content
-            title="Text to Speech"
-            description="Select a model to speak out chat responses."
+            title="Synthèse vocale"
+            description="Sélectionnez un modèle pour lire les réponses du chat à voix haute."
             sizePreset="main-content"
             variant="section"
           />
 
           {ttsActivationError && (
-            <Callout type="danger" title="Unable to update TTS provider">
+            <Callout type="danger" title="Impossible de mettre à jour le fournisseur TTS">
               {ttsActivationError}
             </Callout>
           )}
@@ -620,7 +620,7 @@ export default function VoiceConfigurationPage() {
               static
               large
               close={false}
-              text="Connect a text to speech provider to use in chat."
+              text="Connectez un fournisseur de synthèse vocale pour l'utiliser dans le chat."
               className="w-full"
             />
           )}

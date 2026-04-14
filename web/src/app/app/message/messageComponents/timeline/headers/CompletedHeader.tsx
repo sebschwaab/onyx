@@ -33,7 +33,7 @@ function MemoryTagWithTooltip({
   const memoriesModal = useCreateModal();
 
   const operationLabel =
-    memoryOperation === "add" ? "Added to memories" : "Updated memory";
+    memoryOperation === "add" ? "Ajouté aux mémoires" : "Mémoire mise à jour";
 
   const tag = <Tag icon={SvgAddLines} label={operationLabel} />;
 
@@ -146,10 +146,10 @@ export const CompletedHeader = React.memo(function CompletedHeader({
             size="md"
             onClick={noProp(onToggle)}
             rightIcon={isExpanded ? SvgFold : SvgExpand}
-            aria-label="Expand timeline"
+            aria-label="Développer la chronologie"
             aria-expanded={isExpanded}
           >
-            {`${totalSteps} ${totalSteps === 1 ? "step" : "steps"}`}
+            {`${totalSteps} ${totalSteps === 1 ? "étape" : "étapes"}`}
           </Button>
         )}
       </div>
@@ -157,13 +157,13 @@ export const CompletedHeader = React.memo(function CompletedHeader({
   }
 
   const durationText = processingDurationSeconds
-    ? `Thought for ${formatDurationSeconds(processingDurationSeconds)}`
-    : "Thought for some time";
+    ? `Réfléchi pendant ${formatDurationSeconds(processingDurationSeconds)}`
+    : "Réfléchi un moment";
 
   const imageText =
     generatedImageCount > 0
-      ? `Generated ${generatedImageCount} ${
-          generatedImageCount === 1 ? "image" : "images"
+      ? `${generatedImageCount} ${
+          generatedImageCount === 1 ? "image générée" : "images générées"
         }`
       : null;
 
@@ -193,10 +193,10 @@ export const CompletedHeader = React.memo(function CompletedHeader({
           size="md"
           onClick={noProp(onToggle)}
           rightIcon={isExpanded ? SvgFold : SvgExpand}
-          aria-label="Expand timeline"
+          aria-label="Développer la chronologie"
           aria-expanded={isExpanded}
         >
-          {`${totalSteps} ${totalSteps === 1 ? "step" : "steps"}`}
+          {`${totalSteps} ${totalSteps === 1 ? "étape" : "étapes"}`}
         </Button>
       )}
     </div>

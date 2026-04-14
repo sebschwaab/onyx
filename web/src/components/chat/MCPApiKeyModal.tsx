@@ -90,7 +90,7 @@ export default function MCPApiKeyModal({
         onClose();
       } catch (error) {
         console.error("Error submitting credentials:", error);
-        let errorMessage = "Failed to save credentials";
+        let errorMessage = "Échec de l'enregistrement des identifiants";
         if (error instanceof Error) {
           errorMessage = error.message;
         } else if (typeof error === "string") {
@@ -114,7 +114,7 @@ export default function MCPApiKeyModal({
         onClose();
       } catch (error) {
         console.error("Error submitting API key:", error);
-        let errorMessage = "Failed to save API key";
+        let errorMessage = "Échec de l'enregistrement de la clé API";
         if (error instanceof Error) {
           errorMessage = error.message;
         } else if (typeof error === "string") {
@@ -150,25 +150,25 @@ export default function MCPApiKeyModal({
     }));
   };
 
-  const credsType = isTemplateMode ? "Credentials" : "API Key";
+  const credsType = isTemplateMode ? "Identifiants" : "Clé API";
   return (
     <Modal open={isOpen} onOpenChange={handleClose}>
       <Modal.Content width="sm" height="sm">
         <Modal.Header
           icon={SvgKey}
-          title={isAuthenticated ? `Manage ${credsType}` : `Enter ${credsType}`}
+          title={isAuthenticated ? `Gérer les ${credsType}` : `Saisir les ${credsType}`}
           onClose={handleClose}
         />
         <Modal.Body>
           <Text as="p">
             {isAuthenticated
-              ? `Update your ${credsType} for ${serverName}.`
-              : `Enter your ${credsType} for ${serverName} to enable authentication.`}
+              ? `Mettez à jour vos ${credsType} pour ${serverName}.`
+              : `Saisissez vos ${credsType} pour ${serverName} afin d'activer l'authentification.`}
           </Text>
           <Text as="p" text02>
             {isAuthenticated
-              ? "Changes will be validated against the server before being saved."
-              : `Your ${credsType} will be validated against the server and stored securely.`}
+              ? "Les modifications seront validées auprès du serveur avant d'être enregistrées."
+              : `Vos ${credsType} seront validés auprès du serveur et stockés en toute sécurité.`}
           </Text>
 
           {error && (
@@ -199,7 +199,7 @@ export default function MCPApiKeyModal({
                         onChange={(e) =>
                           updateCredential(field, e.target.value)
                         }
-                        placeholder={`Enter your ${field.replace(/_/g, " ")}`}
+                        placeholder={`Saisir votre ${field.replace(/_/g, " ")}`}
                         className="pr-10"
                         required
                       />
@@ -230,7 +230,7 @@ export default function MCPApiKeyModal({
                     type={showApiKey ? "text" : "password"}
                     value={apiKey}
                     onChange={(e) => setApiKey(e.target.value)}
-                    placeholder={`Enter your ${credsType}`}
+                    placeholder={`Saisir votre ${credsType}`}
                     className="pr-10"
                     required
                   />
@@ -255,7 +255,7 @@ export default function MCPApiKeyModal({
                 prominence="secondary"
                 onClick={handleClose}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 disabled={
@@ -269,10 +269,10 @@ export default function MCPApiKeyModal({
                 type="submit"
               >
                 {isSubmitting
-                  ? "Saving..."
+                  ? "Enregistrement..."
                   : isAuthenticated
-                    ? `Update ${credsType}`
-                    : `Save ${credsType}`}
+                    ? `Mettre à jour les ${credsType}`
+                    : `Enregistrer les ${credsType}`}
               </Button>
             </div>
           </form>

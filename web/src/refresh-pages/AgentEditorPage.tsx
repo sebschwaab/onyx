@@ -112,7 +112,7 @@ function FormWarningsEffect() {
     const warnings: Record<string, string> = {};
     if (values.web_search && !values.open_url) {
       warnings.open_url =
-        "Web Search without the ability to open URLs can lead to significantly worse web based results.";
+        "La recherche web sans la possibilité d'ouvrir des URLs peut conduire à des résultats web significativement moins bons.";
     }
     setStatus({ warnings });
   }, [values.web_search, values.open_url, setStatus]);
@@ -225,7 +225,7 @@ function AgentIconEditor({ existingAgent }: AgentIconEditorProps) {
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 mb-2">
                 <Hoverable.Item group="inputAvatar" variant="opacity-on-hover">
                   <Button className="h-[1.75rem]" secondary>
-                    Edit
+                    Modifier
                   </Button>
                 </Hoverable.Item>
               </div>
@@ -241,7 +241,7 @@ function AgentIconEditor({ existingAgent }: AgentIconEditorProps) {
                 onClick={() => fileInputRef.current?.click()}
                 emphasized
               >
-                Upload Image
+                Télécharger une image
               </LineItem>,
               null,
               <div className="grid grid-cols-4 gap-1">
@@ -349,7 +349,7 @@ function MCPServerCard({
       >
         <GeneralLayouts.Section flexDirection="row" gap={0.5}>
           <InputTypeIn
-            placeholder="Search tools..."
+            placeholder="Rechercher des outils..."
             variant="internal"
             leftSearchIcon
             value={query}
@@ -361,7 +361,7 @@ function MCPServerCard({
               rightIcon={isFolded ? SvgExpand : SvgFold}
               onClick={() => setIsFolded((prev) => !prev)}
             >
-              {isFolded ? "Expand" : "Fold"}
+              {isFolded ? "Développer" : "Réduire"}
             </OpalButton>
           )}
         </GeneralLayouts.Section>
@@ -434,7 +434,7 @@ function StarterMessages() {
               name={`starter_messages.${i}`}
               placeholder={
                 STARTER_MESSAGES_EXAMPLES[i] ||
-                "Enter a conversation starter..."
+                "Saisir un début de conversation..."
               }
               onRemove={() => arrayHelpers.remove(i)}
             />
@@ -539,7 +539,7 @@ export default function AgentEditorPage({
   const isImageGenerationAvailable = !!imageGenTool;
   const imageGenerationDisabledTooltip = isImageGenerationAvailable
     ? undefined
-    : "Image generation requires a configured model. If you have access, set one up under Settings > Image Generation, or ask an admin.";
+    : "La génération d'images nécessite un modèle configuré. Si vous y avez accès, configurez-en un dans Paramètres > Génération d'images, ou contactez un administrateur.";
 
   // Group MCP server tools from availableTools by server ID
   const mcpServersWithTools = mcpServers.map((server) => {
@@ -675,11 +675,11 @@ export default function AgentEditorPage({
     icon_name: Yup.string().nullable(),
     remove_image: Yup.boolean().optional(),
     uploaded_image_id: Yup.string().nullable(),
-    name: Yup.string().required("Agent name is required."),
+    name: Yup.string().required("Le nom de l'agent est requis."),
     description: Yup.string()
       .max(
         MAX_CHARACTERS_AGENT_DESCRIPTION,
-        `Description must be ${MAX_CHARACTERS_AGENT_DESCRIPTION} characters or less`
+        `La description doit contenir ${MAX_CHARACTERS_AGENT_DESCRIPTION} caractères ou moins`
       )
       .optional(),
 
@@ -688,7 +688,7 @@ export default function AgentEditorPage({
     starter_messages: Yup.array().of(
       Yup.string().max(
         MAX_CHARACTERS_STARTER_MESSAGE,
-        `Conversation starter must be ${MAX_CHARACTERS_STARTER_MESSAGE} characters or less`
+        `Le début de conversation doit contenir ${MAX_CHARACTERS_STARTER_MESSAGE} caractères ou moins`
       )
     ),
 
@@ -708,7 +708,7 @@ export default function AgentEditorPage({
       .optional()
       .test(
         "knowledge-cutoff-date-not-in-future",
-        "Knowledge cutoff date must be today or earlier.",
+        "La date limite de connaissance doit être aujourd'hui ou antérieure.",
         (value) => !value || !isDateInFuture(value)
       ),
     replace_base_system_prompt: Yup.boolean(),
@@ -846,7 +846,7 @@ export default function AgentEditorPage({
           ? await personaResponse.text()
           : "No response received";
         toast.error(
-          `Failed to ${existingAgent ? "update" : "create"} agent - ${error}`
+          `Échec de la ${existingAgent ? "mise à jour" : "création"} de l'agent - ${error}`
         );
         return;
       }
@@ -855,8 +855,8 @@ export default function AgentEditorPage({
       const agent = await personaResponse.json();
       toast.success(
         `Agent "${agent.name}" ${
-          existingAgent ? "updated" : "created"
-        } successfully`
+          existingAgent ? "mis à jour" : "créé"
+        } avec succès`
       );
 
       // Refresh agents list and the specific agent
@@ -869,7 +869,7 @@ export default function AgentEditorPage({
       appRouter({ agentId: agent.id });
     } catch (error) {
       console.error("Submit error:", error);
-      toast.error(`An error occurred: ${error}`);
+      toast.error(`Une erreur est survenue : ${error}`);
     }
   }
 
@@ -880,9 +880,9 @@ export default function AgentEditorPage({
     const error = await deleteAgent(existingAgent.id);
 
     if (error) {
-      toast.error(`Failed to delete agent: ${error}`);
+      toast.error(`Échec de la suppression de l'agent : ${error}`);
     } else {
-      toast.success("Agent deleted successfully");
+      toast.success("Agent supprimé avec succès");
 
       deleteAgentModal.toggle(false);
       await refreshAgents();
@@ -1018,8 +1018,8 @@ export default function AgentEditorPage({
 
                 <userFilesModal.Provider>
                   <UserFilesModal
-                    title="User Files"
-                    description="All files selected for this agent"
+                    title="Fichiers utilisateur"
+                    description="Tous les fichiers sélectionnés pour cet agent"
                     recentFiles={values.user_file_ids
                       .map((userFileId: string) => {
                         const rf = allRecentFiles.find(
@@ -1107,7 +1107,7 @@ export default function AgentEditorPage({
                             error
                           );
                           toast.error(
-                            "Agent sharing was saved, but failed to refresh. Please reload."
+                            "Le partage de l'agent a été enregistré, mais le rechargement a échoué. Veuillez recharger la page."
                           );
                         }
                       };
@@ -1127,12 +1127,12 @@ export default function AgentEditorPage({
                           "Share agent mutation failed unexpectedly:",
                           error
                         );
-                        toast.error("Failed to share agent. Please try again.");
+                        toast.error("Échec du partage de l'agent. Veuillez réessayer.");
                         return;
                       }
 
                       if (shareError) {
-                        toast.error(`Failed to share agent: ${shareError}`);
+                        toast.error(`Échec du partage de l'agent : ${shareError}`);
                         return;
                       }
 
@@ -1152,7 +1152,7 @@ export default function AgentEditorPage({
                           applySharingFields();
                           await refreshSharedUi();
                           toast.error(
-                            "Failed to update featured status. Please try again."
+                            "Échec de la mise à jour du statut mis en avant. Veuillez réessayer."
                           );
                           return;
                         }
@@ -1162,7 +1162,7 @@ export default function AgentEditorPage({
                           applySharingFields();
                           await refreshSharedUi();
                           toast.error(
-                            `Failed to update featured status: ${featuredError}`
+                            `Échec de la mise à jour du statut mis en avant : ${featuredError}`
                           );
                           return;
                         }
@@ -1184,23 +1184,23 @@ export default function AgentEditorPage({
                   {deleteAgentModal.isOpen && (
                     <ConfirmationModalLayout
                       icon={SvgTrash}
-                      title="Delete Agent"
+                      title="Supprimer l'agent"
                       submit={
                         <OpalButton
                           variant="danger"
                           onClick={handleDeleteAgent}
                         >
-                          Delete Agent
+                          Supprimer l&apos;agent
                         </OpalButton>
                       }
                       onClose={() => deleteAgentModal.toggle(false)}
                     >
                       <GeneralLayouts.Section alignItems="start" gap={0.5}>
                         <Text>
-                          Anyone using this agent will no longer be able to
-                          access it. Deletion cannot be undone.
+                          Toute personne utilisant cet agent ne pourra plus y
+                          accéder. La suppression est irréversible.
                         </Text>
-                        <Text>Are you sure you want to delete this agent?</Text>
+                        <Text>Êtes-vous sûr de vouloir supprimer cet agent ?</Text>
                       </GeneralLayouts.Section>
                     </ConfirmationModalLayout>
                   )}
@@ -1210,7 +1210,7 @@ export default function AgentEditorPage({
                   <SettingsLayouts.Root>
                     <SettingsLayouts.Header
                       icon={SvgOnyxOctagon}
-                      title={existingAgent ? "Edit Agent" : "Create Agent"}
+                      title={existingAgent ? "Modifier l'agent" : "Créer un agent"}
                       rightChildren={
                         <div className="flex gap-2">
                           <OpalButton
@@ -1218,18 +1218,18 @@ export default function AgentEditorPage({
                             type="button"
                             onClick={() => router.back()}
                           >
-                            Cancel
+                            Annuler
                           </OpalButton>
                           <SimpleTooltip
                             tooltip={
                               isSubmitting
-                                ? "Saving changes..."
+                                ? "Enregistrement en cours..."
                                 : !isValid
-                                  ? "Please fix the errors in the form before saving."
+                                  ? "Veuillez corriger les erreurs dans le formulaire avant d'enregistrer."
                                   : !dirty
-                                    ? "No changes have been made."
+                                    ? "Aucune modification n'a été effectuée."
                                     : hasUploadingFiles
-                                      ? "Please wait for files to finish uploading."
+                                      ? "Veuillez attendre la fin du téléchargement des fichiers."
                                       : undefined
                             }
                             side="bottom"
@@ -1243,7 +1243,7 @@ export default function AgentEditorPage({
                               }
                               type="submit"
                             >
-                              {existingAgent ? "Save" : "Create"}
+                              {existingAgent ? "Enregistrer" : "Créer"}
                             </OpalButton>
                           </SimpleTooltip>
                         </div>
@@ -1260,21 +1260,21 @@ export default function AgentEditorPage({
                         alignItems="start"
                       >
                         <GeneralLayouts.Section>
-                          <InputLayouts.Vertical name="name" title="Name">
+                          <InputLayouts.Vertical name="name" title="Nom">
                             <InputTypeInField
                               name="name"
-                              placeholder="Name your agent"
+                              placeholder="Nommer votre agent"
                             />
                           </InputLayouts.Vertical>
 
                           <InputLayouts.Vertical
                             name="description"
                             title="Description"
-                            suffix="optional"
+                            suffix="optionnel"
                           >
                             <InputTextAreaField
                               name="description"
-                              placeholder="What does this agent do?"
+                              placeholder="Que fait cet agent ?"
                             />
                           </InputLayouts.Vertical>
                         </GeneralLayouts.Section>
@@ -1282,7 +1282,7 @@ export default function AgentEditorPage({
                         <GeneralLayouts.Section width="fit">
                           <InputLayouts.Vertical
                             name="agent_avatar"
-                            title="Agent Avatar"
+                            title="Avatar de l'agent"
                           >
                             <AgentIconEditor existingAgent={existingAgent} />
                           </InputLayouts.Vertical>
@@ -1295,20 +1295,20 @@ export default function AgentEditorPage({
                         <InputLayouts.Vertical
                           name="instructions"
                           title="Instructions"
-                          suffix="optional"
-                          description="Add instructions to tailor the response for this agent."
+                          suffix="optionnel"
+                          description="Ajoutez des instructions pour personnaliser les réponses de cet agent."
                         >
                           <InputTextAreaField
                             name="instructions"
-                            placeholder="Think step by step and show reasoning for complex problems. Use specific examples. Emphasize action items, and leave blanks for the human to fill in when you have unknown. Use a polite enthusiastic tone."
+                            placeholder="Pensez étape par étape et montrez le raisonnement pour les problèmes complexes. Utilisez des exemples spécifiques. Mettez en avant les points d'action, et laissez des espaces à remplir par l'utilisateur si vous ne connaissez pas. Utilisez un ton poli et enthousiaste."
                           />
                         </InputLayouts.Vertical>
 
                         <InputLayouts.Vertical
                           name="starter_messages"
-                          title="Conversation Starters"
-                          description="Example messages that help users understand what this agent can do and how to interact with it effectively."
-                          suffix="optional"
+                          title="Débuts de conversation"
+                          description="Messages exemples qui aident les utilisateurs à comprendre ce que cet agent peut faire et comment interagir avec lui efficacement."
+                          suffix="optionnel"
                         >
                           <StarterMessages />
                         </InputLayouts.Vertical>
@@ -1364,7 +1364,7 @@ export default function AgentEditorPage({
                       <SimpleCollapsible>
                         <SimpleCollapsible.Header
                           title="Actions"
-                          description="Tools and capabilities available for this agent to use."
+                          description="Outils et capacités disponibles pour cet agent."
                         />
                         <SimpleCollapsible.Content>
                           <GeneralLayouts.Section gap={0.5}>
@@ -1381,8 +1381,8 @@ export default function AgentEditorPage({
                               >
                                 <InputLayouts.Horizontal
                                   name="image_generation"
-                                  title="Image Generation"
-                                  description="Generate and manipulate images using AI-powered tools."
+                                  title="Génération d'images"
+                                  description="Générez et manipulez des images à l'aide d'outils alimentés par l'IA."
                                   disabled={!isImageGenerationAvailable}
                                 >
                                   <SwitchField
@@ -1398,8 +1398,8 @@ export default function AgentEditorPage({
                             >
                               <InputLayouts.Horizontal
                                 name="web_search"
-                                title="Web Search"
-                                description="Search the web for real-time information and up-to-date results."
+                                title="Recherche web"
+                                description="Recherchez sur le web des informations en temps réel et des résultats à jour."
                                 disabled={!webSearchTool}
                               >
                                 <SwitchField
@@ -1414,8 +1414,8 @@ export default function AgentEditorPage({
                             >
                               <InputLayouts.Horizontal
                                 name="open_url"
-                                title="Open URL"
-                                description="Fetch and read content from web URLs."
+                                title="Ouvrir une URL"
+                                description="Récupérez et lisez le contenu de pages web."
                                 disabled={!openURLTool}
                               >
                                 <SwitchField
@@ -1432,8 +1432,8 @@ export default function AgentEditorPage({
                             >
                               <InputLayouts.Horizontal
                                 name="code_interpreter"
-                                title="Code Interpreter"
-                                description="Generate and run code."
+                                title="Interpréteur de code"
+                                description="Générez et exécutez du code."
                                 disabled={!codeInterpreterTool}
                               >
                                 <SwitchField
@@ -1487,15 +1487,15 @@ export default function AgentEditorPage({
 
                       <SimpleCollapsible>
                         <SimpleCollapsible.Header
-                          title="Advanced Options"
-                          description="Fine-tune agent prompts and knowledge."
+                          title="Options avancées"
+                          description="Affinez les prompts et les connaissances de l'agent."
                         />
                         <SimpleCollapsible.Content>
                           <GeneralLayouts.Section>
                             <Card>
                               <InputLayouts.Horizontal
-                                title="Share This Agent"
-                                description="with other users, groups, or everyone in your organization."
+                                title="Partager cet agent"
+                                description="avec d'autres utilisateurs, groupes, ou toute votre organisation."
                                 center
                               >
                                 <OpalButton
@@ -1503,15 +1503,15 @@ export default function AgentEditorPage({
                                   icon={isShared ? SvgUsers : SvgLock}
                                   onClick={() => shareAgentModal.toggle(true)}
                                 >
-                                  Share
+                                  Partager
                                 </OpalButton>
                               </InputLayouts.Horizontal>
                               {canUpdateFeaturedStatus && (
                                 <>
                                   <InputLayouts.Horizontal
                                     name="is_featured"
-                                    title="Feature This Agent"
-                                    description="Show this agent at the top of the explore agents list and automatically pin it to the sidebar for new users with access."
+                                    title="Mettre en avant cet agent"
+                                    description="Affiche cet agent en haut de la liste des agents et l'épingle automatiquement à la barre latérale pour les nouveaux utilisateurs ayant accès."
                                   >
                                     <SwitchField name="is_featured" />
                                   </InputLayouts.Horizontal>
@@ -1520,7 +1520,7 @@ export default function AgentEditorPage({
                                       static
                                       close={false}
                                       className="w-full"
-                                      text="This agent is private to you and will only be featured for yourself."
+                                      text="Cet agent est privé et ne sera mis en avant que pour vous."
                                     />
                                   )}
                                 </>
@@ -1530,8 +1530,8 @@ export default function AgentEditorPage({
                             <Card>
                               <InputLayouts.Horizontal
                                 name="llm_model"
-                                title="Default Model"
-                                description="This model will be used by Onyx by default in your chats."
+                                title="Modèle par défaut"
+                                description="Ce modèle sera utilisé par Onyx par défaut dans vos conversations."
                               >
                                 <LLMSelector
                                   name="llm_model"
@@ -1547,9 +1547,9 @@ export default function AgentEditorPage({
                               </InputLayouts.Horizontal>
                               <InputLayouts.Horizontal
                                 name="knowledge_cutoff_date"
-                                title="Knowledge Cutoff Date"
-                                suffix="optional"
-                                description="Documents with a last-updated date prior to this will be ignored."
+                                title="Date limite de connaissance"
+                                suffix="optionnel"
+                                description="Les documents mis à jour avant cette date seront ignorés."
                               >
                                 <InputDatePickerField
                                   name="knowledge_cutoff_date"
@@ -1558,9 +1558,9 @@ export default function AgentEditorPage({
                               </InputLayouts.Horizontal>
                               <InputLayouts.Horizontal
                                 name="replace_base_system_prompt"
-                                title="Overwrite System Prompt"
-                                suffix="(Not Recommended)"
-                                description='Remove the base system prompt which includes useful instructions (e.g. "You can use Markdown tables"). This may affect response quality.'
+                                title="Écraser le prompt système"
+                                suffix="(Déconseillé)"
+                                description='Supprime le prompt système de base qui inclut des instructions utiles (ex. "Vous pouvez utiliser des tableaux Markdown"). Cela peut affecter la qualité des réponses.'
                               >
                                 <SwitchField name="replace_base_system_prompt" />
                               </InputLayouts.Horizontal>
@@ -1569,20 +1569,20 @@ export default function AgentEditorPage({
                             <GeneralLayouts.Section gap={0.25}>
                               <InputLayouts.Vertical
                                 name="reminders"
-                                title="Reminders"
-                                suffix="optional"
+                                title="Rappels"
+                                suffix="optionnel"
                               >
                                 <InputTextAreaField
                                   name="reminders"
-                                  placeholder="Remember, I want you to always format your response as a numbered list."
+                                  placeholder="N'oubliez pas, je veux que vous formatiez toujours votre réponse sous forme de liste numérotée."
                                 />
                               </InputLayouts.Vertical>
                               <Text text03 secondaryBody>
-                                Append a brief reminder to the prompt messages.
-                                Use this to remind the agent if you find that it
-                                tends to forget certain instructions as the chat
-                                progresses. This should be brief and not
-                                interfere with the user messages.
+                                Ajoutez un bref rappel aux messages du prompt.
+                                Utilisez ceci pour rappeler à l'agent s'il tend
+                                à oublier certaines instructions au fil de la
+                                conversation. Cela doit être bref et ne pas
+                                interférer avec les messages de l'utilisateur.
                               </Text>
                             </GeneralLayouts.Section>
                           </GeneralLayouts.Section>
@@ -1595,8 +1595,8 @@ export default function AgentEditorPage({
 
                           <Card>
                             <InputLayouts.Horizontal
-                              title="Delete This Agent"
-                              description="Anyone using this agent will no longer be able to access it."
+                              title="Supprimer cet agent"
+                              description="Toute personne utilisant cet agent ne pourra plus y accéder."
                               center
                             >
                               <OpalButton
@@ -1604,7 +1604,7 @@ export default function AgentEditorPage({
                                 prominence="secondary"
                                 onClick={() => deleteAgentModal.toggle(true)}
                               >
-                                Delete Agent
+                                Supprimer l&apos;agent
                               </OpalButton>
                             </InputLayouts.Horizontal>
                           </Card>

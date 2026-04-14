@@ -371,13 +371,13 @@ export default function AgentsNavigationPage() {
 
   const creatorFilterButtonText = useMemo(() => {
     if (selectedCreatorIds.size === 0) {
-      return "Everyone";
+      return "Tout le monde";
     } else if (selectedCreatorIds.size === 1) {
       const selectedId = Array.from(selectedCreatorIds)[0];
       const creator = uniqueCreators.find((c) => c.id === selectedId);
-      return `By ${creator?.email}` || "Everyone";
+      return `Par ${creator?.email}` || "Tout le monde";
     } else {
-      return `${selectedCreatorIds.size} people`;
+      return `${selectedCreatorIds.size} personnes`;
     }
   }, [selectedCreatorIds, uniqueCreators]);
 
@@ -385,7 +385,7 @@ export default function AgentsNavigationPage() {
     const totalSelected = selectedActionIds.size + selectedMcpServerIds.size;
 
     if (totalSelected === 0) {
-      return "All Actions";
+      return "Toutes les actions";
     } else if (totalSelected === 1) {
       // Check if it's a single tool
       if (selectedActionIds.size === 1) {
@@ -410,9 +410,9 @@ export default function AgentsNavigationPage() {
         }
       }
 
-      return "All Actions";
+      return "Toutes les actions";
     } else {
-      return `${totalSelected} selected`;
+      return `${totalSelected} sélectionnées`;
     }
   }, [selectedActionIds, selectedMcpServerIds, uniqueActions]);
 
@@ -424,14 +424,14 @@ export default function AgentsNavigationPage() {
       <SettingsLayouts.Header
         icon={SvgOnyxOctagon}
         title="Agents"
-        description="Customize AI behavior and knowledge for you and your team's use cases."
+        description="Personnalisez le comportement et les connaissances de l'IA pour vos besoins et ceux de votre équipe."
         rightChildren={
           <Button
             href="/app/agents/create"
             icon={SvgPlus}
             aria-label="AgentsPage/new-agent-button"
           >
-            New Agent
+            Nouvel agent
           </Button>
         }
       >
@@ -440,7 +440,7 @@ export default function AgentsNavigationPage() {
             <div className="flex-[2]">
               <InputTypeIn
                 ref={searchInputRef}
-                placeholder="Search agents..."
+                placeholder="Rechercher des agents..."
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
                 leftSearchIcon
@@ -452,8 +452,8 @@ export default function AgentsNavigationPage() {
                 onValueChange={(value) => setActiveTab(value as "all" | "your")}
               >
                 <Tabs.List>
-                  <Tabs.Trigger value="all">All Agents</Tabs.Trigger>
-                  <Tabs.Trigger value="your">Your Agents</Tabs.Trigger>
+                  <Tabs.Trigger value="all">Tous les agents</Tabs.Trigger>
+                  <Tabs.Trigger value="your">Mes agents</Tabs.Trigger>
                 </Tabs.List>
               </Tabs>
             </div>
@@ -477,7 +477,7 @@ export default function AgentsNavigationPage() {
                   {[
                     <InputTypeIn
                       key="created-by"
-                      placeholder="Created by..."
+                      placeholder="Créé par..."
                       variant="internal"
                       leftSearchIcon
                       value={creatorSearchQuery}
@@ -553,7 +553,7 @@ export default function AgentsNavigationPage() {
                   {[
                     <InputTypeIn
                       key="actions"
-                      placeholder="Filter actions..."
+                      placeholder="Filtrer les actions..."
                       variant="internal"
                       leftSearchIcon
                       value={actionsSearchQuery}
@@ -648,16 +648,16 @@ export default function AgentsNavigationPage() {
             className="w-full h-full flex flex-col items-center justify-center py-12"
             text03
           >
-            No Agents found
+            Aucun agent trouvé
           </Text>
         ) : (
           <>
             <AgentsSection
-              title="Featured Agents"
-              description="Curated by your team"
+              title="Agents mis en avant"
+              description="Sélectionnés par votre équipe"
               agents={featuredAgents}
             />
-            <AgentsSection title="All Agents" agents={allAgents} />
+            <AgentsSection title="Tous les agents" agents={allAgents} />
             <TextSeparator
               count={agentCount}
               text={agentCount === 1 ? "Agent" : "Agents"}

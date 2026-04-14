@@ -46,7 +46,7 @@ export const MemoryToolRenderer: MessageRenderer<MemoryToolPacket, {}> = ({
     return children([
       {
         icon: SvgEditBig,
-        status: "Memory",
+        status: "Mémoire",
         content: <div />,
         supportsCollapsible: false,
         timelineLayout: "timeline",
@@ -59,7 +59,7 @@ export const MemoryToolRenderer: MessageRenderer<MemoryToolPacket, {}> = ({
   if (noAccess) {
     const content = (
       <Text as="p" text03 className="text-sm">
-        Memory tool disabled
+        Outil mémoire désactivé
       </Text>
     );
 
@@ -73,7 +73,7 @@ export const MemoryToolRenderer: MessageRenderer<MemoryToolPacket, {}> = ({
           content: (
             <div className="flex flex-col">
               <Text as="p" text02 className="text-sm mb-1">
-                Memory
+                Mémoire
               </Text>
               {content}
             </div>
@@ -85,7 +85,7 @@ export const MemoryToolRenderer: MessageRenderer<MemoryToolPacket, {}> = ({
     return children([
       {
         icon: SvgEditBig,
-        status: "Memory",
+        status: "Mémoire",
         supportsCollapsible: false,
         timelineLayout: "timeline",
         noPaddingRight: true,
@@ -95,7 +95,7 @@ export const MemoryToolRenderer: MessageRenderer<MemoryToolPacket, {}> = ({
   }
 
   // Determine status text
-  let statusLabel = "Updating memory";
+  let statusLabel = "Mise à jour de la mémoire";
 
   const memoryContent = (
     <div className="flex flex-col">
@@ -119,7 +119,7 @@ export const MemoryToolRenderer: MessageRenderer<MemoryToolPacket, {}> = ({
               prominence="tertiary"
               size="md"
               icon={SvgMaximize2}
-              tooltip="View Memories"
+              tooltip="Voir les mémoires"
               onClick={(e) => {
                 e.stopPropagation();
                 memoriesModal.toggle(true);

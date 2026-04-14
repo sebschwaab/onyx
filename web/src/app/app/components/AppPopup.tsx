@@ -76,7 +76,7 @@ export function AppPopup() {
       <Modal.Content width="sm" height="lg">
         <Modal.Header
           icon={headerIcon}
-          title={popupTitle || "Welcome to Onyx!"}
+          title={popupTitle || "Bienvenue sur Onyx !"}
         />
         <Modal.Body>
           <div className="overflow-y-auto text-left">
@@ -171,7 +171,7 @@ export function AppPopup() {
                 <FormField.Message
                   messages={{
                     error:
-                      "You need to agree to the terms to access the application.",
+                      "Vous devez accepter les conditions pour accéder à l'application.",
                   }}
                 />
               </FormField>
@@ -192,7 +192,7 @@ export function AppPopup() {
               setCompletedFlow(true);
             }}
           >
-            Start
+            Commencer
           </Button>
         </Modal.Footer>
       </Modal.Content>

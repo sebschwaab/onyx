@@ -131,7 +131,7 @@ export default function AppPage({ firstMessage }: ChatPageProps) {
 
   useToastFromQuery({
     oauth_connected: {
-      message: "Authentication successful",
+      message: "Authentification réussie",
       type: "success",
     },
   });
@@ -283,8 +283,8 @@ export default function AppPage({ firstMessage }: ChatPageProps) {
       const names = lastFailedFiles.map((f) => f.name).join(", ");
       toast.error(
         lastFailedFiles.length === 1
-          ? `File failed and was removed: ${names}`
-          : `Files failed and were removed: ${names}`
+          ? `Fichier échoué et supprimé : ${names}`
+          : `Fichiers échoués et supprimés : ${names}`
       );
       clearLastFailedFiles();
     }

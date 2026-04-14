@@ -19,7 +19,7 @@ export async function deactivateUser(email: string): Promise<void> {
     body: JSON.stringify({ user_email: email }),
   });
   if (!res.ok) {
-    throw new Error(await parseErrorDetail(res, "Failed to deactivate user"));
+    throw new Error(await parseErrorDetail(res, "Échec de la désactivation de l'utilisateur"));
   }
 }
 
@@ -30,7 +30,7 @@ export async function activateUser(email: string): Promise<void> {
     body: JSON.stringify({ user_email: email }),
   });
   if (!res.ok) {
-    throw new Error(await parseErrorDetail(res, "Failed to activate user"));
+    throw new Error(await parseErrorDetail(res, "Échec de l'activation de l'utilisateur"));
   }
 }
 
@@ -41,7 +41,7 @@ export async function deleteUser(email: string): Promise<void> {
     body: JSON.stringify({ user_email: email }),
   });
   if (!res.ok) {
-    throw new Error(await parseErrorDetail(res, "Failed to delete user"));
+    throw new Error(await parseErrorDetail(res, "Échec de la suppression de l'utilisateur"));
   }
 }
 
@@ -55,7 +55,7 @@ export async function setUserRole(
     body: JSON.stringify({ user_email: email, new_role: newRole }),
   });
   if (!res.ok) {
-    throw new Error(await parseErrorDetail(res, "Failed to update user role"));
+    throw new Error(await parseErrorDetail(res, "Échec de la mise à jour du rôle de l'utilisateur"));
   }
 }
 
@@ -69,7 +69,7 @@ export async function addUserToGroup(
     body: JSON.stringify({ user_ids: [userId] }),
   });
   if (!res.ok) {
-    throw new Error(await parseErrorDetail(res, "Failed to add user to group"));
+    throw new Error(await parseErrorDetail(res, "Échec de l'ajout de l'utilisateur au groupe"));
   }
 }
 
@@ -89,7 +89,7 @@ export async function removeUserFromGroup(
   });
   if (!res.ok) {
     throw new Error(
-      await parseErrorDetail(res, "Failed to remove user from group")
+      await parseErrorDetail(res, "Échec du retrait de l'utilisateur du groupe")
     );
   }
 }
@@ -101,7 +101,7 @@ export async function cancelInvite(email: string): Promise<void> {
     body: JSON.stringify({ user_email: email }),
   });
   if (!res.ok) {
-    throw new Error(await parseErrorDetail(res, "Failed to cancel invite"));
+    throw new Error(await parseErrorDetail(res, "Échec de l'annulation de l'invitation"));
   }
 }
 
@@ -112,7 +112,7 @@ export async function approveRequest(email: string): Promise<void> {
     body: JSON.stringify({ email }),
   });
   if (!res.ok) {
-    throw new Error(await parseErrorDetail(res, "Failed to approve request"));
+    throw new Error(await parseErrorDetail(res, "Échec de l'approbation de la demande"));
   }
 }
 
@@ -123,7 +123,7 @@ export async function inviteUsers(emails: string[]): Promise<void> {
     body: JSON.stringify({ emails }),
   });
   if (!res.ok) {
-    throw new Error(await parseErrorDetail(res, "Failed to invite users"));
+    throw new Error(await parseErrorDetail(res, "Échec de l'envoi des invitations"));
   }
 }
 
@@ -136,7 +136,7 @@ export async function resetPassword(
     body: JSON.stringify({ user_email: email }),
   });
   if (!res.ok) {
-    throw new Error(await parseErrorDetail(res, "Failed to reset password"));
+    throw new Error(await parseErrorDetail(res, "Échec de la réinitialisation du mot de passe"));
   }
   return res.json();
 }
@@ -145,7 +145,7 @@ export async function downloadUsersCsv(): Promise<void> {
   const res = await fetch("/api/manage/users/download");
   if (!res.ok) {
     throw new Error(
-      await parseErrorDetail(res, "Failed to download users CSV")
+      await parseErrorDetail(res, "Échec du téléchargement du CSV des utilisateurs")
     );
   }
   const blob = await res.blob();

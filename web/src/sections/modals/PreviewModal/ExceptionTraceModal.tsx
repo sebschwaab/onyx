@@ -20,7 +20,7 @@ export default function ExceptionTraceModal({
       <Modal.Content width="full" height="full">
         <Modal.Header
           icon={SvgAlertTriangle}
-          title="Full Exception Trace"
+          title="Trace d'exception complète"
           onClose={onOutsideClick}
           height="fit"
         />

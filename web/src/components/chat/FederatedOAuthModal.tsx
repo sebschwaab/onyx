@@ -125,8 +125,8 @@ export default function FederatedOAuthModal() {
       <Modal.Content width="sm" height="sm">
         <Modal.Header
           icon={SvgLink}
-          title="Connect Your Apps"
-          description={`Improve answer quality by letting ${applicationName} search all your connected data.`}
+          title="Connecter vos applications"
+          description={`Améliorez la qualité des réponses en laissant ${applicationName} accéder à toutes vos données connectées.`}
         />
         <Modal.Body>
           {needsAuth.map((connector) => {
@@ -148,7 +148,7 @@ export default function FederatedOAuthModal() {
                       target="_blank"
                       href={connector.authorize_url}
                     >
-                      Connect
+                      Connecter
                     </Button>
                   }
                 />
@@ -157,7 +157,7 @@ export default function FederatedOAuthModal() {
           })}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleOAuthModalSkip}>Skip for now</Button>
+          <Button onClick={handleOAuthModalSkip}>Ignorer pour l&apos;instant</Button>
         </Modal.Footer>
       </Modal.Content>
     </Modal>

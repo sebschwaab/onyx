@@ -118,18 +118,18 @@ export const PythonToolRenderer: MessageRenderer<PythonToolPacket, {}> = ({
 
   const status = useMemo(() => {
     if (isStreaming) {
-      return "Writing code...";
+      return "Écriture du code...";
     }
     if (isExecuting) {
-      return "Executing Python code...";
+      return "Exécution du code Python...";
     }
     if (hasError) {
-      return "Python execution failed";
+      return "Échec de l'exécution Python";
     }
     if (isComplete) {
-      return "Python execution completed";
+      return "Exécution Python terminée";
     }
-    return "Python execution";
+    return "Exécution Python";
   }, [isStreaming, isComplete, isExecuting, hasError]);
 
   // Shared content for all states - used by both FULL and compact modes
@@ -149,7 +149,7 @@ export const PythonToolRenderer: MessageRenderer<PythonToolPacket, {}> = ({
               style={{ animationDelay: "0.2s" }}
             ></div>
           </div>
-          <span>{isStreaming ? "Writing code..." : "Running code..."}</span>
+          <span>{isStreaming ? "Écriture du code..." : "Exécution du code..."}</span>
         </div>
       )}
 

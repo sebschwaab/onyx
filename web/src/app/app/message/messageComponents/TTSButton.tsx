@@ -40,7 +40,7 @@ function TTSButton({ text, voice, speed }: TTSButtonProps) {
         await play(text, voice, speed);
       } catch (err) {
         console.error("TTS playback failed:", err);
-        toast.error("Could not play audio");
+        toast.error("Impossible de lire l'audio");
       }
     }
   }, [
@@ -71,10 +71,10 @@ function TTSButton({ text, voice, speed }: TTSButtonProps) {
       : SvgPlayCircle;
 
   const tooltip = isButtonPlaying
-    ? "Stop playback"
+    ? "Arrêter la lecture"
     : isButtonLoading
-      ? "Loading..."
-      : "Read aloud";
+      ? "Chargement..."
+      : "Lire à voix haute";
 
   return (
     <Button

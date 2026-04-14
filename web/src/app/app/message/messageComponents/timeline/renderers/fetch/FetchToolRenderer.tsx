@@ -63,7 +63,7 @@ export const FetchToolRenderer: MessageRenderer<FetchToolPacket, {}> = ({
     return children([
       {
         icon: SvgCircle,
-        status: "Reading",
+        status: "Lecture",
         content: <div />,
         supportsCollapsible: false,
         timelineLayout: "timeline",
@@ -85,7 +85,7 @@ export const FetchToolRenderer: MessageRenderer<FetchToolPacket, {}> = ({
         content: (
           <div className="flex flex-col">
             <Text as="p" text02 className="text-sm mb-1">
-              Reading
+              Lecture
             </Text>
             {displayDocuments ? (
               <SearchChipList
@@ -121,7 +121,7 @@ export const FetchToolRenderer: MessageRenderer<FetchToolPacket, {}> = ({
   return children([
     {
       icon: SvgCircle,
-      status: "Reading",
+      status: "Lecture",
       supportsCollapsible: false,
       timelineLayout: "timeline",
       content: (

@@ -78,36 +78,36 @@ export function parseToolKey(key: string): {
 
 export function getToolName(packets: Packet[]): string {
   const firstPacket = packets[0];
-  if (!firstPacket) return "Tool";
+  if (!firstPacket) return "Outil";
 
   switch (firstPacket.obj.type) {
     case PacketType.SEARCH_TOOL_START: {
       const searchState = constructCurrentSearchState(
         packets as SearchToolPacket[]
       );
-      return searchState.isInternetSearch ? "Web Search" : "Internal Search";
+      return searchState.isInternetSearch ? "Recherche web" : "Recherche interne";
     }
     case PacketType.PYTHON_TOOL_START:
-      return "Code Interpreter";
+      return "Interpréteur de code";
     case PacketType.FETCH_TOOL_START:
-      return "Open URLs";
+      return "Ouvrir des URLs";
     case PacketType.CUSTOM_TOOL_START:
       return (
-        (firstPacket.obj as { tool_name?: string }).tool_name || "Custom Tool"
+        (firstPacket.obj as { tool_name?: string }).tool_name || "Outil personnalisé"
       );
     case PacketType.IMAGE_GENERATION_TOOL_START:
-      return "Generate Image";
+      return "Générer une image";
     case PacketType.DEEP_RESEARCH_PLAN_START:
-      return "Generate plan";
+      return "Générer un plan";
     case PacketType.RESEARCH_AGENT_START:
-      return "Research agent";
+      return "Agent de recherche";
     case PacketType.REASONING_START:
-      return "Thinking";
+      return "Réflexion";
     case PacketType.MEMORY_TOOL_START:
     case PacketType.MEMORY_TOOL_NO_ACCESS:
-      return "Memory";
+      return "Mémoire";
     default:
-      return "Tool";
+      return "Outil";
   }
 }
 

@@ -174,7 +174,7 @@ export default function GroupsCell({
               <Button
                 icon={SvgEdit}
                 prominence="tertiary"
-                tooltip="Edit"
+                tooltip="Modifier"
                 tooltipSide="left"
                 onClick={(e) => {
                   e.stopPropagation();

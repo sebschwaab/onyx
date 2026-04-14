@@ -20,12 +20,12 @@ export const PAGE_SIZE = 10;
 export function apiKeyToMemberRow(key: ApiKeyDescriptor): MemberRow {
   return {
     id: key.user_id,
-    email: "Service Account",
+    email: "Compte de service",
     role: key.api_key_role,
     status: UserStatus.ACTIVE,
     is_active: true,
     is_scim_synced: false,
-    personal_name: key.api_key_name ?? "Unnamed Key",
+    personal_name: key.api_key_name ?? "Clé sans nom",
     created_at: null,
     updated_at: null,
     groups: [],

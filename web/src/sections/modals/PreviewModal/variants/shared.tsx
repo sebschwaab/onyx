@@ -16,7 +16,7 @@ export function DownloadButton({ fileUrl, fileName }: DownloadButtonProps) {
         prominence="tertiary"
         size="sm"
         icon={SvgDownload}
-        tooltip="Download"
+        tooltip="Télécharger"
       />
     </a>
   );
@@ -28,7 +28,7 @@ interface CopyButtonProps {
 
 export function CopyButton({ getText }: CopyButtonProps) {
   return (
-    <CopyIconButton getCopyText={getText} tooltip="Copy content" size="sm" />
+    <CopyIconButton getCopyText={getText} tooltip="Copier le contenu" size="sm" />
   );
 }
 
@@ -47,7 +47,7 @@ export function ZoomControls({ zoom, onZoomIn, onZoomOut }: ZoomControlsProps) {
           size="sm"
           icon={SvgZoomOut}
           onClick={onZoomOut}
-          tooltip="Zoom Out"
+          tooltip="Zoom arrière"
         />
         <Text mainUiMono text03>
           {zoom}%
@@ -57,7 +57,7 @@ export function ZoomControls({ zoom, onZoomIn, onZoomOut }: ZoomControlsProps) {
           size="sm"
           icon={SvgZoomIn}
           onClick={onZoomIn}
-          tooltip="Zoom In"
+          tooltip="Zoom avant"
         />
       </Section>
     </div>

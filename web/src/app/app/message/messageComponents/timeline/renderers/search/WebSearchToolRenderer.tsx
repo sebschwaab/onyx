@@ -47,13 +47,13 @@ export const WebSearchToolRenderer: MessageRenderer<SearchToolPacket, {}> = ({
   const isHighlight = renderType === RenderType.HIGHLIGHT;
   const isInline = renderType === RenderType.INLINE;
 
-  const queriesHeader = "Searching the web";
+  const queriesHeader = "Recherche sur le web";
 
   if (queries.length === 0) {
     return children([
       {
         icon: SvgGlobe,
-        status: "Searching the web",
+        status: "Recherche sur le web",
         content: <div />,
         supportsCollapsible: false,
         timelineLayout: "timeline",
@@ -118,7 +118,7 @@ export const WebSearchToolRenderer: MessageRenderer<SearchToolPacket, {}> = ({
   return children([
     {
       icon: SvgGlobe,
-      status: "Searching the web",
+      status: "Recherche sur le web",
       content: (
         <SearchChipList
           items={queries}

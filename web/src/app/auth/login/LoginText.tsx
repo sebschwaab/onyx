@@ -9,7 +9,7 @@ export default function LoginText() {
   return (
     <div className="w-full flex flex-col ">
       <Text as="p" headingH2 text05>
-        Welcome to{" "}
+        Bienvenue sur{" "}
         {(settings && settings?.enterpriseSettings?.application_name) || "Onyx"}
       </Text>
       <Text as="p" text03 mainUiMuted>

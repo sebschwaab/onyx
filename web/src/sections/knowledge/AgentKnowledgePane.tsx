@@ -91,7 +91,7 @@ function KnowledgeSidebar({
           ) : undefined
         }
       >
-        Your Files
+        Mes fichiers
       </LineItem>
 
       {vectorDbEnabled && (
@@ -113,7 +113,7 @@ function KnowledgeSidebar({
               ) : undefined
             }
           >
-            Document Set
+            Ensemble de documents
           </LineItem>
 
           <Separator noPadding />
@@ -315,7 +315,7 @@ function DocumentSetsTableContent({
   const columns: KnowledgeTableColumn<DocumentSetSummary>[] = [
     {
       key: "name",
-      header: "Name",
+      header: "Nom",
       sortable: true,
       render: (ds) => (
         <Content
@@ -357,8 +357,8 @@ function DocumentSetsTableContent({
       onToggleItem={(id) => onDocumentSetToggle(id as number)}
       searchValue={searchValue}
       onSearchChange={setSearchValue}
-      searchPlaceholder="Search document sets..."
-      emptyMessage="No document sets available."
+      searchPlaceholder="Rechercher des ensembles de documents..."
+      emptyMessage="Aucun ensemble de documents disponible."
       ariaLabelPrefix="document-set-row"
     />
   );
@@ -441,7 +441,7 @@ function RecentFilesTableContent({
   const columns: KnowledgeTableColumn<ProjectFile>[] = [
     {
       key: "name",
-      header: "Name",
+      header: "Nom",
       sortable: true,
       render: (file) => (
         <Content
@@ -454,7 +454,7 @@ function RecentFilesTableContent({
     },
     {
       key: "lastUpdated",
-      header: "Last Updated",
+      header: "Dernière mise à jour",
       sortable: true,
       width: 8,
       render: (file) => (
@@ -484,7 +484,7 @@ function RecentFilesTableContent({
         onToggleItem={(id) => onToggleFile(id as string)}
         searchValue={searchValue}
         onSearchChange={setSearchValue}
-        searchPlaceholder="Search files..."
+        searchPlaceholder="Rechercher des fichiers..."
         ariaLabelPrefix="user-file-row"
         headerActions={
           <Button
@@ -492,18 +492,18 @@ function RecentFilesTableContent({
             icon={SvgPlusCircle}
             onClick={() => fileInputRef.current?.click()}
           >
-            Add File
+            Ajouter un fichier
           </Button>
         }
-        emptyMessage="No files available. Upload files to get started."
+        emptyMessage="Aucun fichier disponible. Téléchargez des fichiers pour commencer."
       />
 
       {hasProcessingFiles && (
         <GeneralLayouts.Section height="auto" alignItems="start">
           <Text as="p" text03 secondaryBody>
-            Onyx is still processing your uploaded files. You can create the
-            agent now, but it will not have access to all files until processing
-            completes.
+            Onyx traite encore vos fichiers téléchargés. Vous pouvez créer l&apos;agent
+            maintenant, mais il n&apos;aura pas accès à tous les fichiers tant que le
+            traitement ne sera pas terminé.
           </Text>
         </GeneralLayouts.Section>
       )}
@@ -684,13 +684,13 @@ const KnowledgeAddView = memo(function KnowledgeAddView({
               ) : undefined
             }
           >
-            Document Sets
+            Ensembles de documents
           </LineItem>
         )}
 
         <LineItem
           icon={SvgFiles}
-          description="Recent or new uploads"
+          description="Fichiers récents ou nouveaux"
           onClick={onNavigateToRecent}
           emphasized={selectedFileIds.length > 0}
           aria-label="knowledge-add-files"
@@ -702,14 +702,14 @@ const KnowledgeAddView = memo(function KnowledgeAddView({
             ) : undefined
           }
         >
-          Your Files
+          Mes fichiers
         </LineItem>
       </GeneralLayouts.Section>
 
       {vectorDbEnabled && connectedSources.length > 0 && (
         <>
           <Text as="p" text03 secondaryBody>
-            Connected Sources
+            Sources connectées
           </Text>
           {connectedSources.map((connectedSource) => {
             const sourceMetadata = getSourceMetadata(connectedSource.source);
@@ -783,7 +783,7 @@ const KnowledgeMainContent = memo(function KnowledgeMainContent({
         height="auto"
       >
         <Text text03 secondaryBody>
-          Add documents or connected sources to use for this agent.
+          Ajoutez des documents ou des sources connectées à utiliser pour cet agent.
         </Text>
         <Button
           icon={SvgPlusCircle}
@@ -811,8 +811,7 @@ const KnowledgeMainContent = memo(function KnowledgeMainContent({
       height="auto"
     >
       <Text as="p" text03 secondaryBody>
-        {totalSelected} knowledge source{totalSelected !== 1 ? "s" : ""}{" "}
-        selected
+        {totalSelected} source{totalSelected !== 1 ? "s" : ""} de connaissances sélectionnée{totalSelected !== 1 ? "s" : ""}
       </Text>
       <Button
         prominence="internal"
@@ -820,7 +819,7 @@ const KnowledgeMainContent = memo(function KnowledgeMainContent({
         onClick={onViewEdit}
         aria-label="knowledge-view-edit"
       >
-        View / Edit
+        Voir / Modifier
       </Button>
     </GeneralLayouts.Section>
   );
@@ -1138,8 +1137,8 @@ export default function AgentKnowledgePane({
   return (
     <GeneralLayouts.Section gap={0.5} alignItems="stretch" height="auto">
       <Content
-        title="Knowledge"
-        description="Add specific connectors and documents for this agent to use to inform its responses."
+        title="Base de connaissances"
+        description="Ajoutez des connecteurs et des documents spécifiques que cet agent utilisera pour informer ses réponses."
         sizePreset="main-content"
         variant="section"
       />
@@ -1147,8 +1146,8 @@ export default function AgentKnowledgePane({
       <Card>
         <GeneralLayouts.Section gap={0.5} alignItems="stretch" height="auto">
           <InputLayouts.Horizontal
-            title="Use Knowledge"
-            description="Let this agent reference these documents to inform its responses."
+            title="Utiliser les connaissances"
+            description="Permettez à cet agent de référencer ces documents pour informer ses réponses."
           >
             <Switch
               name="enable_knowledge"

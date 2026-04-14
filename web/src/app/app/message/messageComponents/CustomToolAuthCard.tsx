@@ -52,9 +52,9 @@ function CustomToolAuthCard({
       large
       icon
       close={false}
-      text={`${toolName} not connected`}
-      description={`Connect to ${toolName} to enable this tool`}
-      actions="Connect"
+      text={`${toolName} non connecté`}
+      description={`Connectez-vous à ${toolName} pour activer cet outil`}
+      actions="Connecter"
       actionPrimary
       actionIcon={SvgArrowExchange}
       onAction={handleAuthenticate}

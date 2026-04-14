@@ -25,7 +25,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <AppLayouts.Root>
       <SettingsLayouts.Root width="lg">
-        <SettingsLayouts.Header icon={SvgSliders} title="Settings" separator />
+        <SettingsLayouts.Header icon={SvgSliders} title="Paramètres" separator />
 
         <SettingsLayouts.Body>
           <Section
@@ -43,27 +43,27 @@ export default function Layout({ children }: LayoutProps) {
                 href="/app/settings/general"
                 selected={pathname === "/app/settings/general"}
               >
-                General
+                Général
               </SidebarTab>
               <SidebarTab
                 href="/app/settings/chat-preferences"
                 selected={pathname === "/app/settings/chat-preferences"}
               >
-                Chat Preferences
+                Préférences de chat
               </SidebarTab>
               {showAccountsAccessTab && (
                 <SidebarTab
                   href="/app/settings/accounts-access"
                   selected={pathname === "/app/settings/accounts-access"}
                 >
-                  Accounts & Access
+                  Comptes & Accès
                 </SidebarTab>
               )}
               <SidebarTab
                 href="/app/settings/connectors"
                 selected={pathname === "/app/settings/connectors"}
               >
-                Connectors
+                Connecteurs
               </SidebarTab>
             </div>
 

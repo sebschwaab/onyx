@@ -67,7 +67,7 @@ export const StreamingHeader = React.memo(function StreamingHeader({
             size="md"
             onClick={onToggle}
             rightIcon={SvgFold}
-            aria-label="Collapse timeline"
+            aria-label="Réduire la chronologie"
             aria-expanded={true}
           >
             {formatDurationSeconds(elapsedSeconds)}
@@ -78,7 +78,7 @@ export const StreamingHeader = React.memo(function StreamingHeader({
             size="md"
             onClick={onToggle}
             icon={isExpanded ? SvgFold : SvgExpand}
-            aria-label={isExpanded ? "Collapse timeline" : "Expand timeline"}
+            aria-label={isExpanded ? "Réduire la chronologie" : "Développer la chronologie"}
             aria-expanded={isExpanded}
           />
         ))}

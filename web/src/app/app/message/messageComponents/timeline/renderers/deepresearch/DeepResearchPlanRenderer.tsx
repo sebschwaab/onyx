@@ -39,7 +39,7 @@ export const DeepResearchPlanRenderer: MessageRenderer<
     [packets]
   );
 
-  const statusText = isComplete ? "Generated plan" : "Generating plan";
+  const statusText = isComplete ? "Plan généré" : "Génération du plan";
 
   // Markdown renderer callback for ExpandableTextDisplay
   // Uses collapsed components (no spacing) in collapsed view, normal spacing in expanded modal
@@ -57,7 +57,7 @@ export const DeepResearchPlanRenderer: MessageRenderer<
 
   const planContent = (
     <ExpandableTextDisplay
-      title="Research Plan"
+      title="Plan de recherche"
       content={fullContent}
       renderContent={renderMarkdown}
       isStreaming={!isComplete}

@@ -163,13 +163,13 @@ export default function ShareChatSessionModal({
         }
       } else if (wantsPublic && shareLink) {
         copyAll(shareLink);
-        toast.success("Share link copied to clipboard!");
+        toast.success("Lien de partage copié dans le presse-papiers !");
       } else {
         onClose();
       }
     } catch (e) {
       console.error(e);
-      toast.error("An error occurred");
+      toast.error("Une erreur est survenue");
     } finally {
       setIsLoading(false);
     }

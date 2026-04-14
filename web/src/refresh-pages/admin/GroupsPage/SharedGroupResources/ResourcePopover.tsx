@@ -45,7 +45,7 @@ function ResourcePopover({
             <div className="px-3 py-3">
               <Content
                 icon={SvgEmpty}
-                title="No results found"
+                title="Aucun résultat trouvé"
                 sizePreset="secondary"
                 variant="section"
               />

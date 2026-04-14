@@ -135,7 +135,7 @@ async function updateDocSetGroupSharing(
   // Fetch all document sets to get their current state
   const allRes = await fetch("/api/manage/document-set");
   if (!allRes.ok) {
-    throw new Error("Failed to fetch document sets");
+    throw new Error("Échec de la récupération des ensembles de documents");
   }
   const allDocSets: DocumentSetSummary[] = await allRes.json();
   const docSetMap = new Map(allDocSets.map((ds) => [ds.id, ds]));
@@ -262,7 +262,7 @@ async function saveTokenLimits(
       }
     );
     if (!createRes.ok) {
-      throw new Error("Failed to create token rate limit");
+      throw new Error("Échec de la création de la limite de jetons");
     }
   }
 

@@ -40,11 +40,11 @@ export default function SharedChatDisplay({
         <Section flexDirection="column" alignItems="center" gap={1}>
           <IllustrationContent
             illustration={SvgNotFound}
-            title="Shared chat not found"
-            description="Did not find a shared chat with the specified ID."
+            title="Conversation partagée introuvable"
+            description="Aucune conversation partagée avec cet identifiant n'a été trouvée."
           />
           <Button href="/app" prominence="secondary">
-            Start a new chat
+            Démarrer une nouvelle conversation
           </Button>
         </Section>
       </div>
@@ -63,11 +63,11 @@ export default function SharedChatDisplay({
         <Section flexDirection="column" alignItems="center" gap={1}>
           <IllustrationContent
             illustration={SvgNotFound}
-            title="Shared chat not found"
-            description="No messages found in shared chat."
+            title="Conversation partagée introuvable"
+            description="Aucun message trouvé dans cette conversation partagée."
           />
           <Button href="/app" prominence="secondary">
-            Start a new chat
+            Démarrer une nouvelle conversation
           </Button>
         </Section>
       </div>
@@ -91,11 +91,11 @@ export default function SharedChatDisplay({
             </Text>
             <div className="flex flex-col items-end">
               <Text as="p" text03 secondaryBody>
-                Shared on {humanReadableFormat(chatSession.time_created)}
+                Partagé le {humanReadableFormat(chatSession.time_created)}
               </Text>
               {chatSession.owner_name && (
                 <Text as="p" text03 secondaryBody>
-                  by {chatSession.owner_name}
+                  par {chatSession.owner_name}
                 </Text>
               )}
             </div>

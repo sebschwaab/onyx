@@ -70,7 +70,7 @@ function ViewerMCPServerCard({ server, tools }: ViewerMCPServerCardProps) {
                 rightIcon={folded ? SvgExpand : SvgFold}
                 onClick={() => setFolded((prev) => !prev)}
               >
-                {folded ? "Expand" : "Fold"}
+                {folded ? "Développer" : "Réduire"}
               </Button>
             }
           />
@@ -253,7 +253,7 @@ export default function AgentViewerModal({ agent }: AgentViewerModalProps) {
             {agent.is_featured && (
               <Content
                 icon={SvgStar}
-                title="Featured"
+                title="Mis en avant"
                 sizePreset="main-ui"
                 variant="body"
                 widthVariant="fit"
@@ -270,7 +270,7 @@ export default function AgentViewerModal({ agent }: AgentViewerModalProps) {
             {agent.is_public && (
               <Content
                 icon={SvgOrganization}
-                title="Public to your organization"
+                title="Public pour votre organisation"
                 sizePreset="main-ui"
                 variant="body"
                 prominence="muted"
@@ -286,7 +286,7 @@ export default function AgentViewerModal({ agent }: AgentViewerModalProps) {
           <Separator noPadding />
           <Section gap={0.5} alignItems="start">
             <Content
-              title="Knowledge"
+              title="Base de connaissances"
               sizePreset="main-content"
               variant="section"
             />
@@ -308,13 +308,13 @@ export default function AgentViewerModal({ agent }: AgentViewerModalProps) {
                 })}
               </Section>
             ) : (
-              <EmptyMessage title="No Knowledge" />
+              <EmptyMessage title="Aucune connaissance" />
             )}
           </Section>
 
           {/* Actions & Tools */}
           <SimpleCollapsible>
-            <SimpleCollapsible.Header title="Actions & Tools" />
+            <SimpleCollapsible.Header title="Actions & Outils" />
             <SimpleCollapsible.Content>
               {hasActions ? (
                 <Section gap={0.5} alignItems="start">
@@ -330,7 +330,7 @@ export default function AgentViewerModal({ agent }: AgentViewerModalProps) {
                   ))}
                 </Section>
               ) : (
-                <EmptyMessage title="No Actions" />
+                <EmptyMessage title="Aucune action" />
               )}
             </SimpleCollapsible.Content>
           </SimpleCollapsible>
@@ -338,7 +338,7 @@ export default function AgentViewerModal({ agent }: AgentViewerModalProps) {
           {/* More Info (Collapsible) */}
           <Separator noPadding />
           <SimpleCollapsible>
-            <SimpleCollapsible.Header title="More Info" />
+            <SimpleCollapsible.Header title="Plus d'informations" />
             <SimpleCollapsible.Content>
               <Section gap={0.5} alignItems="start">
                 {agent.system_prompt && (
@@ -351,8 +351,8 @@ export default function AgentViewerModal({ agent }: AgentViewerModalProps) {
                 )}
                 {defaultModel && (
                   <Horizontal
-                    title="Default Model"
-                    description="This model will be used by Onyx by default in your chats."
+                    title="Modèle par défaut"
+                    description="Ce modèle sera utilisé par Onyx par défaut dans vos conversations."
                     nonInteractive
                     sizePreset="main-ui"
                   >
@@ -361,8 +361,8 @@ export default function AgentViewerModal({ agent }: AgentViewerModalProps) {
                 )}
                 {agent.search_start_date && (
                   <Horizontal
-                    title="Knowledge Cutoff Date"
-                    description="Documents with a last-updated date prior to this will be ignored."
+                    title="Date limite de connaissance"
+                    description="Les documents mis à jour avant cette date seront ignorés."
                     nonInteractive
                     sizePreset="main-ui"
                   >
@@ -372,8 +372,8 @@ export default function AgentViewerModal({ agent }: AgentViewerModalProps) {
                   </Horizontal>
                 )}
                 <Horizontal
-                  title="Overwrite System Prompts"
-                  description='Remove the base system prompt which includes useful instructions (e.g. "You can use Markdown tables"). This may affect response quality.'
+                  title="Écraser les prompts système"
+                  description='Supprime le prompt système de base qui inclut des instructions utiles (ex. "Vous pouvez utiliser des tableaux Markdown"). Cela peut affecter la qualité des réponses.'
                   nonInteractive
                   sizePreset="main-ui"
                 >
@@ -388,7 +388,7 @@ export default function AgentViewerModal({ agent }: AgentViewerModalProps) {
             <>
               <Separator noPadding />
               <Content
-                title="Prompt Reminders"
+                title="Rappels de prompt"
                 description={agent.task_prompt}
                 sizePreset="main-content"
                 variant="section"
@@ -401,7 +401,7 @@ export default function AgentViewerModal({ agent }: AgentViewerModalProps) {
             <>
               <Separator noPadding />
               <Content
-                title="Conversation Starters"
+                title="Débuts de conversation"
                 sizePreset="main-content"
                 variant="section"
               />

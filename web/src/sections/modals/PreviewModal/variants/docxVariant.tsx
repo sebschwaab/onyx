@@ -134,11 +134,11 @@ export const docxVariant: PreviewVariant = {
   headerDescription: () => {
     if (lastDocxResult) {
       const count = lastDocxResult.wordCount;
-      return `Word Document • ${count.toLocaleString()} ${
-        count === 1 ? "word" : "words"
+      return `Document Word • ${count.toLocaleString()} ${
+        count === 1 ? "mot" : "mots"
       }`;
     }
-    return "Word Document";
+    return "Document Word";
   },
 
   renderContent: (ctx: PreviewContext) => {
@@ -147,8 +147,7 @@ export const docxVariant: PreviewVariant = {
       return (
         <Section justifyContent="center" alignItems="center" padding={1.5}>
           <Text text03 mainUiBody>
-            Legacy .doc format cannot be previewed. Download the file to view
-            it.
+            Le format .doc legacy ne peut pas être prévisualisé. Téléchargez le fichier pour le consulter.
           </Text>
         </Section>
       );

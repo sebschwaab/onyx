@@ -7,8 +7,8 @@ export function isBuiltInGroup(group: UserGroup): boolean {
 
 /** Human-readable description for built-in groups. */
 const BUILT_IN_DESCRIPTIONS: Record<string, string> = {
-  Basic: "Default group for all users with basic permissions.",
-  Admin: "Built-in admin group with full access to manage all permissions.",
+  Basic: "Groupe par défaut pour tous les utilisateurs avec des permissions de base.",
+  Admin: "Groupe administrateur intégré avec accès complet à la gestion des permissions.",
 };
 
 /**
@@ -26,16 +26,16 @@ export function buildGroupDescription(group: UserGroup): string {
   const parts: string[] = [];
   if (group.cc_pairs.length > 0) {
     parts.push(
-      `${group.cc_pairs.length} connector${
+      `${group.cc_pairs.length} connecteur${
         group.cc_pairs.length !== 1 ? "s" : ""
       }`
     );
   }
   if (group.document_sets.length > 0) {
     parts.push(
-      `${group.document_sets.length} document set${
+      `${group.document_sets.length} ensemble${
         group.document_sets.length !== 1 ? "s" : ""
-      }`
+      } de documents`
     );
   }
   if (group.personas.length > 0) {
@@ -46,10 +46,10 @@ export function buildGroupDescription(group: UserGroup): string {
 
   return parts.length > 0
     ? parts.join(" · ")
-    : "No private connectors / document sets / agents";
+    : "Aucun connecteur / ensemble de documents / agent privé";
 }
 
 /** Format the member count badge, e.g. "306 Members" or "1 Member". */
 export function formatMemberCount(count: number): string {
-  return `${count} ${count === 1 ? "Member" : "Members"}`;
+  return `${count} ${count === 1 ? "Membre" : "Membres"}`;
 }

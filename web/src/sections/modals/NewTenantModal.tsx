@@ -51,14 +51,14 @@ export default function NewTenantModal({
           throw new Error(
             errorData.detail ||
               errorData.message ||
-              "Failed to accept invitation"
+              "Échec de l'acceptation de l'invitation"
           );
         }
 
-        toast.success("You have accepted the invitation.");
+        toast.success("Vous avez accepté l'invitation.");
       } else {
         // For non-invite flow, just show success message
-        toast.success("Processing your team join request...");
+        toast.success("Traitement de votre demande de rejoindre l'équipe...");
       }
 
       // Common logout and redirect for both flows
@@ -69,7 +69,7 @@ export default function NewTenantModal({
       const message =
         error instanceof Error
           ? error.message
-          : "Failed to join the team. Please try again.";
+          : "Échec de la connexion à l'équipe. Veuillez réessayer.";
 
       setError(message);
       toast.error(message);
@@ -99,17 +99,17 @@ export default function NewTenantModal({
         throw new Error(
           errorData.detail ||
             errorData.message ||
-            "Failed to decline invitation"
+            "Échec du refus de l'invitation"
         );
       }
 
-      toast.info("You have declined the invitation.");
+      toast.info("Vous avez refusé l'invitation.");
       onClose?.();
     } catch (error) {
       const message =
         error instanceof Error
           ? error.message
-          : "Failed to decline the invitation. Please try again.";
+          : "Échec du refus de l'invitation. Veuillez réessayer.";
 
       setError(message);
       toast.error(message);
@@ -119,16 +119,16 @@ export default function NewTenantModal({
   }
 
   const title = isInvite
-    ? `You have been invited to join ${
+    ? `Vous avez été invité à rejoindre ${
         tenantInfo.number_of_users
-      } other teammate${
+      } autre${
         tenantInfo.number_of_users === 1 ? "" : "s"
-      } of ${APP_DOMAIN}.`
-    : `Your request to join ${tenantInfo.number_of_users} other users of ${APP_DOMAIN} has been approved.`;
+      } membre${tenantInfo.number_of_users === 1 ? "" : "s"} de ${APP_DOMAIN}.`
+    : `Votre demande de rejoindre ${tenantInfo.number_of_users} autres utilisateurs de ${APP_DOMAIN} a été approuvée.`;
 
   const description = isInvite
-    ? `By accepting this invitation, you will join the existing ${APP_DOMAIN} team and lose access to your current team. Note: you will lose access to your current agents, prompts, chats, and connected sources.`
-    : `To finish joining your team, please reauthenticate with ${user?.email}.`;
+    ? `En acceptant cette invitation, vous rejoindrez l'équipe ${APP_DOMAIN} existante et perdrez l'accès à votre équipe actuelle. Remarque : vous perdrez l'accès à vos agents, prompts, conversations et sources connectées actuels.`
+    : `Pour finaliser l'intégration à votre équipe, veuillez vous réauthentifier avec ${user?.email}.`;
 
   return (
     <Modal open>
@@ -150,7 +150,7 @@ export default function NewTenantModal({
                   onClick={handleRejectInvite}
                   icon={SvgX}
                 >
-                  Decline
+                  Refuser
                 </Button>
               ) : undefined
             }
@@ -162,11 +162,11 @@ export default function NewTenantModal({
               >
                 {isLoading
                   ? isInvite
-                    ? "Accepting..."
-                    : "Joining..."
+                    ? "Acceptation..."
+                    : "Connexion..."
                   : isInvite
-                    ? "Accept Invitation"
-                    : "Reauthenticate"}
+                    ? "Accepter l'invitation"
+                    : "Se réauthentifier"}
               </Button>
             }
           />

@@ -12,25 +12,25 @@ export default function NoAgentModal() {
   return (
     <Modal open>
       <Modal.Content width="sm" height="sm">
-        <Modal.Header icon={SvgUser} title="No Agent Available" />
+        <Modal.Header icon={SvgUser} title="Aucun agent disponible" />
         <Modal.Body>
           <Text as="p">
-            You currently have no agent configured. To use this feature, you
-            need to take action.
+            Vous n&apos;avez actuellement aucun agent configuré. Pour utiliser cette
+            fonctionnalité, vous devez effectuer une action.
           </Text>
           {isAdmin ? (
             <>
               <Text as="p">
-                As an administrator, you can create a new agent by visiting the
-                admin panel.
+                En tant qu&apos;administrateur, vous pouvez créer un nouvel agent en
+                visitant le panneau d&apos;administration.
               </Text>
               <Button width="full" href="/admin/agents">
-                Go to Admin Panel
+                Aller au panneau d&apos;administration
               </Button>
             </>
           ) : (
             <Text as="p">
-              Please contact your administrator to configure an agent for you.
+              Veuillez contacter votre administrateur pour configurer un agent.
             </Text>
           )}
         </Modal.Body>

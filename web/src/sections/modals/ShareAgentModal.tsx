@@ -311,8 +311,8 @@ function ShareAgentFormContent({ agentId }: ShareAgentFormContentProps) {
                     <div className="border-t border-border-02" />
 
                     <InputLayouts.Horizontal
-                      title="Feature This Agent"
-                      description="Show this agent at the top of the explore agents list and automatically pin it to the sidebar for new users with access."
+                      title="Mettre en avant cet agent"
+                      description="Affiche cet agent en haut de la liste des agents et l'épingle automatiquement à la barre latérale pour les nouveaux utilisateurs ayant accès."
                     >
                       <SwitchField name="isFeatured" />
                     </InputLayouts.Horizontal>

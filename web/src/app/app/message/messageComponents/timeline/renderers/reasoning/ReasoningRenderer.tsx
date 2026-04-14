@@ -25,7 +25,7 @@ import { SvgCircle } from "@opal/icons";
 
 const THINKING_MIN_DURATION_MS = 500; // 0.5 second minimum for "Thinking" state
 
-const THINKING_STATUS = "Thinking";
+const THINKING_STATUS = "Réflexion";
 
 function extractFirstParagraph(content: string): {
   title: string | null;
@@ -182,7 +182,7 @@ export const ReasoningRenderer: MessageRenderer<
   const reasoningContent = (
     <div className="pl-[var(--timeline-common-text-padding)]">
       <ExpandableTextDisplay
-        title="Full text"
+        title="Texte complet"
         content={content}
         displayContent={displayContent}
         renderContent={renderMarkdown}
