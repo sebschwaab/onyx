@@ -52,7 +52,7 @@ interface OpenAPIActionFormValues {
 }
 
 const validationSchema = Yup.object().shape({
-  definition: Yup.string().required("OpenAPI schema definition is required"),
+  definition: Yup.string().required("La définition du schéma OpenAPI est requise"),
 });
 
 function parseJsonWithTrailingCommas(jsonString: string) {
@@ -106,7 +106,7 @@ function FormContent({
       setFieldValue("definition", formatted);
       setFieldError("definition", "");
     } catch {
-      setFieldError("definition", "Invalid JSON format");
+      setFieldError("definition", "Format JSON invalide");
     }
   }, [values.definition, setFieldValue, setFieldError]);
 
@@ -144,7 +144,7 @@ function FormContent({
         }
       } catch {
         setMethodSpecs(null);
-        setFieldError("definition", "Invalid JSON format");
+        setFieldError("definition", "Format JSON invalide");
       }
     },
     []
@@ -155,17 +155,17 @@ function FormContent({
     [validateDefinition]
   );
 
-  const modalTitle = isEditMode ? "Edit OpenAPI action" : "Add OpenAPI action";
+  const modalTitle = isEditMode ? "Modifier l'action OpenAPI" : "Ajouter une action OpenAPI";
   const modalDescription = isEditMode
-    ? "Update the OpenAPI schema for this action."
-    : "Add OpenAPI schema to add custom actions.";
+    ? "Mettez à jour le schéma OpenAPI pour cette action."
+    : "Ajoutez un schéma OpenAPI pour ajouter des actions personnalisées.";
   const primaryButtonLabel = isSubmitting
     ? isEditMode
-      ? "Saving..."
-      : "Adding..."
+      ? "Enregistrement..."
+      : "Ajout..."
     : isEditMode
-      ? "Save Changes"
-      : "Add Action";
+      ? "Enregistrer les modifications"
+      : "Ajouter l'action";
 
   const hasOAuthConfig = Boolean(existingTool?.oauth_config_id);
   const hasCustomHeaders =
@@ -180,14 +180,14 @@ function FormContent({
     }
     if (hasOAuthConfig) {
       return existingTool.oauth_config_name
-        ? `OAuth connected via ${existingTool.oauth_config_name}`
-        : "OAuth authentication configured";
+        ? `OAuth connecté via ${existingTool.oauth_config_name}`
+        : "Authentification OAuth configurée";
     }
     if (hasCustomHeaders) {
-      return "Custom authentication headers configured";
+      return "En-têtes d'authentification personnalisés configurés";
     }
     if (hasPassthroughAuth) {
-      return "Passthrough authentication enabled";
+      return "Authentification passthrough activée";
     }
     return "";
   }, [existingTool, hasOAuthConfig, hasCustomHeaders, hasPassthroughAuth]);
@@ -238,9 +238,9 @@ function FormContent({
       <Modal.Body>
         <InputLayouts.Vertical
           name="definition"
-          title="OpenAPI Schema Definition"
+          title="Définition du schéma OpenAPI"
           subDescription={markdown(
-            `Specify an OpenAPI schema that defines the APIs you want to make available as part of this action. Learn more about [OpenAPI actions](${DOCS_ADMINS_PATH}/actions/openapi).`
+            `Spécifiez un schéma OpenAPI qui définit les API que vous souhaitez rendre disponibles dans cette action. En savoir plus sur les [actions OpenAPI](${DOCS_ADMINS_PATH}/actions/openapi).`
           )}
         >
           <Hoverable.Root group="definitionField" widthVariant="full">
@@ -256,13 +256,13 @@ function FormContent({
                         prominence="tertiary"
                         size="sm"
                         getCopyText={() => values.definition}
-                        tooltip="Copy definition"
+                        tooltip="Copier la définition"
                       />
                       <Button
                         prominence="tertiary"
                         size="sm"
                         icon={SvgBracketCurly}
-                        tooltip="Format definition"
+                        tooltip="Formater la définition"
                         onClick={handleFormat}
                       />
                     </div>
@@ -272,7 +272,7 @@ function FormContent({
               <InputTextAreaField
                 name="definition"
                 rows={14}
-                placeholder="Enter your OpenAPI schema here"
+                placeholder="Saisissez votre schéma OpenAPI ici"
                 className="font-main-ui-mono"
               />
             </div>
@@ -294,7 +294,7 @@ function FormContent({
               <InfoBlock
                 icon={SvgAlertCircle}
                 title={url || ""}
-                description="URL found in the schema. Only connect to servers you trust."
+                description="URL trouvée dans le schéma. Connectez-vous uniquement aux serveurs auxquels vous faites confiance."
               />
             )}
             <Separator noPadding />
@@ -303,7 +303,7 @@ function FormContent({
                 <ToolItem
                   key={`${method.method}-${method.path}-${method.name}`}
                   name={method.name}
-                  description={method.summary || "No summary provided"}
+                  description={method.summary || "Aucun résumé disponible"}
                   variant="openapi"
                   openApiMetadata={{
                     method: method.method,
@@ -315,9 +315,9 @@ function FormContent({
           </>
         ) : (
           <EmptyMessage
-            title="No Actions Found"
+            title="Aucune action trouvée"
             icon={SvgActions}
-            description="Provide OpenAPI schema to preview actions here."
+            description="Fournissez un schéma OpenAPI pour prévisualiser les actions ici."
           />
         )}
 
@@ -338,8 +338,8 @@ function FormContent({
                 <SvgCheckCircle className="w-4 h-4 stroke-status-success-05" />
                 <Text>
                   {existingTool?.enabled
-                    ? "Authenticated & Enabled"
-                    : "Authentication configured"}
+                    ? "Authentifié et activé"
+                    : "Authentification configurée"}
                 </Text>
               </Section>
               {authenticationDescription && (
@@ -358,7 +358,7 @@ function FormContent({
                 icon={SvgUnplug}
                 prominence="tertiary"
                 type="button"
-                tooltip="Disable action"
+                tooltip="Désactiver l'action"
                 onClick={() => {
                   if (!existingTool || !onDisconnectTool) {
                     return;
@@ -372,7 +372,7 @@ function FormContent({
                 type="button"
                 onClick={handleEditAuthenticationClick}
               >
-                Edit Configs
+                Modifier les configs
               </Button>
             </Section>
           </Section>
@@ -386,7 +386,7 @@ function FormContent({
           type="button"
           onClick={handleClose}
         >
-          Cancel
+          Annuler
         </Button>
         <Button disabled={isSubmitting || !dirty} type="submit">
           {primaryButtonLabel}
@@ -436,7 +436,7 @@ export default function AddOpenAPIActionModal({
       parsedDefinition = parseJsonWithTrailingCommas(values.definition);
     } catch (error) {
       console.error("Error parsing OpenAPI definition:", error);
-      toast.error("Invalid JSON format in OpenAPI schema definition");
+      toast.error("Format JSON invalide dans la définition du schéma OpenAPI");
       return;
     }
 
@@ -472,7 +472,7 @@ export default function AddOpenAPIActionModal({
         if (response.error) {
           toast.error(response.error);
         } else {
-          toast.success("OpenAPI action updated successfully");
+          toast.success("Action OpenAPI mise à jour avec succès");
           handleClose();
           if (response.data && onUpdate) {
             onUpdate(response.data);
@@ -480,7 +480,7 @@ export default function AddOpenAPIActionModal({
         }
       } catch (error) {
         console.error("Error updating OpenAPI action:", error);
-        toast.error("Failed to update OpenAPI action");
+        toast.error("Échec de la mise à jour de l'action OpenAPI");
       }
       return;
     }
@@ -497,7 +497,7 @@ export default function AddOpenAPIActionModal({
       if (response.error) {
         toast.error(response.error);
       } else {
-        toast.success("OpenAPI action created successfully");
+        toast.success("Action OpenAPI créée avec succès");
         handleClose();
         if (response.data && onSuccess) {
           onSuccess(response.data);
@@ -505,7 +505,7 @@ export default function AddOpenAPIActionModal({
       }
     } catch (error) {
       console.error("Error creating OpenAPI action:", error);
-      toast.error("Failed to create OpenAPI action");
+      toast.error("Échec de la création de l'action OpenAPI");
     }
   };
 

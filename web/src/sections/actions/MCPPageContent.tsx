@@ -89,14 +89,14 @@ export default function MCPPageContent() {
 
           await refreshMCPServerTools(serverIdInt);
 
-          toast.success("Successfully connected and fetched tools");
+          toast.success("Connexion réussie et outils récupérés");
 
           await mutateMcpServers();
         } catch (error) {
           console.error("Failed to fetch tools:", error);
           toast.error(
-            `Failed to fetch tools: ${
-              error instanceof Error ? error.message : "Unknown error"
+            `Échec de la récupération des outils : ${
+              error instanceof Error ? error.message : "Erreur inconnue"
             }`
           );
           await mutateMcpServers();
@@ -170,7 +170,7 @@ export default function MCPPageContent() {
         MCPServerStatus.DISCONNECTED
       );
 
-      toast.success("MCP Server disconnected successfully");
+      toast.success("Serveur MCP déconnecté avec succès");
 
       await mutateMcpServers();
       disconnectModal.toggle(false);
@@ -180,7 +180,7 @@ export default function MCPPageContent() {
       toast.error(
         error instanceof Error
           ? error.message
-          : "Failed to disconnect MCP Server"
+          : "Échec de la déconnexion du serveur MCP"
       );
     } finally {
       setIsDisconnecting(false);
@@ -194,7 +194,7 @@ export default function MCPPageContent() {
     try {
       await deleteMCPServer(activeServer.id);
 
-      toast.success("MCP Server deleted successfully");
+      toast.success("Serveur MCP supprimé avec succès");
 
       await mutateMcpServers();
       disconnectModal.toggle(false);
@@ -202,7 +202,7 @@ export default function MCPPageContent() {
     } catch (error) {
       console.error("Error deleting server:", error);
       toast.error(
-        error instanceof Error ? error.message : "Failed to delete MCP Server"
+        error instanceof Error ? error.message : "Échec de la suppression du serveur MCP"
       );
     } finally {
       setIsDisconnecting(false);
@@ -239,13 +239,13 @@ export default function MCPPageContent() {
       try {
         await deleteMCPServer(serverId);
 
-        toast.success("MCP Server deleted successfully");
+        toast.success("Serveur MCP supprimé avec succès");
 
         await mutateMcpServers();
       } catch (error) {
         console.error("Error deleting server:", error);
         toast.error(
-          error instanceof Error ? error.message : "Failed to delete MCP Server"
+          error instanceof Error ? error.message : "Échec de la suppression du serveur MCP"
         );
       }
     },
@@ -278,14 +278,14 @@ export default function MCPPageContent() {
 
         await refreshMCPServerTools(serverId);
 
-        toast.success("Successfully connected and fetched tools");
+        toast.success("Connexion réussie et outils récupérés");
 
         await mutateMcpServers();
       } catch (error) {
         console.error("Failed to fetch tools:", error);
         toast.error(
-          `Failed to fetch tools: ${
-            error instanceof Error ? error.message : "Unknown error"
+          `Échec de la récupération des outils : ${
+            error instanceof Error ? error.message : "Erreur inconnue"
           }`
         );
         await mutateMcpServers();
@@ -299,7 +299,7 @@ export default function MCPPageContent() {
       try {
         await updateMCPServerStatus(serverId, MCPServerStatus.CONNECTED);
 
-        toast.success("MCP Server reconnected successfully");
+        toast.success("Serveur MCP reconnecté avec succès");
 
         await mutateMcpServers();
       } catch (error) {
@@ -307,7 +307,7 @@ export default function MCPPageContent() {
         toast.error(
           error instanceof Error
             ? error.message
-            : "Failed to reconnect MCP Server"
+            : "Échec de la reconnexion du serveur MCP"
         );
       }
     },
@@ -338,7 +338,7 @@ export default function MCPPageContent() {
         // Revalidate to get fresh data from server
         await mutateServerTools();
 
-        toast.success(`Tool ${enabled ? "enabled" : "disabled"} successfully`);
+        toast.success(`Outil ${enabled ? "activé" : "désactivé"} avec succès`);
       } catch (error) {
         console.error("Error toggling tool:", error);
 
@@ -346,7 +346,7 @@ export default function MCPPageContent() {
         await mutateServerTools();
 
         toast.error(
-          error instanceof Error ? error.message : "Failed to update tool"
+          error instanceof Error ? error.message : "Échec de la mise à jour de l'outil"
         );
       }
     },
@@ -368,11 +368,11 @@ export default function MCPPageContent() {
         // Also refresh the servers list to update tool counts
         await mutateMcpServers();
 
-        toast.success("Tools refreshed successfully");
+        toast.success("Outils actualisés avec succès");
       } catch (error) {
         console.error("Error refreshing tools:", error);
         toast.error(
-          error instanceof Error ? error.message : "Failed to refresh tools"
+          error instanceof Error ? error.message : "Échec de l'actualisation des outils"
         );
       }
     },
@@ -388,7 +388,7 @@ export default function MCPPageContent() {
     ) => {
       try {
         if (toolIds.length === 0) {
-          toast.info("No tools to disable");
+          toast.info("Aucun outil à désactiver");
           return;
         }
 
@@ -409,9 +409,9 @@ export default function MCPPageContent() {
         await mutateServerTools();
 
         toast.success(
-          `${result.updated_count} tool${
+          `${result.updated_count} outil${
             result.updated_count !== 1 ? "s" : ""
-          } ${enabled ? "enabled" : "disabled"} successfully`
+          } ${enabled ? "activé" : "désactivé"}${result.updated_count !== 1 ? "s" : ""} avec succès`
         );
       } catch (error) {
         console.error(
@@ -425,7 +425,7 @@ export default function MCPPageContent() {
         toast.error(
           error instanceof Error
             ? error.message
-            : `Failed to ${enabled ? "enable" : "disable"} all tools`
+            : `Échec ${enabled ? "de l'activation" : "de la désactivation"} de tous les outils`
         );
       }
     },
@@ -449,12 +449,12 @@ export default function MCPPageContent() {
     async (serverId: number, newName: string) => {
       try {
         await updateMCPServer(serverId, { name: newName });
-        toast.success("MCP Server renamed successfully");
+        toast.success("Serveur MCP renommé avec succès");
         await mutateMcpServers();
       } catch (error) {
         console.error("Error renaming server:", error);
         toast.error(
-          error instanceof Error ? error.message : "Failed to rename MCP Server"
+          error instanceof Error ? error.message : "Échec du renommage du serveur MCP"
         );
         throw error; // Re-throw so ButtonRenaming can handle it
       }
@@ -492,8 +492,8 @@ export default function MCPPageContent() {
           searchQuery={searchQuery}
           onSearchQueryChange={setSearchQuery}
           onAction={handleAddServer}
-          actionLabel="Add MCP Server"
-          emptyStateText="Connect MCP server to add custom actions."
+          actionLabel="Ajouter un serveur MCP"
+          emptyStateText="Connectez un serveur MCP pour ajouter des actions personnalisées."
         />
       </div>
 

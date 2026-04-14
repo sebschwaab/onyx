@@ -323,10 +323,10 @@ export default function LLMConfigurationPage() {
     try {
       await setDefaultLlmModel(providerId, modelName);
       await refreshLlmProviderCaches(mutate);
-      toast.success("Default model updated successfully!");
+      toast.success("Modèle par défaut mis à jour avec succès !");
     } catch (e) {
-      const message = e instanceof Error ? e.message : "Unknown error";
-      toast.error(`Failed to set default model: ${message}`);
+      const message = e instanceof Error ? e.message : "Erreur inconnue";
+      toast.error(`Échec de la définition du modèle par défaut : ${message}`);
     }
   }
 
@@ -338,8 +338,8 @@ export default function LLMConfigurationPage() {
         {hasProviders ? (
           <Card border="solid" rounding="lg">
             <HorizontalInput
-              title="Default Model"
-              description="This model will be used by Onyx by default in your chats."
+              title="Modèle par défaut"
+              description="Ce modèle sera utilisé par Onyx par défaut dans vos chats."
               nonInteractive
               center
             >
@@ -347,7 +347,7 @@ export default function LLMConfigurationPage() {
                 value={currentDefaultValue}
                 onValueChange={handleDefaultModelChange}
               >
-                <InputSelect.Trigger placeholder="Select a default model" />
+                <InputSelect.Trigger placeholder="Sélectionner un modèle par défaut" />
                 <InputSelect.Content>
                   {providersWithVisibleModels.map(
                     ({ provider, visibleModels }) => (
@@ -374,7 +374,7 @@ export default function LLMConfigurationPage() {
             large
             icon
             close={false}
-            text="Set up an LLM provider to start chatting."
+            text="Configurez un fournisseur LLM pour commencer à chatter."
             className="w-full"
           />
         )}
@@ -389,7 +389,7 @@ export default function LLMConfigurationPage() {
               justifyContent="start"
             >
               <Content
-                title="Available Providers"
+                title="Fournisseurs disponibles"
                 sizePreset="main-content"
                 variant="section"
               />
@@ -418,8 +418,8 @@ export default function LLMConfigurationPage() {
           justifyContent="start"
         >
           <Content
-            title="Add Provider"
-            description="Onyx supports both popular providers and self-hosted models."
+            title="Ajouter un fournisseur"
+            description="Onyx prend en charge les fournisseurs populaires ainsi que les modèles auto-hébergés."
             sizePreset="main-content"
             variant="section"
           />

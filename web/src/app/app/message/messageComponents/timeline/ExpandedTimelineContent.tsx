@@ -162,7 +162,7 @@ export const ExpandedTimelineContent = React.memo(
         {showDoneStep && (
           <StepContainer
             stepIcon={SvgCheckCircle}
-            header="Done"
+            header="Terminé"
             isLastStep={true}
             isFirstStep={false}
           >
@@ -174,7 +174,7 @@ export const ExpandedTimelineContent = React.memo(
         {showStoppedStep && (
           <StepContainer
             stepIcon={SvgStopCircle}
-            header="Stopped"
+            header="Arrêté"
             isLastStep={true}
             isFirstStep={false}
           >

@@ -38,10 +38,10 @@ const SECTIONS = {
   UNLABELED: "",
   AGENTS_AND_ACTIONS: "Agents & Actions",
   DOCUMENTS_AND_KNOWLEDGE: "Documents & Knowledge",
-  INTEGRATIONS: "Integrations",
+  INTEGRATIONS: "Intégrations",
   PERMISSIONS: "Permissions",
-  ORGANIZATION: "Organization",
-  USAGE: "Usage",
+  ORGANIZATION: "Organisation",
+  USAGE: "Utilisation",
 } as const;
 
 interface SidebarItemEntry {
@@ -170,7 +170,7 @@ function buildItems(
   if (!isCurator && !hasSubscription) {
     items.push({
       section: SECTIONS.UNLABELED,
-      name: "Upgrade Plan",
+      name: "Mettre à niveau le plan",
       icon: SvgArrowUpCircle,
       link: ADMIN_ROUTES.BILLING.path,
     });
@@ -272,14 +272,14 @@ function AdminSidebarInner({
               setFocusSearch(true);
             }}
           >
-            Search
+            Rechercher
           </SidebarTab>
         ) : (
           <InputTypeIn
             ref={searchRef}
             variant="internal"
             leftSearchIcon
-            placeholder="Search..."
+            placeholder="Rechercher..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -340,7 +340,7 @@ function AdminSidebarInner({
           variant="sidebar-light"
           folded={folded}
         >
-          Exit Admin Panel
+          Quitter le panneau admin
         </SidebarTab>
         <AccountPopover folded={folded} />
       </SidebarLayouts.Footer>

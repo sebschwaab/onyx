@@ -34,11 +34,11 @@ interface AddMCPServerModalProps {
 }
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required("Server name is required"),
+  name: Yup.string().required("Le nom du serveur est requis"),
   description: Yup.string(),
   server_url: Yup.string()
-    .url("Must be a valid URL")
-    .required("Server URL is required"),
+    .url("Doit être une URL valide")
+    .required("L'URL du serveur est requise"),
 });
 
 export default function AddMCPServerModal({
@@ -81,13 +81,13 @@ export default function AddMCPServerModal({
       if (isEditMode && server) {
         // Update existing server
         await updateMCPServer(server.id, values);
-        toast.success("MCP Server updated successfully");
+        toast.success("Serveur MCP mis à jour avec succès");
         await mutateMcpServers?.();
       } else {
         // Create new server
         const createdServer = await createMCPServer(values);
 
-        toast.success("MCP Server created successfully");
+        toast.success("Serveur MCP créé avec succès");
 
         await mutateMcpServers?.();
 
@@ -107,7 +107,7 @@ export default function AddMCPServerModal({
       toast.error(
         error instanceof Error
           ? error.message
-          : `Failed to ${isEditMode ? "update" : "create"} MCP server`
+          : `Échec de la ${isEditMode ? "mise à jour" : "création"} du serveur MCP`
       );
     } finally {
       setIsSubmitting(false);
@@ -136,20 +136,20 @@ export default function AddMCPServerModal({
             <Form>
               <Modal.Header
                 icon={SvgServer}
-                title={isEditMode ? "Manage MCP Server" : "Add MCP Server"}
+                title={isEditMode ? "Gérer le serveur MCP" : "Ajouter un serveur MCP"}
                 description={
                   isEditMode
-                    ? "Update your MCP server configuration and manage authentication."
-                    : "Connect MCP (Model Context Protocol) server to add custom actions."
+                    ? "Mettez à jour la configuration de votre serveur MCP et gérez l'authentification."
+                    : "Connectez un serveur MCP (Model Context Protocol) pour ajouter des actions personnalisées."
                 }
                 onClose={() => handleModalClose(false)}
               />
 
               <Modal.Body>
-                <InputLayouts.Vertical name="name" title="Server Name">
+                <InputLayouts.Vertical name="name" title="Nom du serveur">
                   <InputTypeInField
                     name="name"
-                    placeholder="Name your MCP server"
+                    placeholder="Nommez votre serveur MCP"
                     autoFocus
                   />
                 </InputLayouts.Vertical>
@@ -161,7 +161,7 @@ export default function AddMCPServerModal({
                 >
                   <InputTextAreaField
                     name="description"
-                    placeholder="More details about the MCP server"
+                    placeholder="Plus de détails sur le serveur MCP"
                     rows={3}
                   />
                 </InputLayouts.Vertical>
@@ -170,8 +170,8 @@ export default function AddMCPServerModal({
 
                 <InputLayouts.Vertical
                   name="server_url"
-                  title="MCP Server URL"
-                  subDescription="Only connect to servers you trust. You are responsible for actions taken with this connection and keeping your tools updated."
+                  title="URL du serveur MCP"
+                  subDescription="Connectez-vous uniquement aux serveurs auxquels vous faites confiance. Vous êtes responsable des actions effectuées avec cette connexion et de la mise à jour de vos outils."
                 >
                   <InputTypeInField
                     name="server_url"
@@ -197,14 +197,14 @@ export default function AddMCPServerModal({
                           width="fit"
                         >
                           <SvgCheckCircle className="w-4 h-4 stroke-status-success-05" />
-                          <Text>Authenticated &amp; Connected</Text>
+                          <Text>Authentifié &amp; Connecté</Text>
                         </Section>
                         <Text secondaryBody text03>
                           {server.auth_type === "OAUTH"
-                            ? `OAuth connected to ${server.owner}`
+                            ? `OAuth connecté à ${server.owner}`
                             : server.auth_type === "API_TOKEN"
-                              ? "API token configured"
-                              : "Connected"}
+                              ? "Jeton API configuré"
+                              : "Connecté"}
                         </Text>
                       </Section>
                       <Section
@@ -217,7 +217,7 @@ export default function AddMCPServerModal({
                           icon={SvgUnplug}
                           prominence="tertiary"
                           type="button"
-                          tooltip="Disconnect Server"
+                          tooltip="Déconnecter le serveur"
                           onClick={handleDisconnectClick}
                         />
                         <Button
@@ -229,7 +229,7 @@ export default function AddMCPServerModal({
                             handleAuthenticate(server.id);
                           }}
                         >
-                          Edit Configs
+                          Modifier les configs
                         </Button>
                       </Section>
                     </Section>
@@ -243,7 +243,7 @@ export default function AddMCPServerModal({
                   type="button"
                   onClick={() => handleModalClose(false)}
                 >
-                  Cancel
+                  Annuler
                 </Button>
                 <Button
                   disabled={isSubmitting || !isValid || !dirty}
@@ -251,11 +251,11 @@ export default function AddMCPServerModal({
                 >
                   {isSubmitting
                     ? isEditMode
-                      ? "Saving..."
-                      : "Adding..."
+                      ? "Enregistrement..."
+                      : "Ajout..."
                     : isEditMode
-                      ? "Save Changes"
-                      : "Add Server"}
+                      ? "Enregistrer les modifications"
+                      : "Ajouter le serveur"}
                 </Button>
               </Modal.Footer>
             </Form>

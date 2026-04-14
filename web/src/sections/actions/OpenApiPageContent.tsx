@@ -113,9 +113,9 @@ export default function OpenApiPageContent() {
           }
 
           toast.success(
-            `${selectedTool.name} authentication ${
-              selectedTool.oauth_config_id ? "updated" : "saved"
-            } successfully.`
+            `Authentification de ${selectedTool.name} ${
+              selectedTool.oauth_config_id ? "mise à jour" : "enregistrée"
+            } avec succès.`
           );
         } else if (values.authMethod === "custom-header") {
           const customHeaders = values.headers
@@ -136,7 +136,7 @@ export default function OpenApiPageContent() {
           }
 
           toast.success(
-            `${selectedTool.name} authentication headers saved successfully.`
+            `En-têtes d'authentification de ${selectedTool.name} enregistrés avec succès.`
           );
         } else if (values.authMethod === "pt-oauth") {
           const response = await updateCustomTool(selectedTool.id, {
@@ -148,7 +148,7 @@ export default function OpenApiPageContent() {
             throw new Error(response.error);
           }
           toast.success(
-            `${selectedTool.name} authentication passthrough saved successfully.`
+            `Authentification passthrough de ${selectedTool.name} enregistrée avec succès.`
           );
         }
 
@@ -158,7 +158,7 @@ export default function OpenApiPageContent() {
         const message =
           error instanceof Error
             ? error.message
-            : "Failed to save authentication settings.";
+            : "Échec de l'enregistrement des paramètres d'authentification.";
         toast.error(message);
         throw error;
       }
@@ -187,18 +187,18 @@ export default function OpenApiPageContent() {
       try {
         await updateToolStatus(tool.id, false);
 
-        toast.success(`${tool.name} has been disconnected.`);
+        toast.success(`${tool.name} a été déconnecté.`);
 
         await mutateOpenApiTools();
       } catch (error) {
         const message =
           error instanceof Error
             ? error.message
-            : "Failed to disconnect OpenAPI action.";
+            : "Échec de la déconnexion de l'action OpenAPI.";
         toast.error(message);
         throw error instanceof Error
           ? error
-          : new Error("Failed to disconnect OpenAPI action.");
+          : new Error("Échec de la déconnexion de l'action OpenAPI.");
       }
     },
     [mutateOpenApiTools]
@@ -234,17 +234,17 @@ export default function OpenApiPageContent() {
         setIsDeleting(true);
         const response = await deleteCustomTool(tool.id);
         if (response.data) {
-          toast.success(`${tool.name} deleted successfully.`);
+          toast.success(`${tool.name} supprimé avec succès.`);
           await mutateOpenApiTools();
         } else {
-          throw new Error(response.error || "Failed to delete tool.");
+          throw new Error(response.error || "Échec de la suppression de l'outil.");
         }
       } catch (error) {
         console.error("Failed to delete OpenAPI tool", error);
         toast.error(
           error instanceof Error
             ? error.message
-            : "An unexpected error occurred while deleting the tool."
+            : "Une erreur inattendue s'est produite lors de la suppression de l'outil."
         );
         throw error;
       } finally {
@@ -291,14 +291,14 @@ export default function OpenApiPageContent() {
         if (response.error) {
           throw new Error(response.error);
         }
-        toast.success("OpenAPI action renamed successfully");
+        toast.success("Action OpenAPI renommée avec succès");
         await mutateOpenApiTools();
       } catch (error) {
         console.error("Error renaming tool:", error);
         toast.error(
           error instanceof Error
             ? error.message
-            : "Failed to rename OpenAPI action"
+            : "Échec du renommage de l'action OpenAPI"
         );
         throw error; // Re-throw so ButtonRenaming can handle it
       }
@@ -308,14 +308,14 @@ export default function OpenApiPageContent() {
 
   const authenticationModalTitle = useMemo(() => {
     if (!selectedTool) {
-      return "Authenticate OpenAPI Action";
+      return "Authentifier l'action OpenAPI";
     }
     const hasExistingAuth =
       Boolean(selectedTool.oauth_config_id) ||
       Boolean(selectedTool.custom_headers?.length);
     const prefix = hasExistingAuth
-      ? "Update authentication for"
-      : "Authenticate";
+      ? "Mettre à jour l'authentification pour"
+      : "Authentifier";
     return `${prefix} ${selectedTool.name}`;
   }, [selectedTool]);
 
@@ -355,8 +355,8 @@ export default function OpenApiPageContent() {
           searchQuery={searchQuery}
           onSearchQueryChange={setSearchQuery}
           onAction={handleAddAction}
-          actionLabel="Add OpenAPI Action"
-          emptyStateText="Add custom actions from OpenAPI schemas."
+          actionLabel="Ajouter une action OpenAPI"
+          emptyStateText="Ajoutez des actions personnalisées depuis des schémas OpenAPI."
         />
       </div>
 

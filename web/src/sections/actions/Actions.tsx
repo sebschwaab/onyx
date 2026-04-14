@@ -63,7 +63,7 @@ const Actions = React.memo(
               >
                 <Button
                   icon={SvgUnplug}
-                  tooltip="Disconnect Server"
+                  tooltip="Déconnecter le serveur"
                   prominence="tertiary"
                   onClick={onDisconnect}
                   aria-label={`Disconnect ${serverName} server`}
@@ -73,7 +73,7 @@ const Actions = React.memo(
             {onManage && (
               <Button
                 icon={SvgSettings}
-                tooltip="Manage Server"
+                tooltip="Gérer le serveur"
                 prominence="tertiary"
                 onClick={onManage}
                 aria-label={`Manage ${serverName} server`}
@@ -88,8 +88,8 @@ const Actions = React.memo(
               aria-label={`View tools for ${serverName}`}
             >
               {status === ActionStatus.FETCHING
-                ? "Fetching tools..."
-                : `View ${toolCount ?? 0} tool${toolCount !== 1 ? "s" : ""}`}
+                ? "Récupération des outils..."
+                : `Voir ${toolCount ?? 0} outil${toolCount !== 1 ? "s" : ""}`}
             </Button>
           )}
         </div>
@@ -107,7 +107,7 @@ const Actions = React.memo(
               rightIcon={SvgArrowExchange}
               aria-label={`Authenticate and connect to ${serverName}`}
             >
-              Authenticate
+              S&apos;authentifier
             </Button>
           )}
           <div
@@ -121,7 +121,7 @@ const Actions = React.memo(
             {onDelete && (
               <Button
                 icon={SvgTrash}
-                tooltip="Delete Server"
+                tooltip="Supprimer le serveur"
                 prominence="tertiary"
                 onClick={onDelete}
                 aria-label={`Delete ${serverName} server`}
@@ -130,7 +130,7 @@ const Actions = React.memo(
             {onManage && (
               <Button
                 icon={SvgSettings}
-                tooltip="Manage Server"
+                tooltip="Gérer le serveur"
                 prominence="tertiary"
                 onClick={onManage}
                 aria-label={`Manage ${serverName} server`}
@@ -152,7 +152,7 @@ const Actions = React.memo(
               rightIcon={SvgPlug}
               aria-label={`Reconnect to ${serverName}`}
             >
-              Reconnect
+              Reconnecter
             </Button>
           )}
           {onManage && (

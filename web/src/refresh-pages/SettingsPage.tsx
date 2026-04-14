@@ -704,7 +704,7 @@ function PromptShortcuts() {
                     icon={SvgMinusCircle}
                     onClick={() => void handleRemoveShortcut(index)}
                     prominence="tertiary"
-                    aria-label="Remove shortcut"
+                    aria-label="Supprimer le raccourci"
                     tooltip={
                       shortcut.is_public
                         ? "Impossible de supprimer les raccourcis publics."

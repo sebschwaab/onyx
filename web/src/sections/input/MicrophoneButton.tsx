@@ -199,7 +199,7 @@ function MicrophoneButton({
         hasManualRecordStartRef.current = true;
       } catch (err) {
         console.error("Microphone access failed:", err);
-        toast.error("Could not access microphone");
+        toast.error("Impossible d'accéder au microphone");
       }
     }
   }, [
@@ -332,7 +332,7 @@ function MicrophoneButton({
       disabled={isDisabled}
       icon={icon}
       onClick={handleClick}
-      aria-label={isRecording ? "Stop recording" : "Start recording"}
+      aria-label={isRecording ? "Arrêter l'enregistrement" : "Démarrer l'enregistrement"}
       prominence={prominence}
     />
   );

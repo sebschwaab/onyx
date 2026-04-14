@@ -166,11 +166,11 @@ export const ImageToolRenderer: MessageRenderer<
     return children([
       {
         icon: SvgImage,
-        status: "Image generation failed",
+        status: "Échec de la génération d'image",
         supportsCollapsible: false,
         content: (
           <div className="text-sm text-red-600 dark:text-red-400">
-            Image generation failed
+            Échec de la génération d&apos;image
           </div>
         ),
       },
@@ -181,14 +181,11 @@ export const ImageToolRenderer: MessageRenderer<
     return children([
       {
         icon: SvgImage,
-        status: `Generated ${images.length} image${
-          images.length > 1 ? "s" : ""
-        }`,
+        status: `${images.length} image${images.length > 1 ? "s" : ""} générée${images.length > 1 ? "s" : ""}`,
         supportsCollapsible: false,
         content: (
           <div className="text-sm text-muted-foreground">
-            Generated {images.length} image
-            {images.length > 1 ? "s" : ""}
+            {images.length} image{images.length > 1 ? "s" : ""} générée{images.length > 1 ? "s" : ""}
           </div>
         ),
       },
@@ -198,10 +195,10 @@ export const ImageToolRenderer: MessageRenderer<
   return children([
     {
       icon: SvgImage,
-      status: "Image generation",
+      status: "Génération d'image",
       supportsCollapsible: false,
       content: (
-        <div className="text-sm text-muted-foreground">Image generation</div>
+        <div className="text-sm text-muted-foreground">Génération d&apos;image</div>
       ),
     },
   ]);

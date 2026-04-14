@@ -53,7 +53,7 @@ export const ParallelStreamingHeader = React.memo(
                 onClick={onToggle}
                 icon={isExpanded ? SvgFold : SvgExpand}
                 aria-label={
-                  isExpanded ? "Collapse timeline" : "Expand timeline"
+                  isExpanded ? "Réduire la chronologie" : "Développer la chronologie"
                 }
                 aria-expanded={isExpanded}
               />

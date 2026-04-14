@@ -51,19 +51,19 @@ const STT_MODELS: ModelDetails[] = [
   {
     id: "whisper",
     label: "Whisper",
-    subtitle: "OpenAI's general purpose speech recognition model.",
+    subtitle: "Modèle de reconnaissance vocale généraliste d'OpenAI.",
     providerType: "openai",
   },
   {
     id: "azure-speech-stt",
     label: "Azure Speech",
-    subtitle: "Speech to text in Microsoft Foundry Tools.",
+    subtitle: "Reconnaissance vocale dans Microsoft Foundry Tools.",
     providerType: "azure",
   },
   {
     id: "elevenlabs-stt",
     label: "ElevenAPI",
-    subtitle: "ElevenLabs Speech to Text API.",
+    subtitle: "API de reconnaissance vocale ElevenLabs.",
     providerType: "elevenlabs",
   },
 ];
@@ -77,13 +77,13 @@ const TTS_PROVIDER_GROUPS: ProviderGroup[] = [
       {
         id: "tts-1",
         label: "TTS-1",
-        subtitle: "OpenAI's text-to-speech model optimized for speed.",
+        subtitle: "Modèle de synthèse vocale OpenAI optimisé pour la rapidité.",
         providerType: "openai",
       },
       {
         id: "tts-1-hd",
         label: "TTS-1 HD",
-        subtitle: "OpenAI's text-to-speech model optimized for quality.",
+        subtitle: "Modèle de synthèse vocale OpenAI optimisé pour la qualité.",
         providerType: "openai",
       },
     ],
@@ -95,7 +95,7 @@ const TTS_PROVIDER_GROUPS: ProviderGroup[] = [
       {
         id: "azure-speech-tts",
         label: "Azure Speech",
-        subtitle: "Text to speech in Microsoft Foundry Tools.",
+        subtitle: "Synthèse vocale dans Microsoft Foundry Tools.",
         providerType: "azure",
       },
     ],
@@ -107,7 +107,7 @@ const TTS_PROVIDER_GROUPS: ProviderGroup[] = [
       {
         id: "elevenlabs-tts",
         label: "ElevenAPI",
-        subtitle: "ElevenLabs Text to Speech API.",
+        subtitle: "API de synthèse vocale ElevenLabs.",
         providerType: "elevenlabs",
       },
     ],
@@ -152,7 +152,7 @@ const NO_DEFAULT_VALUE = "__none__";
 
 const route = ADMIN_ROUTES.VOICE;
 const pageDescription =
-  "Configure speech-to-text and text-to-speech providers for voice input and spoken responses.";
+  "Configurez les fournisseurs de reconnaissance et de synthèse vocale pour les entrées et réponses vocales.";
 
 interface VoiceDisconnectModalProps {
   disconnectTarget: {
@@ -349,13 +349,13 @@ export default function VoiceConfigurationPage() {
         throw new Error(
           typeof errorBody?.detail === "string"
             ? errorBody.detail
-            : `Failed to set provider as default ${mode.toUpperCase()}.`
+            : `Échec de la définition du fournisseur par défaut ${mode.toUpperCase()}.`
         );
       }
       await mutate();
     } catch (err) {
       const message =
-        err instanceof Error ? err.message : "Unexpected error occurred.";
+        err instanceof Error ? err.message : "Une erreur inattendue s'est produite.";
       setError(message);
     }
   };
@@ -371,13 +371,13 @@ export default function VoiceConfigurationPage() {
         throw new Error(
           typeof errorBody?.detail === "string"
             ? errorBody.detail
-            : `Failed to deactivate ${mode.toUpperCase()} provider.`
+            : `Échec de la désactivation du fournisseur ${mode.toUpperCase()}.`
         );
       }
       await mutate();
     } catch (err) {
       const message =
-        err instanceof Error ? err.message : "Unexpected error occurred.";
+        err instanceof Error ? err.message : "Une erreur inattendue s'est produite.";
       setError(message);
     }
   };
@@ -413,7 +413,7 @@ export default function VoiceConfigurationPage() {
             throw new Error(
               typeof errorBody?.detail === "string"
                 ? errorBody.detail
-                : "Failed to activate replacement STT provider."
+                : "Échec de l'activation du fournisseur STT de remplacement."
             );
           }
         }
@@ -425,7 +425,7 @@ export default function VoiceConfigurationPage() {
             throw new Error(
               typeof errorBody?.detail === "string"
                 ? errorBody.detail
-                : "Failed to activate replacement TTS provider."
+                : "Échec de l'activation du fournisseur TTS de remplacement."
             );
           }
         }
@@ -437,15 +437,15 @@ export default function VoiceConfigurationPage() {
         throw new Error(
           typeof errorBody?.detail === "string"
             ? errorBody.detail
-            : "Failed to disconnect provider."
+            : "Échec de la déconnexion du fournisseur."
         );
       }
       await mutate();
-      toast.success(`${disconnectTarget.providerLabel} disconnected`);
+      toast.success(`${disconnectTarget.providerLabel} déconnecté`);
     } catch (err) {
       console.error("Failed to disconnect voice provider:", err);
       toast.error(
-        err instanceof Error ? err.message : "Unexpected error occurred."
+        err instanceof Error ? err.message : "Une erreur inattendue s'est produite."
       );
     } finally {
       setDisconnectTarget(null);
@@ -520,7 +520,7 @@ export default function VoiceConfigurationPage() {
   };
 
   if (error) {
-    const message = error?.message || "Unable to load voice configuration.";
+    const message = error?.message || "Impossible de charger la configuration vocale.";
     const detail =
       error instanceof FetchError && typeof error.info?.detail === "string"
         ? error.info.detail

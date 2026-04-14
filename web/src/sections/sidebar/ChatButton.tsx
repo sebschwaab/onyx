@@ -85,7 +85,7 @@ export function PopoverSearchInput({
         value={searchTerm}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        placeholder="Search Projects"
+        placeholder="Rechercher des projets"
         onClick={noProp()}
         variant="internal"
         autoFocus
@@ -261,7 +261,7 @@ const ChatButton = memo(
                     handleCreateProjectAndMove(searchTerm.trim())
                   )}
                 >
-                  {`Create ${searchTerm.trim()}`}
+                  {`Créer ${searchTerm.trim()}`}
                 </LineItem>,
               ]
             : []),
@@ -451,7 +451,7 @@ const ChatButton = memo(
       <>
         {deleteConfirmationModalOpen && (
           <ConfirmationModalLayout
-            title="Delete Chat"
+            title="Supprimer le chat"
             icon={SvgTrash}
             onClose={() => setDeleteConfirmationModalOpen(false)}
             submit={
@@ -462,12 +462,11 @@ const ChatButton = memo(
                   handleChatDelete();
                 }}
               >
-                Delete
+                Supprimer
               </Button>
             }
           >
-            Are you sure you want to delete this chat? This action cannot be
-            undone.
+            Êtes-vous sûr de vouloir supprimer ce chat ? Cette action est irréversible.
           </ConfirmationModalLayout>
         )}
 

@@ -251,12 +251,12 @@ export default function MCPActionCard({
           icon={isToolsRefreshing ? SimpleLoader : SvgRefreshCw}
           prominence="internal"
           onClick={handleRefreshTools}
-          tooltip="Refresh tools"
-          aria-label="Refresh tools"
+          tooltip="Actualiser les outils"
+          aria-label="Actualiser les outils"
         />
         {lastRefreshedText && (
           <Text as="p" text03 mainUiBody className="whitespace-nowrap">
-            Tools last refreshed {lastRefreshedText}
+            Outils actualisés {lastRefreshedText}
           </Text>
         )}
       </div>
@@ -302,8 +302,8 @@ export default function MCPActionCard({
           }}
           isEmpty={filteredTools.length === 0}
           searchQuery={searchQuery}
-          emptyMessage="No tools available"
-          emptySearchMessage="No tools found"
+          emptyMessage="Aucun outil disponible"
+          emptySearchMessage="Aucun outil trouvé"
           leftAction={leftAction}
         >
           {filteredTools.map((tool) => (
@@ -328,7 +328,7 @@ export default function MCPActionCard({
           icon={({ className }) => (
             <SvgTrash className={cn(className, "stroke-action-danger-05")} />
           )}
-          title="Delete MCP server"
+          title="Supprimer le serveur MCP"
           onClose={() => deleteModal.toggle(false)}
           submit={
             <Button
@@ -344,17 +344,16 @@ export default function MCPActionCard({
                 }
               }}
             >
-              Delete
+              Supprimer
             </Button>
           }
         >
           <div className="flex flex-col gap-4">
             <Text as="p" text03>
-              All tools connected to <b>{title}</b> will be removed. Deletion is
-              irreversible.
+              Tous les outils connectés à <b>{title}</b> seront supprimés. La suppression est irréversible.
             </Text>
             <Text as="p" text03>
-              Are you sure you want to delete this MCP server?
+              Êtes-vous sûr de vouloir supprimer ce serveur MCP ?
             </Text>
           </div>
         </Modal>

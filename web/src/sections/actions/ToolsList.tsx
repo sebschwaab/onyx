@@ -102,12 +102,12 @@ const ToolsList: React.FC<ToolsListProps> = ({
                   onClick={onToggleShowOnlyEnabled}
                   interaction={showOnlyEnabled ? "hover" : "rest"}
                   tooltip={
-                    showOnlyEnabled ? "Show all tools" : "Show only enabled"
+                    showOnlyEnabled ? "Afficher tous les outils" : "Afficher seulement les activés"
                   }
                   aria-label={
                     showOnlyEnabled
-                      ? "Show all tools"
-                      : "Show only enabled tools"
+                      ? "Afficher tous les outils"
+                      : "Afficher seulement les outils activés"
                   }
                 />
               )}
@@ -117,8 +117,8 @@ const ToolsList: React.FC<ToolsListProps> = ({
                   prominence="tertiary"
                   size="sm"
                   onClick={() => onUpdateToolsStatus(false)}
-                  tooltip="Disable all tools"
-                  aria-label="Disable all tools"
+                  tooltip="Désactiver tous les outils"
+                  aria-label="Désactiver tous les outils"
                 />
               )}
               {onUpdateToolsStatus && enabledCount === 0 && (
@@ -126,7 +126,7 @@ const ToolsList: React.FC<ToolsListProps> = ({
                   prominence="tertiary"
                   onClick={() => onUpdateToolsStatus(true)}
                 >
-                  Enable all
+                  Tout activer
                 </Button>
               )}
             </div>

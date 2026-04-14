@@ -109,7 +109,7 @@ function LLMProviderCardInner({
           <div className="flex items-start p-1">
             <div className="flex items-center gap-0.5">
               <Text as="p" text03 secondaryAction>
-                Connect
+                Connecter
               </Text>
               <div className="p-0.5">
                 <SvgArrowExchange className="w-4 h-4 stroke-text-03" />

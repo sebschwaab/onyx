@@ -111,7 +111,7 @@ export default function MultiModelPanel({
                       e.stopPropagation();
                       onDeselect();
                     }}
-                    tooltip="Deselect preferred response"
+                    tooltip="Désélectionner la réponse préférée"
                   />
                 )}
               </>
@@ -125,7 +125,7 @@ export default function MultiModelPanel({
                   e.stopPropagation();
                   onToggleVisibility();
                 }}
-                tooltip={isHidden ? "Show response" : "Hide response"}
+                tooltip={isHidden ? "Afficher la réponse" : "Masquer la réponse"}
               />
             )}
           </div>

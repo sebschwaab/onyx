@@ -833,21 +833,21 @@ export default function AppPage({ firstMessage }: ChatPageProps) {
                           }
                           title={
                             sessionFetchError.type === "not_found"
-                              ? "Chat not found"
+                              ? "Chat introuvable"
                               : sessionFetchError.type === "access_denied"
-                                ? "Access denied"
-                                : "Something went wrong"
+                                ? "Accès refusé"
+                                : "Une erreur s'est produite"
                           }
                           description={
                             sessionFetchError.type === "not_found"
-                              ? "This chat session doesn't exist or has been deleted."
+                              ? "Cette session de chat n'existe pas ou a été supprimée."
                               : sessionFetchError.type === "access_denied"
-                                ? "You don't have permission to view this chat session."
+                                ? "Vous n'avez pas la permission de voir cette session de chat."
                                 : sessionFetchError.detail
                           }
                         />
                         <Button href="/app" prominence="secondary">
-                          Start a new chat
+                          Démarrer un nouveau chat
                         </Button>
                       </Section>
                     )}

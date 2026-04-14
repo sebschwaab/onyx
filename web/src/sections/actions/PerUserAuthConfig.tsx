@@ -104,29 +104,29 @@ export function PerUserAuthConfig({
     <div className="flex flex-col gap-4 -mx-2 px-2 py-2 bg-background-tint-00 rounded-12">
       {/* Authentication Headers */}
       <FormField name="auth_template.headers" state="idle">
-        <FormField.Label>Authentication Headers</FormField.Label>
+        <FormField.Label>En-têtes d&apos;authentification</FormField.Label>
         <FormField.Control asChild>
           <InputKeyValue
-            keyTitle="Header Name"
-            valueTitle="Header Value"
+            keyTitle="Nom du header"
+            valueTitle="Valeur du header"
             items={headersDraft}
             onChange={handleHeadersChange}
             mode="fixed-line"
             layout="equal"
-            addButtonLabel="Add Header"
+            addButtonLabel="Ajouter un header"
           />
         </FormField.Control>
         <FormField.Description>
-          Format headers for each user to fill in their individual credentials.
-          Use placeholders like{" "}
+          Formatez les headers pour que chaque utilisateur renseigne ses propres identifiants.
+          Utilisez des espaces réservés comme{" "}
           <Text text03 secondaryMono className="inline">
             {"{api_key}"}
           </Text>{" "}
-          or{" "}
+          ou{" "}
           <Text text03 secondaryMono className="inline">
             {"{user_email}"}
           </Text>
-          . Users will be prompted to provide values for placeholders (except
+          . Les utilisateurs seront invités à fournir des valeurs pour les espaces réservés (sauf
           user_email).
         </FormField.Description>
       </FormField>
@@ -141,11 +141,11 @@ export function PerUserAuthConfig({
               <SvgUser className="w-4 h-4 stroke-text-04 mt-0.5" />
               <div className="flex flex-col gap-1">
                 <Text text04 secondaryAction as="p">
-                  Only for your own account
+                  Uniquement pour votre propre compte
                 </Text>
                 <Text text03 secondaryBody as="p">
-                  The following credentials will not be shared with your
-                  organization.
+                  Les identifiants suivants ne seront pas partagés avec votre
+                  organisation.
                 </Text>
               </div>
             </div>
@@ -178,7 +178,7 @@ export function PerUserAuthConfig({
                         onChange={(e) =>
                           updateUserCredential(field, e.target.value)
                         }
-                        placeholder={`Enter ${field.replace(/_/g, " ")}`}
+                        placeholder={`Saisir ${field.replace(/_/g, " ")}`}
                         showClearButton={false}
                       />
                     </FormField.Control>

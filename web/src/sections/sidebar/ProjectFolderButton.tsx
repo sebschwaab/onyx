@@ -89,7 +89,7 @@ const ProjectFolderButton = memo(({ project }: ProjectFolderButtonProps) => {
       icon={SvgEdit}
       onClick={noProp(() => setIsEditing(true))}
     >
-      Rename Project
+      Renommer le projet
     </LineItem>,
     null,
     <LineItem
@@ -98,7 +98,7 @@ const ProjectFolderButton = memo(({ project }: ProjectFolderButtonProps) => {
       onClick={noProp(() => setDeleteConfirmationModalOpen(true))}
       danger
     >
-      Delete Project
+      Supprimer le projet
     </LineItem>,
   ];
 
@@ -113,7 +113,7 @@ const ProjectFolderButton = memo(({ project }: ProjectFolderButtonProps) => {
       {/* Confirmation Modal (only for deletion) */}
       {deleteConfirmationModalOpen && (
         <ConfirmationModalLayout
-          title="Delete Project"
+          title="Supprimer le projet"
           icon={SvgTrash}
           onClose={() => setDeleteConfirmationModalOpen(false)}
           submit={
@@ -124,12 +124,11 @@ const ProjectFolderButton = memo(({ project }: ProjectFolderButtonProps) => {
                 deleteProject(project.id);
               }}
             >
-              Delete
+              Supprimer
             </Button>
           }
         >
-          Are you sure you want to delete this project? This action cannot be
-          undone.
+          Êtes-vous sûr de vouloir supprimer ce projet ? Cette action est irréversible.
         </ConfirmationModalLayout>
       )}
 

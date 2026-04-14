@@ -106,7 +106,7 @@ export const InMessageImage = memo(function InMessageImage({
             <Hoverable.Item group="messageImage" variant="opacity-on-hover">
               <Button
                 icon={SvgDownload}
-                tooltip="Download"
+                tooltip="Télécharger"
                 onClick={handleDownload}
               />
             </Hoverable.Item>

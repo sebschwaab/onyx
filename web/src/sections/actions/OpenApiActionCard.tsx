@@ -171,15 +171,15 @@ export default function OpenApiActionCard({
         <ToolsList
           isEmpty={filteredTools.length === 0}
           searchQuery={searchQuery}
-          emptyMessage="No actions defined for this OpenAPI schema"
-          emptySearchMessage="No actions match your search"
+          emptyMessage="Aucune action définie pour ce schéma OpenAPI"
+          emptySearchMessage="Aucune action ne correspond à votre recherche"
           className="gap-2"
         >
           {filteredTools.map((method) => (
             <ToolItem
               key={`${tool.id}-${method.method}-${method.path}-${method.name}`}
               name={method.name}
-              description={method.summary || "No summary provided"}
+              description={method.summary || "Aucun résumé disponible"}
               variant="openapi"
               openApiMetadata={{
                 method: method.method,
@@ -195,7 +195,7 @@ export default function OpenApiActionCard({
           icon={({ className }) => (
             <SvgTrash className={cn(className, "stroke-action-danger-05")} />
           )}
-          title="Delete OpenAPI action"
+          title="Supprimer l'action OpenAPI"
           onClose={() => deleteModal.toggle(false)}
           submit={
             <Button
@@ -205,17 +205,17 @@ export default function OpenApiActionCard({
                 deleteModal.toggle(false);
               }}
             >
-              Delete
+              Supprimer
             </Button>
           }
         >
           <div className="flex flex-col gap-4">
             <Text as="p" text03>
-              This will permanently delete the OpenAPI action <b>{tool.name}</b>{" "}
-              and its configuration.
+              Cette action supprimera définitivement l&apos;action OpenAPI <b>{tool.name}</b>{" "}
+              et sa configuration.
             </Text>
             <Text as="p" text03>
-              Are you sure you want to delete this OpenAPI action?
+              Êtes-vous sûr de vouloir supprimer cette action OpenAPI ?
             </Text>
           </div>
         </Modal>

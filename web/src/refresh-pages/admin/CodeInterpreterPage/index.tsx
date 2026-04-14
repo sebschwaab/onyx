@@ -38,7 +38,7 @@ function CheckingStatus() {
       padding={0.5}
     >
       <Text mainUiAction text03>
-        Checking...
+        Vérification...
       </Text>
       <SimpleLoader />
     </Section>
@@ -55,7 +55,7 @@ function ConnectionStatus({ healthy, isLoading }: ConnectionStatusProps) {
     return <CheckingStatus />;
   }
 
-  const label = healthy ? "Connected" : "Connection Lost";
+  const label = healthy ? "Connecté" : "Connexion perdue";
   const Icon = healthy ? SvgCheckCircle : SvgXOctagon;
   const iconColor = healthy ? "text-status-success-05" : "text-status-error-05";
 
@@ -90,7 +90,7 @@ export default function CodeInterpreterPage() {
     try {
       const response = await updateCodeInterpreter({ enabled });
       if (!response.ok) {
-        toast.error(`Failed to ${action} Code Interpreter`);
+        toast.error(`Échec de la ${action === "reconnect" ? "reconnexion" : "déconnexion"} de l'interpréteur de code`);
         return;
       }
       setShowDisconnectModal(false);
@@ -105,7 +105,7 @@ export default function CodeInterpreterPage() {
       <SettingsLayouts.Header
         icon={route.icon}
         title={route.title}
-        description="Safe and sandboxed Python runtime available to your LLM. See docs for more details."
+        description="Environnement Python sécurisé et isolé disponible pour votre LLM. Consultez la documentation pour plus de détails."
         separator
       />
 
@@ -117,8 +117,8 @@ export default function CodeInterpreterPage() {
                 sizePreset="main-ui"
                 variant="section"
                 icon={SvgTerminal}
-                title="Code Interpreter"
-                description="Built-in Python runtime"
+                title="Interpréteur de code"
+                description="Environnement Python intégré"
                 rightChildren={
                   <ConnectionStatus healthy={isHealthy} isLoading={isLoading} />
                 }
@@ -137,7 +137,7 @@ export default function CodeInterpreterPage() {
                           size="sm"
                           icon={SvgUnplug}
                           onClick={() => setShowDisconnectModal(true)}
-                          tooltip="Disconnect"
+                          tooltip="Déconnecter"
                         />
                       </Hoverable.Item>
                     </Disabled>
@@ -147,7 +147,7 @@ export default function CodeInterpreterPage() {
                       size="sm"
                       icon={SvgRefreshCw}
                       onClick={refetch}
-                      tooltip="Refresh"
+                      tooltip="Actualiser"
                     />
                   </Section>
                 }
@@ -165,8 +165,8 @@ export default function CodeInterpreterPage() {
               sizePreset="main-ui"
               variant="section"
               icon={SvgTerminal}
-              title="Code Interpreter (Disconnected)"
-              description="Built-in Python runtime"
+              title="Interpréteur de code (Déconnecté)"
+              description="Environnement Python intégré"
               rightChildren={
                 <Section flexDirection="row" alignItems="center" padding={0.5}>
                   {isReconnecting ? (
@@ -180,7 +180,7 @@ export default function CodeInterpreterPage() {
                         handleToggle(true);
                       }}
                     >
-                      Reconnect
+                      Reconnecter
                     </Button>
                   )}
                 </Section>
@@ -193,21 +193,21 @@ export default function CodeInterpreterPage() {
       {showDisconnectModal && (
         <ConfirmationModalLayout
           icon={SvgUnplug}
-          title="Disconnect Code Interpreter"
+          title="Déconnecter l'interpréteur de code"
           onClose={() => setShowDisconnectModal(false)}
           submit={
             <Button variant="danger" onClick={() => handleToggle(false)}>
-              Disconnect
+              Déconnecter
             </Button>
           }
         >
           <Text as="p" text03>
-            All running sessions connected to{" "}
+            Toutes les sessions en cours connectées à{" "}
             <Text as="span" mainContentEmphasis text03>
-              Code Interpreter
+              l&apos;interpréteur de code
             </Text>{" "}
-            will stop working. Note that this will not remove any data from your
-            runtime. You can reconnect to this runtime later if needed.
+            cesseront de fonctionner. Cela ne supprimera aucune donnée de votre
+            environnement. Vous pouvez vous reconnecter ultérieurement si nécessaire.
           </Text>
         </ConfirmationModalLayout>
       )}

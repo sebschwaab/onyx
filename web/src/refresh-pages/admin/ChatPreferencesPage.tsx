@@ -124,7 +124,7 @@ function MCPServerCard({
     tools.length > 0 && tools.some((t) => isToolEnabled(t.id));
   const needsAuth = !server.is_authenticated;
   const authTooltip = needsAuth
-    ? "Authenticate this MCP server before enabling its tools."
+    ? "Authentifiez ce serveur MCP avant d'activer ses outils."
     : undefined;
 
   return (
@@ -146,7 +146,7 @@ function MCPServerCard({
         {tools.length > 0 && (
           <Section flexDirection="row" gap={0.5}>
             <InputTypeIn
-              placeholder="Search tools..."
+              placeholder="Rechercher des outils..."
               variant="internal"
               leftSearchIcon
               value={query}
@@ -158,7 +158,7 @@ function MCPServerCard({
               prominence="internal"
               size="lg"
             >
-              {isFolded ? "Expand" : "Fold"}
+              {isFolded ? "Développer" : "Réduire"}
             </Button>
           </Section>
         )}
@@ -288,14 +288,14 @@ function NumericLimitField({
         inputMode="numeric"
         showClearButton={false}
         pattern="[0-9]*"
-        placeholder={allowZero ? "No limit" : `Default: ${defaultValue}`}
+        placeholder={allowZero ? "Sans limite" : `Par défaut : ${defaultValue}`}
         variant={isOverMax ? "error" : undefined}
         rightSection={
           (value || "") !== defaultValue ? (
             <Hoverable.Item group="numericLimit" variant="opacity-on-hover">
               <IconButton
                 icon={SvgRefreshCw}
-                tooltip="Restore default"
+                tooltip="Restaurer la valeur par défaut"
                 internal
                 type="button"
                 onClick={handleRestore}
@@ -326,10 +326,10 @@ function FileSizeLimitFields({
     <div className="flex gap-4 w-full items-start">
       <div className="flex-1">
         <InputLayouts.Vertical
-          title="File Size Limit (MB)"
+          title="Taille limite des fichiers (Mo)"
           subDescription={
             maxAllowedUploadSizeMb
-              ? `Max: ${maxAllowedUploadSizeMb} MB`
+              ? `Max : ${maxAllowedUploadSizeMb} Mo`
               : undefined
           }
           nonInteractive
@@ -344,7 +344,7 @@ function FileSizeLimitFields({
       </div>
       <div className="flex-1">
         <InputLayouts.Vertical
-          title="File Token Limit (thousand tokens)"
+          title="Limite de jetons des fichiers (milliers de jetons)"
           nonInteractive
         >
           <NumericLimitField
@@ -450,9 +450,9 @@ function ChatPreferencesForm() {
           },
           { optimisticData, revalidate: true }
         );
-        toast.success("Tools updated");
+        toast.success("Outils mis à jour");
       } catch {
-        toast.error("Failed to update tools");
+        toast.error("Échec de la mise à jour des outils");
       }
     },
     [defaultAgentConfig, mutateDefaultAgent]
@@ -502,9 +502,9 @@ function ChatPreferencesForm() {
 
         router.refresh();
         await mutate(SWR_KEYS.settings);
-        toast.success("Settings updated");
+        toast.success("Paramètres mis à jour");
       } catch (error) {
-        toast.error("Failed to update settings");
+        toast.error("Échec de la mise à jour des paramètres");
       }
     },
     [settings, router]
@@ -516,7 +516,7 @@ function ChatPreferencesForm() {
         <SettingsLayouts.Header
           icon={route.icon}
           title={route.title}
-          description="Organization-wide chat settings and defaults. Users can override some of these in their personal settings."
+          description="Paramètres et valeurs par défaut du chat à l'échelle de l'organisation. Les utilisateurs peuvent en remplacer certains dans leurs paramètres personnels."
           separator
         />
 
@@ -524,12 +524,12 @@ function ChatPreferencesForm() {
           {/* Team Context */}
           <Section gap={1}>
             <InputLayouts.Vertical
-              title="Team Name"
-              subDescription="This is added to all chat sessions as additional context to provide a richer/customized experience."
+              title="Nom de l'équipe"
+              subDescription="Ceci est ajouté à toutes les sessions de chat comme contexte supplémentaire pour une expérience plus riche et personnalisée."
             >
               <InputTypeInField
                 name="company_name"
-                placeholder="Enter team name"
+                placeholder="Entrez le nom de l'équipe"
                 onBlur={() => {
                   if (values.company_name !== initialCompanyName.current) {
                     void saveSettings({
@@ -542,12 +542,12 @@ function ChatPreferencesForm() {
             </InputLayouts.Vertical>
 
             <InputLayouts.Vertical
-              title="Team Context"
-              subDescription="Users can also provide additional individual context in their personal settings."
+              title="Contexte de l'équipe"
+              subDescription="Les utilisateurs peuvent également fournir un contexte individuel supplémentaire dans leurs paramètres personnels."
             >
               <InputTextAreaField
                 name="company_description"
-                placeholder="Describe your team and how Onyx should behave."
+                placeholder="Décrivez votre équipe et comment Onyx devrait se comporter."
                 rows={4}
                 maxRows={10}
                 autoResize
@@ -568,15 +568,15 @@ function ChatPreferencesForm() {
           </Section>
 
           <InputLayouts.Horizontal
-            title="System Prompt"
-            description="Base prompt for all chats, agents, and projects. Modify with caution: Significant changes may degrade response quality."
+            title="Prompt système"
+            description="Prompt de base pour tous les chats, agents et projets. Modifier avec précaution : des changements significatifs peuvent dégrader la qualité des réponses."
           >
             <Button
               prominence="tertiary"
               icon={SvgAddLines}
               onClick={() => setSystemPromptModalOpen(true)}
             >
-              Modify Prompt
+              Modifier le prompt
             </Button>
           </InputLayouts.Horizontal>
 
@@ -585,7 +585,7 @@ function ChatPreferencesForm() {
           {/* Features */}
           <Section gap={0.75}>
             <Content
-              title="Features"
+              title="Fonctionnalités"
               sizePreset="main-content"
               variant="section"
             />
@@ -593,7 +593,7 @@ function ChatPreferencesForm() {
               <SimpleTooltip
                 tooltip={
                   uniqueSources.length === 0
-                    ? "Set up connectors to use Search Mode"
+                    ? "Configurez des connecteurs pour utiliser le mode Recherche"
                     : undefined
                 }
                 side="top"
@@ -601,8 +601,8 @@ function ChatPreferencesForm() {
                 <Disabled disabled={uniqueSources.length === 0} allowClick>
                   <div className="w-full">
                     <InputLayouts.Horizontal
-                      title="Search Mode"
-                      description="UI mode for quick document search across your organization."
+                      title="Mode Recherche"
+                      description="Mode d'interface pour une recherche rapide de documents dans votre organisation."
                       disabled={uniqueSources.length === 0}
                     >
                       <SwitchField
@@ -617,8 +617,8 @@ function ChatPreferencesForm() {
                 </Disabled>
               </SimpleTooltip>
               <InputLayouts.Horizontal
-                title="Deep Research"
-                description="Agentic research system that works across the web and connected sources. Uses significantly more tokens per query."
+                title="Recherche approfondie"
+                description="Système de recherche agentique qui opère sur le web et les sources connectées. Utilise nettement plus de jetons par requête."
               >
                 <SwitchField
                   name="deep_research_enabled"
@@ -628,8 +628,8 @@ function ChatPreferencesForm() {
                 />
               </InputLayouts.Horizontal>
               <InputLayouts.Horizontal
-                title="Chat Auto-Scroll"
-                description="Automatically scroll to new content as chat generates response. Users can override this in their personal settings."
+                title="Défilement automatique du chat"
+                description="Faire défiler automatiquement vers le nouveau contenu pendant la génération des réponses. Les utilisateurs peuvent modifier cela dans leurs paramètres personnels."
               >
                 <SwitchField
                   name="auto_scroll"
@@ -649,7 +649,7 @@ function ChatPreferencesForm() {
                 {/* Connectors */}
                 <Section gap={0.75}>
                   <Content
-                    title="Connectors"
+                    title="Connecteurs"
                     sizePreset="main-content"
                     variant="section"
                   />
@@ -661,7 +661,7 @@ function ChatPreferencesForm() {
                     gap={0.25}
                   >
                     {uniqueSources.length === 0 ? (
-                      <EmptyMessage title="No connectors set up" />
+                      <EmptyMessage title="Aucun connecteur configuré" />
                     ) : (
                       <>
                         <Section
@@ -693,7 +693,7 @@ function ChatPreferencesForm() {
                           prominence="tertiary"
                           rightIcon={SvgExternalLink}
                         >
-                          Manage All
+                          Tout gérer
                         </Button>
                       </>
                     )}
@@ -703,16 +703,16 @@ function ChatPreferencesForm() {
                 {/* Actions & Tools */}
                 <SimpleCollapsible>
                   <SimpleCollapsible.Header
-                    title="Actions & Tools"
-                    description="Tools and capabilities available for chat to use. This does not apply to agents."
+                    title="Actions & Outils"
+                    description="Outils et capacités disponibles pour le chat. Ceci ne s'applique pas aux agents."
                   />
                   <SimpleCollapsible.Content>
                     <Section gap={0.5}>
                       {vectorDbEnabled && searchTool && (
                         <Card>
                           <InputLayouts.Horizontal
-                            title="Internal Search"
-                            description="Search through your organization's connected knowledge base and documents."
+                            title="Recherche interne"
+                            description="Recherchez dans la base de connaissances et les documents connectés de votre organisation."
                           >
                             <Switch
                               checked={isToolEnabled(searchTool.id)}
@@ -728,14 +728,14 @@ function ChatPreferencesForm() {
                         tooltip={
                           imageGenTool
                             ? undefined
-                            : "Image generation requires a configured model. Set one up under Configuration > Image Generation, or ask an admin."
+                            : "La génération d'images nécessite un modèle configuré. Configurez-en un sous Configuration > Génération d'images, ou contactez un administrateur."
                         }
                         side="top"
                       >
                         <Card variant={imageGenTool ? undefined : "disabled"}>
                           <InputLayouts.Horizontal
-                            title="Image Generation"
-                            description="Generate and manipulate images using AI-powered tools."
+                            title="Génération d'images"
+                            description="Générez et manipulez des images à l'aide d'outils IA."
                             disabled={!imageGenTool}
                           >
                             <Switch
@@ -756,8 +756,8 @@ function ChatPreferencesForm() {
 
                       <Card variant={webSearchTool ? undefined : "disabled"}>
                         <InputLayouts.Horizontal
-                          title="Web Search"
-                          description="Search the web for real-time information and up-to-date results."
+                          title="Recherche web"
+                          description="Recherchez sur le web des informations en temps réel et des résultats à jour."
                           disabled={!webSearchTool}
                         >
                           <Switch
@@ -777,8 +777,8 @@ function ChatPreferencesForm() {
 
                       <Card variant={openURLTool ? undefined : "disabled"}>
                         <InputLayouts.Horizontal
-                          title="Open URL"
-                          description="Fetch and read content from web URLs."
+                          title="Ouvrir une URL"
+                          description="Récupérez et lisez le contenu depuis des URLs web."
                           disabled={!openURLTool}
                         >
                           <Switch
@@ -800,8 +800,8 @@ function ChatPreferencesForm() {
                         variant={codeInterpreterTool ? undefined : "disabled"}
                       >
                         <InputLayouts.Horizontal
-                          title="Code Interpreter"
-                          description="Generate and run code."
+                          title="Interpréteur de code"
+                          description="Générez et exécutez du code."
                           disabled={!codeInterpreterTool}
                         >
                           <Switch
@@ -866,13 +866,13 @@ function ChatPreferencesForm() {
 
           {/* Advanced Options */}
           <SimpleCollapsible defaultOpen={false}>
-            <SimpleCollapsible.Header title="Advanced Options" />
+            <SimpleCollapsible.Header title="Options avancées" />
             <SimpleCollapsible.Content>
               <Section gap={1}>
                 <Card>
                   <InputLayouts.Horizontal
-                    title="Keep Chat History"
-                    description="Specify how long Onyx should retain chats in your organization."
+                    title="Conserver l'historique des chats"
+                    description="Spécifiez combien de temps Onyx doit conserver les chats dans votre organisation."
                   >
                     <InputSelectField
                       name="maximum_chat_retention_days"
@@ -886,13 +886,13 @@ function ChatPreferencesForm() {
                       <InputSelect.Trigger />
                       <InputSelect.Content>
                         <InputSelect.Item value="forever">
-                          Forever
+                          Indéfiniment
                         </InputSelect.Item>
-                        <InputSelect.Item value="7">7 days</InputSelect.Item>
-                        <InputSelect.Item value="30">30 days</InputSelect.Item>
-                        <InputSelect.Item value="90">90 days</InputSelect.Item>
+                        <InputSelect.Item value="7">7 jours</InputSelect.Item>
+                        <InputSelect.Item value="30">30 jours</InputSelect.Item>
+                        <InputSelect.Item value="90">90 jours</InputSelect.Item>
                         <InputSelect.Item value="365">
-                          365 days
+                          365 jours
                         </InputSelect.Item>
                       </InputSelect.Content>
                     </InputSelectField>
@@ -901,8 +901,8 @@ function ChatPreferencesForm() {
 
                 <Card>
                   <InputLayouts.Vertical
-                    title="File Attachment Size Limit"
-                    description="Files attached in chats and projects must fit within both limits to be accepted. Larger files increase latency, memory usage, and token costs."
+                    title="Limite de taille des pièces jointes"
+                    description="Les fichiers joints dans les chats et projets doivent respecter les deux limites. Les fichiers plus volumineux augmentent la latence, l'utilisation mémoire et les coûts en jetons."
                   >
                     <FileSizeLimitFields
                       saveSettings={saveSettings}
@@ -923,8 +923,8 @@ function ChatPreferencesForm() {
 
                 <Card>
                   <InputLayouts.Horizontal
-                    title="Allow Anonymous Users"
-                    description="Allow anyone to start chats without logging in. They do not see any other chats and cannot create agents or update settings."
+                    title="Autoriser les utilisateurs anonymes"
+                    description="Permettre à n'importe qui de démarrer des chats sans se connecter. Ils ne voient pas les autres chats et ne peuvent pas créer d'agents ni modifier les paramètres."
                   >
                     <SwitchField
                       name="anonymous_user_enabled"
@@ -935,8 +935,8 @@ function ChatPreferencesForm() {
                   </InputLayouts.Horizontal>
 
                   <InputLayouts.Horizontal
-                    title="Always Start with an Agent"
-                    description="This removes the default chat. Users will always start in an agent, and new chats will be created in their last active agent. Set featured agents to help new users get started."
+                    title="Toujours démarrer avec un agent"
+                    description="Cela supprime le chat par défaut. Les utilisateurs démarreront toujours dans un agent, et les nouveaux chats seront créés dans leur dernier agent actif. Définissez des agents mis en avant pour aider les nouveaux utilisateurs."
                   >
                     <SwitchField
                       name="disable_default_assistant"
@@ -979,9 +979,9 @@ function ChatPreferencesForm() {
                 }
                 await mutateDefaultAgent();
                 setSystemPromptModalOpen(false);
-                toast.success("System prompt updated");
+                toast.success("Prompt système mis à jour");
               } catch {
-                toast.error("Failed to update system prompt");
+                toast.error("Échec de la mise à jour du prompt système");
               }
             }}
           >
@@ -989,22 +989,22 @@ function ChatPreferencesForm() {
               <Form>
                 <Modal.Header
                   icon={SvgAddLines}
-                  title="System Prompt"
-                  description="This base prompt is prepended to all chats, agents, and projects."
+                  title="Prompt système"
+                  description="Ce prompt de base est ajouté en tête de tous les chats, agents et projets."
                   onClose={() => setSystemPromptModalOpen(false)}
                 />
                 <Modal.Body>
                   <Section gap={0.25} alignItems="start">
                     <InputTextAreaField
                       name="system_prompt"
-                      placeholder="Enter your system prompt..."
+                      placeholder="Entrez votre prompt système..."
                       rows={8}
                       maxRows={20}
                       autoResize
                     />
                     <Text font="secondary-body" color="text-03">
                       {markdown(
-                        "You can use the following placeholders in your prompt:\n`{{CURRENT_DATETIME}}` - Current date and day of the week in a human-readable format.\n`{{CITATION_GUIDANCE}}` - Instructions for providing citations when facts are retrieved from search tools.\nOnly included when search tools are used."
+                        "Vous pouvez utiliser les variables suivantes dans votre prompt :\n`{{CURRENT_DATETIME}}` - Date et jour de la semaine actuels dans un format lisible.\n`{{CITATION_GUIDANCE}}` - Instructions pour fournir des citations lorsque des faits sont récupérés depuis des outils de recherche.\nInclus uniquement quand des outils de recherche sont utilisés."
                       )}
                     </Text>
                   </Section>
@@ -1012,8 +1012,8 @@ function ChatPreferencesForm() {
                     <Content
                       sizePreset="main-ui"
                       icon={SvgAlertCircle}
-                      title="Modify with caution."
-                      description="System prompt affects all chats, agents, and projects. Significant changes may degrade response quality."
+                      title="Modifier avec précaution."
+                      description="Le prompt système affecte tous les chats, agents et projets. Des changements significatifs peuvent dégrader la qualité des réponses."
                     />
                   </OpalCard>
                 </Modal.Body>
@@ -1022,14 +1022,14 @@ function ChatPreferencesForm() {
                     prominence="secondary"
                     onClick={() => setSystemPromptModalOpen(false)}
                   >
-                    Cancel
+                    Annuler
                   </Button>
                   <Button
                     prominence="primary"
                     onClick={submitForm}
                     disabled={!dirty || isSubmitting}
                   >
-                    Save
+                    Enregistrer
                   </Button>
                 </Modal.Footer>
               </Form>

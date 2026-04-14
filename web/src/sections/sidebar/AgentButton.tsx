@@ -78,7 +78,7 @@ const AgentButton = memo(({ agent }: AgentButtonProps) => {
                 internal
                 onClick={noProp(() => togglePinnedAgent(agent, false))}
                 className={cn("hidden group-hover/SidebarTab:flex")}
-                tooltip={"Unpin Agent"}
+                tooltip={"Désépingler l'agent"}
               />
             )
           }

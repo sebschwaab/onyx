@@ -58,11 +58,11 @@ export default function DisconnectEntityModal({
 
         <Modal.Body>
           <Text as="p" text03 mainUiBody>
-            All tools connected to {name} will stop working. You can reconnect
-            to this server later if needed.
+            Tous les outils connectés à {name} cesseront de fonctionner. Vous pourrez vous reconnecter
+            à ce serveur ultérieurement si nécessaire.
           </Text>
           <Text as="p" text03 mainUiBody>
-            Are you sure you want to proceed?
+            Êtes-vous sûr de vouloir continuer ?
           </Text>
         </Modal.Body>
 
@@ -72,7 +72,7 @@ export default function DisconnectEntityModal({
             prominence="secondary"
             onClick={onClose}
           >
-            Cancel
+            Annuler
           </Button>
           {onConfirmDisconnectAndDelete && (
             <Button
@@ -81,7 +81,7 @@ export default function DisconnectEntityModal({
               prominence="secondary"
               onClick={onConfirmDisconnectAndDelete}
             >
-              Disconnect &amp; Delete
+              Déconnecter &amp; Supprimer
             </Button>
           )}
           <Button
@@ -90,7 +90,7 @@ export default function DisconnectEntityModal({
             onClick={onConfirmDisconnect}
             ref={disconnectButtonRef}
           >
-            {isDisconnecting ? "Disconnecting..." : "Disconnect"}
+            {isDisconnecting ? "Déconnexion..." : "Déconnecter"}
           </Button>
         </Modal.Footer>
       </Modal.Content>

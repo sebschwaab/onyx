@@ -120,8 +120,8 @@ export default function ProjectContextPanel({
 
       <projectFilesModal.Provider>
         <UserFilesModal
-          title="Project Files"
-          description="Sessions in this project can access the files here."
+          title="Fichiers du projet"
+          description="Les sessions dans ce projet peuvent accéder aux fichiers ici."
           recentFiles={[...allCurrentProjectFiles]}
           onView={handleOnView}
           handleUploadChange={handleUploadChange}
@@ -161,7 +161,7 @@ export default function ProjectContextPanel({
                       icon={SvgEdit}
                       internal
                       onClick={startEditing}
-                      tooltip="Edit project name"
+                      tooltip="Modifier le nom du projet"
                     />
                   </Hoverable.Item>
                 </>
@@ -334,8 +334,8 @@ export default function ProjectContextPanel({
                 }`}
               >
                 {isDragActive
-                  ? "Drop files here to add to this project"
-                  : "Add documents, texts, or images to use in the project. Drag & drop supported."}
+                  ? "Déposez les fichiers ici pour les ajouter au projet"
+                  : "Ajoutez des documents, textes ou images à utiliser dans le projet. Glisser-déposer pris en charge."}
               </p>
             </div>
           )}
