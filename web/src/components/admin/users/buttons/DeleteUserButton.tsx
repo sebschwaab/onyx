@@ -23,7 +23,7 @@ const DeleteUserButton = ({
     {
       onSuccess: () => {
         mutate();
-        toast.success("User deleted successfully!");
+        toast.success("Utilisateur supprimé avec succès !");
       },
       onError: (errorMsg) =>
         toast.error(`Unable to delete user - ${errorMsg.message}`),
@@ -39,7 +39,7 @@ const DeleteUserButton = ({
           entityName={user.email}
           onClose={() => setShowDeleteModal(false)}
           onSubmit={() => trigger({ user_email: user.email, method: "DELETE" })}
-          additionalDetails="All data associated with this user will be deleted (including personas, tools and chat sessions)."
+          additionalDetails="Toutes les données associées à cet utilisateur seront supprimées (y compris les agents, outils et sessions de chat)."
         />
       )}
 

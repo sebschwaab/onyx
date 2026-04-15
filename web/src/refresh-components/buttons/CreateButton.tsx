@@ -21,7 +21,7 @@ export default function CreateButton({
       rightIcon={rightIcon ? SvgPlusCircle : undefined}
       {...props}
     >
-      {children ?? "Create"}
+      {children ?? "Créer"}
     </Button>
   );
 }

@@ -108,7 +108,7 @@ export function SearchChipList<T>({
               />
             ) : (
               <SourceTag
-                displayName={`+${remainingCount} more`}
+                displayName={`+${remainingCount} de plus`}
                 sources={remainingItems.map((item, i) =>
                   toSourceInfo(item, chipCount + i)
                 )}

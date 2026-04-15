@@ -25,7 +25,7 @@ export const LeaveOrganizationButton = ({
     {
       onSuccess: () => {
         mutate();
-        toast.success("Successfully left the team!");
+        toast.success("Vous avez quitté l'équipe avec succès !");
       },
       onError: (errorMsg) => toast.error(`Unable to leave team - ${errorMsg}`),
     }
@@ -42,12 +42,12 @@ export const LeaveOrganizationButton = ({
     <>
       {showLeaveModal && (
         <ConfirmEntityModal
-          actionButtonText="Leave"
-          entityType="team"
-          entityName="your team"
+          actionButtonText="Quitter"
+          entityType="équipe"
+          entityName="votre équipe"
           onClose={() => setShowLeaveModal(false)}
           onSubmit={handleLeaveOrganization}
-          additionalDetails="You will lose access to all team data and resources."
+          additionalDetails="Vous perdrez l'accès à toutes les données et ressources de l'équipe."
         />
       )}
 

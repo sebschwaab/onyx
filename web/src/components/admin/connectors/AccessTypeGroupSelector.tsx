@@ -118,8 +118,8 @@ export function AccessTypeGroupSelector({
               ) : (
                 <Text as="p" mainUiMuted text03>
                   {isAdmin
-                    ? "This Connector will be visible/accessible by the groups selected below"
-                    : "Curators must select one or more groups to give access to this Connector"}
+                    ? "Ce connecteur sera visible/accessible par les groupes sélectionnés ci-dessous"
+                    : "Les curateurs doivent sélectionner un ou plusieurs groupes pour donner accès à ce connecteur"}
                 </Text>
               )}
             </div>

@@ -92,12 +92,12 @@ export default function CopyIconButton({
   function getTooltip() {
     switch (copyState) {
       case "copied":
-        return "Copied!";
+        return "Copié !";
       case "error":
-        return "Failed to copy";
+        return "Échec de la copie";
       case "idle":
       default:
-        return tooltip || "Copy";
+        return tooltip || "Copier";
     }
   }
 

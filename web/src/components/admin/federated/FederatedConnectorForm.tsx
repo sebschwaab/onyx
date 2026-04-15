@@ -89,7 +89,7 @@ async function validateCredentials(
     const result = await response.json();
     return {
       success: result,
-      message: result ? "Credentials are valid" : "Credentials are invalid",
+      message: result ? "Les identifiants sont valides" : "Les identifiants sont invalides",
     };
   } catch (error) {
     return { success: false, message: `Validation error: ${error}` };
@@ -117,13 +117,13 @@ async function createFederatedConnector(
     if (response.ok) {
       return {
         success: true,
-        message: "Federated connector created successfully!",
+        message: "Connecteur fédéré créé avec succès !",
       };
     } else {
       const errorData = await response.json();
       return {
         success: false,
-        message: errorData.detail || "Failed to create federated connector",
+        message: errorData.detail || "Impossible de créer le connecteur fédéré",
       };
     }
   } catch (error) {
@@ -151,13 +151,13 @@ async function updateFederatedConnector(
     if (response.ok) {
       return {
         success: true,
-        message: "Federated connector updated successfully!",
+        message: "Connecteur fédéré mis à jour avec succès !",
       };
     } else {
       const errorData = await response.json();
       return {
         success: false,
-        message: errorData.detail || "Failed to update federated connector",
+        message: errorData.detail || "Impossible de mettre à jour le connecteur fédéré",
       };
     }
   } catch (error) {
@@ -176,13 +176,13 @@ async function deleteFederatedConnector(
     if (response.ok) {
       return {
         success: true,
-        message: "Federated connector deleted successfully!",
+        message: "Connecteur fédéré supprimé avec succès !",
       };
     } else {
       const errorData = await response.json();
       return {
         success: false,
-        message: errorData.detail || "Failed to delete federated connector",
+        message: errorData.detail || "Impossible de supprimer le connecteur fédéré",
       };
     }
   } catch (error) {
@@ -359,7 +359,7 @@ export function FederatedConnectorForm({
   const handleValidateCredentials = async () => {
     if (!formState.schema) return;
     if (isEditMode && !credentialsModified) {
-      setSubmitMessage("Enter new credential values before validating.");
+      setSubmitMessage("Veuillez saisir de nouvelles valeurs d'identifiants avant de valider.");
       setSubmitSuccess(false);
       return;
     }
@@ -387,7 +387,7 @@ export function FederatedConnectorForm({
     if (!connectorId) return;
 
     const confirmed = window.confirm(
-      "Are you sure you want to delete this federated connector? This action cannot be undone."
+      "Êtes-vous sûr de vouloir supprimer ce connecteur fédéré ? Cette action est irréversible."
     );
 
     if (!confirmed) return;
@@ -601,7 +601,7 @@ export function FederatedConnectorForm({
           formState.config.channels.length === 0)
       ) {
         errors.channels =
-          "At least one channel is required when 'Search All Channels' is disabled";
+          "Au moins un canal est requis lorsque 'Rechercher tous les canaux' est désactivé";
       }
     }
 
@@ -621,13 +621,13 @@ export function FederatedConnectorForm({
     if (!formState.configurationSchema) {
       return (
         <div className="text-sm text-gray-500">
-          No search configuration available for this connector type.
+          Aucune configuration de recherche disponible pour ce type de connecteur.
         </div>
       );
     }
 
     const channelInputPlaceholder =
-      "Type channel name or regex pattern and press Enter";
+      "Tapez le nom du canal ou un motif regex et appuyez sur Entrée";
 
     return (
       <>
@@ -701,7 +701,7 @@ export function FederatedConnectorForm({
                             fieldKey === "channels" ||
                             fieldKey === "exclude_channels"
                               ? channelInputPlaceholder
-                              : "Type and press Enter to add an item"
+                              : "Tapez et appuyez sur Entrée pour ajouter un élément"
                           }
                           disabled={disableSlackChannelInput(fieldKey)}
                           error={!!configValidationErrors[fieldKey]}
@@ -776,7 +776,7 @@ export function FederatedConnectorForm({
         <div className="ml-2 overflow-hidden text-ellipsis whitespace-nowrap flex-1 mr-4">
           <div className="text-2xl font-bold text-text-default flex items-center gap-2">
             <span>
-              {isEditMode ? "Edit" : "Setup"} {sourceMetadata.displayName}
+              {isEditMode ? "Modifier" : "Configurer"} {sourceMetadata.displayName}
             </span>
             <Badge variant="outline" className="text-xs">
               Federated
@@ -784,7 +784,7 @@ export function FederatedConnectorForm({
             <SimpleTooltip
               tooltip={
                 sourceMetadata.federatedTooltip ||
-                "This is a federated connector. It will result in greater latency and lower search quality compared to regular connectors."
+                "Il s'agit d'un connecteur fédéré. Il entraînera une latence plus élevée et une qualité de recherche inférieure par rapport aux connecteurs standards."
               }
               side="bottom"
             >
@@ -799,7 +799,7 @@ export function FederatedConnectorForm({
               <DropdownMenuTrigger asChild>
                 <div>
                   <OpalButton prominence="secondary" icon={SvgSettings}>
-                    Manage
+                    Gérer
                   </OpalButton>
                 </div>
               </DropdownMenuTrigger>
@@ -808,10 +808,10 @@ export function FederatedConnectorForm({
                   onClick={handleDeleteConnector}
                   disabled={isDeleting}
                   className="flex items-center gap-x-2 cursor-pointer px-3 py-2 text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
-                  tooltip={isDeleting ? "Deletion in progress" : undefined}
+                  tooltip={isDeleting ? "Suppression en cours" : undefined}
                 >
                   <Trash2Icon className="h-4 w-4" />
-                  <span>{isDeleting ? "Deleting..." : "Delete"}</span>
+                  <span>{isDeleting ? "Suppression..." : "Supprimer"}</span>
                 </DropdownMenuItemWithTooltip>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -820,17 +820,17 @@ export function FederatedConnectorForm({
       </div>
 
       <Title className="mb-2 mt-6" size="md">
-        Federated Connector Configuration
+        Configuration du connecteur fédéré
       </Title>
 
       <Card className="px-8 py-4">
         <CardContent className="p-0">
           <form onSubmit={handleSubmit}>
             <Text as="p" headingH3>
-              Credentials
+              Identifiants
             </Text>
             <Text as="p" mainUiMuted>
-              Enter the credentials for this connector.
+              Saisissez les identifiants pour ce connecteur.
             </Text>
             <div className="space-y-4">{renderCredentialFields()}</div>
             <Separator />
@@ -865,7 +865,7 @@ export function FederatedConnectorForm({
                 disabled={isValidating || !formState.schema}
                 className="flex ml-auto"
               >
-                {isValidating ? "Validating..." : "Validate"}
+                {isValidating ? "Validation..." : "Valider"}
               </Button>
               {/* TODO(@raunakab): migrate to opal Button once className/iconClassName is resolved */}
               <Button
@@ -876,11 +876,11 @@ export function FederatedConnectorForm({
               >
                 {isSubmitting
                   ? isEditMode
-                    ? "Updating..."
-                    : "Creating..."
+                    ? "Mise à jour..."
+                    : "Création..."
                   : isEditMode
-                    ? "Update"
-                    : "Create"}
+                    ? "Mettre à jour"
+                    : "Créer"}
               </Button>
             </div>
           </form>

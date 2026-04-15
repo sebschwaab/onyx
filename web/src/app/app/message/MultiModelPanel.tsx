@@ -99,7 +99,7 @@ export default function MultiModelPanel({
               <>
                 <span className="text-action-link-05 shrink-0">
                   <Text font="secondary-body" color="inherit" nowrap>
-                    Preferred Response
+                    Réponse préférée
                   </Text>
                 </span>
                 {onDeselect && (

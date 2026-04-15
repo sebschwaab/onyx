@@ -67,10 +67,10 @@ export function AccessTypeForm({
 
   const options = [
     {
-      name: "Private",
+      name: "Privé",
       value: "private",
       description:
-        "Only users who have explicitly been given access to this connector (through the User Groups page) can access the documents pulled in by this connector",
+        "Seuls les utilisateurs auxquels l'accès à ce connecteur a été explicitement accordé (via la page Groupes d'utilisateurs) peuvent accéder aux documents récupérés par ce connecteur",
       disabled: false,
       disabledReason: "",
     },
@@ -78,7 +78,7 @@ export function AccessTypeForm({
       name: "Public",
       value: "public",
       description:
-        "Everyone with an account on Onyx can access the documents pulled in by this connector",
+        "Tout utilisateur ayant un compte sur Onyx peut accéder aux documents récupérés par ce connecteur",
       disabled: false,
       disabledReason: "",
     },
@@ -86,13 +86,13 @@ export function AccessTypeForm({
 
   if (isAutoSyncSupported && isPaidEnterpriseEnabled) {
     options.push({
-      name: "Auto Sync Permissions",
+      name: "Synchronisation automatique des permissions",
       value: "sync",
       description:
-        "We will automatically sync permissions from the source. A document will be searchable in Onyx if and only if the user performing the search has permission to access the document in the source.",
+        "Nous synchroniserons automatiquement les permissions depuis la source. Un document sera consultable dans Onyx si et seulement si l'utilisateur effectuant la recherche a la permission d'accéder au document dans la source.",
       disabled: isSyncDisabledByAuth,
       disabledReason:
-        "Current credential auth method doesn't support Auto Sync Permissions. Please change the credential auth method to a supported one.",
+        "La méthode d'authentification actuelle ne prend pas en charge la synchronisation automatique des permissions. Veuillez changer la méthode d'authentification pour une méthode prise en charge.",
     });
   }
 

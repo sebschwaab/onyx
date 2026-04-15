@@ -57,7 +57,7 @@ const GmailCredentialUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
           credentialFileType = "service_account";
         } else {
           throw new Error(
-            "Unknown credential type, expected one of 'OAuth Web application' or 'Service Account'"
+            "Type d'identifiant inconnu, attendu 'Application Web OAuth' ou 'Compte de service'"
           );
         }
       } catch (e) {
@@ -78,7 +78,7 @@ const GmailCredentialUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
           }
         );
         if (response.ok) {
-          toast.success("Successfully uploaded app credentials");
+          toast.success("Identifiants d'application téléversés avec succès");
           mutate(SWR_KEYS.googleConnectorAppCredential("gmail"));
           if (onSuccess) {
             onSuccess();
@@ -101,7 +101,7 @@ const GmailCredentialUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
           }
         );
         if (response.ok) {
-          toast.success("Successfully uploaded service account key");
+          toast.success("Clé de compte de service téléversée avec succès");
           mutate(SWR_KEYS.googleConnectorServiceAccountKey("gmail"));
           if (onSuccess) {
             onSuccess();
@@ -152,7 +152,7 @@ const GmailCredentialUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
       ) {
         handleFileUpload(file);
       } else {
-        toast.error("Please upload a JSON file");
+        toast.error("Veuillez téléverser un fichier JSON");
       }
     }
   };
@@ -183,11 +183,11 @@ const GmailCredentialUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
               )}
               <span className="text-sm text-text-500">
                 {isUploading
-                  ? `Uploading ${truncateString(fileName || "file", 50)}...`
+                  ? `Téléversement de ${truncateString(fileName || "fichier", 50)}...`
                   : isDragging
-                    ? "Drop JSON file here"
+                    ? "Déposez le fichier JSON ici"
                     : truncateString(
-                        fileName || "Select or drag JSON credentials file...",
+                        fileName || "Sélectionnez ou déposez le fichier JSON d'identifiants...",
                         50
                       )}
               </span>
@@ -339,11 +339,11 @@ export const GmailJsonUploadSection = ({
                     );
 
                     toast.success(
-                      `Successfully deleted ${
+                      `${
                         localServiceAccountData
-                          ? "service account key"
-                          : "app credentials"
-                      }`
+                          ? "Clé de compte de service"
+                          : "Identifiants d'application"
+                      } supprimé(s) avec succès`
                     );
                     // Immediately update local state
                     if (localServiceAccountData) {
@@ -399,14 +399,14 @@ async function handleRevokeAccess(
 ) {
   if (connectorExists) {
     const message =
-      "Cannot revoke the Gmail credential while any connector is still associated with the credential. " +
-      "Please delete all associated connectors, then try again.";
+      "Impossible de révoquer l'identifiant Gmail tant qu'un connecteur y est encore associé. " +
+      "Veuillez supprimer tous les connecteurs associés, puis réessayez.";
     toast.error(message);
     return;
   }
 
   await adminDeleteCredential(existingCredential.id);
-  toast.success("Successfully revoked the Gmail credential!");
+  toast.success("Identifiant Gmail révoqué avec succès !");
 
   refreshCredentials();
 }
@@ -522,8 +522,8 @@ export const GmailAuthSection = ({
             }}
             validationSchema={Yup.object().shape({
               google_primary_admin: Yup.string()
-                .email("Must be a valid email")
-                .required("Required"),
+                .email("Doit être un email valide")
+                .required("Requis"),
             })}
             onSubmit={async (values, formikHelpers) => {
               formikHelpers.setSubmitting(true);
@@ -543,7 +543,7 @@ export const GmailAuthSection = ({
 
                 if (response.ok) {
                   toast.success(
-                    "Successfully created service account credential"
+                    "Identifiant de compte de service créé avec succès"
                   );
                   refreshCredentials();
                 } else {
@@ -565,12 +565,12 @@ export const GmailAuthSection = ({
               <Form>
                 <TextFormField
                   name="google_primary_admin"
-                  label="Primary Admin Email:"
-                  subtext="Enter the email of an admin/owner of the Google Organization that owns the Gmail account(s) you want to index."
+                  label="Email de l'administrateur principal :"
+                  subtext="Saisissez l'email d'un administrateur/propriétaire de l'organisation Google qui possède le(s) compte(s) Gmail que vous souhaitez indexer."
                 />
                 <div className="flex">
                   <Button disabled={isSubmitting} type="submit">
-                    {isSubmitting ? "Creating..." : "Create Credential"}
+                    {isSubmitting ? "Création..." : "Créer l'identifiant"}
                   </Button>
                 </div>
               </Form>
@@ -617,7 +617,7 @@ export const GmailAuthSection = ({
             }
           }}
         >
-          {isAuthenticating ? "Authenticating..." : "Authenticate with Gmail"}
+          {isAuthenticating ? "Authentification en cours..." : "S'authentifier avec Gmail"}
         </Button>
       </div>
     );

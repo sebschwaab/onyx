@@ -86,7 +86,7 @@ export const InMessageImage = memo(function InMessageImage({
           <img
             width={1200}
             height={1200}
-            alt="Chat Message Image"
+            alt="Image du message"
             onLoad={() => {
               loadedImages.add(fileId);
               setImageLoaded(true);

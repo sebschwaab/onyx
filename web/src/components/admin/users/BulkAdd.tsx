@@ -76,7 +76,7 @@ const AddUserForm = withFormik<FormProps, FormValues>({
   validate: (values: FormValues): FormikErrors<FormValues> => {
     const emails = normalizeEmails(values.emails);
     if (!emails.length) {
-      return { emails: "Required" };
+      return { emails: "Requis" };
     }
     for (let email of emails) {
       if (!email.match(EMAIL_REGEX)) {

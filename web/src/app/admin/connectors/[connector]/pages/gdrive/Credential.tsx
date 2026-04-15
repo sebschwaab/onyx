@@ -515,8 +515,8 @@ export const DriveAuthSection = ({
             }}
             validationSchema={Yup.object().shape({
               google_primary_admin: Yup.string()
-                .email("Must be a valid email")
-                .required("Required"),
+                .email("Doit être un email valide")
+                .required("Requis"),
             })}
             onSubmit={async (values, formikHelpers) => {
               formikHelpers.setSubmitting(true);
@@ -536,18 +536,18 @@ export const DriveAuthSection = ({
 
                 if (response.ok) {
                   toast.success(
-                    "Successfully created service account credential"
+                    "Identifiant de compte de service créé avec succès"
                   );
                   refreshCredentials();
                 } else {
                   const errorMsg = await response.text();
                   toast.error(
-                    `Failed to create service account credential - ${errorMsg}`
+                    `Impossible de créer l'identifiant de compte de service - ${errorMsg}`
                   );
                 }
               } catch (error) {
                 toast.error(
-                  `Failed to create service account credential - ${error}`
+                  `Impossible de créer l'identifiant de compte de service - ${error}`
                 );
               } finally {
                 formikHelpers.setSubmitting(false);
@@ -558,12 +558,12 @@ export const DriveAuthSection = ({
               <Form>
                 <TextFormField
                   name="google_primary_admin"
-                  label="Primary Admin Email:"
-                  subtext="Enter the email of an admin/owner of the Google Organization that owns the Google Drive(s) you want to index."
+                  label="Email de l'administrateur principal :"
+                  subtext="Saisissez l'email d'un administrateur/propriétaire de l'organisation Google qui possède le(s) Google Drive que vous souhaitez indexer."
                 />
                 <div className="flex">
                   <Button disabled={isSubmitting} type="submit">
-                    {isSubmitting ? "Creating..." : "Create Credential"}
+                    {isSubmitting ? "Création..." : "Créer l'identifiant"}
                   </Button>
                 </div>
               </Form>
@@ -609,8 +609,8 @@ export const DriveAuthSection = ({
           }}
         >
           {isAuthenticating
-            ? "Authenticating..."
-            : "Authenticate with Google Drive"}
+            ? "Authentification en cours..."
+            : "S'authentifier avec Google Drive"}
         </Button>
       </div>
     );

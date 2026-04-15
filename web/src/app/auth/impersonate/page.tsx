@@ -13,8 +13,8 @@ import { Button } from "@opal/components";
 import Text from "@/refresh-components/texts/Text";
 
 const ImpersonateSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
-  apiKey: Yup.string().required("Required"),
+  email: Yup.string().email("E-mail invalide").required("Requis"),
+  apiKey: Yup.string().required("Requis"),
 });
 
 export default function ImpersonatePage() {
@@ -45,7 +45,7 @@ export default function ImpersonatePage() {
 
       if (!response.ok) {
         const errorData = await response.json();
-        toast.error(errorData.detail || "Failed to impersonate user");
+        toast.error(errorData.detail || "Échec de l'usurpation d'identité");
         helpers.setSubmitting(false);
       } else {
         helpers.setSubmitting(false);
@@ -53,7 +53,7 @@ export default function ImpersonatePage() {
       }
     } catch (error) {
       toast.error(
-        error instanceof Error ? error.message : "Failed to impersonate user"
+        error instanceof Error ? error.message : "Échec de l'usurpation d'identité"
       );
       helpers.setSubmitting(false);
     }
@@ -64,7 +64,7 @@ export default function ImpersonatePage() {
       <div className="flex flex-col w-full justify-center">
         <div className="w-full flex flex-col items-center justify-center">
           <Text as="p" headingH3 className="mb-6 text-center">
-            Impersonate User
+            Usurper l&apos;identité d&apos;un utilisateur
           </Text>
         </div>
 
@@ -78,19 +78,19 @@ export default function ImpersonatePage() {
               <TextFormField
                 name="email"
                 type="email"
-                label="Email"
+                label="E-mail"
                 placeholder="email@yourcompany.com"
               />
 
               <TextFormField
                 name="apiKey"
                 type="password"
-                label="API Key"
-                placeholder="Enter API Key"
+                label="Clé API"
+                placeholder="Entrez la clé API"
               />
 
               <Button disabled={isSubmitting} type="submit" width="full">
-                Impersonate User
+                Usurper l&apos;identité
               </Button>
             </Form>
           )}
@@ -101,7 +101,7 @@ export default function ImpersonatePage() {
           mainUiMuted
           text03
           className="mt-4 text-center px-4"
-        >{`Note: This feature is only available for @onyx.app administrators`}</Text>
+        >{`Remarque : Cette fonctionnalité est réservée aux administrateurs @onyx.app`}</Text>
       </div>
     </AuthFlowContainer>
   );

@@ -49,14 +49,14 @@ export const CodeBlock = memo(function CodeBlock({
         <div className="flex items-center space-x-2">
           <SvgCheck height={14} width={14} stroke="currentColor" />
           <Text as="p" secondaryMono>
-            Copied!
+            Copié !
           </Text>
         </div>
       ) : (
         <div className="flex items-center space-x-2">
           <SvgCopy height={14} width={14} stroke="currentColor" />
           <Text as="p" secondaryMono>
-            Copy
+            Copier
           </Text>
         </div>
       )}

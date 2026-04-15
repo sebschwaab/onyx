@@ -95,7 +95,7 @@ export default function ProjectContextPanel({
 
   // Handle project name editing
   const currentProject = projects.find((p) => p.id === currentProjectId);
-  const projectName = currentProject?.name || "Loading project...";
+  const projectName = currentProject?.name || "Chargement du projet...";
 
   const startEditing = useCallback(() => {
     setIsEditingName(true);
@@ -184,7 +184,7 @@ export default function ProjectContextPanel({
               </Text>
             ) : (
               <Text as="p" text02 secondaryBody className="truncate">
-                Add instructions to tailor the response in this project.
+                Ajoutez des instructions pour personnaliser les réponses dans ce projet.
               </Text>
             )}
           </div>
@@ -193,7 +193,7 @@ export default function ProjectContextPanel({
             icon={SvgAddLines}
             onClick={() => addInstructionModal.toggle(true)}
           >
-            Set Instructions
+            Définir les instructions
           </Button>
         </div>
         <div
@@ -203,10 +203,10 @@ export default function ProjectContextPanel({
           <div className="flex flex-row gap-2 justify-between">
             <div>
               <Text as="p" headingH3 text04>
-                Files
+                Fichiers
               </Text>
               <Text as="p" text02 secondaryBody>
-                Chats in this project can access these files.
+                Les sessions dans ce projet peuvent accéder à ces fichiers.
               </Text>
             </div>
             <FilePickerPopover
@@ -214,7 +214,7 @@ export default function ProjectContextPanel({
                 // The `secondary={undefined}` is required here because `CreateButton` sets it to true.
                 // Therefore, we need to first remove the truthiness before passing in the other `tertiary` flag.
                 <CreateButton secondary={undefined} tertiary transient={open}>
-                  Add Files
+                  Ajouter des fichiers
                 </CreateButton>
               )}
               onFileClick={handleOnView}
@@ -262,12 +262,12 @@ export default function ProjectContextPanel({
                   <div className="flex flex-col overflow-hidden">
                     <div className="flex items-center justify-between gap-2 w-full">
                       <Text as="p" text04 secondaryAction>
-                        View files
+                        Voir les fichiers
                       </Text>
                       <SvgFiles className="h-5 w-5 stroke-text-02" />
                     </div>
                     <Text as="p" text03 secondaryBody>
-                      {displayFileCount} files
+                      {displayFileCount} fichiers
                     </Text>
                   </div>
                 </button>
@@ -298,12 +298,12 @@ export default function ProjectContextPanel({
                     <div className="flex flex-col overflow-hidden h-12 p-1">
                       <div className="flex items-center justify-between gap-2 w-full">
                         <Text as="p" text04 secondaryAction>
-                          View All
+                          Voir tout
                         </Text>
                         <SvgFiles className="h-5 w-5 stroke-text-02" />
                       </div>
                       <Text as="p" text03 secondaryBody>
-                        {displayFileCount} files
+                        {displayFileCount} fichiers
                       </Text>
                     </div>
                   </button>
@@ -314,9 +314,9 @@ export default function ProjectContextPanel({
               </div>
               {projectTokenCount > availableContextTokens && (
                 <Text as="p" text02 secondaryBody>
-                  This project exceeds the model&apos;s context limits. Sessions
-                  will automatically search for relevant files first before
-                  generating response.
+                  Ce projet dépasse les limites de contexte du modèle. Les sessions
+                  rechercheront automatiquement les fichiers pertinents avant
+                  de générer une réponse.
                 </Text>
               )}
             </>

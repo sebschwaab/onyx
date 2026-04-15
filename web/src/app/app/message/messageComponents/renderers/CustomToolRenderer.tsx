@@ -119,14 +119,14 @@ export const CustomToolRenderer: MessageRenderer<CustomToolPacket, {}> = ({
     if (isComplete) {
       if (error) {
         return error.is_auth_error
-          ? `${toolName} authentication failed (HTTP ${error.status_code})`
-          : `${toolName} failed (HTTP ${error.status_code})`;
+          ? `${toolName} : échec d'authentification (HTTP ${error.status_code})`
+          : `${toolName} : échec (HTTP ${error.status_code})`;
       }
-      if (responseType === "image") return `${toolName} returned images`;
-      if (responseType === "csv") return `${toolName} returned a file`;
-      return `${toolName} completed`;
+      if (responseType === "image") return `${toolName} a retourné des images`;
+      if (responseType === "csv") return `${toolName} a retourné un fichier`;
+      return `${toolName} terminé`;
     }
-    if (isRunning) return `${toolName} running...`;
+    if (isRunning) return `${toolName} en cours...`;
     return null;
   }, [toolName, responseType, error, isComplete, isRunning]);
 
@@ -165,7 +165,7 @@ export const CustomToolRenderer: MessageRenderer<CustomToolPacket, {}> = ({
                 ></div>
               </div>
               <Text text03 secondaryBody>
-                Waiting for response...
+                En attente de réponse...
               </Text>
             </div>
           )}
@@ -176,7 +176,7 @@ export const CustomToolRenderer: MessageRenderer<CustomToolPacket, {}> = ({
             <div className="flex items-center gap-1">
               <SvgArrowExchange className="w-3 h-3 text-text-02" />
               <Text text04 secondaryBody>
-                Request
+                Requête
               </Text>
             </div>
             <div className="prose max-w-full">
@@ -206,7 +206,7 @@ export const CustomToolRenderer: MessageRenderer<CustomToolPacket, {}> = ({
             {fileIds.map((fid, idx) => (
               <div key={fid} className="flex items-center gap-2 flex-wrap">
                 <Text text03 secondaryBody className="whitespace-nowrap">
-                  File {idx + 1}
+                  Fichier {idx + 1}
                 </Text>
                 <a
                   href={buildImgUrl(fid)}
@@ -214,14 +214,14 @@ export const CustomToolRenderer: MessageRenderer<CustomToolPacket, {}> = ({
                   rel="noreferrer"
                   className="inline-flex items-center gap-1 text-xs text-action-link-01 hover:underline whitespace-nowrap"
                 >
-                  <SvgExternalLink className="w-3 h-3" /> Open
+                  <SvgExternalLink className="w-3 h-3" /> Ouvrir
                 </a>
                 <a
                   href={buildImgUrl(fid)}
                   download
                   className="inline-flex items-center gap-1 text-xs text-action-link-01 hover:underline whitespace-nowrap"
                 >
-                  <SvgDownload className="w-3 h-3" /> Download
+                  <SvgDownload className="w-3 h-3" /> Télécharger
                 </a>
               </div>
             ))}
@@ -234,7 +234,7 @@ export const CustomToolRenderer: MessageRenderer<CustomToolPacket, {}> = ({
             <div className="flex items-center gap-1">
               <SvgArrowExchange className="w-3 h-3 text-text-02" />
               <Text text04 secondaryBody>
-                Response
+                Réponse
               </Text>
             </div>
             <div className="prose max-w-full">

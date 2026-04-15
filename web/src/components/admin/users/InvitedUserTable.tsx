@@ -50,7 +50,7 @@ const InvitedUserTable = ({ users, mutate, error, isLoading, q }: Props) => {
   if (error) {
     return (
       <ErrorCallout
-        errorTitle="Error loading users"
+        errorTitle="Erreur lors du chargement des utilisateurs"
         errorMsg={error?.info?.detail}
       />
     );

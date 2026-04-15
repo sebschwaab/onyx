@@ -177,7 +177,7 @@ export const InternalSearchToolRenderer: MessageRenderer<
                 <BlinkingBar />
               ) : (
                 <Text as="p" text04 mainUiMuted>
-                  No results found
+                  Aucun résultat trouvé
                 </Text>
               )
             }
@@ -213,7 +213,7 @@ export const InternalSearchToolRenderer: MessageRenderer<
             <>
               {!isCompact && (
                 <Text as="p" mainUiMuted text04>
-                  Reading
+                  Lecture
                 </Text>
               )}
               <SearchChipList

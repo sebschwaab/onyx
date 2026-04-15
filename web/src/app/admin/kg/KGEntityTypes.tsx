@@ -126,7 +126,7 @@ function TableRow({ entityType }: { entityType: EntityType }) {
           </div>
           <div className="col-span-10 relative">
             <InputTypeIn
-              placeholder="Value"
+              placeholder="Valeur"
               variant={!entityTypeState.active ? "disabled" : undefined}
               className="w-full px-3 py-2 border"
               defaultValue={entityType.description}
@@ -233,12 +233,12 @@ export default function KGEntityTypes({
     <div className="flex flex-col gap-y-4 w-full">
       <div className="flex flex-row items-center gap-x-1.5 mb-2">
         <InputTypeIn
-          placeholder="Search source type..."
+          placeholder="Rechercher un type de source..."
           value={search}
           onChange={(event) => setSearch(event.target.value)}
         />
         <Button onClick={allClosed ? handleExpandAll : handleCollapseAll}>
-          {allClosed ? "Expand All" : "Collapse All"}
+          {allClosed ? "Tout développer" : "Tout réduire"}
         </Button>
       </div>
       <div className="flex flex-col gap-y-4 w-full">

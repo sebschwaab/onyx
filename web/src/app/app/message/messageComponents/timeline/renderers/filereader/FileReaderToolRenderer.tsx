@@ -59,7 +59,7 @@ function formatCharRange(
   endChar: number,
   totalChars: number
 ): string {
-  return `chars ${startChar.toLocaleString()}\u2013${endChar.toLocaleString()} of ${totalChars.toLocaleString()}`;
+  return `caractères ${startChar.toLocaleString()}\u2013${endChar.toLocaleString()} sur ${totalChars.toLocaleString()}`;
 }
 
 export const FileReaderToolRenderer: MessageRenderer<

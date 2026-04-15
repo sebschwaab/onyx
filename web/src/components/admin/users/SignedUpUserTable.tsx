@@ -109,7 +109,7 @@ export default function SignedUpUserTable({
   if (error) {
     return (
       <ErrorCallout
-        errorTitle="Error loading users"
+        errorTitle="Erreur lors du chargement des utilisateurs"
         errorMsg={error?.message}
       />
     );
@@ -125,7 +125,7 @@ export default function SignedUpUserTable({
   };
 
   const onRoleChangeSuccess = () =>
-    handlePopup("User role updated successfully!", "success");
+    handlePopup("Rôle de l'utilisateur mis à jour avec succès !", "success");
   const onRoleChangeError = (errorMsg: string) =>
     handlePopup(`Unable to update user role - ${errorMsg}`, "error");
 
@@ -189,8 +189,8 @@ export default function SignedUpUserTable({
             <SelectTrigger className="w-[260px] h-[34px] bg-neutral">
               <SelectValue>
                 {filters.roles?.length
-                  ? `${filters.roles.length} role(s) selected`
-                  : "All Roles"}
+                  ? `${filters.roles.length} rôle(s) sélectionné(s)`
+                  : "Tous les rôles"}
               </SelectValue>
             </SelectTrigger>
             <SelectContent className="bg-background-tint-00">
@@ -290,7 +290,7 @@ export default function SignedUpUserTable({
                   className={buttonClassName}
                 >
                   {/*<UserX className="mr-2 h-4 w-4" />*/}
-                  {user.is_active ? "Deactivate User" : "Activate User"}
+                  {user.is_active ? "Désactiver l'utilisateur" : "Activer l'utilisateur"}
                 </DeactivateUserButton>
               </>
             )}
@@ -362,8 +362,8 @@ export default function SignedUpUserTable({
                 <TableCell colSpan={4} className="text-center">
                   <p className="pt-4 pb-4">
                     {filters.roles?.length || filters.is_active !== undefined
-                      ? "No users found matching your filters"
-                      : `No users found matching "${q}"`}
+                      ? "Aucun utilisateur trouvé correspondant à vos filtres"
+                      : `Aucun utilisateur trouvé pour "${q}"`}
                   </p>
                 </TableCell>
               </TableRow>
@@ -375,7 +375,7 @@ export default function SignedUpUserTable({
                     {renderUserRoleDropdown(user)}
                   </TableCell>
                   <TableCell className="text-center w-[140px]">
-                    <i>{user.is_active ? "Active" : "Inactive"}</i>
+                    <i>{user.is_active ? "Actif" : "Inactif"}</i>
                   </TableCell>
                   <TableCell className="text-right  w-[300px] ">
                     {renderActionButtons(user)}

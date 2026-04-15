@@ -90,6 +90,6 @@ export const submitFiles = async (
     return false;
   }
 
-  toast.success("Successfully uploaded files!");
+  toast.success("Fichiers téléversés avec succès !");
   return true;
 };

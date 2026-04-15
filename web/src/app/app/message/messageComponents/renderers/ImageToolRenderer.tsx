@@ -56,10 +56,10 @@ export const ImageToolRenderer: MessageRenderer<
 
   const status = useMemo(() => {
     if (isComplete) {
-      return `Generated ${images.length} image${images.length > 1 ? "s" : ""}`;
+      return `${images.length} image${images.length > 1 ? "s" : ""} générée${images.length > 1 ? "s" : ""}`;
     }
     if (isGenerating) {
-      return "Generating image...";
+      return "Génération de l'image...";
     }
     return null;
   }, [isComplete, isGenerating, images.length]);
@@ -72,7 +72,7 @@ export const ImageToolRenderer: MessageRenderer<
       return children([
         {
           icon: SvgImage,
-          status: "Generating images...",
+          status: "Génération des images...",
           supportsCollapsible: false,
           content: (
             <div className="flex flex-col">
@@ -90,9 +90,7 @@ export const ImageToolRenderer: MessageRenderer<
       return children([
         {
           icon: SvgImage,
-          status: `Generated ${images.length} image${
-            images.length !== 1 ? "s" : ""
-          }`,
+          status: `${images.length} image${images.length !== 1 ? "s" : ""} générée${images.length !== 1 ? "s" : ""}`,
           supportsCollapsible: false,
           content: (
             <div className="flex flex-col my-1">
@@ -115,7 +113,7 @@ export const ImageToolRenderer: MessageRenderer<
               ) : (
                 <div className="py-4 text-center text-gray-500 dark:text-gray-400 ml-7">
                   <SvgImage className="w-6 h-6 mx-auto mb-2 opacity-50" />
-                  <p className="text-sm">No images generated</p>
+                  <p className="text-sm">Aucune image générée</p>
                 </div>
               )}
             </div>
@@ -140,7 +138,7 @@ export const ImageToolRenderer: MessageRenderer<
     return children([
       {
         icon: SvgImage,
-        status: "Generating image...",
+        status: "Génération de l'image...",
         supportsCollapsible: false,
         content: (
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -155,7 +153,7 @@ export const ImageToolRenderer: MessageRenderer<
                 style={{ animationDelay: "0.2s" }}
               ></div>
             </div>
-            <span>Generating image...</span>
+            <span>Génération de l&apos;image...</span>
           </div>
         ),
       },

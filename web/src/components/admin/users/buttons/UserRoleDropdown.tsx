@@ -61,12 +61,12 @@ export default function UserRoleDropdown({
     <>
       {showConfirmModal && (
         <GenericConfirmModal
-          title="Change Curator Role"
-          message={`Warning: Switching roles from Curator to ${
+          title="Modifier le rôle de curateur"
+          message={`Attention : Changer le rôle de Curateur à ${
             USER_ROLE_LABELS[pendingRole as UserRole] ??
             USER_ROLE_LABELS[user.role]
-          } will remove their status as individual curators from all groups.`}
-          confirmText={`Switch Role to ${
+          } supprimera leur statut de curateur individuel de tous les groupes.`}
+          confirmText={`Changer le rôle en ${
             USER_ROLE_LABELS[pendingRole as UserRole] ??
             USER_ROLE_LABELS[user.role]
           }`}

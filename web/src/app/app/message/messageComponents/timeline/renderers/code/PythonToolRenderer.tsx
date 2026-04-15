@@ -165,7 +165,7 @@ export const PythonToolRenderer: MessageRenderer<PythonToolPacket, {}> = ({
       {/* Output */}
       {stdout && (
         <div className="rounded-md bg-background-neutral-02 p-3">
-          <div className="text-xs font-semibold mb-1 text-text-03">Output:</div>
+          <div className="text-xs font-semibold mb-1 text-text-03">Sortie :</div>
           <pre className="text-sm whitespace-pre-wrap font-mono text-text-01 overflow-x-auto">
             {stdout}
           </pre>
@@ -176,7 +176,7 @@ export const PythonToolRenderer: MessageRenderer<PythonToolPacket, {}> = ({
       {stderr && (
         <div className="rounded-md bg-status-error-01 p-3 border border-status-error-02">
           <div className="text-xs font-semibold mb-1 text-status-error-05">
-            Error:
+            Erreur :
           </div>
           <pre className="text-sm whitespace-pre-wrap font-mono text-status-error-05 overflow-x-auto">
             {stderr}
@@ -187,7 +187,7 @@ export const PythonToolRenderer: MessageRenderer<PythonToolPacket, {}> = ({
       {/* File count */}
       {fileIds.length > 0 && (
         <div className="text-sm text-text-03">
-          Generated {fileIds.length} file{fileIds.length !== 1 ? "s" : ""}
+          {fileIds.length} fichier{fileIds.length !== 1 ? "s" : ""} généré{fileIds.length !== 1 ? "s" : ""}
         </div>
       )}
 
@@ -195,7 +195,7 @@ export const PythonToolRenderer: MessageRenderer<PythonToolPacket, {}> = ({
       {isComplete && !stdout && !stderr && (
         <div className="py-2 text-center text-text-04">
           <SvgTerminal className="w-4 h-4 mx-auto mb-1 opacity-50" />
-          <p className="text-xs">No output</p>
+          <p className="text-xs">Aucune sortie</p>
         </div>
       )}
     </div>

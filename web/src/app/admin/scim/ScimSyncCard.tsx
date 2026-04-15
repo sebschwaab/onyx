@@ -38,7 +38,7 @@ export default function ScimSyncCard({
     <Card gap={0.75}>
       <ContentAction
         title="SCIM Sync"
-        description="Connect your identity provider to import and sync users and groups."
+        description="Connectez votre fournisseur d'identité pour importer et synchroniser les utilisateurs et les groupes."
         sizePreset="main-ui"
         variant="section"
         paddingVariant="fit"

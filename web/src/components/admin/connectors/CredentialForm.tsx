@@ -37,7 +37,7 @@ export async function submitCredential<T>(
       const parsed_response = await response.json();
       const credential = parsed_response.credential;
       isSuccess = true;
-      return { credential, message: "Success!", isSuccess: true };
+      return { credential, message: "Succès !", isSuccess: true };
     } else {
       const errorData = await response.json();
       return { message: `Error: ${errorData.detail}`, isSuccess: false };

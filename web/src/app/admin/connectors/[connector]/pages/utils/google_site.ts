@@ -37,7 +37,7 @@ export const submitGoogleSite = async (
     const filePaths = responseJson.file_paths as string[];
     if (!filePaths || filePaths.length === 0) {
       toast.error(
-        "File upload was successful, but no file path was returned. Cannot create connector."
+        "Le téléversement a réussi, mais aucun chemin de fichier n'a été retourné. Impossible de créer le connecteur."
       );
       return false;
     }
@@ -45,7 +45,7 @@ export const submitGoogleSite = async (
     const filePath = filePaths[0];
     if (filePath === undefined) {
       toast.error(
-        "File upload was successful, but file path is undefined. Cannot create connector."
+        "Le téléversement a réussi, mais le chemin du fichier est indéfini. Impossible de créer le connecteur."
       );
       return false;
     }
@@ -89,7 +89,7 @@ export const submitGoogleSite = async (
       toast.error(`Unable to run connector - ${runConnectorErrorMsg}`);
       return false;
     }
-    toast.success("Successfully created Google Site connector!");
+    toast.success("Connecteur Google Sites créé avec succès !");
     return true;
   };
 

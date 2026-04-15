@@ -103,12 +103,12 @@ const GDriveMain = () => {
 
   // Error states
   if (credentialsError || !credentialsData) {
-    return <ErrorCallout errorTitle="Failed to load credentials." />;
+    return <ErrorCallout errorTitle="Impossible de charger les identifiants." />;
   }
 
   if (googleDriveCredentialsError || !googleDriveCredentials) {
     return (
-      <ErrorCallout errorTitle="Failed to load Google Drive credentials." />
+      <ErrorCallout errorTitle="Impossible de charger les identifiants Google Drive." />
     );
   }
 
@@ -117,13 +117,13 @@ const GDriveMain = () => {
     !serviceAccountKeySuccessfullyFetched
   ) {
     return (
-      <ErrorCallout errorTitle="Error loading Google Drive app credentials. Contact an administrator." />
+      <ErrorCallout errorTitle="Erreur lors du chargement des identifiants de l'application Google Drive. Contactez un administrateur." />
     );
   }
 
   if (googleDriveConnectorsError) {
     return (
-      <ErrorCallout errorTitle="Failed to load Google Drive associated connectors." />
+      <ErrorCallout errorTitle="Impossible de charger les connecteurs associés à Google Drive." />
     );
   }
 

@@ -41,7 +41,7 @@ export const InviteUserButton = ({
         } else {
           mutate.forEach((fn) => fn());
         }
-        toast.success("User invited successfully!");
+        toast.success("Utilisateur invité avec succès !");
       },
       onError: (errorMsg) => {
         setShowInviteModal(false);
@@ -73,7 +73,7 @@ export const InviteUserButton = ({
         } else {
           mutate.forEach((fn) => fn());
         }
-        toast.success("User uninvited successfully!");
+        toast.success("Invitation de l'utilisateur annulée avec succès !");
       },
       onError: (errorMsg) => {
         setShowInviteModal(false);
@@ -99,17 +99,17 @@ export const InviteUserButton = ({
     <>
       {showInviteModal && (
         <GenericConfirmModal
-          title={`${invited ? "Uninvite" : "Invite"} User`}
-          message={`Are you sure you want to ${
-            invited ? "uninvite" : "invite"
-          } ${user.email}?`}
+          title={`${invited ? "Retirer l'invitation" : "Inviter"} l'utilisateur`}
+          message={`Êtes-vous sûr de vouloir ${
+            invited ? "retirer l'invitation de" : "inviter"
+          } ${user.email} ?`}
           onClose={() => setShowInviteModal(false)}
           onConfirm={handleConfirm}
         />
       )}
 
       <Button disabled={isMutating} onClick={() => setShowInviteModal(true)}>
-        {invited ? "Uninvite" : "Invite"}
+        {invited ? "Retirer l'invitation" : "Inviter"}
       </Button>
     </>
   );

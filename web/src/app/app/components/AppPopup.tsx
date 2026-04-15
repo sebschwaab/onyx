@@ -123,7 +123,7 @@ export function AppPopup() {
                 <div className="flex items-center gap-1">
                   <FormField.Control>
                     <Checkbox
-                      aria-label="Consent checkbox"
+                      aria-label="Case de consentement"
                       checked={consentChecked}
                       onCheckedChange={(checked) => {
                         setConsentChecked(checked);

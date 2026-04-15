@@ -87,7 +87,7 @@ export default async function Page(props: PageProps) {
     (authTypeMetadata.authType === AuthType.GOOGLE_OAUTH ||
       authTypeMetadata.authType === AuthType.OIDC ||
       authTypeMetadata.authType === AuthType.SAML) ? (
-      <>Need access? Reach out to your IT admin to get access.</>
+      <>Besoin d&apos;accès ? Contactez votre administrateur informatique.</>
     ) : undefined;
 
   return (

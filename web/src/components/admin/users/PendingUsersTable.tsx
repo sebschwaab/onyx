@@ -53,7 +53,7 @@ const PendingUsersTable = ({ users, mutate, error, isLoading, q }: Props) => {
   if (error) {
     return (
       <ErrorCallout
-        errorTitle="Error loading pending users"
+        errorTitle="Erreur lors du chargement des utilisateurs en attente"
         errorMsg={error?.info?.detail}
       />
     );
@@ -72,7 +72,7 @@ const PendingUsersTable = ({ users, mutate, error, isLoading, q }: Props) => {
       mutate();
       setUserToApprove(null);
     } catch (error) {
-      toast.error("Failed to approve user request");
+      toast.error("Impossible d'approuver la demande de l'utilisateur");
     }
   };
 
@@ -80,13 +80,13 @@ const PendingUsersTable = ({ users, mutate, error, isLoading, q }: Props) => {
     <>
       {userToApprove && (
         <ConfirmEntityModal
-          entityType="Join Request"
+          entityType="demande d'adhésion"
           entityName={userToApprove}
           onClose={() => setUserToApprove(null)}
           onSubmit={() => handleAcceptRequest(userToApprove)}
-          actionButtonText="Approve"
-          action="approve the join request of"
-          additionalDetails={`${userToApprove} has requested to join the team. Approving will add them as a user in this team.`}
+          actionButtonText="Approuver"
+          action="approuver la demande d'adhésion de"
+          additionalDetails={`${userToApprove} a demandé à rejoindre l'équipe. L'approbation l'ajoutera comme utilisateur dans cette équipe.`}
           removeConfirmationText
         />
       )}

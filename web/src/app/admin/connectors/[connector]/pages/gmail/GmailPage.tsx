@@ -115,15 +115,15 @@ export const GmailMain = ({
   }
 
   if (credentialsError || !credentialsData) {
-    return <ErrorCallout errorTitle="Failed to load credentials." />;
+    return <ErrorCallout errorTitle="Impossible de charger les identifiants." />;
   }
 
   if (gmailCredentialsError || !gmailCredentials) {
-    return <ErrorCallout errorTitle="Failed to load Gmail credentials." />;
+    return <ErrorCallout errorTitle="Impossible de charger les identifiants Gmail." />;
   }
 
   if (connectorIndexingStatusesError || !connectorIndexingStatuses) {
-    return <ErrorCallout errorTitle="Failed to load connectors." />;
+    return <ErrorCallout errorTitle="Impossible de charger les connecteurs." />;
   }
 
   if (
