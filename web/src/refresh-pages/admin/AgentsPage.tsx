@@ -16,11 +16,11 @@ export default function AgentsPage() {
     <SettingsLayouts.Root>
       <SettingsLayouts.Header
         title="Agents"
-        description="Customize AI behavior and knowledge with agents. Manage agents in your organization."
+        description="Personnalisez le comportement de l'IA et ses connaissances avec des agents. Gérez les agents de votre organisation."
         icon={SvgOnyxOctagon}
         rightChildren={
           <Button href="/app/agents/create?admin=true" icon={SvgPlus}>
-            New Agent
+            Nouvel agent
           </Button>
         }
       />

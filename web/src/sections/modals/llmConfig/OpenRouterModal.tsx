@@ -63,8 +63,8 @@ function OpenRouterModalInternals({
   return (
     <>
       <APIBaseField
-        subDescription="Paste your OpenRouter-compatible endpoint URL or use OpenRouter API directly."
-        placeholder="Your OpenRouter base URL"
+        subDescription="Collez l'URL de votre endpoint compatible OpenRouter ou utilisez l'API OpenRouter directement."
+        placeholder="Votre URL de base OpenRouter"
       />
 
       <APIKeyField providerName="OpenRouter" />
@@ -145,8 +145,8 @@ export default function OpenRouterModal({
               await refreshLlmProviderCaches(mutate);
               toast.success(
                 existingLlmProvider
-                  ? "Provider updated successfully!"
-                  : "Provider enabled successfully!"
+                  ? "Fournisseur mis à jour avec succès !"
+                  : "Fournisseur activé avec succès !"
               );
             }
           },

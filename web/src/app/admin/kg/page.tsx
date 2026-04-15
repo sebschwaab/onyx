@@ -61,17 +61,17 @@ function createDomainField(
 
 const VendorDomains = createDomainField(
   "vendor_domains",
-  "Vendor Domains",
-  "Domain names of your company. Users with these email domains will be recognized as employees.",
-  "Domain",
+  "Domaines de l'entreprise",
+  "Noms de domaine de votre entreprise. Les utilisateurs avec ces domaines d'email seront reconnus comme employés.",
+  "Domaine",
   1
 );
 
 const IgnoreDomains = createDomainField(
   "ignore_domains",
-  "Ignore Domains",
-  "Domain names to ignore. Users with these email domains will be excluded from the Knowledge Graph.",
-  "Domain"
+  "Domaines à ignorer",
+  "Noms de domaine à ignorer. Les utilisateurs avec ces domaines d'email seront exclus du Graphe de Connaissances.",
+  "Domaine"
 );
 
 function KGConfiguration({
@@ -96,14 +96,14 @@ function KGConfiguration({
 
   const enabledSchema = Yup.object({
     enabled: Yup.boolean().required(),
-    vendor: Yup.string().required("Vendor is required."),
+    vendor: Yup.string().required("L'entreprise est requise."),
     vendor_domains: Yup.array(
-      Yup.string().required("Vendor Domain is required.")
+      Yup.string().required("Le domaine de l'entreprise est requis.")
     )
       .min(1)
       .required(),
     ignore_domains: Yup.array(
-      Yup.string().required("Ignore Domain is required")
+      Yup.string().required("Le domaine à ignorer est requis")
     )
       .min(0)
       .required(),
@@ -140,11 +140,11 @@ function KGConfiguration({
     if (!response.ok) {
       const errorMsg = (await response.json()).detail;
       console.warn({ errorMsg });
-      toast.error("Failed to configure Knowledge Graph.");
+      toast.error("Impossible de configurer le Graphe de Connaissances.");
       return;
     }
 
-    toast.success("Successfully configured Knowledge Graph.");
+    toast.success("Graphe de Connaissances configuré avec succès.");
     resetForm({ values });
     onSubmitSuccess?.();
 
@@ -166,8 +166,8 @@ function KGConfiguration({
             <div className="flex flex-col gap-y-1">
               <FieldLabel
                 name="enabled"
-                label="Enabled"
-                subtext="Enable or disable Knowledge Graph."
+                label="Activé"
+                subtext="Activer ou désactiver le Graphe de Connaissances."
               />
               <SwitchField
                 name="enabled"
@@ -184,24 +184,24 @@ function KGConfiguration({
             >
               <TextFormField
                 name="vendor"
-                label="Vendor"
-                subtext="Your company name."
+                label="Entreprise"
+                subtext="Le nom de votre entreprise."
                 className="flex flex-row flex-1 w-full"
-                placeholder="My Company Inc."
+                placeholder="Mon Entreprise SA"
                 disabled={!props.values.enabled}
               />
               <VendorDomains disabled={!props.values.enabled} />
               <IgnoreDomains disabled={!props.values.enabled} />
               <DatePickerField
                 name="coverage_start"
-                label="Coverage Start"
-                subtext="The start date of coverage for Knowledge Graph."
+                label="Début de couverture"
+                subtext="La date de début de couverture pour le Graphe de Connaissances."
                 startYear={2025} // TODO: remove this after public beta
                 disabled={!props.values.enabled}
               />
             </div>
             <Button disabled={!props.dirty} type="submit">
-              Submit
+              Enregistrer
             </Button>
           </div>
         </Form>
@@ -244,48 +244,46 @@ function Main() {
     <div className="flex flex-col py-4 gap-y-8">
       <CardSection className="max-w-2xl shadow-01 rounded-08 flex flex-col gap-2">
         <Text as="p" headingH2>
-          Knowledge Graph Configuration (Private Beta)
+          Configuration du Graphe de Connaissances (Bêta privée)
         </Text>
         <div className="flex flex-col gap-y-6">
           <div>
             <Text as="p" text03>
-              The Knowledge Graph feature lets you explore your data in new
-              ways. Instead of searching through unstructured text, your data is
-              organized as entities and their relationships, enabling powerful
-              queries like:
+              La fonctionnalité Graphe de Connaissances vous permet d&apos;explorer vos données
+              de nouvelles façons. Au lieu de chercher dans du texte non structuré, vos données
+              sont organisées en entités et leurs relations, permettant des requêtes puissantes comme :
             </Text>
             <div className="p-4">
               <Text as="p" text03>
-                - &quot;Summarize my last 3 calls with account XYZ&quot;
+                - &quot;Résume mes 3 derniers appels avec le compte XYZ&quot;
               </Text>
               <Text as="p" text03>
-                - &quot;How many open Jiras are assigned to John Smith, ranked
-                by priority&quot;
+                - &quot;Combien de Jiras ouverts sont assignés à John Smith, classés par priorité&quot;
               </Text>
             </div>
             <Text as="p" text03>
-              (To use Knowledge Graph queries, you&apos;ll need a dedicated
-              Assistant configured in a specific way. Please contact the Onyx
-              team for setup instructions.)
+              (Pour utiliser les requêtes du Graphe de Connaissances, vous aurez besoin d&apos;un
+              Assistant dédié configuré d&apos;une manière spécifique. Veuillez contacter l&apos;équipe
+              Onyx pour les instructions de configuration.)
             </Text>
           </div>
           <Text as="p" text03>
-            <Title>Getting Started:</Title>
-            Begin by configuring some high-level attributes, and then define the
-            entities you want to model afterwards.
+            <Title>Pour commencer :</Title>
+            Commencez par configurer quelques attributs de haut niveau, puis définissez
+            les entités que vous souhaitez modéliser.
           </Text>
           <Button
             icon={SvgSettings}
             onClick={() => setConfigureModalShown(true)}
           >
-            Configure Knowledge Graph
+            Configurer le Graphe de Connaissances
           </Button>
         </div>
       </CardSection>
       {kgConfig.enabled && (
         <>
           <Text as="p" headingH2>
-            Entity Types
+            Types d&apos;entités
           </Text>
           <KGEntityTypes sourceAndEntityTypes={sourceAndEntityTypesData} />
         </>
@@ -295,7 +293,7 @@ function Main() {
           <Modal.Content>
             <Modal.Header
               icon={SvgSettings}
-              title="Configure Knowledge Graph"
+              title="Configurer le Graphe de Connaissances"
               onClose={() => setConfigureModalShown(false)}
             />
             <Modal.Body>

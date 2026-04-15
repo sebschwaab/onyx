@@ -74,27 +74,27 @@ function MigrationStatusSection() {
 
   return (
     <Card>
-      <Text headingH3>Migration Status</Text>
+      <Text headingH3>Statut de la migration</Text>
 
       <ContentAction
-        title="Started"
+        title="Démarré"
         sizePreset="main-ui"
         variant="section"
         rightChildren={
           <Text mainUiBody>
-            {hasStarted ? formatTimestamp(data.created_at!) : "Not started"}
+            {hasStarted ? formatTimestamp(data.created_at!) : "Pas encore démarré"}
           </Text>
         }
       />
 
       <ContentAction
-        title="Chunks Migrated"
+        title="Chunks migrés"
         sizePreset="main-ui"
         variant="section"
         rightChildren={
           <Text mainUiBody>
             {progressPercentage !== null
-              ? `${totalChunksMigrated} (approx. progress ${Math.round(
+              ? `${totalChunksMigrated} (progression approx. ${Math.round(
                   progressPercentage
                 )}%)`
               : String(totalChunksMigrated)}
@@ -103,7 +103,7 @@ function MigrationStatusSection() {
       />
 
       <ContentAction
-        title="Completed"
+        title="Terminé"
         sizePreset="main-ui"
         variant="section"
         rightChildren={
@@ -111,8 +111,8 @@ function MigrationStatusSection() {
             {hasCompleted
               ? formatTimestamp(data.migration_completed_at!)
               : hasStarted
-                ? "In progress"
-                : "Not started"}
+                ? "En cours"
+                : "Pas encore démarré"}
           </Text>
         }
       />
@@ -145,7 +145,7 @@ function RetrievalSourceSection() {
         }),
       });
       if (!response.ok) {
-        throw new Error("Failed to update retrieval setting");
+        throw new Error("Impossible de mettre à jour le paramètre de récupération");
       }
       await mutate();
       setSelectedSource(null);
@@ -157,9 +157,9 @@ function RetrievalSourceSection() {
   if (isLoading) {
     return (
       <Card>
-        <Text headingH3>Retrieval Source</Text>
+        <Text headingH3>Source de récupération</Text>
         <Text mainUiBody text03>
-          Loading...
+          Chargement...
         </Text>
       </Card>
     );
@@ -168,9 +168,9 @@ function RetrievalSourceSection() {
   if (error) {
     return (
       <Card>
-        <Text headingH3>Retrieval Source</Text>
+        <Text headingH3>Source de récupération</Text>
         <Text mainUiBody text03>
-          Failed to load retrieval settings.
+          Impossible de charger les paramètres de récupération.
         </Text>
       </Card>
     );
@@ -179,8 +179,8 @@ function RetrievalSourceSection() {
   return (
     <Card>
       <Content
-        title="Retrieval Source"
-        description="Controls which document index is used for retrieval."
+        title="Source de récupération"
+        description="Contrôle quel index de documents est utilisé pour la récupération."
         sizePreset="main-ui"
         variant="section"
       />
@@ -190,7 +190,7 @@ function RetrievalSourceSection() {
         onValueChange={setSelectedSource}
         disabled={updating}
       >
-        <InputSelect.Trigger placeholder="Select retrieval source" />
+        <InputSelect.Trigger placeholder="Sélectionner la source de récupération" />
         <InputSelect.Content>
           <InputSelect.Item value="vespa">Vespa</InputSelect.Item>
           <InputSelect.Item value="opensearch">OpenSearch</InputSelect.Item>
@@ -204,7 +204,7 @@ function RetrievalSourceSection() {
           onClick={handleUpdate}
           disabled={updating}
         >
-          {updating ? "Updating..." : "Update Settings"}
+          {updating ? "Mise à jour..." : "Mettre à jour les paramètres"}
         </Button>
       )}
     </Card>
@@ -217,7 +217,7 @@ export default function Page() {
       <SettingsLayouts.Header
         icon={route.icon}
         title={route.title}
-        description="Monitor the migration from Vespa to OpenSearch and control the active retrieval source."
+        description="Surveillez la migration de Vespa vers OpenSearch et contrôlez la source de récupération active."
         separator
       />
       <SettingsLayouts.Body>

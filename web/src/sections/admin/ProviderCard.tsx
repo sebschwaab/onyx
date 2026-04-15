@@ -77,7 +77,7 @@ export default function ProviderCard({
   onDeselect,
   onEdit,
   onDisconnect,
-  selectedLabel = "Current Default",
+  selectedLabel = "Défaut actuel",
   "aria-label": ariaLabel,
 }: ProviderCardProps) {
   const isDisconnected = status === "disconnected";
@@ -108,7 +108,7 @@ export default function ProviderCard({
                 onConnect();
               }}
             >
-              Connect
+              Connecter
             </Button>
           ) : isConnected && onSelect ? (
             <Button
@@ -119,7 +119,7 @@ export default function ProviderCard({
                 onSelect();
               }}
             >
-              Set as Default
+              Définir par défaut
             </Button>
           ) : isSelected ? (
             <div className="p-2">
@@ -138,8 +138,8 @@ export default function ProviderCard({
               {onDisconnect && (
                 <Button
                   icon={SvgUnplug}
-                  tooltip="Disconnect"
-                  aria-label={`Disconnect ${title}`}
+                  tooltip="Déconnecter"
+                  aria-label={`Déconnecter ${title}`}
                   prominence="tertiary"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -151,8 +151,8 @@ export default function ProviderCard({
               {onEdit && (
                 <Button
                   icon={SvgSettings}
-                  tooltip="Edit"
-                  aria-label={`Edit ${title}`}
+                  tooltip="Modifier"
+                  aria-label={`Modifier ${title}`}
                   prominence="tertiary"
                   onClick={(e) => {
                     e.stopPropagation();

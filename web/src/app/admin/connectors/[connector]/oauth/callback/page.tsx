@@ -11,14 +11,14 @@ import { SvgKey } from "@opal/icons";
 export default function OAuthCallbackPage() {
   const searchParams = useSearchParams();
 
-  const [statusMessage, setStatusMessage] = useState("Processing...");
+  const [statusMessage, setStatusMessage] = useState("Traitement en cours...");
   const [statusDetails, setStatusDetails] = useState(
-    "Please wait while we complete the setup."
+    "Veuillez patienter pendant que nous finalisons la configuration."
   );
   const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
   const [isError, setIsError] = useState(false);
   const [pageTitle, setPageTitle] = useState(
-    "Authorize with Third-Party service"
+    "Autorisation avec un service tiers"
   );
 
   // Extract query parameters
@@ -35,9 +35,9 @@ export default function OAuthCallbackPage() {
       // sourceType (for looking up metadata) = "google_drive"
 
       if (!code || !state) {
-        setStatusMessage("Improperly formed OAuth authorization request.");
+        setStatusMessage("Requête d'autorisation OAuth mal formée.");
         setStatusDetails(
-          !code ? "Missing authorization code." : "Missing state parameter."
+          !code ? "Code d'autorisation manquant." : "Paramètre d'état manquant."
         );
         setIsError(true);
         return;
@@ -45,9 +45,9 @@ export default function OAuthCallbackPage() {
 
       if (!connector) {
         setStatusMessage(
-          `The specified connector source type ${connector} does not exist.`
+          `Le type de source du connecteur spécifié ${connector} n'existe pas.`
         );
-        setStatusDetails(`${connector} is not a valid source type.`);
+        setStatusDetails(`${connector} n'est pas un type de source valide.`);
         setIsError(true);
         return;
       }
@@ -55,18 +55,18 @@ export default function OAuthCallbackPage() {
       const sourceType = connector.replaceAll("-", "_");
       if (!isValidSource(sourceType)) {
         setStatusMessage(
-          `The specified connector source type ${sourceType} does not exist.`
+          `Le type de source du connecteur spécifié ${sourceType} n'existe pas.`
         );
-        setStatusDetails(`${sourceType} is not a valid source type.`);
+        setStatusDetails(`${sourceType} n'est pas un type de source valide.`);
         setIsError(true);
         return;
       }
 
       const sourceMetadata = getSourceMetadata(sourceType as ValidSources);
-      setPageTitle(`Authorize with ${sourceMetadata.displayName}`);
+      setPageTitle(`Autorisation avec ${sourceMetadata.displayName}`);
 
-      setStatusMessage("Processing...");
-      setStatusDetails("Please wait while we complete authorization.");
+      setStatusMessage("Traitement en cours...");
+      setStatusDetails("Veuillez patienter pendant que nous finalisons l'autorisation.");
       setIsError(false); // Ensure no error state during loading
 
       try {
@@ -77,29 +77,29 @@ export default function OAuthCallbackPage() {
         );
 
         if (!response) {
-          throw new Error("Empty response from OAuth server.");
+          throw new Error("Réponse vide du serveur OAuth.");
         }
 
-        setStatusMessage("Success!");
+        setStatusMessage("Succès !");
 
         // set the continuation link
         if (response.finalize_url) {
           setRedirectUrl(response.finalize_url);
           setStatusDetails(
-            `Your authorization with ${sourceMetadata.displayName} completed successfully. Additional steps are required to complete credential setup.`
+            `Votre autorisation avec ${sourceMetadata.displayName} s'est terminée avec succès. Des étapes supplémentaires sont nécessaires pour finaliser la configuration des identifiants.`
           );
         } else {
           setRedirectUrl(response.redirect_on_success);
           setStatusDetails(
-            `Your authorization with ${sourceMetadata.displayName} completed successfully.`
+            `Votre autorisation avec ${sourceMetadata.displayName} s'est terminée avec succès.`
           );
         }
         setIsError(false);
       } catch (error) {
         console.error("OAuth error:", error);
-        setStatusMessage("Oops, something went wrong!");
+        setStatusMessage("Oups, quelque chose s'est mal passé !");
         setStatusDetails(
-          "An error occurred during the OAuth process. Please try again."
+          "Une erreur s'est produite pendant le processus OAuth. Veuillez réessayer."
         );
         setIsError(true);
       }
@@ -119,11 +119,11 @@ export default function OAuthCallbackPage() {
           {redirectUrl && !isError && (
             <div className="mt-4">
               <p className="text-sm">
-                Click{" "}
+                Cliquez{" "}
                 <a href={redirectUrl} className="text-blue-500 underline">
-                  here
+                  ici
                 </a>{" "}
-                to continue.
+                pour continuer.
               </p>
             </div>
           )}

@@ -16,7 +16,7 @@ export const ScoreSection = ({
   const onSubmit = async (value: string) => {
     const numericScore = Number(value);
     if (isNaN(numericScore)) {
-      toast.error("Score must be a number");
+      toast.error("Le score doit être un nombre");
       return false;
     }
 
@@ -25,7 +25,7 @@ export const ScoreSection = ({
       toast.error(errorMsg);
       return false;
     } else {
-      toast.success("Updated score!");
+      toast.success("Score mis à jour !");
       refresh();
     }
 

@@ -62,14 +62,14 @@ function OpenAICompatibleModalInternals({
     <>
       <APIBaseField
         subDescription={markdown(
-          "Paste your OpenAI-compatible endpoint URL. [Learn More](https://docs.litellm.ai/docs/providers/openai_compatible)"
+          "Collez l'URL de votre endpoint compatible OpenAI. [En savoir plus](https://docs.litellm.ai/docs/providers/openai_compatible)"
         )}
         placeholder="http://localhost:8000/v1"
       />
 
       <APIKeyField
         optional
-        subDescription="Paste your API key if your model provider requires authentication."
+        subDescription="Collez votre clé API si votre fournisseur de modèle requiert une authentification."
       />
 
       {!isOnboarding && (
@@ -123,7 +123,7 @@ export default function OpenAICompatibleModal({
       llmProvider={existingLlmProvider}
       onClose={onClose}
       initialValues={initialValues}
-      description="Connect from other cloud or self-hosted models via OpenAI-compatible endpoints."
+      description="Connectez des modèles cloud ou auto-hébergés via des endpoints compatibles OpenAI."
       validationSchema={validationSchema}
       onSubmit={async (values, { setSubmitting, setStatus }) => {
         await submitProvider({
@@ -145,8 +145,8 @@ export default function OpenAICompatibleModal({
               await refreshLlmProviderCaches(mutate);
               toast.success(
                 existingLlmProvider
-                  ? "Provider updated successfully!"
-                  : "Provider enabled successfully!"
+                  ? "Fournisseur mis à jour avec succès !"
+                  : "Fournisseur activé avec succès !"
               );
             }
           },

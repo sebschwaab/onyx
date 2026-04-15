@@ -12,7 +12,7 @@ export default function Main() {
       <SettingsLayouts.Header
         icon={route.icon}
         title={route.title}
-        description="Connect MCP (Model Context Protocol) servers to add custom actions and tools for your agents."
+        description="Connectez des serveurs MCP (Model Context Protocol) pour ajouter des actions et outils personnalisés à vos agents."
         separator
       />
       <SettingsLayouts.Body>

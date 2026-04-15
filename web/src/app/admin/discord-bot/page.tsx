@@ -40,10 +40,10 @@ function DiscordBotContent() {
       const result = await createGuildConfig();
       setRegistrationKey(result.registration_key);
       refreshGuilds();
-      toast.success("Server configuration created!");
+      toast.success("Configuration du serveur créée !");
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Failed to create server"
+        err instanceof Error ? err.message : "Impossible de créer le serveur"
       );
     } finally {
       setIsCreating(false);
@@ -57,8 +57,8 @@ function DiscordBotContent() {
   if (error || !guilds) {
     return (
       <ErrorCallout
-        errorTitle="Failed to load Discord servers"
-        errorMsg={error?.info?.detail || "An unknown error occurred"}
+        errorTitle="Impossible de charger les serveurs Discord"
+        errorMsg={error?.info?.detail || "Une erreur inconnue s'est produite"}
       />
     );
   }
@@ -70,14 +70,14 @@ function DiscordBotContent() {
       <Modal open={!!registrationKey}>
         <Modal.Content width="sm">
           <Modal.Header
-            title="Registration Key"
+            title="Clé d'enregistrement"
             icon={SvgKey}
             onClose={() => setRegistrationKey(null)}
-            description="This key will only be shown once!"
+            description="Cette clé ne sera affichée qu'une seule fois !"
           />
           <Modal.Body>
             <Text text04 mainUiBody>
-              Copy the command and send it from any text channel in your server!
+              Copiez la commande et envoyez-la depuis n&apos;importe quel canal texte de votre serveur !
             </Text>
             <Card variant="secondary">
               <Section
@@ -104,13 +104,13 @@ function DiscordBotContent() {
           alignItems="center"
         >
           <Text mainContentEmphasis text05>
-            Server Configurations
+            Configurations des serveurs
           </Text>
           <CreateButton
             onClick={handleCreateGuild}
             disabled={isCreating || !isBotAvailable}
           >
-            {isCreating ? "Creating..." : "Add Server"}
+            {isCreating ? "Création..." : "Ajouter un serveur"}
           </CreateButton>
         </Section>
         <DiscordGuildsTable guilds={guilds} onRefresh={refreshGuilds} />
@@ -125,7 +125,7 @@ export default function Page() {
       <SettingsLayouts.Header
         icon={route.icon}
         title={route.title}
-        description="Connect Onyx to your Discord servers. Users can ask questions directly in Discord channels."
+        description="Connectez Onyx à vos serveurs Discord. Les utilisateurs peuvent poser des questions directement dans les canaux Discord."
       />
       <SettingsLayouts.Body>
         <DiscordBotContent />

@@ -59,7 +59,7 @@ export function BotConfigCard() {
 
   const handleSaveToken = async () => {
     if (!botToken.trim()) {
-      toast.error("Please enter a bot token");
+      toast.error("Veuillez saisir un jeton de bot");
       return;
     }
 
@@ -68,10 +68,10 @@ export function BotConfigCard() {
       await createBotConfig(botToken.trim());
       setBotToken("");
       refreshBotConfig();
-      toast.success("Bot token saved successfully");
+      toast.success("Jeton de bot enregistré avec succès");
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Failed to save bot token"
+        err instanceof Error ? err.message : "Impossible d'enregistrer le jeton de bot"
       );
     } finally {
       setIsSubmitting(false);
@@ -83,10 +83,10 @@ export function BotConfigCard() {
     try {
       await deleteBotConfig();
       refreshBotConfig();
-      toast.success("Bot token deleted");
+      toast.success("Jeton de bot supprimé");
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Failed to delete bot token"
+        err instanceof Error ? err.message : "Impossible de supprimer le jeton de bot"
       );
     } finally {
       setIsSubmitting(false);
@@ -99,29 +99,29 @@ export function BotConfigCard() {
       {showDeleteConfirm && (
         <ConfirmEntityModal
           danger
-          entityType="Discord bot token"
-          entityName="Discord Bot Token"
+          entityType="jeton de bot Discord"
+          entityName="Jeton de bot Discord"
           onClose={() => setShowDeleteConfirm(false)}
           onSubmit={handleDeleteToken}
-          additionalDetails="This will disconnect your Discord bot. You will need to re-enter the token to use the bot again."
+          additionalDetails="Cela déconnectera votre bot Discord. Vous devrez saisir à nouveau le jeton pour utiliser le bot."
         />
       )}
       <Card>
         <Section flexDirection="row" justifyContent="between">
           <Section flexDirection="row" gap={0.5} width="fit">
             <Text mainContentEmphasis text05>
-              Bot Token
+              Jeton de bot
             </Text>
             {isConfigured ? (
-              <Badge variant="success">Configured</Badge>
+              <Badge variant="success">Configuré</Badge>
             ) : (
-              <Badge variant="secondary">Not Configured</Badge>
+              <Badge variant="secondary">Non configuré</Badge>
             )}
           </Section>
           {isConfigured && (
             <SimpleTooltip
               tooltip={
-                hasServerConfigs ? "Delete server configs first" : undefined
+                hasServerConfigs ? "Supprimez d'abord les configs du serveur" : undefined
               }
               disabled={!hasServerConfigs}
             >
@@ -130,7 +130,7 @@ export function BotConfigCard() {
                 variant="danger"
                 onClick={() => setShowDeleteConfirm(true)}
               >
-                Delete Discord Token
+                Supprimer le jeton Discord
               </Button>
             </SimpleTooltip>
           )}
@@ -139,29 +139,28 @@ export function BotConfigCard() {
         {isConfigured ? (
           <Section flexDirection="column" alignItems="start" gap={0.5}>
             <Text text03 secondaryBody>
-              Your Discord bot token is configured.
+              Votre jeton de bot Discord est configuré.
               {botConfig?.created_at && (
                 <>
                   {" "}
-                  Added {getFormattedDateTime(new Date(botConfig.created_at))}.
+                  Ajouté le {getFormattedDateTime(new Date(botConfig.created_at))}.
                 </>
               )}
             </Text>
             <Text text03 secondaryBody>
-              To change the token, delete the current one and add a new one.
+              Pour changer le jeton, supprimez l&apos;actuel et ajoutez-en un nouveau.
             </Text>
           </Section>
         ) : (
           <Section flexDirection="column" alignItems="start" gap={0.75}>
             <Text text03 secondaryBody>
-              Enter your Discord bot token to enable the bot. You can get this
-              from the Discord Developer Portal.
+              Entrez votre jeton de bot Discord pour activer le bot. Vous pouvez l&apos;obtenir depuis le portail des développeurs Discord.
             </Text>
             <Section flexDirection="row" alignItems="end" gap={0.5}>
               <PasswordInputTypeIn
                 value={botToken}
                 onChange={(e) => setBotToken(e.target.value)}
-                placeholder="Enter bot token..."
+                placeholder="Saisir le jeton du bot..."
                 disabled={isSubmitting}
                 className="flex-1"
               />
@@ -169,7 +168,7 @@ export function BotConfigCard() {
                 disabled={isSubmitting || !botToken.trim()}
                 onClick={handleSaveToken}
               >
-                {isSubmitting ? "Saving..." : "Save Token"}
+                {isSubmitting ? "Enregistrement..." : "Enregistrer le jeton"}
               </Button>
             </Section>
           </Section>

@@ -62,8 +62,8 @@ export function DiscordChannelsTable({
   if (channels.length === 0) {
     return (
       <EmptyMessage
-        title="No channels configured"
-        description="Run !sync-channels in Discord to add channels."
+        title="Aucun canal configuré"
+        description="Exécutez !sync-channels dans Discord pour ajouter des canaux."
       />
     );
   }
@@ -72,11 +72,11 @@ export function DiscordChannelsTable({
     <Table>
       <TableHeader>
         <TableRow className="[&>th]:whitespace-nowrap">
-          <TableHead>Channel</TableHead>
-          <TableHead>Enabled</TableHead>
-          <TableHead>Require @mention</TableHead>
-          <TableHead>Thread Only Mode</TableHead>
-          <TableHead>Agent Override</TableHead>
+          <TableHead>Canal</TableHead>
+          <TableHead>Activé</TableHead>
+          <TableHead>Requiert @mention</TableHead>
+          <TableHead>Mode fils uniquement</TableHead>
+          <TableHead>Agent de remplacement</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

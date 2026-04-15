@@ -33,13 +33,13 @@ const initialValues: AzureFormValues = {
 
 const validationSchema = Yup.object().shape({
   target_uri: Yup.string()
-    .required("Target URI is required")
+    .required("L'URI cible est requise")
     .test(
       "valid-target-uri",
-      "Target URI must be a valid URL with api-version and deployment name",
+      "L'URI cible doit être une URL valide avec api-version et deployment name",
       (value) => (value ? isValidAzureTargetUri(value) : false)
     ),
-  api_key: Yup.string().required("API Key is required"),
+  api_key: Yup.string().required("La clé API est requise"),
 });
 
 function AzureFormFields(props: ImageGenFormChildProps<AzureFormValues>) {
@@ -62,7 +62,7 @@ function AzureFormFields(props: ImageGenFormChildProps<AzureFormValues>) {
         name="target_uri"
         render={(field, helper, meta, state) => (
           <FormField name="target_uri" state={state} className="w-full">
-            <FormField.Label>Target URI</FormField.Label>
+            <FormField.Label>URI cible</FormField.Label>
             <FormField.Control>
               <InputTypeIn
                 {...field}
@@ -75,7 +75,7 @@ function AzureFormFields(props: ImageGenFormChildProps<AzureFormValues>) {
               messages={{
                 idle: (
                   <>
-                    Paste your endpoint target URI from{" "}
+                    Collez l&apos;URI cible de votre endpoint depuis{" "}
                     <a
                       href="https://oai.azure.com"
                       target="_blank"
@@ -84,8 +84,7 @@ function AzureFormFields(props: ImageGenFormChildProps<AzureFormValues>) {
                     >
                       Azure OpenAI
                     </a>{" "}
-                    (including API endpoint base, deployment name, and API
-                    version).
+                    (incluant la base de l&apos;endpoint API, le nom du déploiement et la version API).
                   </>
                 ),
                 error: meta.error,
@@ -104,7 +103,7 @@ function AzureFormFields(props: ImageGenFormChildProps<AzureFormValues>) {
             state={apiStatus === "error" ? "error" : state}
             className="w-full"
           >
-            <FormField.Label>API Key</FormField.Label>
+            <FormField.Label>Clé API</FormField.Label>
             <FormField.Control>
               {apiKeyOptions.length > 0 ? (
                 <InputComboBox
@@ -121,8 +120,8 @@ function AzureFormFields(props: ImageGenFormChildProps<AzureFormValues>) {
                   options={apiKeyOptions}
                   placeholder={
                     isLoadingCredentials
-                      ? "Loading..."
-                      : "Enter new API key or select existing provider"
+                      ? "Chargement..."
+                      : "Saisir une nouvelle clé API ou sélectionner un fournisseur existant"
                   }
                   disabled={disabled || !formikProps.values.target_uri?.trim()}
                   isError={apiStatus === "error"}
@@ -135,7 +134,7 @@ function AzureFormFields(props: ImageGenFormChildProps<AzureFormValues>) {
                     resetApiState();
                   }}
                   placeholder={
-                    isLoadingCredentials ? "Loading..." : "Enter your API key"
+                    isLoadingCredentials ? "Chargement..." : "Saisir votre clé API"
                   }
                   showClearButton={false}
                   disabled={disabled || !formikProps.values.target_uri?.trim()}
@@ -147,9 +146,9 @@ function AzureFormFields(props: ImageGenFormChildProps<AzureFormValues>) {
               <FormField.APIMessage
                 state={apiStatus}
                 messages={{
-                  loading: `Testing API key with ${imageProvider.title}...`,
-                  success: "API key is valid. Configuration saved.",
-                  error: errorMessage || "Invalid API key",
+                  loading: `Test de la clé API avec ${imageProvider.title}...`,
+                  success: "Clé API valide. Configuration enregistrée.",
+                  error: errorMessage || "Clé API invalide",
                 }}
               />
             ) : (
@@ -157,16 +156,16 @@ function AzureFormFields(props: ImageGenFormChildProps<AzureFormValues>) {
                 messages={{
                   idle: (
                     <>
-                      {"Paste your "}
+                      {"Collez votre "}
                       <a
                         href="https://oai.azure.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="underline"
                       >
-                        API key
+                        clé API
                       </a>
-                      {" from Azure OpenAI to access your models."}
+                      {" depuis Azure OpenAI pour accéder à vos modèles."}
                     </>
                   ),
                   error: meta.error,
@@ -239,8 +238,8 @@ export function AzureImageGenForm(props: ImageGenFormBaseProps) {
       {...props}
       title={
         existingConfig
-          ? `Edit ${imageProvider.title}`
-          : `Connect ${imageProvider.title}`
+          ? `Modifier ${imageProvider.title}`
+          : `Connecter ${imageProvider.title}`
       }
       description={imageProvider.description}
       initialValues={initialValues}

@@ -339,7 +339,7 @@ export default function VoiceProviderSetupModal({
       }
     } catch {
       setPhase("idle");
-      setMessage({ kind: "error", text: "Failed to save provider" });
+      setMessage({ kind: "error", text: "Impossible d'enregistrer le fournisseur" });
     }
   };
 
@@ -437,7 +437,7 @@ export default function VoiceProviderSetupModal({
 
             {providerType === "azure" && (
               <Vertical
-                title="Target URI"
+                title="URI cible"
                 subDescription={markdown(
                   "Collez le point d'accès affiché dans le [Portail Azure (Clés et Point de terminaison)](https://portal.azure.com/). Onyx extrait la région vocale de cette URL. Exemples : https://westus.api.cognitive.microsoft.com/ ou https://westus.tts.speech.microsoft.com/."
                 )}
@@ -456,7 +456,7 @@ export default function VoiceProviderSetupModal({
             )}
 
             {providerType === "openai" && mode === "stt" && (
-              <Horizontal title="STT Model" center nonInteractive>
+              <Horizontal title="Modèle STT" center nonInteractive>
                 <InputSelect value={sttModel} onValueChange={setSttModel}>
                   <InputSelect.Trigger />
                   <InputSelect.Content>
@@ -491,9 +491,9 @@ export default function VoiceProviderSetupModal({
 
             {mode === "tts" && (
               <Vertical
-                title="Voice"
+                title="Voix"
                 subDescription={markdown(
-                  `This voice will be used for spoken responses. See full list of supported languages and voices at [${
+                  `Cette voix sera utilisée pour les réponses vocales. Voir la liste complète des langues et voix supportées sur [${
                     PROVIDER_VOICE_DOCS_URLS[providerType]?.label ?? label
                   }](${
                     PROVIDER_VOICE_DOCS_URLS[providerType]?.url ??

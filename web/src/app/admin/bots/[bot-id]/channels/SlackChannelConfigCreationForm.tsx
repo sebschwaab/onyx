@@ -126,7 +126,7 @@ export const SlackChannelConfigCreationForm = ({
           slack_bot_id: Yup.number().required(),
           channel_name: isDefault
             ? Yup.string()
-            : Yup.string().required("Channel Name is required"),
+            : Yup.string().required("Le nom du canal est requis"),
           response_type: Yup.mixed<SlackBotResponseType>()
             .oneOf(["quotes", "citations"])
             .required(),
@@ -147,7 +147,7 @@ export const SlackChannelConfigCreationForm = ({
               then: (schema) =>
                 schema.min(
                   1,
-                  "At least one Document Set is required when using the 'Document Sets' knowledge source"
+                  "Au moins un ensemble de documents est requis lors de l'utilisation de la source de connaissances 'Ensembles de documents'"
                 ),
             }),
           persona_id: Yup.number()
@@ -156,7 +156,7 @@ export const SlackChannelConfigCreationForm = ({
               is: "assistant",
               then: (schema) =>
                 schema.required(
-                  "An agent is required when using the 'Agent' knowledge source"
+                  "Un agent est requis lors de l'utilisation de la source de connaissances 'Agent'"
                 ),
             }),
           standard_answer_categories: Yup.array(),

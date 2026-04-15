@@ -25,7 +25,7 @@ const initialValues: OpenAIFormValues = {
 };
 
 const validationSchema = Yup.object().shape({
-  api_key: Yup.string().required("API Key is required"),
+  api_key: Yup.string().required("La clé API est requise"),
 });
 
 function OpenAIFormFields(props: ImageGenFormChildProps<OpenAIFormValues>) {
@@ -49,7 +49,7 @@ function OpenAIFormFields(props: ImageGenFormChildProps<OpenAIFormValues>) {
           state={apiStatus === "error" ? "error" : state}
           className="w-full"
         >
-          <FormField.Label>API Key</FormField.Label>
+          <FormField.Label>Clé API</FormField.Label>
           <FormField.Control>
             {apiKeyOptions.length > 0 ? (
               <InputComboBox
@@ -66,8 +66,8 @@ function OpenAIFormFields(props: ImageGenFormChildProps<OpenAIFormValues>) {
                 options={apiKeyOptions}
                 placeholder={
                   isLoadingCredentials
-                    ? "Loading..."
-                    : "Enter new API key or select existing provider"
+                    ? "Chargement..."
+                    : "Saisir une nouvelle clé API ou sélectionner un fournisseur existant"
                 }
                 disabled={disabled}
                 isError={apiStatus === "error"}
@@ -80,7 +80,7 @@ function OpenAIFormFields(props: ImageGenFormChildProps<OpenAIFormValues>) {
                   resetApiState();
                 }}
                 placeholder={
-                  isLoadingCredentials ? "Loading..." : "Enter your API key"
+                  isLoadingCredentials ? "Chargement..." : "Saisir votre clé API"
                 }
                 showClearButton={false}
                 disabled={disabled}
@@ -92,15 +92,15 @@ function OpenAIFormFields(props: ImageGenFormChildProps<OpenAIFormValues>) {
             <FormField.APIMessage
               state={apiStatus}
               messages={{
-                loading: `Testing API key with ${imageProvider.title}...`,
-                success: "API key is valid. Configuration saved.",
-                error: errorMessage || "Invalid API key",
+                loading: `Test de la clé API avec ${imageProvider.title}...`,
+                success: "Clé API valide. Configuration enregistrée.",
+                error: errorMessage || "Clé API invalide",
               }}
             />
           ) : (
             <FormField.Message
               messages={{
-                idle: "Enter a new API key or select an existing provider.",
+                idle: "Saisir une nouvelle clé API ou sélectionner un fournisseur existant.",
                 error: meta.error,
               }}
             />
@@ -140,8 +140,8 @@ export function OpenAIImageGenForm(props: ImageGenFormBaseProps) {
       {...props}
       title={
         existingConfig
-          ? `Edit ${imageProvider.title}`
-          : `Connect ${imageProvider.title}`
+          ? `Modifier ${imageProvider.title}`
+          : `Connecter ${imageProvider.title}`
       }
       description={imageProvider.description}
       initialValues={initialValues}

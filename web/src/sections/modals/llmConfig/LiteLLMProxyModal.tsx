@@ -63,7 +63,7 @@ function LiteLLMProxyModalInternals({
   return (
     <>
       <APIBaseField
-        subDescription="The base URL for your LiteLLM Proxy server."
+        subDescription="L'URL de base de votre serveur LiteLLM Proxy."
         placeholder="https://your-litellm-proxy.com"
       />
 
@@ -145,8 +145,8 @@ export default function LiteLLMProxyModal({
               await refreshLlmProviderCaches(mutate);
               toast.success(
                 existingLlmProvider
-                  ? "Provider updated successfully!"
-                  : "Provider enabled successfully!"
+                  ? "Fournisseur mis à jour avec succès !"
+                  : "Fournisseur activé avec succès !"
               );
             }
           },

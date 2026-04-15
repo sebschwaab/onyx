@@ -225,7 +225,7 @@ export const DocumentSetCreationForm = ({
                             } you have selected`
                           : "group you curate"
                       }`}
-                      description="Only connectors that are directly assigned to the group you are trying to add the document set to will be available."
+                      description="Seuls les connecteurs directement assignés au groupe auquel vous essayez d'ajouter l'ensemble de documents seront disponibles."
                     />
                   </>
                 ) : (

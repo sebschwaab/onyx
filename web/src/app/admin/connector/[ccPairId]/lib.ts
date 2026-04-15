@@ -36,7 +36,7 @@ export async function triggerIndexing(
   } else {
     return {
       success: true,
-      message: "Triggered connector run",
+      message: "Exécution du connecteur déclenchée",
     };
   }
 }
@@ -48,16 +48,16 @@ export function getTooltipMessage(
   isDisabled: boolean
 ): string | undefined {
   if (isInvalid) {
-    return "Connector is in an invalid state. Please update the credentials or configuration before re-indexing.";
+    return "Le connecteur est dans un état invalide. Veuillez mettre à jour les identifiants ou la configuration avant de réindexer.";
   }
   if (isDeleting) {
-    return "Cannot index while connector is deleting";
+    return "Impossible d'indexer pendant la suppression du connecteur";
   }
   if (isIndexing) {
-    return "Indexing is already in progress";
+    return "L'indexation est déjà en cours";
   }
   if (isDisabled) {
-    return "Connector must be re-enabled before indexing";
+    return "Le connecteur doit être réactivé avant l'indexation";
   }
   return undefined;
 }

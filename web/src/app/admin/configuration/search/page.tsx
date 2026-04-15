@@ -79,7 +79,7 @@ function Main() {
     !currentEmeddingModel ||
     futureEmeddingModelError
   ) {
-    return <ErrorCallout errorTitle="Failed to fetch embedding model status" />;
+    return <ErrorCallout errorTitle="Impossible de récupérer le statut du modèle d'embeddings" />;
   }
 
   return (
@@ -88,19 +88,19 @@ function Main() {
         <>
           {settings?.settings.needs_reindexing && (
             <p className="max-w-3xl">
-              Your search settings are currently out of date! We recommend
-              updating your search settings and re-indexing.
+              Vos paramètres de recherche sont actuellement obsolètes ! Nous recommandons
+              de mettre à jour vos paramètres de recherche et de réindexer.
             </p>
           )}
-          <Title className="mb-6 mt-8 !text-2xl">Embedding Model</Title>
+          <Title className="mb-6 mt-8 !text-2xl">Modèle d&apos;Embeddings</Title>
 
           {currentEmeddingModel ? (
             <ModelPreview model={currentEmeddingModel} display showDetails />
           ) : (
-            <Title className="mt-8 mb-4">Choose your Embedding Model</Title>
+            <Title className="mt-8 mb-4">Choisissez votre modèle d&apos;embeddings</Title>
           )}
 
-          <Title className="mb-2 mt-8 !text-2xl">Post-processing</Title>
+          <Title className="mb-2 mt-8 !text-2xl">Post-traitement</Title>
 
           <CardSection className="!mr-auto mt-8 !w-96 shadow-lg bg-background-tint-00 rounded-16">
             {searchSettings && (
@@ -109,23 +109,23 @@ function Main() {
                   <div className="space-y-4">
                     <div>
                       <Text as="p" font="main-ui-action">
-                        Multipass Indexing
+                        Indexation multipass
                       </Text>
                       <Text as="p">
                         {searchSettings.multipass_indexing
-                          ? "Enabled"
-                          : "Disabled"}
+                          ? "Activé"
+                          : "Désactivé"}
                       </Text>
                     </div>
 
                     <div>
                       <Text as="p" font="main-ui-action">
-                        Contextual RAG
+                        RAG contextuel
                       </Text>
                       <Text as="p">
                         {searchSettings.enable_contextual_rag
-                          ? "Enabled"
-                          : "Disabled"}
+                          ? "Activé"
+                          : "Désactivé"}
                       </Text>
                     </div>
                   </div>
@@ -136,7 +136,7 @@ function Main() {
 
           <div className="mt-4">
             <Button variant="action" href="/admin/embeddings">
-              Update Index Settings
+              Mettre à jour les paramètres d&apos;indexation
             </Button>
           </div>
         </>

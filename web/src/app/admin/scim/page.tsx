@@ -81,9 +81,9 @@ function ScimContent() {
       const created: ScimTokenCreatedResponse = await response.json();
       await mutate();
       openModal({ kind: "token", rawToken: created.raw_token });
-      if (hasToken) toast.success("Token regenerated");
+      if (hasToken) toast.success("Token régénéré");
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      toast.error("Une erreur s'est produite. Veuillez réessayer.");
     } finally {
       setIsSubmitting(false);
     }
@@ -129,7 +129,7 @@ export default function Page() {
       <SettingsLayouts.Header
         icon={SvgUserSync}
         title="SCIM"
-        description="Sync users and groups via System for Cross-domain Identity Management (SCIM) protocol."
+        description="Synchronisez les utilisateurs et les groupes via le protocole SCIM (System for Cross-domain Identity Management)."
         separator
       />
       <SettingsLayouts.Body>

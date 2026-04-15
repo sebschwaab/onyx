@@ -77,7 +77,7 @@ const DocumentDisplay = ({
         >
           <div className="my-auto">
             {document.hidden ? (
-              <div className="text-error">Hidden</div>
+              <div className="text-error">Masqué</div>
             ) : (
               "Visible"
             )}
@@ -165,7 +165,7 @@ export function Explorer({
     <div className="flex flex-col gap-6">
       <div className="flex flex-col justify-center gap-2">
         <InputTypeIn
-          placeholder="Find documents based on title / content..."
+          placeholder="Rechercher des documents par titre / contenu..."
           value={query}
           onChange={(event) => {
             setQuery(event.target.value);

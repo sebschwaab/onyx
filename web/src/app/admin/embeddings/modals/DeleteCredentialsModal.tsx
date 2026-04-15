@@ -26,26 +26,26 @@ export default function DeleteCredentialsModal({
         <Modal.Header
           icon={SvgTrash}
           title={markdown(
-            `Delete *${getFormattedProviderName(
+            `Supprimer les identifiants *${getFormattedProviderName(
               modelProvider.provider_type
-            )}* credentials?`
+            )}* ?`
           )}
           onClose={onCancel}
         />
         <Modal.Body>
           <Text as="p">
-            You&apos;re about to delete your{" "}
-            {getFormattedProviderName(modelProvider.provider_type)} credentials.
-            Are you sure?
+            Vous êtes sur le point de supprimer vos identifiants{" "}
+            {getFormattedProviderName(modelProvider.provider_type)}.
+            Êtes-vous sûr ?
           </Text>
-          <Callout type="danger" title="Point of No Return" />
+          <Callout type="danger" title="Point de non-retour" />
         </Modal.Body>
         <Modal.Footer>
           <Button prominence="secondary" onClick={onCancel}>
-            Keep Credentials
+            Conserver les identifiants
           </Button>
           <Button variant="danger" onClick={onConfirm}>
-            Delete Credentials
+            Supprimer les identifiants
           </Button>
         </Modal.Footer>
       </Modal.Content>

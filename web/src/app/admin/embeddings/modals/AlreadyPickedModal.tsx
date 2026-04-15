@@ -18,12 +18,12 @@ export default function AlreadyPickedModal({
       <Modal.Content width="sm" height="sm">
         <Modal.Header
           icon={SvgCheck}
-          title={markdown(`*${model.model_name}* already chosen`)}
-          description="You can select a different one if you want!"
+          title={markdown(`*${model.model_name}* déjà sélectionné`)}
+          description="Vous pouvez en sélectionner un autre si vous le souhaitez !"
           onClose={onClose}
         />
         <Modal.Footer>
-          <Button onClick={onClose}>Close</Button>
+          <Button onClick={onClose}>Fermer</Button>
         </Modal.Footer>
       </Modal.Content>
     </Modal>

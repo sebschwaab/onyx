@@ -14,7 +14,7 @@ const BASE_URL = "/api/manage/admin/discord-bot";
 export async function fetchBotConfig(): Promise<DiscordBotConfig> {
   const response = await fetch(`${BASE_URL}/config`);
   if (!response.ok) {
-    throw new Error("Failed to fetch bot config");
+    throw new Error("Impossible de récupérer la config du bot");
   }
   return response.json();
 }
@@ -29,7 +29,7 @@ export async function createBotConfig(
   });
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.detail || "Failed to create bot config");
+    throw new Error(error.detail || "Impossible de créer la config du bot");
   }
   return response.json();
 }
@@ -37,7 +37,7 @@ export async function createBotConfig(
 export async function deleteBotConfig(): Promise<void> {
   const response = await fetch(`${BASE_URL}/config`, { method: "DELETE" });
   if (!response.ok) {
-    throw new Error("Failed to delete bot config");
+    throw new Error("Impossible de supprimer la config du bot");
   }
 }
 
@@ -46,7 +46,7 @@ export async function deleteBotConfig(): Promise<void> {
 export async function fetchGuildConfigs(): Promise<DiscordGuildConfig[]> {
   const response = await fetch(`${BASE_URL}/guilds`);
   if (!response.ok) {
-    throw new Error("Failed to fetch guild configs");
+    throw new Error("Impossible de récupérer les configs du serveur");
   }
   return response.json();
 }
@@ -55,7 +55,7 @@ export async function createGuildConfig(): Promise<DiscordGuildConfigCreateRespo
   const response = await fetch(`${BASE_URL}/guilds`, { method: "POST" });
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.detail || "Failed to create guild config");
+    throw new Error(error.detail || "Impossible de créer la config du serveur");
   }
   return response.json();
 }
@@ -65,7 +65,7 @@ export async function fetchGuildConfig(
 ): Promise<DiscordGuildConfig> {
   const response = await fetch(`${BASE_URL}/guilds/${configId}`);
   if (!response.ok) {
-    throw new Error("Failed to fetch guild config");
+    throw new Error("Impossible de récupérer la config du serveur");
   }
   return response.json();
 }
@@ -81,7 +81,7 @@ export async function updateGuildConfig(
   });
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.detail || "Failed to update guild config");
+    throw new Error(error.detail || "Impossible de mettre à jour la config du serveur");
   }
   return response.json();
 }
@@ -91,7 +91,7 @@ export async function deleteGuildConfig(configId: number): Promise<void> {
     method: "DELETE",
   });
   if (!response.ok) {
-    throw new Error("Failed to delete guild config");
+    throw new Error("Impossible de supprimer la config du serveur");
   }
 }
 
@@ -102,7 +102,7 @@ export async function fetchChannelConfigs(
 ): Promise<DiscordChannelConfig[]> {
   const response = await fetch(`${BASE_URL}/guilds/${guildConfigId}/channels`);
   if (!response.ok) {
-    throw new Error("Failed to fetch channel configs");
+    throw new Error("Impossible de récupérer les configs des canaux");
   }
   return response.json();
 }
@@ -122,7 +122,7 @@ export async function updateChannelConfig(
   );
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.detail || "Failed to update channel config");
+    throw new Error(error.detail || "Impossible de mettre à jour la config du canal");
   }
   return response.json();
 }

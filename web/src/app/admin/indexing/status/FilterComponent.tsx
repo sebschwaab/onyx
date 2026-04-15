@@ -276,7 +276,7 @@ export const FilterComponent = forwardRef<
               </div>
               <Input
                 type="number"
-                placeholder="Count"
+                placeholder="Quantité"
                 value={docsValue}
                 onChange={(e) => setDocsValue(e.target.value)}
                 className="h-8 w-full"

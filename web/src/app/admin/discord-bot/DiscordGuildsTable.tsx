@@ -42,10 +42,10 @@ export function DiscordGuildsTable({ guilds, onRefresh }: Props) {
     try {
       await deleteGuildConfig(guildId);
       onRefresh();
-      toast.success("Server configuration deleted");
+      toast.success("Configuration du serveur supprimée");
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Failed to delete server config"
+        err instanceof Error ? err.message : "Impossible de supprimer la config du serveur"
       );
     } finally {
       setGuildToDelete(null);
@@ -54,7 +54,7 @@ export function DiscordGuildsTable({ guilds, onRefresh }: Props) {
 
   const handleToggleEnabled = async (guild: DiscordGuildConfig) => {
     if (!guild.guild_id) {
-      toast.error("Server must be registered before it can be enabled");
+      toast.error("Le serveur doit être enregistré avant de pouvoir être activé");
       return;
     }
 
@@ -65,10 +65,10 @@ export function DiscordGuildsTable({ guilds, onRefresh }: Props) {
         default_persona_id: guild.default_persona_id,
       });
       onRefresh();
-      toast.success(`Server ${!guild.enabled ? "enabled" : "disabled"}`);
+      toast.success(`Serveur ${!guild.enabled ? "activé" : "désactivé"}`);
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Failed to update server"
+        err instanceof Error ? err.message : "Impossible de mettre à jour le serveur"
       );
     } finally {
       setUpdatingGuildIds((prev) => {
@@ -83,8 +83,8 @@ export function DiscordGuildsTable({ guilds, onRefresh }: Props) {
     return (
       <EmptyMessage
         icon={SvgServer}
-        title="No Discord servers configured yet"
-        description="Create a server configuration to get started."
+        title="Aucun serveur Discord configuré"
+        description="Créez une configuration de serveur pour commencer."
       />
     );
   }
@@ -94,20 +94,20 @@ export function DiscordGuildsTable({ guilds, onRefresh }: Props) {
       {guildToDelete && (
         <ConfirmEntityModal
           danger
-          entityType="Discord server configuration"
-          entityName={guildToDelete.guild_name || `Server #${guildToDelete.id}`}
+          entityType="configuration du serveur Discord"
+          entityName={guildToDelete.guild_name || `Serveur #${guildToDelete.id}`}
           onClose={() => setGuildToDelete(null)}
           onSubmit={() => handleDelete(guildToDelete.id)}
-          additionalDetails="This will remove all settings for this Discord server."
+          additionalDetails="Cela supprimera tous les paramètres de ce serveur Discord."
         />
       )}
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Server</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Registered</TableHead>
-            <TableHead>Enabled</TableHead>
+            <TableHead>Serveur</TableHead>
+            <TableHead>Statut</TableHead>
+            <TableHead>Enregistré</TableHead>
+            <TableHead>Activé</TableHead>
             <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -126,9 +126,9 @@ export function DiscordGuildsTable({ guilds, onRefresh }: Props) {
               </TableCell>
               <TableCell>
                 {guild.guild_id ? (
-                  <Badge variant="success">Registered</Badge>
+                  <Badge variant="success">Enregistré</Badge>
                 ) : (
-                  <Badge variant="secondary">Pending</Badge>
+                  <Badge variant="secondary">En attente</Badge>
                 )}
               </TableCell>
               <TableCell>

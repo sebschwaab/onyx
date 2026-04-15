@@ -52,15 +52,15 @@ export function useStatusChange(ccPair: CCPairFullInfo | null) {
   const ConfirmModal =
     showConfirmModal && ccPair ? (
       <ConfirmEntityModal
-        entityType="Invalid Connector"
+        entityType="Connecteur invalide"
         entityName={ccPair.name}
         onClose={() => setShowConfirmModal(false)}
         onSubmit={() => {
           setShowConfirmModal(false);
           updateStatus(ConnectorCredentialPairStatus.ACTIVE);
         }}
-        additionalDetails="This connector was previously marked as invalid. Please verify that your configuration is correct before re-enabling. Are you sure you want to proceed?"
-        actionButtonText="Re-Enable"
+        additionalDetails="Ce connecteur a été précédemment marqué comme invalide. Veuillez vérifier que votre configuration est correcte avant de le réactiver. Êtes-vous sûr de vouloir continuer ?"
+        actionButtonText="Réactiver"
       />
     ) : null;
 

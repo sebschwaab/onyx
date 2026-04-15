@@ -445,7 +445,7 @@ const MemoizedAppSidebarInner = memo(function AppSidebarInner() {
         try {
           await performChatMove(targetProject.id, chatSession);
         } catch (error) {
-          showErrorNotification("Failed to move chat. Please try again.");
+          showErrorNotification("Impossible de déplacer le chat. Veuillez réessayer.");
         }
       }
 
@@ -685,7 +685,7 @@ const MemoizedAppSidebarInner = memo(function AppSidebarInner() {
               collisionDetection={closestCenter}
               onDragEnd={handleAgentDragEnd}
             >
-              <SidebarSection title="Agents" >
+              <SidebarSection title="Agents">
                 <SortableContext
                   items={visibleAgentIds}
                   strategy={verticalListSortingStrategy}

@@ -132,9 +132,9 @@ function WebSearchDisconnectModal({
     return details?.label ?? p.name ?? p.provider_type;
   };
 
-  const categoryLabel = isSearch ? "search engine" : "web crawler";
-  const featureLabel = isSearch ? "web search" : "web crawling";
-  const disableLabel = isSearch ? "Disable Web Search" : "Disable Web Crawling";
+  const categoryLabel = isSearch ? "moteur de recherche" : "web crawler";
+  const featureLabel = isSearch ? "la recherche web" : "l'exploration web";
+  const disableLabel = isSearch ? "Désactiver la recherche web" : "Désactiver l'exploration web";
 
   // Auto-select first replacement when modal opens
   useEffect(() => {
@@ -148,7 +148,7 @@ function WebSearchDisconnectModal({
     <ConfirmationModalLayout
       icon={SvgUnplug}
       title={markdown(`Disconnect *${disconnectTarget.label}*`)}
-      description="This will remove the stored credentials for this provider."
+      description="Cela supprimera les identifiants stockés pour ce fournisseur."
       onClose={onClose}
       submit={
         <Button
@@ -158,7 +158,7 @@ function WebSearchDisconnectModal({
             needsReplacement && hasReplacements && !replacementProviderId
           }
         >
-          Disconnect
+          Déconnecter
         </Button>
       }
     >
@@ -166,18 +166,18 @@ function WebSearchDisconnectModal({
         hasReplacements ? (
           <Section alignItems="start">
             <Text as="p" text03>
-              <b>{disconnectTarget.label}</b> is currently the active{" "}
-              {categoryLabel}. Search history will be preserved.
+              <b>{disconnectTarget.label}</b> est actuellement le{" "}
+              {categoryLabel} actif. L&apos;historique sera préservé.
             </Text>
             <Section alignItems="start" gap={0.25}>
               <Text as="p" secondaryBody text03>
-                Set New Default
+                Définir un nouveau défaut
               </Text>
               <InputSelect
                 value={replacementProviderId ?? undefined}
                 onValueChange={(v) => onReplacementChange(v)}
               >
-                <InputSelect.Trigger placeholder="Select a replacement provider" />
+                <InputSelect.Trigger placeholder="Sélectionner un fournisseur de remplacement" />
                 <InputSelect.Content>
                   {replacementOptions.map((p) => (
                     <InputSelect.Item key={p.id} value={String(p.id)}>
@@ -187,7 +187,7 @@ function WebSearchDisconnectModal({
                   <InputSelect.Separator />
                   <InputSelect.Item value={NO_DEFAULT_VALUE} icon={SvgSlash}>
                     <span>
-                      <b>No Default</b>
+                      <b>Aucun défaut</b>
                       <span className="text-text-03"> ({disableLabel})</span>
                     </span>
                   </InputSelect.Item>
@@ -198,22 +198,22 @@ function WebSearchDisconnectModal({
         ) : (
           <>
             <Text as="p" text03>
-              <b>{disconnectTarget.label}</b> is currently the active{" "}
-              {categoryLabel}.
+              <b>{disconnectTarget.label}</b> est actuellement le{" "}
+              {categoryLabel} actif.
             </Text>
             <Text as="p" text03>
-              Connect another provider to continue using {featureLabel}.
+              Connectez un autre fournisseur pour continuer à utiliser {featureLabel}.
             </Text>
           </>
         )
       ) : (
         <>
           <Text as="p" text03>
-            {isSearch ? "Web search" : "Web crawling"} will no longer be routed
-            through <b>{disconnectTarget.label}</b>.
+            {isSearch ? "La recherche web" : "L'exploration web"} ne sera plus acheminée
+            via <b>{disconnectTarget.label}</b>.
           </Text>
           <Text as="p" text03>
-            Search history will be preserved.
+            L&apos;historique sera préservé.
           </Text>
         </>
       )}
@@ -256,7 +256,7 @@ function ProviderCard({
   onDeselect,
   onEdit,
   onDisconnect,
-  selectedLabel = "Current Default",
+  selectedLabel = "Défaut actuel",
 }: ProviderCardProps) {
   const isDisconnected = status === "disconnected";
   const isConnected = status === "connected";
@@ -292,7 +292,7 @@ function ProviderCard({
                   onConnect();
                 }}
               >
-                Connect
+                Connecter
               </Button>
             ) : isConnected && onSelect ? (
               <Button
@@ -303,7 +303,7 @@ function ProviderCard({
                   onSelect();
                 }}
               >
-                Set as Default
+                Définir par défaut
               </Button>
             ) : isSelected ? (
               <div className="p-2">
@@ -323,8 +323,8 @@ function ProviderCard({
                   <Hoverable.Item group="web-search/ProviderCard">
                     <Button
                       icon={SvgUnplug}
-                      tooltip="Disconnect"
-                      aria-label={`Disconnect ${title}`}
+                      tooltip="Déconnecter"
+                      aria-label={`Déconnecter ${title}`}
                       prominence="tertiary"
                       onClick={(e) => {
                         e.stopPropagation();
@@ -337,8 +337,8 @@ function ProviderCard({
                 {onEdit && (
                   <Button
                     icon={SvgSettings}
-                    tooltip="Edit"
-                    aria-label={`Edit ${title}`}
+                    tooltip="Modifier"
+                    aria-label={`Modifier ${title}`}
                     prominence="tertiary"
                     onClick={(e) => {
                       e.stopPropagation();
@@ -505,7 +505,7 @@ export default function WebSearchPage() {
           provider.provider_type,
           provider.name
         ),
-        subtitle: "Custom integration",
+        subtitle: "Intégration personnalisée",
         logoSrc: undefined,
         provider,
       }));
@@ -649,7 +649,7 @@ export default function WebSearchPage() {
     const message =
       searchProvidersError?.message ||
       contentProvidersError?.message ||
-      "Unable to load web search configuration.";
+      "Impossible de charger la configuration de recherche web.";
 
     const detail =
       (searchProvidersError instanceof FetchError &&
@@ -666,11 +666,11 @@ export default function WebSearchPage() {
         <SettingsLayouts.Header
           icon={route.icon}
           title={route.title}
-          description="Search settings for external search across the internet."
+          description="Paramètres de recherche externe sur internet."
           separator
         />
         <SettingsLayouts.Body>
-          <Callout type="danger" title="Failed to load web search settings">
+          <Callout type="danger" title="Impossible de charger les paramètres de recherche web">
             {message}
             {detail && (
               <Text as="p" className="mt-2 text-text-03" mainContentBody text03>
@@ -689,7 +689,7 @@ export default function WebSearchPage() {
         <SettingsLayouts.Header
           icon={route.icon}
           title={route.title}
-          description="Search settings for external search across the internet."
+          description="Paramètres de recherche externe sur internet."
           separator
         />
         <SettingsLayouts.Body>
@@ -776,7 +776,7 @@ export default function WebSearchPage() {
       await mutateSearchProviders();
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Unexpected error occurred.";
+        error instanceof Error ? error.message : "Une erreur inattendue s'est produite.";
       setActivationError(message);
     }
   };
@@ -788,7 +788,7 @@ export default function WebSearchPage() {
       await mutateSearchProviders();
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Unexpected error occurred.";
+        error instanceof Error ? error.message : "Une erreur inattendue s'est produite.";
       setActivationError(message);
     }
   };
@@ -802,7 +802,7 @@ export default function WebSearchPage() {
       await mutateContentProviders();
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Unexpected error occurred.";
+        error instanceof Error ? error.message : "Une erreur inattendue s'est produite.";
       setContentActivationError(message);
     }
   };
@@ -817,7 +817,7 @@ export default function WebSearchPage() {
       await mutateContentProviders();
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Unexpected error occurred.";
+        error instanceof Error ? error.message : "Une erreur inattendue s'est produite.";
       setContentActivationError(message);
     }
   };
@@ -900,7 +900,7 @@ export default function WebSearchPage() {
       contentModal.phase === "validating" ||
       contentModal.phase === "saving"
     ) {
-      return "Validating API key...";
+      return "Validation de la clé API...";
     }
 
     const providerName = selectedContentProviderType
@@ -911,27 +911,27 @@ export default function WebSearchPage() {
     if (selectedContentProviderType === "exa") {
       return (
         <>
-          Paste your{" "}
+          Collez votre{" "}
           <a
             href="https://dashboard.exa.ai/api-keys"
             target="_blank"
             rel="noopener noreferrer"
             className="underline"
           >
-            API key
+            clé API
           </a>{" "}
-          from Exa to enable crawling.
+          depuis Exa pour activer l&apos;exploration.
         </>
       );
     }
 
     return selectedContentProviderType === "firecrawl" ? (
       <>
-        Paste your <span className="underline">API key</span> from Firecrawl to
-        access your search engine.
+        Collez votre <span className="underline">clé API</span> depuis Firecrawl pour
+        accéder à votre moteur de recherche.
       </>
     ) : (
-      `Paste your API key from ${providerName} to enable crawling.`
+      `Collez votre clé API depuis ${providerName} pour activer l'exploration.`
     );
   };
 
@@ -951,13 +951,13 @@ export default function WebSearchPage() {
 
     try {
       await disconnectProvider(id, category, replacementProviderId);
-      toast.success(`${disconnectTarget.label} disconnected`);
+      toast.success(`${disconnectTarget.label} déconnecté`);
       await mutateSearchProviders();
       await mutateContentProviders();
     } catch (error) {
       console.error("Failed to disconnect web search provider:", error);
       const message =
-        error instanceof Error ? error.message : "Unexpected error occurred.";
+        error instanceof Error ? error.message : "Une erreur inattendue s'est produite.";
       if (category === "search") {
         setActivationError(message);
       } else {
@@ -975,21 +975,21 @@ export default function WebSearchPage() {
         <SettingsLayouts.Header
           icon={route.icon}
           title={route.title}
-          description="Search settings for external search across the internet."
+          description="Paramètres de recherche externe sur internet."
           separator
         />
 
         <SettingsLayouts.Body>
           <div className="flex w-full flex-col gap-3">
             <Content
-              title="Search Engine"
-              description="External search engine API used for web search result URLs, snippets, and metadata."
+              title="Moteur de recherche"
+              description="API de moteur de recherche externe utilisée pour les URLs, extraits et métadonnées des résultats de recherche web."
               sizePreset="main-content"
               variant="section"
             />
 
             {activationError && (
-              <Callout type="danger" title="Unable to update default provider">
+              <Callout type="danger" title="Impossible de mettre à jour le fournisseur par défaut">
                 {activationError}
               </Callout>
             )}
@@ -1015,8 +1015,8 @@ export default function WebSearchPage() {
                   </div>
                   <Text as="p" className="flex-1 px-0.5" mainUiBody text04>
                     {hasConfiguredSearchProvider
-                      ? "Select a search engine to enable web search."
-                      : "Connect a search engine to set up web search."}
+                      ? "Sélectionnez un moteur de recherche pour activer la recherche web."
+                      : "Connectez un moteur de recherche pour configurer la recherche web."}
                   </Text>
                 </div>
               </div>
@@ -1111,14 +1111,14 @@ export default function WebSearchPage() {
 
           <div className="flex w-full flex-col gap-3">
             <Content
-              title="Web Crawler"
-              description="Used to read the full contents of search result pages."
+              title="Explorateur web"
+              description="Utilisé pour lire le contenu complet des pages de résultats de recherche."
               sizePreset="main-content"
               variant="section"
             />
 
             {contentActivationError && (
-              <Callout type="danger" title="Unable to update crawler">
+              <Callout type="danger" title="Impossible de mettre à jour l'explorateur">
                 {contentActivationError}
               </Callout>
             )}
@@ -1177,7 +1177,7 @@ export default function WebSearchPage() {
                     title={label}
                     description={subtitle}
                     status={status}
-                    selectedLabel="Current Crawler"
+                    selectedLabel="Explorateur actuel"
                     onConnect={() => {
                       openContentModal(provider.provider_type, provider);
                       setContentActivationError(null);
@@ -1268,43 +1268,43 @@ export default function WebSearchPage() {
         optionalField={
           selectedProviderType === "google_pse"
             ? {
-                label: "Search Engine ID",
+                label: "ID du moteur de recherche",
                 value: searchModal.configValue,
                 onChange: (value) =>
                   dispatchSearchModal({ type: "SET_CONFIG_VALUE", value }),
-                placeholder: "Enter search engine ID",
+                placeholder: "Saisir l'ID du moteur de recherche",
                 description: (
                   <>
-                    Paste your{" "}
+                    Collez votre{" "}
                     <a
                       href="https://programmablesearchengine.google.com/controlpanel/all"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="underline"
                     >
-                      search engine ID
+                      ID de moteur de recherche
                     </a>{" "}
-                    you want to use for web search.
+                    que vous souhaitez utiliser pour la recherche web.
                   </>
                 ),
               }
             : selectedProviderType === "searxng"
               ? {
-                  label: "SearXNG Base URL",
+                  label: "URL de base SearXNG",
                   value: searchModal.configValue,
                   onChange: (value) =>
                     dispatchSearchModal({ type: "SET_CONFIG_VALUE", value }),
                   placeholder: "https://your-searxng-instance.com",
                   description: (
                     <>
-                      Paste the base URL of your{" "}
+                      Collez l&apos;URL de base de votre{" "}
                       <a
                         href="https://docs.searxng.org/admin/installation.html"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="underline"
                       >
-                        private SearXNG instance
+                        instance SearXNG privée
                       </a>
                       .
                     </>
@@ -1317,10 +1317,10 @@ export default function WebSearchPage() {
             searchModal.message.text
           ) : searchModal.phase === "validating" ||
             searchModal.phase === "saving" ? (
-            "Checking connection..."
+            "Vérification de la connexion..."
           ) : (
             <>
-              Paste your{" "}
+              Collez votre{" "}
               <a
                 href={
                   (selectedProviderType
@@ -1331,9 +1331,9 @@ export default function WebSearchPage() {
                 rel="noopener noreferrer"
                 className="underline"
               >
-                API key
+                clé API
               </a>{" "}
-              to access your search engine.
+              pour accéder à votre moteur de recherche.
             </>
           )
         }
@@ -1383,7 +1383,7 @@ export default function WebSearchPage() {
             ? CONTENT_PROVIDER_DETAILS[selectedContentProviderType]
                 ?.description ||
               CONTENT_PROVIDER_DETAILS[selectedContentProviderType]?.subtitle ||
-              `Provide credentials for ${contentProviderLabel} to enable crawling.`
+              `Fournissez les identifiants pour ${contentProviderLabel} pour activer l'exploration.`
             : ""
         }
         apiKeyValue={contentModal.apiKeyValue}
@@ -1394,12 +1394,12 @@ export default function WebSearchPage() {
         optionalField={
           selectedContentProviderType === "firecrawl"
             ? {
-                label: "API Base URL",
+                label: "URL de base de l'API",
                 value: contentModal.configValue,
                 onChange: (value) =>
                   dispatchContentModal({ type: "SET_CONFIG_VALUE", value }),
                 placeholder: "https://",
-                description: "Your Firecrawl API base URL.",
+                description: "L'URL de base de l'API Firecrawl.",
                 showFirst: true,
               }
             : undefined

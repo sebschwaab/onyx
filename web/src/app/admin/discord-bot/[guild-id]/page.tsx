@@ -72,8 +72,8 @@ function GuildDetailContent({
   if (guildError || !guild) {
     return (
       <ErrorCallout
-        errorTitle="Failed to load server"
-        errorMsg={guildError?.info?.detail || "Server not found"}
+        errorTitle="Impossible de charger le serveur"
+        errorMsg={guildError?.info?.detail || "Serveur introuvable"}
       />
     );
   }
@@ -83,16 +83,15 @@ function GuildDetailContent({
   return (
     <>
       {!isRegistered && (
-        <Callout type="notice" title="Waiting for Registration">
-          Use the !register command in your Discord server with the registration
-          key to complete setup.
+        <Callout type="notice" title="En attente d'enregistrement">
+          Utilisez la commande !register dans votre serveur Discord avec la clé d&apos;enregistrement pour terminer la configuration.
         </Callout>
       )}
 
       <Card variant={disabled ? "disabled" : "primary"}>
         <ContentAction
-          title="Channel Configuration"
-          description="Run !sync-channels in Discord to update the channel list."
+          title="Configuration des canaux"
+          description="Exécutez !sync-channels dans Discord pour mettre à jour la liste des canaux."
           sizePreset="main-content"
           variant="section"
           rightChildren={
@@ -109,14 +108,14 @@ function GuildDetailContent({
                   prominence="secondary"
                   onClick={handleEnableAll}
                 >
-                  Enable All
+                  Tout activer
                 </Button>
                 <Button
                   disabled={disabled}
                   prominence="secondary"
                   onClick={handleDisableAll}
                 >
-                  Disable All
+                  Tout désactiver
                 </Button>
               </Section>
             ) : undefined
@@ -125,15 +124,14 @@ function GuildDetailContent({
 
         {!isRegistered ? (
           <Text text03 secondaryBody>
-            Channel configuration will be available after the server is
-            registered.
+            La configuration des canaux sera disponible après l&apos;enregistrement du serveur.
           </Text>
         ) : channelsLoading ? (
           <ThreeDotsLoader />
         ) : channelsError ? (
           <ErrorCallout
-            errorTitle="Failed to load channels"
-            errorMsg={channelsError?.info?.detail || "Could not load channels"}
+            errorTitle="Impossible de charger les canaux"
+            errorMsg={channelsError?.info?.detail || "Impossible de charger les canaux"}
           />
         ) : (
           <DiscordChannelsTable
@@ -277,19 +275,19 @@ export default function Page({ params }: Props) {
       );
 
       if (failed > 0) {
-        toast.error(`Updated ${succeeded} channels, but ${failed} failed`);
+        toast.error(`${succeeded} canal(aux) mis à jour, mais ${failed} ont échoué`);
         // Refresh to get actual server state when some updates failed
         refreshChannels();
       } else {
         toast.success(
-          `Updated ${succeeded} channel${succeeded !== 1 ? "s" : ""}`
+          `${succeeded} canal(aux) mis à jour`
         );
         // Update original to match local (avoids flash from refresh)
         setOriginalChannels(localChannels);
       }
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Failed to update channels"
+        err instanceof Error ? err.message : "Impossible de mettre à jour les canaux"
       );
     } finally {
       setIsUpdating(false);
@@ -306,11 +304,11 @@ export default function Page({ params }: Props) {
       });
       refreshGuild();
       toast.success(
-        personaId ? "Default agent updated" : "Default agent cleared"
+        personaId ? "Agent par défaut mis à jour" : "Agent par défaut effacé"
       );
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Failed to update agent"
+        err instanceof Error ? err.message : "Impossible de mettre à jour l'agent"
       );
     } finally {
       setIsUpdating(false);
@@ -319,7 +317,7 @@ export default function Page({ params }: Props) {
 
   const registeredText = guild?.registered_at
     ? `Registered: ${new Date(guild.registered_at).toLocaleString()}`
-    : "Pending registration";
+    : "Enregistrement en attente";
 
   const isRegistered = !!guild?.guild_id;
   const isUpdateDisabled =
@@ -339,7 +337,7 @@ export default function Page({ params }: Props) {
         backButton
         rightChildren={
           <Button disabled={isUpdateDisabled} onClick={handleSaveChanges}>
-            Update Configuration
+            Mettre à jour la configuration
           </Button>
         }
       />
@@ -347,8 +345,8 @@ export default function Page({ params }: Props) {
         {/* Default Persona Selector */}
         <Card variant={!guild?.enabled ? "disabled" : "primary"}>
           <ContentAction
-            title="Default Agent"
-            description="The agent used by the bot in all channels unless overridden."
+            title="Agent par défaut"
+            description="L'agent utilisé par le bot dans tous les canaux sauf si remplacé."
             sizePreset="main-content"
             variant="section"
             rightChildren={
@@ -361,10 +359,10 @@ export default function Page({ params }: Props) {
                 }
                 disabled={isUpdating || !guild?.enabled || personasLoading}
               >
-                <InputSelect.Trigger placeholder="Select agent" />
+                <InputSelect.Trigger placeholder="Sélectionner un agent" />
                 <InputSelect.Content>
                   <InputSelect.Item value="default">
-                    Default Agent
+                    Agent par défaut
                   </InputSelect.Item>
                   {personas.map((persona) => (
                     <InputSelect.Item
@@ -404,8 +402,8 @@ export default function Page({ params }: Props) {
         >
           <Message
             warning
-            text="You have unsaved changes"
-            description="Click Update to save them."
+            text="Vous avez des modifications non enregistrées"
+            description="Cliquez sur Mettre à jour pour les enregistrer."
             close={false}
           />
         </div>

@@ -73,7 +73,7 @@ export const rerankingModels: RerankingModel[] = [
     rerank_provider_type: RerankerProvider.LITELLM,
     cloud: true,
     displayName: "LiteLLM",
-    description: "Host your own reranker or router with LiteLLM proxy",
+    description: "Hébergez votre propre rerankeur ou routeur avec le proxy LiteLLM",
     link: "https://docs.litellm.ai/docs/simple_proxy",
   },
   {
@@ -81,7 +81,7 @@ export const rerankingModels: RerankingModel[] = [
     cloud: false,
     modelName: "mixedbread-ai/mxbai-rerank-xsmall-v1",
     displayName: "MixedBread XSmall",
-    description: "Fastest, smallest model for basic reranking tasks.",
+    description: "Modèle le plus rapide et le plus compact pour les tâches de reclassement de base.",
     link: "https://huggingface.co/mixedbread-ai/mxbai-rerank-xsmall-v1",
   },
   {
@@ -89,7 +89,7 @@ export const rerankingModels: RerankingModel[] = [
     cloud: false,
     modelName: "mixedbread-ai/mxbai-rerank-base-v1",
     displayName: "MixedBread Base",
-    description: "Balanced performance for general reranking needs.",
+    description: "Performance équilibrée pour les besoins généraux de reclassement.",
     link: "https://huggingface.co/mixedbread-ai/mxbai-rerank-base-v1",
   },
   {
@@ -97,7 +97,7 @@ export const rerankingModels: RerankingModel[] = [
     cloud: false,
     modelName: "mixedbread-ai/mxbai-rerank-large-v1",
     displayName: "MixedBread Large",
-    description: "Most powerful model for complex reranking tasks.",
+    description: "Modèle le plus puissant pour les tâches de reclassement complexes.",
     link: "https://huggingface.co/mixedbread-ai/mxbai-rerank-large-v1",
   },
   {
@@ -105,7 +105,7 @@ export const rerankingModels: RerankingModel[] = [
     rerank_provider_type: RerankerProvider.COHERE,
     modelName: "rerank-english-v3.0",
     displayName: "Cohere English",
-    description: "High-performance English-focused reranking model.",
+    description: "Modèle de reclassement haute performance axé sur l'anglais.",
     link: "https://docs.cohere.com/v2/reference/rerank",
   },
   {
@@ -113,7 +113,7 @@ export const rerankingModels: RerankingModel[] = [
     rerank_provider_type: RerankerProvider.COHERE,
     modelName: "rerank-multilingual-v3.0",
     displayName: "Cohere Multilingual",
-    description: "Powerful multilingual reranking model.",
+    description: "Puissant modèle de reclassement multilingue.",
     link: "https://docs.cohere.com/v2/reference/rerank",
   },
   {
@@ -122,7 +122,7 @@ export const rerankingModels: RerankingModel[] = [
     modelName: "cohere.rerank-v3-5:0",
     displayName: "Cohere Rerank 3.5",
     description:
-      "Powerful multilingual reranking model invoked through AWS Bedrock.",
+      "Puissant modèle de reclassement multilingue invoqué via AWS Bedrock.",
     link: "https://aws.amazon.com/blogs/machine-learning/cohere-rerank-3-5-is-now-available-in-amazon-bedrock-through-rerank-api",
   },
 ];

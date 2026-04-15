@@ -145,7 +145,7 @@ function Main() {
               content: (
                 <GenericTokenRateLimitTable
                   fetchUrl={GLOBAL_TOKEN_FETCH_URL}
-                  title={"Global Token Rate Limits"}
+                  title={"Limites globales de jetons"}
                   description={GLOBAL_DESCRIPTION}
                 />
               ),
@@ -156,7 +156,7 @@ function Main() {
               content: (
                 <GenericTokenRateLimitTable
                   fetchUrl={USER_TOKEN_FETCH_URL}
-                  title={"User Token Rate Limits"}
+                  title={"Limites de jetons par utilisateur"}
                   description={USER_DESCRIPTION}
                 />
               ),
@@ -167,7 +167,7 @@ function Main() {
               content: (
                 <GenericTokenRateLimitTable
                   fetchUrl={USER_GROUP_FETCH_URL}
-                  title={"User Group Token Rate Limits"}
+                  title={"Limites de jetons par groupe d'utilisateurs"}
                   description={USER_GROUP_DESCRIPTION}
                   responseMapper={(data: Record<string, TokenRateLimit[]>) =>
                     Object.entries(data).flatMap(([group_name, elements]) =>
@@ -187,7 +187,7 @@ function Main() {
       ) : (
         <GenericTokenRateLimitTable
           fetchUrl={GLOBAL_TOKEN_FETCH_URL}
-          title={"Global Token Rate Limits"}
+          title={"Limites globales de jetons"}
           description={GLOBAL_DESCRIPTION}
         />
       )}

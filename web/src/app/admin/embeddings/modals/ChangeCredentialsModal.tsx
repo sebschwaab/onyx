@@ -69,14 +69,14 @@ export default function ChangeCredentialsModal({
           setApiKey(JSON.stringify(jsonContent));
         } catch (parseError) {
           throw new Error(
-            "Failed to parse JSON file. Please ensure it's a valid JSON."
+            "Impossible d'analyser le fichier JSON. Veuillez vous assurer qu'il s'agit d'un JSON valide."
           );
         }
       } catch (error) {
         setTestError(
           error instanceof Error
             ? error.message
-            : "An unknown error occurred while processing the file."
+            : "Une erreur inconnue s'est produite lors du traitement du fichier."
         );
         setApiKey("");
         clearFileInput();
@@ -105,7 +105,7 @@ export default function ChangeCredentialsModal({
       onDeleted();
     } catch (error) {
       setDeletionError(
-        error instanceof Error ? error.message : "An unknown error occurred"
+        error instanceof Error ? error.message : "Une erreur inconnue s'est produite"
       );
     }
   };
@@ -117,7 +117,7 @@ export default function ChangeCredentialsModal({
       .split(" ")[0];
 
     if (!normalizedProviderType) {
-      setTestError("Provider type is invalid or missing.");
+      setTestError("Le type de fournisseur est invalide ou manquant.");
       return;
     }
 
@@ -152,8 +152,8 @@ export default function ChangeCredentialsModal({
         const errorData = await updateResponse.json();
         throw new Error(
           errorData.detail ||
-            `Failed to update provider- check your ${
-              isProxy ? "API URL" : "API key"
+            `Impossible de mettre à jour le fournisseur - vérifiez votre ${
+              isProxy ? "URL d'API" : "clé API"
             }`
         );
       }
@@ -164,7 +164,7 @@ export default function ChangeCredentialsModal({
       onConfirm();
     } catch (error) {
       setTestError(
-        error instanceof Error ? error.message : "An unknown error occurred"
+        error instanceof Error ? error.message : "Une erreur inconnue s'est produite"
       );
     }
   };
@@ -174,9 +174,9 @@ export default function ChangeCredentialsModal({
         <Modal.Header
           icon={SvgSettings}
           title={markdown(
-            `Modify your *${getFormattedProviderName(
+            `Modifier votre ${isProxy ? "configuration" : "clé"} *${getFormattedProviderName(
               provider.provider_type
-            )}* ${isProxy ? "configuration" : "key"}`
+            )}*`
           )}
           onClose={onCancel}
         />
@@ -184,15 +184,15 @@ export default function ChangeCredentialsModal({
           {!isAzure && (
             <>
               <Text as="p">
-                You can modify your configuration by providing a new API key
-                {isProxy ? " or API URL." : "."}
+                Vous pouvez modifier votre configuration en fournissant une nouvelle clé API
+                {isProxy ? " ou une URL d'API." : "."}
               </Text>
 
               <div className="flex flex-col gap-2">
-                <Label className="mt-2">API Key</Label>
+                <Label className="mt-2">Clé API</Label>
                 {useFileUpload ? (
                   <>
-                    <Label className="mt-2">Upload JSON File</Label>
+                    <Label className="mt-2">Charger un fichier JSON</Label>
                     <input
                       ref={fileInputRef}
                       type="file"
@@ -200,7 +200,7 @@ export default function ChangeCredentialsModal({
                       onChange={handleFileUpload}
                       className="text-lg w-full p-1"
                     />
-                    {fileName && <p>Uploaded file: {fileName}</p>}
+                    {fileName && <p>Fichier téléchargé : {fileName}</p>}
                   </>
                 ) : (
                   <>
@@ -209,14 +209,14 @@ export default function ChangeCredentialsModal({
                       className="border border-border rounded w-full py-2 px-3 bg-background-emphasis"
                       value={apiKey}
                       onChange={(e: any) => setApiKey(e.target.value)}
-                      placeholder="Paste your API key here"
+                      placeholder="Collez votre clé API ici"
                     />
                   </>
                 )}
 
                 {isProxy && (
                   <>
-                    <Label className="mt-2">API URL</Label>
+                    <Label className="mt-2">URL de l&apos;API</Label>
 
                     <input
                       className={`
@@ -230,20 +230,20 @@ export default function ChangeCredentialsModal({
                       `}
                       value={apiUrl}
                       onChange={(e: any) => setApiUrl(e.target.value)}
-                      placeholder="Paste your API URL here"
+                      placeholder="Collez votre URL d'API ici"
                     />
 
                     {deletionError && (
-                      <Callout type="danger" title="Error">
+                      <Callout type="danger" title="Erreur">
                         {deletionError}
                       </Callout>
                     )}
 
                     <div>
-                      <Label className="mt-2">Test Model</Label>
+                      <Label className="mt-2">Modèle de test</Label>
                       <Text as="p">
-                        Since you are using a liteLLM proxy, we&apos;ll need a
-                        model name to test the connection with.
+                        Comme vous utilisez un proxy liteLLM, nous aurons besoin d&apos;un
+                        nom de modèle pour tester la connexion.
                       </Text>
                     </div>
                     <input
@@ -258,13 +258,13 @@ export default function ChangeCredentialsModal({
                    `}
                       value={modelName}
                       onChange={(e: any) => setModelName(e.target.value)}
-                      placeholder="Paste your model name here"
+                      placeholder="Collez votre nom de modèle ici"
                     />
                   </>
                 )}
 
                 {testError && (
-                  <Callout type="danger" title="Error">
+                  <Callout type="danger" title="Erreur">
                     {testError}
                   </Callout>
                 )}
@@ -275,7 +275,7 @@ export default function ChangeCredentialsModal({
                   onClick={() => handleSubmit()}
                   disabled={!apiKey}
                 >
-                  Update Configuration
+                  Mettre à jour la configuration
                 </Button>
 
                 <Separator />
@@ -284,19 +284,19 @@ export default function ChangeCredentialsModal({
           )}
 
           <Text as="p" className="mt-4 font-bold">
-            You can delete your configuration.
+            Vous pouvez supprimer votre configuration.
           </Text>
           <Text as="p">
-            This is only possible if you have already switched to a different
-            embedding type!
+            Cela n&apos;est possible que si vous avez déjà basculé vers un type
+            d&apos;embeddings différent !
           </Text>
 
           {/* TODO(@raunakab): migrate to opal Button once className/iconClassName is resolved */}
           <Button className="mr-auto" onClick={handleDelete} danger>
-            Delete Configuration
+            Supprimer la configuration
           </Button>
           {deletionError && (
-            <Callout type="danger" title="Error">
+            <Callout type="danger" title="Erreur">
               {deletionError}
             </Callout>
           )}

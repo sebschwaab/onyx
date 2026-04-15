@@ -5,11 +5,11 @@ import { SvgSettings } from "@opal/icons";
 export default function EmbeddingSidebar() {
   const { formStep, setFormStep } = useEmbeddingFormContext();
 
-  const settingSteps = ["Embedding Model", "Reranking Model", "Advanced"];
+  const settingSteps = ["Modèle d'embeddings", "Modèle de reranking", "Avancé"];
 
   return (
     <StepSidebar
-      buttonName="Index Settings"
+      buttonName="Paramètres d'index"
       buttonIcon={SvgSettings}
       buttonHref="/admin/configuration/search"
     >

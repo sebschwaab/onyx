@@ -174,13 +174,13 @@ function SubscriptionCard({
 
   let subtitle: string;
   if (isExpired) {
-    subtitle = `Expired on ${formattedDate}`;
+    subtitle = `Expiré le ${formattedDate}`;
   } else if (isCanceling) {
-    subtitle = `Valid until ${formattedDate}`;
+    subtitle = `Valide jusqu'au ${formattedDate}`;
   } else if (billing) {
-    subtitle = `Next payment on ${formattedDate}`;
+    subtitle = `Prochain paiement le ${formattedDate}`;
   } else {
-    subtitle = `Valid until ${formattedDate}`;
+    subtitle = `Valide jusqu'au ${formattedDate}`;
   }
 
   const handleManagePlan = async () => {
@@ -234,15 +234,15 @@ function SubscriptionCard({
         >
           {isManualLicenseOnly ? (
             <Text secondaryBody text03 className="text-right">
-              Your plan is managed through sales.
+              Votre abonnement est géré par l&apos;équipe commerciale.
               <br />
               <a
                 href="mailto:support@onyx.app?subject=Billing%20change%20request"
                 className="underline"
               >
-                Contact billing
+                Contacter la facturation
               </a>{" "}
-              to make changes.
+              pour effectuer des modifications.
             </Text>
           ) : disabled ? (
             <OpalButton
@@ -251,17 +251,17 @@ function SubscriptionCard({
               onClick={handleReconnect}
               rightIcon={SvgArrowRight}
             >
-              {isReconnecting ? "Connecting..." : "Connect to Stripe"}
+              {isReconnecting ? "Connexion..." : "Connecter à Stripe"}
             </OpalButton>
           ) : (
             <OpalButton onClick={handleManagePlan} rightIcon={SvgExternalLink}>
-              Manage Plan
+              Gérer l&apos;abonnement
             </OpalButton>
           )}
           {/* TODO(@raunakab): migrate to opal Button once className/iconClassName is resolved */}
           <Button tertiary onClick={onViewPlans} className="billing-text-link">
             <Text secondaryBody text03>
-              View Plan Details
+              Voir les détails de l&apos;abonnement
             </Text>
           </Button>
         </Section>
@@ -341,7 +341,7 @@ function SeatsCard({
       await onRefresh?.();
       setIsEditing(false);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to update seats");
+      setError(err instanceof Error ? err.message : "Impossible de mettre à jour les sièges");
     } finally {
       setIsSubmitting(false);
     }
@@ -352,7 +352,7 @@ function SeatsCard({
   const isRemoving = seatDifference < 0;
   const nextBillingDate = formatDateShort(billing?.current_period_end);
   const seatCount = Math.abs(seatDifference);
-  const seatWord = seatCount === 1 ? "seat" : "seats";
+  const seatWord = seatCount === 1 ? "siège" : "sièges";
 
   if (isEditing) {
     return (
@@ -370,8 +370,8 @@ function SeatsCard({
           height="auto"
         >
           <Content
-            title="Update Seats"
-            description="Add or remove seats to reflect your team size."
+            title="Modifier les sièges"
+            description="Ajoutez ou supprimez des sièges selon la taille de votre équipe."
             sizePreset="main-content"
             variant="section"
           />
@@ -380,7 +380,7 @@ function SeatsCard({
             prominence="secondary"
             onClick={handleCancel}
           >
-            Cancel
+            Annuler
           </OpalButton>
         </Section>
 
@@ -392,7 +392,7 @@ function SeatsCard({
             padding={1}
             height="auto"
           >
-            <InputLayouts.Vertical title="Seats">
+            <InputLayouts.Vertical title="Sièges">
               <InputNumber
                 value={newSeatCount}
                 onChange={(v) => setNewSeatCount(v ?? 1)}
@@ -405,22 +405,22 @@ function SeatsCard({
 
             {isBelowMinimum ? (
               <InputLayouts.ErrorTextLayout type="error">
-                You cannot set seats below current{" "}
-                <span className="font-semibold">{minRequiredSeats}</span> seats
-                in use/pending.{" "}
+                Vous ne pouvez pas descendre en dessous de{" "}
+                <span className="font-semibold">{minRequiredSeats}</span> sièges
+                actuellement utilisés/en attente.{" "}
                 <Link
                   href="/admin/users"
                   className="underline hover:no-underline"
                 >
-                  Remove users
+                  Supprimer des utilisateurs
                 </Link>{" "}
-                first before adjusting seats.
+                avant de réduire les sièges.
               </InputLayouts.ErrorTextLayout>
             ) : seatDifference !== 0 ? (
               <Text secondaryBody text03>
-                {Math.abs(seatDifference)} seat
-                {Math.abs(seatDifference) !== 1 ? "s" : ""} to be{" "}
-                {isAdding ? "added" : "removed"}
+                {Math.abs(seatDifference)} siège
+                {Math.abs(seatDifference) !== 1 ? "s" : ""} à{" "}
+                {isAdding ? "ajouter" : "supprimer"}
               </Text>
             ) : null}
 
@@ -441,26 +441,26 @@ function SeatsCard({
         >
           {isAdding ? (
             <Text secondaryBody text03>
-              You will be billed for the{" "}
+              Vous serez facturé pour{" "}
               <Text secondaryBody text04>
                 {seatCount}
               </Text>{" "}
-              additional {seatWord} at a pro-rated amount.
+              {seatWord} supplémentaire{seatCount !== 1 ? "s" : ""} au prorata.
             </Text>
           ) : isRemoving ? (
             <Text secondaryBody text03>
               <Text secondaryBody text04>
                 {seatCount}
               </Text>{" "}
-              {seatWord} will be removed on{" "}
+              {seatWord} seront supprimés le{" "}
               <Text secondaryBody text04>
                 {nextBillingDate}
               </Text>{" "}
-              (after current billing cycle).
+              (après le cycle de facturation en cours).
             </Text>
           ) : (
             <Text secondaryBody text03>
-              No changes to your billing.
+              Aucune modification de votre facturation.
             </Text>
           )}
           <OpalButton
@@ -469,7 +469,7 @@ function SeatsCard({
             }
             onClick={handleConfirm}
           >
-            {isSubmitting ? "Saving..." : "Confirm Change"}
+            {isSubmitting ? "Enregistrement..." : "Confirmer la modification"}
           </OpalButton>
         </Section>
       </Card>
@@ -486,11 +486,11 @@ function SeatsCard({
       >
         <Section gap={0.25} alignItems="start" height="auto" width="auto">
           <Text mainContentMuted text04>
-            {totalSeats} Seats
+            {totalSeats} Sièges
           </Text>
           <Text secondaryBody text03>
-            {usedSeats} in use • {pendingSeats} pending • {remainingSeats}{" "}
-            remaining
+            {usedSeats} utilisés • {pendingSeats} en attente • {remainingSeats}{" "}
+            disponibles
           </Text>
         </Section>
         <Section
@@ -505,7 +505,7 @@ function SeatsCard({
             href="/admin/users"
             icon={SvgExternalLink}
           >
-            View Users
+            Voir les utilisateurs
           </OpalButton>
           {!hideUpdateSeats && (
             <OpalButton
@@ -514,7 +514,7 @@ function SeatsCard({
               onClick={handleStartEdit}
               icon={SvgPlus}
             >
-              Update Seats
+              Modifier les sièges
             </OpalButton>
           )}
         </Section>
@@ -548,7 +548,7 @@ function PaymentSection({ billing }: { billing: BillingInformation }) {
   return (
     <div className="billing-payment-section">
       <Section alignItems="start" height="auto" width="full">
-        <Text mainContentEmphasis>Payment</Text>
+        <Text mainContentEmphasis>Paiement</Text>
         <Section
           flexDirection="row"
           gap={0.5}
@@ -564,15 +564,15 @@ function PaymentSection({ billing }: { billing: BillingInformation }) {
             >
               <InfoBlock
                 icon={SvgWallet}
-                title="Visa ending in 1234"
-                description="Payment method"
+                title="Visa se terminant par 1234"
+                description="Moyen de paiement"
               />
               <OpalButton
                 prominence="tertiary"
                 onClick={handleOpenPortal}
                 rightIcon={SvgExternalLink}
               >
-                Update
+                Mettre à jour
               </OpalButton>
             </Section>
           </Card>
@@ -587,14 +587,14 @@ function PaymentSection({ billing }: { billing: BillingInformation }) {
                 <InfoBlock
                   icon={SvgFileText}
                   title={lastPaymentDate}
-                  description="Last payment"
+                  description="Dernier paiement"
                 />
                 <OpalButton
                   prominence="tertiary"
                   onClick={handleOpenPortal}
                   rightIcon={SvgExternalLink}
                 >
-                  View Invoice
+                  Voir la facture
                 </OpalButton>
               </Section>
             </Card>
@@ -641,8 +641,8 @@ export default function BillingDetailsView({
         <Message
           static
           warning
-          text="Unable to connect to Stripe payment portal."
-          description="Check your internet connection or manually provide a license."
+          text="Impossible de se connecter au portail de paiement Stripe."
+          description="Vérifiez votre connexion internet ou fournissez une licence manuellement."
           close={false}
           className="w-full"
         />
@@ -653,8 +653,8 @@ export default function BillingDetailsView({
         <Message
           static
           info
-          text="Air-gapped deployment"
-          description="Online billing management is disabled. Contact support to update your subscription."
+          text="Déploiement hors ligne"
+          description="La gestion de facturation en ligne est désactivée. Contactez le support pour mettre à jour votre abonnement."
           close={false}
           className="w-full"
         />
@@ -669,16 +669,16 @@ export default function BillingDetailsView({
           text={
             expirationState.variant === "error"
               ? expirationState.daysUntilDeletion
-                ? `Your subscription has expired. Data will be deleted in ${expirationState.daysUntilDeletion} days.`
-                : "Your subscription has expired."
-              : `Your subscription is expiring in ${expirationState.daysRemaining} days.`
+                ? `Votre abonnement a expiré. Les données seront supprimées dans ${expirationState.daysUntilDeletion} jours.`
+                : "Votre abonnement a expiré."
+              : `Votre abonnement expire dans ${expirationState.daysRemaining} jours.`
           }
           description={
             expirationState.variant === "error"
               ? expirationState.expirationDate
-                ? `Renew your subscription by ${expirationState.expirationDate} to restore access.`
-                : "Renew your subscription to restore access to paid features."
-              : `Renew your subscription by ${expirationState.expirationDate} to avoid disruption.`
+                ? `Renouvelez votre abonnement avant le ${expirationState.expirationDate} pour rétablir l'accès.`
+                : "Renouvelez votre abonnement pour rétablir l'accès aux fonctionnalités payantes."
+              : `Renouvelez votre abonnement avant le ${expirationState.expirationDate} pour éviter toute interruption.`
           }
           close={false}
           className="w-full"

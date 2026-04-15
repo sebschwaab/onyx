@@ -63,7 +63,7 @@ function BillingOption({
               ${price}
             </Text>
             <Text secondaryBody text03 nowrap>
-              per seat/month
+              par siège/mois
             </Text>
           </div>
         </Section>
@@ -142,12 +142,12 @@ export default function CheckoutView({ onAdjustPlan }: CheckoutViewProps) {
       if (response.stripe_checkout_url) {
         window.location.href = response.stripe_checkout_url;
       } else {
-        throw new Error("Invalid response from checkout session");
+        throw new Error("Réponse invalide de la session de paiement");
       }
     } catch (err) {
       console.error("Error creating checkout session:", err);
       setError(
-        err instanceof Error ? err.message : "Failed to create checkout session"
+        err instanceof Error ? err.message : "Impossible de créer la session de paiement"
       );
     } finally {
       setIsSubmitting(false);
@@ -177,7 +177,7 @@ export default function CheckoutView({ onAdjustPlan }: CheckoutViewProps) {
           </Text>
         </Section>
         <Button prominence="secondary" onClick={onAdjustPlan}>
-          Adjust Plan
+          Modifier l&apos;abonnement
         </Button>
       </Section>
 
@@ -192,8 +192,8 @@ export default function CheckoutView({ onAdjustPlan }: CheckoutViewProps) {
         >
           {/* Billing Cycle */}
           <InputLayouts.Horizontal
-            title="Billing Cycle"
-            description="after your 1-month free trial"
+            title="Cycle de facturation"
+            description="après votre essai gratuit d'un mois"
           >
             <Section
               flexDirection="row"
@@ -205,15 +205,15 @@ export default function CheckoutView({ onAdjustPlan }: CheckoutViewProps) {
               <BillingOption
                 selected={billingPeriod === "monthly"}
                 onClick={() => setBillingPeriod("monthly")}
-                title="Monthly"
+                title="Mensuel"
                 price={monthlyPrice}
               />
               <BillingOption
                 selected={billingPeriod === "annual"}
                 onClick={() => setBillingPeriod("annual")}
-                title="Annual"
+                title="Annuel"
                 price={annualPrice}
-                badge="Save 20%"
+                badge="Économisez 20%"
               />
             </Section>
           </InputLayouts.Horizontal>
@@ -222,10 +222,10 @@ export default function CheckoutView({ onAdjustPlan }: CheckoutViewProps) {
 
           {/* Seats */}
           <InputLayouts.Horizontal
-            title="Seats"
-            description={`Minimum ${minRequiredSeats} seat${
+            title="Sièges"
+            description={`Minimum ${minRequiredSeats} siège${
               minRequiredSeats !== 1 ? "s" : ""
-            } required for your current users and Slack accounts.`}
+            } requis pour vos utilisateurs et comptes Slack actuels.`}
           >
             <InputNumber
               value={seats}
@@ -252,18 +252,18 @@ export default function CheckoutView({ onAdjustPlan }: CheckoutViewProps) {
           </Text>
         ) : !annualPriceSelected ? (
           <Text secondaryBody text03>
-            You will be billed on{" "}
+            Vous serez facturé le{" "}
             <Text secondaryBody text04>
               {trialEndDate}
             </Text>{" "}
-            After your 1-month free trial ends.
+            après la fin de votre essai gratuit d&apos;un mois.
           </Text>
         ) : (
           // Empty div to maintain space-between alignment
           <div></div>
         )}
         <Button disabled={isSubmitting} onClick={handleSubmit}>
-          {isSubmitting ? "Loading..." : "Continue to Payment"}
+          {isSubmitting ? "Chargement..." : "Continuer vers le paiement"}
         </Button>
       </Section>
     </Card>

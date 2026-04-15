@@ -11,22 +11,22 @@ export const CONTENT_PROVIDER_DETAILS: Record<
   onyx_web_crawler: {
     label: "Onyx Web Crawler",
     subtitle:
-      "Built-in web crawler. Works for most pages but less performant in edge cases.",
+      "Explorateur web intégré. Fonctionne sur la plupart des pages mais moins performant dans les cas limites.",
     description:
-      "Onyx's built-in crawler processes URLs returned by your search engine.",
+      "L'explorateur intégré d'Onyx traite les URLs retournées par votre moteur de recherche.",
   },
   firecrawl: {
     label: "Firecrawl",
-    subtitle: "Leading open-source crawler.",
+    subtitle: "Explorateur open-source leader.",
     description:
-      "Connect Firecrawl to fetch and summarize page content from search results.",
+      "Connectez Firecrawl pour récupérer et résumer le contenu des pages depuis les résultats de recherche.",
     logoSrc: "/firecrawl.svg",
   },
   exa: {
     label: "Exa",
     subtitle: "Exa.ai",
     description:
-      "Use Exa to fetch and summarize page content from search results.",
+      "Utilisez Exa pour récupérer et résumer le contenu des pages depuis les résultats de recherche.",
     logoSrc: "/Exa.svg",
   },
 };

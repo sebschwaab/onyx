@@ -121,7 +121,7 @@ function Main() {
                 </div>
               ) : (
                 <InputTypeIn
-                  placeholder="Enter API Key"
+                  placeholder="Saisir la clé API"
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
                 />

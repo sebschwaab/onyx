@@ -138,7 +138,7 @@ export function ImageGenFormWrapper<T extends FormValues>({
         const parts = apiKeyValue.split(":");
         const providerIdStr = parts[1];
         if (!providerIdStr) {
-          throw new Error("Invalid provider selection");
+          throw new Error("Sélection de fournisseur invalide");
         }
         const providerId = parseInt(providerIdStr, 10);
 
@@ -153,7 +153,7 @@ export function ImageGenFormWrapper<T extends FormValues>({
 
         if (!result.ok) {
           setApiStatus("error");
-          setErrorMessage(result.errorMessage || "API key validation failed");
+          setErrorMessage(result.errorMessage || "Validation de la clé API échouée");
           setIsSubmitting(false);
           return;
         }
@@ -198,7 +198,7 @@ export function ImageGenFormWrapper<T extends FormValues>({
 
           if (!result.ok) {
             setApiStatus("error");
-            setErrorMessage(result.errorMessage || "API key validation failed");
+            setErrorMessage(result.errorMessage || "Validation de la clé API échouée");
             setIsSubmitting(false);
             return;
           }
@@ -236,7 +236,7 @@ export function ImageGenFormWrapper<T extends FormValues>({
       setIsSubmitting(false);
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Unknown error occurred";
+        error instanceof Error ? error.message : "Une erreur inattendue s'est produite";
       setApiStatus("error");
       setErrorMessage(message);
       toast.error(message);

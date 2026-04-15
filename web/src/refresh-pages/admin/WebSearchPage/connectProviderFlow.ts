@@ -81,11 +81,11 @@ export async function connectProviderFlow({
   const needsValidation =
     isNewProvider || apiKeyChangedForProvider || configChanged;
   const msg = {
-    validating: "Validating configuration...",
-    activating: "Activating provider...",
-    validatedThenActivating: "Configuration validated. Activating provider...",
-    validationFailedFallback: "Failed to validate configuration.",
-    activateFailedFallback: "Failed to activate provider.",
+    validating: "Validation de la configuration...",
+    activating: "Activation du fournisseur...",
+    validatedThenActivating: "Configuration validée. Activation du fournisseur...",
+    validationFailedFallback: "Impossible de valider la configuration.",
+    activateFailedFallback: "Impossible d'activer le fournisseur.",
   };
 
   if (providerRequiresApiKey) {
@@ -160,7 +160,7 @@ export async function connectProviderFlow({
     onClose();
   } catch (e) {
     const message =
-      e instanceof Error ? e.message : "Unexpected error occurred.";
+      e instanceof Error ? e.message : "Une erreur inattendue s'est produite.";
     onError(message);
   }
 }

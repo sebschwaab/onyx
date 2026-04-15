@@ -208,7 +208,7 @@ function ConnectorRow({
       <TableCell>{ccPairsIndexingStatus.docs_indexed}</TableCell>
       <TableCell>
         {isEditable && (
-          <SimpleTooltip tooltip="Manage Connector">
+          <SimpleTooltip tooltip="Gérer le connecteur">
             <Button icon={SvgSettings} prominence="tertiary" />
           </SimpleTooltip>
         )}
@@ -249,12 +249,12 @@ function FederatedConnectorRow({
       </TableCell>
       <TableCell>N/A</TableCell>
       <TableCell>
-        <Badge variant="success">Indexed</Badge>
+        <Badge variant="success">Indexé</Badge>
       </TableCell>
       {isPaidEnterpriseFeaturesEnabled && (
         <TableCell>
           <Badge variant="secondary" icon={FiRefreshCw}>
-            Federated Access
+            Accès fédéré
           </Badge>
         </TableCell>
       )}
@@ -267,7 +267,7 @@ function FederatedConnectorRow({
             e.stopPropagation();
             navigateWithModifier(e, federatedUrl, router);
           }}
-          tooltip="Manage Federated Connector"
+          tooltip="Gérer le connecteur fédéré"
         />
       </TableCell>
     </TableRow>

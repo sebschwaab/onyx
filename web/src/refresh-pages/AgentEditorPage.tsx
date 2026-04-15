@@ -844,7 +844,7 @@ export default function AgentEditorPage({
       if (!personaResponse || !personaResponse.ok) {
         const error = personaResponse
           ? await personaResponse.text()
-          : "No response received";
+          : "Aucune réponse reçue";
         toast.error(
           `Échec de la ${existingAgent ? "mise à jour" : "création"} de l'agent - ${error}`
         );

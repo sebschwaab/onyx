@@ -158,10 +158,10 @@ const Actions = React.memo(
           {onManage && (
             <Button
               icon={SvgSettings}
-              tooltip="Manage Server"
+              tooltip="Gérer le serveur"
               prominence="tertiary"
               onClick={onManage}
-              aria-label={`Manage ${serverName} server`}
+              aria-label={`Gérer le serveur ${serverName}`}
             />
           )}
         </div>

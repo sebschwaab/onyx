@@ -92,19 +92,19 @@ function OllamaModalInternals({
         <Tabs value={tab} onValueChange={(value) => setTab(value as Tab)}>
           <Tabs.List>
             <Tabs.Trigger value={Tab.TAB_SELF_HOSTED}>
-              Self-hosted Ollama
+              Ollama auto-hébergé
             </Tabs.Trigger>
             <Tabs.Trigger value={Tab.TAB_CLOUD}>Ollama Cloud</Tabs.Trigger>
           </Tabs.List>
           <Tabs.Content value={Tab.TAB_SELF_HOSTED} padding={0}>
             <InputLayouts.Vertical
               name="api_base"
-              title="API Base URL"
-              subDescription="The base URL for your Ollama instance."
+              title="URL de base de l'API"
+              subDescription="L'URL de base de votre instance Ollama."
             >
               <InputTypeInField
                 name="api_base"
-                placeholder="Your Ollama API base URL"
+                placeholder="Votre URL de base de l'API Ollama"
               />
             </InputLayouts.Vertical>
           </Tabs.Content>
@@ -112,12 +112,12 @@ function OllamaModalInternals({
           <Tabs.Content value={Tab.TAB_CLOUD}>
             <InputLayouts.Vertical
               name="custom_config.OLLAMA_API_KEY"
-              title="API Key"
-              subDescription="Your Ollama Cloud API key."
+              title="Clé API"
+              subDescription="Votre clé API Ollama Cloud."
             >
               <PasswordInputTypeInField
                 name="custom_config.OLLAMA_API_KEY"
-                placeholder="API Key"
+                placeholder="Clé API"
               />
             </InputLayouts.Vertical>
           </Tabs.Content>
@@ -183,7 +183,7 @@ export default function OllamaModal({
           tab === Tab.TAB_CLOUD
             ? {
                 custom_config: Yup.object({
-                  OLLAMA_API_KEY: Yup.string().required("API Key is required"),
+                  OLLAMA_API_KEY: Yup.string().required("La clé API est requise"),
                 }),
               }
             : undefined,
@@ -233,8 +233,8 @@ export default function OllamaModal({
               await refreshLlmProviderCaches(mutate);
               toast.success(
                 existingLlmProvider
-                  ? "Provider updated successfully!"
-                  : "Provider enabled successfully!"
+                  ? "Fournisseur mis à jour avec succès !"
+                  : "Fournisseur activé avec succès !"
               );
             }
           },

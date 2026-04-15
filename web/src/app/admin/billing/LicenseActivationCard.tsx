@@ -49,7 +49,7 @@ export default function LicenseActivationCard({
 
   const handleActivate = async () => {
     if (!licenseKey.trim()) {
-      setError("Please enter a license key");
+      setError("Veuillez saisir une clé de licence");
       return;
     }
 
@@ -66,7 +66,7 @@ export default function LicenseActivationCard({
     } catch (err) {
       console.error("Error activating license:", err);
       setError(
-        err instanceof Error ? err.message : "Failed to activate license"
+        err instanceof Error ? err.message : "Impossible d'activer la licence"
       );
     } finally {
       setIsActivating(false);
@@ -107,10 +107,10 @@ export default function LicenseActivationCard({
             )}
             <Text secondaryBody text03>
               {isExpired ? (
-                <>License key expired</>
+                <>Clé de licence expirée</>
               ) : (
                 <>
-                  License key active until{" "}
+                  Clé de licence active jusqu&apos;au{" "}
                   <Text secondaryBody text04>
                     {expirationDate}
                   </Text>
@@ -120,11 +120,11 @@ export default function LicenseActivationCard({
           </Section>
           <Section flexDirection="row" gap={0.5} height="auto" width="auto">
             <Button prominence="secondary" onClick={() => setShowInput(true)}>
-              Update Key
+              Mettre à jour la clé
             </Button>
             {!hideClose && (
               <Button prominence="tertiary" onClick={handleClose}>
-                Close
+                Fermer
               </Button>
             )}
           </Section>
@@ -144,18 +144,18 @@ export default function LicenseActivationCard({
           alignItems="center"
         >
           <Text headingH3>
-            {hasLicense ? "Update License Key" : "Activate License Key"}
+            {hasLicense ? "Mettre à jour la clé de licence" : "Activer la clé de licence"}
           </Text>
           <Button
             disabled={isActivating}
             prominence="secondary"
             onClick={handleClose}
           >
-            Cancel
+            Annuler
           </Button>
         </Section>
         <Text secondaryBody text03>
-          Manually add and activate a license for this Onyx instance.
+          Ajoutez et activez manuellement une licence pour cette instance Onyx.
         </Text>
       </Section>
 
@@ -170,17 +170,17 @@ export default function LicenseActivationCard({
           {success && (
             <div className="billing-success-message">
               <Text secondaryBody>
-                License {hasLicense ? "updated" : "activated"} successfully!
+                Licence {hasLicense ? "mise à jour" : "activée"} avec succès !
               </Text>
             </div>
           )}
 
           <InputLayouts.Vertical
-            title="License Key"
+            title="Clé de licence"
             subDescription={
               error
                 ? undefined
-                : "Paste or attach your license key file you received from Onyx."
+                : "Collez ou joignez le fichier de clé de licence reçu d'Onyx."
             }
           >
             <InputFile
@@ -211,7 +211,7 @@ export default function LicenseActivationCard({
                     rel="noopener noreferrer"
                     className="billing-help-link"
                   >
-                    Billing Help
+                    Aide facturation
                   </a>
                 </Text>
               </Section>
@@ -227,10 +227,10 @@ export default function LicenseActivationCard({
           onClick={handleActivate}
         >
           {isActivating
-            ? "Activating..."
+            ? "Activation..."
             : hasLicense
-              ? "Update License"
-              : "Activate License"}
+              ? "Mettre à jour la licence"
+              : "Activer la licence"}
         </Button>
       </Section>
     </Card>

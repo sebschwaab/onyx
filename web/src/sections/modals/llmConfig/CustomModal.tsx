@@ -64,13 +64,13 @@ function ModelConfigurationItem({
   return (
     <>
       <InputTypeIn
-        placeholder="Model name"
+        placeholder="Nom du modèle"
         value={model.name}
         onChange={(e) => onChange({ ...model, name: e.target.value })}
         showClearButton={false}
       />
       <InputTypeIn
-        placeholder="Display name"
+        placeholder="Nom d'affichage"
         value={model.display_name}
         onChange={(e) => onChange({ ...model, display_name: e.target.value })}
         showClearButton={false}
@@ -81,14 +81,14 @@ function ModelConfigurationItem({
           onChange({ ...model, supports_image_input: value === "text-image" })
         }
       >
-        <InputSelect.Trigger placeholder="Input type" />
+        <InputSelect.Trigger placeholder="Type d'entrée" />
         <InputSelect.Content>
-          <InputSelect.Item value="text-only">Text Only</InputSelect.Item>
-          <InputSelect.Item value="text-image">Text & Image</InputSelect.Item>
+          <InputSelect.Item value="text-only">Texte uniquement</InputSelect.Item>
+          <InputSelect.Item value="text-image">Texte & Image</InputSelect.Item>
         </InputSelect.Content>
       </InputSelect>
       <InputTypeIn
-        placeholder="Default"
+        placeholder="Par défaut"
         value={model.max_input_tokens?.toString() ?? ""}
         onChange={(e) =>
           onChange({
@@ -146,11 +146,11 @@ function ModelConfigurationList() {
       {models.length > 0 ? (
         <div className={`grid items-center gap-1 ${MODEL_GRID_COLS}`}>
           <div className="pb-1">
-            <Text mainUiAction>Model Name</Text>
+            <Text mainUiAction>Nom du modèle</Text>
           </div>
-          <Text mainUiAction>Display Name</Text>
-          <Text mainUiAction>Input Type</Text>
-          <Text mainUiAction>Max Tokens</Text>
+          <Text mainUiAction>Nom d&apos;affichage</Text>
+          <Text mainUiAction>Type d&apos;entrée</Text>
+          <Text mainUiAction>Tokens max</Text>
           <div aria-hidden />
 
           {models.map((model, index) => (
@@ -164,7 +164,7 @@ function ModelConfigurationList() {
           ))}
         </div>
       ) : (
-        <EmptyMessageCard title="No models added yet." padding="sm" />
+        <EmptyMessageCard title="Aucun modèle ajouté." padding="sm" />
       )}
 
       <Button
@@ -173,7 +173,7 @@ function ModelConfigurationList() {
         onClick={handleAdd}
         type="button"
       >
-        Add Model
+        Ajouter un modèle
       </Button>
     </div>
   );
@@ -188,7 +188,7 @@ function CustomConfigKeyValue() {
       onChange={(items) =>
         formikProps.setFieldValue("custom_config_list", items)
       }
-      addButtonLabel="Add Line"
+      addButtonLabel="Ajouter une ligne"
     />
   );
 }
@@ -281,7 +281,7 @@ export default function CustomModal({
   };
 
   const modelConfigurationSchema = Yup.object({
-    name: Yup.string().required("Model name is required"),
+    name: Yup.string().required("Le nom du modèle est requis"),
     max_input_tokens: Yup.number()
       .transform((value, originalValue) =>
         originalValue === "" || originalValue === undefined ? null : value
@@ -292,12 +292,12 @@ export default function CustomModal({
 
   const validationSchema = isOnboarding
     ? Yup.object().shape({
-        provider: Yup.string().required("Provider Name is required"),
+        provider: Yup.string().required("Le nom du fournisseur est requis"),
         model_configurations: Yup.array(modelConfigurationSchema),
       })
     : Yup.object().shape({
-        name: Yup.string().required("Display Name is required"),
-        provider: Yup.string().required("Provider Name is required"),
+        name: Yup.string().required("Le nom d'affichage est requis"),
+        provider: Yup.string().required("Le nom du fournisseur est requis"),
         model_configurations: Yup.array(modelConfigurationSchema),
       });
 
@@ -308,7 +308,7 @@ export default function CustomModal({
       onClose={onClose}
       initialValues={initialValues}
       validationSchema={validationSchema}
-      description="Connect models from other LiteLLM-compatible providers."
+      description="Connectez des modèles d'autres fournisseurs compatibles LiteLLM."
       onSubmit={async (values, { setSubmitting, setStatus }) => {
         setSubmitting(true);
 
@@ -324,7 +324,7 @@ export default function CustomModal({
           }));
 
         if (modelConfigurations.length === 0) {
-          toast.error("At least one model name is required");
+          toast.error("Au moins un nom de modèle est requis");
           setSubmitting(false);
           return;
         }
@@ -361,8 +361,8 @@ export default function CustomModal({
               await refreshLlmProviderCaches(mutate);
               toast.success(
                 existingLlmProvider
-                  ? "Provider updated successfully!"
-                  : "Provider enabled successfully!"
+                  ? "Fournisseur mis à jour avec succès !"
+                  : "Fournisseur activé avec succès !"
               );
             }
           },
@@ -372,9 +372,9 @@ export default function CustomModal({
       <InputLayouts.FieldPadder>
         <InputLayouts.Vertical
           name="provider"
-          title="Provider"
+          title="Fournisseur"
           subDescription={markdown(
-            "See full list of supported LLM providers at [LiteLLM](https://docs.litellm.ai/docs/providers)."
+            "Voir la liste complète des fournisseurs LLM supportés sur [LiteLLM](https://docs.litellm.ai/docs/providers)."
           )}
         >
           <ProviderNameSelect disabled={!!existingLlmProvider} />
@@ -383,7 +383,7 @@ export default function CustomModal({
 
       <APIKeyField
         optional
-        subDescription="Paste your API key if your model provider requires authentication."
+        subDescription="Collez votre clé API si votre fournisseur de modèle requiert une authentification."
       />
 
       <APIBaseField optional />
@@ -391,8 +391,8 @@ export default function CustomModal({
       <InputLayouts.FieldPadder>
         <InputLayouts.Vertical
           name="api_version"
-          title="API Version"
-          suffix="optional"
+          title="Version de l'API"
+          suffix="optionnel"
         >
           <InputTypeInField name="api_version" />
         </InputLayouts.Vertical>
@@ -401,9 +401,9 @@ export default function CustomModal({
       <InputLayouts.FieldPadder>
         <Section gap={0.75}>
           <Content
-            title="Environment Variables"
+            title="Variables d'environnement"
             description={markdown(
-              "Add extra properties as needed by the model provider. These are passed to LiteLLM's `completion()` call as [environment variables](https://docs.litellm.ai/docs/set_keys#environment-variables). See [documentation](https://docs.onyx.app/admins/ai_models/custom_inference_provider) for more instructions."
+              "Ajoutez des propriétés supplémentaires selon les besoins du fournisseur de modèles. Elles sont transmises à l'appel `completion()` de LiteLLM en tant que [variables d'environnement](https://docs.litellm.ai/docs/set_keys#environment-variables). Voir la [documentation](https://docs.onyx.app/admins/ai_models/custom_inference_provider) pour plus d'instructions."
             )}
             widthVariant="full"
             variant="section"
@@ -425,8 +425,8 @@ export default function CustomModal({
       <Section gap={0.5}>
         <InputLayouts.FieldPadder>
           <Content
-            title="Models"
-            description="List LLM models you wish to use and their configurations for this provider. See full list of models at LiteLLM."
+            title="Modèles"
+            description="Listez les modèles LLM que vous souhaitez utiliser et leurs configurations pour ce fournisseur. Voir la liste complète des modèles sur LiteLLM."
             variant="section"
             sizePreset="main-content"
             widthVariant="full"

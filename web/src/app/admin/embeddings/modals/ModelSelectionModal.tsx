@@ -23,42 +23,40 @@ export default function ModelSelectionConfirmationModal({
       <Modal.Content width="sm" height="lg">
         <Modal.Header
           icon={SvgServer}
-          title="Update Embedding Model"
+          title="Mettre à jour le modèle d'embeddings"
           onClose={onCancel}
         />
         <Modal.Body>
           <Text as="p">
-            You have selected: <strong>{selectedModel.model_name}</strong>. Are
-            you sure you want to update to this new embedding model?
+            Vous avez sélectionné : <strong>{selectedModel.model_name}</strong>. Êtes-vous
+            sûr de vouloir passer à ce nouveau modèle d&apos;embeddings ?
           </Text>
           <Text as="p">
-            We will re-index all your documents in the background so you will be
-            able to continue to use Onyx as normal with the old model in the
-            meantime. Depending on how many documents you have indexed, this may
-            take a while.
+            Nous réindexerons tous vos documents en arrière-plan afin que vous puissiez
+            continuer à utiliser Onyx normalement avec l&apos;ancien modèle en attendant.
+            Selon le nombre de documents indexés, cela peut prendre un certain temps.
           </Text>
           <Text as="p">
-            <i>NOTE:</i> this re-indexing process will consume more resources
-            than normal. If you are self-hosting, we recommend that you allocate
-            at least 16GB of RAM to Onyx during this process.
+            <i>REMARQUE :</i> ce processus de réindexation consommera plus de ressources
+            que la normale. Si vous hébergez vous-même, nous recommandons d&apos;allouer
+            au moins 16 Go de RAM à Onyx pendant ce processus.
           </Text>
 
           {isCustom && (
             <Callout type="warning" title="IMPORTANT">
-              We&apos;ve detected that this is a custom-specified embedding
-              model. Since we have to download the model files before verifying
-              the configuration&apos;s correctness, we won&apos;t be able to let
-              you know if the configuration is valid until{" "}
-              <strong>after</strong> we start re-indexing your documents. If
-              there is an issue, it will show up on this page as an indexing
-              error on this page after clicking Confirm.
+              Nous avons détecté qu&apos;il s&apos;agit d&apos;un modèle d&apos;embeddings personnalisé.
+              Comme nous devons télécharger les fichiers du modèle avant de vérifier
+              la configuration, nous ne pourrons pas vous informer de la validité de
+              la configuration avant <strong>après</strong> le début de la réindexation.
+              S&apos;il y a un problème, il apparaîtra sur cette page comme une erreur d&apos;indexation
+              après avoir cliqué sur Confirmer.
             </Callout>
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={onConfirm}>Confirm</Button>
+          <Button onClick={onConfirm}>Confirmer</Button>
           <Button prominence="secondary" onClick={onCancel}>
-            Cancel
+            Annuler
           </Button>
         </Modal.Footer>
       </Modal.Content>

@@ -156,7 +156,7 @@ export default function IndexAttemptErrorsModal({
                             {error.document_id || error.entity_id || "Inconnu"}
                           </a>
                         ) : (
-                          error.document_id || error.entity_id || "Unknown"
+                          error.document_id || error.entity_id || "Inconnu"
                         )}
                       </TableCell>
                       <TableCell>

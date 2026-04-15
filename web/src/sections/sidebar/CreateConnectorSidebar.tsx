@@ -11,12 +11,12 @@ export default function Sidebar() {
   const noCredential = credentialTemplates[connector] == null;
 
   const { isAdmin } = useUser();
-  const buttonName = isAdmin ? "Admin Page" : "Curator Page";
+  const buttonName = isAdmin ? "Panneau d'administration" : "Panneau curateur";
 
   const settingSteps = [
-    ...(!noCredential ? ["Credential"] : []),
-    "Connector",
-    ...(connector == "file" ? [] : ["Advanced (optional)"]),
+    ...(!noCredential ? ["Identifiant"] : []),
+    "Connecteur",
+    ...(connector == "file" ? [] : ["Avancé (optionnel)"]),
   ];
 
   return (
@@ -31,8 +31,8 @@ export default function Sidebar() {
         )}
         {settingSteps.map((step, index) => {
           const allowed =
-            (step == "Connector" && allowCreate) ||
-            (step == "Advanced (optional)" && allowAdvanced) ||
+            (step == "Connecteur" && allowCreate) ||
+            (step == "Avancé (optionnel)" && allowAdvanced) ||
             index <= formStep;
 
           return (

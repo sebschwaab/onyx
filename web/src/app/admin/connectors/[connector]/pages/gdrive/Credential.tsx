@@ -54,7 +54,7 @@ export const DriveJsonUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
           credentialFileType = "service_account";
         } else {
           throw new Error(
-            "Unknown credential type, expected one of 'OAuth Web application' or 'Service Account'"
+            "Type d'identifiant inconnu, attendu 'Application Web OAuth' ou 'Compte de service'"
           );
         }
       } catch (e) {
@@ -75,7 +75,7 @@ export const DriveJsonUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
           }
         );
         if (response.ok) {
-          toast.success("Successfully uploaded app credentials");
+          toast.success("Identifiants d'application téléversés avec succès");
           mutate(SWR_KEYS.googleConnectorAppCredential("google-drive"));
           if (onSuccess) {
             onSuccess();
@@ -98,7 +98,7 @@ export const DriveJsonUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
           }
         );
         if (response.ok) {
-          toast.success("Successfully uploaded service account key");
+          toast.success("Clé de compte de service téléversée avec succès");
           mutate(SWR_KEYS.googleConnectorServiceAccountKey("google-drive"));
           if (onSuccess) {
             onSuccess();
@@ -149,7 +149,7 @@ export const DriveJsonUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
       ) {
         handleFileUpload(file);
       } else {
-        toast.error("Please upload a JSON file");
+        toast.error("Veuillez téléverser un fichier JSON");
       }
     }
   };
@@ -180,11 +180,11 @@ export const DriveJsonUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
               )}
               <span className="text-sm text-text-500">
                 {isUploading
-                  ? `Uploading ${truncateString(fileName || "file", 50)}...`
+                  ? `Téléversement de ${truncateString(fileName || "fichier", 50)}...`
                   : isDragging
-                    ? "Drop JSON file here"
+                    ? "Déposez le fichier JSON ici"
                     : truncateString(
-                        fileName || "Select or drag JSON credentials file...",
+                        fileName || "Sélectionnez ou déposez le fichier JSON d'identifiants...",
                         50
                       )}
               </span>
@@ -398,14 +398,14 @@ async function handleRevokeAccess(
 ) {
   if (connectorAssociated) {
     const message =
-      "Cannot revoke the Google Drive credential while any connector is still associated with the credential. " +
-      "Please delete all associated connectors, then try again.";
+      "Impossible de révoquer l'identifiant Google Drive tant qu'un connecteur y est encore associé. " +
+      "Veuillez supprimer tous les connecteurs associés, puis réessayez.";
     toast.error(message);
     return;
   }
 
   await adminDeleteCredential(existingCredential.id);
-  toast.success("Successfully revoked the Google Drive credential!");
+  toast.success("Identifiant Google Drive révoqué avec succès !");
 
   refreshCredentials();
 }

@@ -128,11 +128,11 @@ function BedrockModalInternals({
         <Section gap={1}>
           <InputLayouts.Vertical
             name={FIELD_AWS_REGION_NAME}
-            title="AWS Region"
-            subDescription="Region where your Amazon Bedrock models are hosted."
+            title="Région AWS"
+            subDescription="Région où vos modèles Amazon Bedrock sont hébergés."
           >
             <InputSelectField name={FIELD_AWS_REGION_NAME}>
-              <InputSelect.Trigger placeholder="Select a region" />
+              <InputSelect.Trigger placeholder="Sélectionner une région" />
               <InputSelect.Content>
                 {AWS_REGION_OPTIONS.map((option) => (
                   <InputSelect.Item key={option.value} value={option.value}>
@@ -145,8 +145,8 @@ function BedrockModalInternals({
 
           <InputLayouts.Vertical
             name={FIELD_BEDROCK_AUTH_METHOD}
-            title="Authentication Method"
-            subDescription="Choose how Onyx should authenticate with Bedrock."
+            title="Méthode d'authentification"
+            subDescription="Choisissez comment Onyx doit s'authentifier avec Bedrock."
           >
             <InputSelect
               value={authMethod || AUTH_METHOD_ACCESS_KEY}
@@ -158,21 +158,21 @@ function BedrockModalInternals({
               <InputSelect.Content>
                 <InputSelect.Item
                   value={AUTH_METHOD_IAM}
-                  description="Recommended for AWS environments"
+                  description="Recommandé pour les environnements AWS"
                 >
-                  Environment IAM Role
+                  Rôle IAM d&apos;environnement
                 </InputSelect.Item>
                 <InputSelect.Item
                   value={AUTH_METHOD_ACCESS_KEY}
-                  description="For non-AWS environments"
+                  description="Pour les environnements non-AWS"
                 >
-                  Access Key
+                  Clé d&apos;accès
                 </InputSelect.Item>
                 <InputSelect.Item
                   value={AUTH_METHOD_LONG_TERM_API_KEY}
-                  description="For non-AWS environments"
+                  description="Pour les environnements non-AWS"
                 >
-                  Long-term API Key
+                  Clé API long terme
                 </InputSelect.Item>
               </InputSelect.Content>
             </InputSelect>
@@ -185,7 +185,7 @@ function BedrockModalInternals({
           <Section gap={1}>
             <InputLayouts.Vertical
               name={FIELD_AWS_ACCESS_KEY_ID}
-              title="AWS Access Key ID"
+              title="Identifiant de clé d'accès AWS"
             >
               <InputTypeInField
                 name={FIELD_AWS_ACCESS_KEY_ID}
@@ -194,7 +194,7 @@ function BedrockModalInternals({
             </InputLayouts.Vertical>
             <InputLayouts.Vertical
               name={FIELD_AWS_SECRET_ACCESS_KEY}
-              title="AWS Secret Access Key"
+              title="Clé d'accès secrète AWS"
             >
               <PasswordInputTypeInField
                 name={FIELD_AWS_SECRET_ACCESS_KEY}
@@ -210,7 +210,7 @@ function BedrockModalInternals({
           <Card background="none" border="solid" padding="sm">
             <Content
               icon={SvgAlertCircle}
-              title="Onyx will use the IAM role attached to the environment it’s running in to authenticate."
+              title="Onyx utilisera le rôle IAM attaché à l’environnement dans lequel il s’exécute pour s’authentifier."
               variant="body"
               sizePreset="main-ui"
             />
@@ -223,11 +223,11 @@ function BedrockModalInternals({
           <Section gap={0.5}>
             <InputLayouts.Vertical
               name={FIELD_AWS_BEARER_TOKEN_BEDROCK}
-              title="Long-term API Key"
+              title="Clé API long terme"
             >
               <PasswordInputTypeInField
                 name={FIELD_AWS_BEARER_TOKEN_BEDROCK}
-                placeholder="Your long-term API key"
+                placeholder="Votre clé API long terme"
               />
             </InputLayouts.Vertical>
           </Section>
@@ -295,7 +295,7 @@ export default function BedrockModal({
   const validationSchema = buildValidationSchema(isOnboarding, {
     extra: {
       custom_config: Yup.object({
-        AWS_REGION_NAME: Yup.string().required("AWS Region is required"),
+        AWS_REGION_NAME: Yup.string().required("La région AWS est requise"),
       }),
     },
   });
@@ -339,8 +339,8 @@ export default function BedrockModal({
               await refreshLlmProviderCaches(mutate);
               toast.success(
                 existingLlmProvider
-                  ? "Provider updated successfully!"
-                  : "Provider enabled successfully!"
+                  ? "Fournisseur mis à jour avec succès !"
+                  : "Fournisseur activé avec succès !"
               );
             }
           },

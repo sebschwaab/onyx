@@ -50,9 +50,9 @@ export default function DynamicConnectionForm({
       )}
 
       <TextFormField
-        subtext="A descriptive name for the connector."
+        subtext="Un nom descriptif pour le connecteur."
         type={"text"}
-        label={"Connector Name"}
+        label={"Nom du connecteur"}
         name={"name"}
       />
 

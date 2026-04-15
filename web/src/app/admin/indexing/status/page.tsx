@@ -157,7 +157,7 @@ function Main() {
     return (
       <div className="text-error">
         {ccPairsIndexingStatusesError?.info?.detail ||
-          "Error loading indexing status."}
+          "Erreur lors du chargement du statut d'indexation."}
       </div>
     );
   }

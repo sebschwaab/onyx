@@ -35,8 +35,8 @@ const initialValues: VertexImageGenFormValues = {
 
 const validationSchema = Yup.object().shape({
   custom_config: Yup.object().shape({
-    vertex_credentials: Yup.string().required("Credentials file is required"),
-    vertex_location: Yup.string().required("Location is required"),
+    vertex_credentials: Yup.string().required("Le fichier d'identifiants est requis"),
+    vertex_location: Yup.string().required("La région est requise"),
   }),
 });
 
@@ -85,7 +85,7 @@ function VertexFormFields(
             state={apiStatus === "error" ? "error" : state}
             className="w-full"
           >
-            <FormField.Label>Credentials File</FormField.Label>
+            <FormField.Label>Fichier d&apos;identifiants</FormField.Label>
             <FormField.Control>
               <InputFile
                 setValue={(value) => helper.setValue(value)}
@@ -94,16 +94,16 @@ function VertexFormFields(
                 showClearButton={true}
                 disabled={disabled}
                 accept="application/json"
-                placeholder="Upload or paste your credentials"
+                placeholder="Téléverser ou coller vos identifiants"
               />
             </FormField.Control>
             {showApiMessage ? (
               <FormField.APIMessage
                 state={apiStatus}
                 messages={{
-                  loading: `Testing credentials with ${imageProvider.title}...`,
-                  success: "Credentials valid. Configuration saved.",
-                  error: errorMessage || "Invalid credentials",
+                  loading: `Test des identifiants avec ${imageProvider.title}...`,
+                  success: "Identifiants valides. Configuration enregistrée.",
+                  error: errorMessage || "Identifiants invalides",
                 }}
               />
             ) : (
@@ -111,11 +111,11 @@ function VertexFormFields(
                 messages={{
                   idle: (
                     <>
-                      {"Upload or paste your "}
+                      {"Téléversez ou collez vos "}
                       <InlineExternalLink href="https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts?supportedpurview=project">
-                        service account credentials
+                        identifiants de compte de service
                       </InlineExternalLink>
-                      {" from Google Cloud."}
+                      {" depuis Google Cloud."}
                     </>
                   ),
                   error: meta.error,
@@ -135,7 +135,7 @@ function VertexFormFields(
             state={state}
             className="w-full"
           >
-            <FormField.Label>Location</FormField.Label>
+            <FormField.Label>Région</FormField.Label>
             <FormField.Control>
               <InputTypeIn
                 value={field.value}
@@ -150,11 +150,11 @@ function VertexFormFields(
               messages={{
                 idle: (
                   <>
-                    {"The Google Cloud region for your Vertex AI models. See "}
+                    {"La région Google Cloud pour vos modèles Vertex AI. Consultez la "}
                     <InlineExternalLink href="https://cloud.google.com/vertex-ai/generative-ai/docs/learn/locations">
-                      Google&apos;s documentation
+                      documentation Google
                     </InlineExternalLink>
-                    {" for available regions."}
+                    {" pour les régions disponibles."}
                   </>
                 ),
                 error: meta.error,
@@ -175,8 +175,8 @@ export function VertexImageGenForm(props: ImageGenFormBaseProps) {
       {...props}
       title={
         existingConfig
-          ? `Edit ${imageProvider.title}`
-          : `Connect ${imageProvider.title}`
+          ? `Modifier ${imageProvider.title}`
+          : `Connecter ${imageProvider.title}`
       }
       description={imageProvider.description}
       initialValues={initialValues}

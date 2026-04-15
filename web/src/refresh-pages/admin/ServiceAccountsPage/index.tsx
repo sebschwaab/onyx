@@ -96,13 +96,13 @@ export default function ServiceAccountsPage() {
       });
       if (!response.ok) {
         const errorMsg = await response.text();
-        toast.error(`Failed to update role: ${errorMsg}`);
+        toast.error(`Impossible de mettre à jour le rôle : ${errorMsg}`);
         return;
       }
       mutate(API_KEY_SWR_KEY);
-      toast.success("Role updated.");
+      toast.success("Rôle mis à jour.");
     } catch {
-      toast.error("Failed to update role.");
+      toast.error("Impossible de mettre à jour le rôle.");
     }
   };
 
@@ -111,7 +111,7 @@ export default function ServiceAccountsPage() {
       const response = await regenerateApiKey(apiKey);
       if (!response.ok) {
         const errorMsg = await response.text();
-        toast.error(`Failed to regenerate API Key: ${errorMsg}`);
+        toast.error(`Impossible de régénérer la clé API : ${errorMsg}`);
         return;
       }
       const newKey = (await response.json()) as APIKey;
@@ -119,7 +119,7 @@ export default function ServiceAccountsPage() {
       mutate(API_KEY_SWR_KEY);
     } catch (e) {
       toast.error(
-        e instanceof Error ? e.message : "Failed to regenerate API Key."
+        e instanceof Error ? e.message : "Impossible de régénérer la clé API."
       );
     }
   };
@@ -129,12 +129,12 @@ export default function ServiceAccountsPage() {
       const response = await deleteApiKey(apiKey.api_key_id);
       if (!response.ok) {
         const errorMsg = await response.text();
-        toast.error(`Failed to delete API Key: ${errorMsg}`);
+        toast.error(`Impossible de supprimer la clé API : ${errorMsg}`);
         return;
       }
       mutate(API_KEY_SWR_KEY);
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "Failed to delete API Key.");
+      toast.error(e instanceof Error ? e.message : "Impossible de supprimer la clé API.");
     }
   };
 
@@ -145,18 +145,18 @@ export default function ServiceAccountsPage() {
         getContent: () => SvgUserKey,
       }),
       tc.column("api_key_name", {
-        header: "Name",
+        header: "Nom",
         weight: 25,
         cell: (value) => (
           <Content
-            title={value || "Unnamed"}
+            title={value || "Sans nom"}
             sizePreset="main-ui"
             variant="body"
           />
         ),
       }),
       tc.column("api_key_display", {
-        header: "API Key",
+        header: "Clé API",
         weight: 30,
         cell: (value) => (
           <Text font="secondary-mono" color="text-03">
@@ -166,7 +166,7 @@ export default function ServiceAccountsPage() {
       }),
       tc.displayColumn({
         id: "account_type",
-        header: "Account Type",
+        header: "Type de compte",
         width: { weight: 25, minWidth: 160 },
         cell: (row) => (
           <InputSelect
@@ -178,21 +178,21 @@ export default function ServiceAccountsPage() {
               <InputSelect.Item
                 value={UserRole.ADMIN.toString()}
                 icon={SvgUserManage}
-                description="Unrestricted admin access to all endpoints."
+                description="Accès administrateur complet à tous les endpoints."
               >
                 {USER_ROLE_LABELS[UserRole.ADMIN]}
               </InputSelect.Item>
               <InputSelect.Item
                 value={UserRole.BASIC.toString()}
                 icon={SvgUser}
-                description="Standard user-level access to non-admin endpoints."
+                description="Accès utilisateur standard aux endpoints non-administrateur."
               >
                 {USER_ROLE_LABELS[UserRole.BASIC]}
               </InputSelect.Item>
               <InputSelect.Item
                 value={UserRole.LIMITED.toString()}
                 icon={SvgLock}
-                description="For agents: chat posting and read-only access to other endpoints."
+                description="Pour les agents : publication de messages et accès en lecture seule aux autres endpoints."
               >
                 {USER_ROLE_LABELS[UserRole.LIMITED]}
               </InputSelect.Item>
@@ -206,7 +206,7 @@ export default function ServiceAccountsPage() {
             <Button
               icon={SvgRefreshCw}
               prominence="tertiary"
-              tooltip="Regenerate"
+              tooltip="Régénérer"
               onClick={() => setRegenerateTarget(row)}
             />
             <Popover>
@@ -214,7 +214,7 @@ export default function ServiceAccountsPage() {
                 <Button
                   icon={SvgMoreHorizontal}
                   prominence="tertiary"
-                  tooltip="More"
+                  tooltip="Plus"
                 />
               </Popover.Trigger>
               <Popover.Content side="bottom" align="end" width="md">
@@ -226,14 +226,14 @@ export default function ServiceAccountsPage() {
                       setShowCreateUpdateForm(true);
                     }}
                   >
-                    Edit Account
+                    Modifier le compte
                   </LineItem>
                   <LineItem
                     icon={SvgTrash}
                     danger
                     onClick={() => setDeleteTarget(row)}
                   >
-                    Delete Account
+                    Supprimer le compte
                   </LineItem>
                 </PopoverMenu>
               </Popover.Content>
@@ -251,14 +251,14 @@ export default function ServiceAccountsPage() {
         <SettingsLayouts.Header
           title={route.title}
           icon={route.icon}
-          description="Use service accounts to programmatically access Onyx API."
+          description="Utilisez les comptes de service pour accéder à l'API Onyx par programmation."
           separator
         />
         <SettingsLayouts.Body>
           <IllustrationContent
             illustration={SvgNoResult}
-            title="Failed to load service accounts."
-            description="Please check the console for more details."
+            title="Impossible de charger les comptes de service."
+            description="Veuillez consulter la console pour plus de détails."
           />
         </SettingsLayouts.Body>
       </SettingsLayouts.Root>
@@ -271,7 +271,7 @@ export default function ServiceAccountsPage() {
         <SettingsLayouts.Header
           title={route.title}
           icon={route.icon}
-          description="Use service accounts to programmatically access Onyx API."
+          description="Utilisez les comptes de service pour accéder à l'API Onyx par programmation."
           separator
         />
         <SettingsLayouts.Body>
@@ -299,8 +299,8 @@ export default function ServiceAccountsPage() {
             warning
             close={false}
             className="w-full"
-            text="Upgrade to a paid plan to create API keys."
-            description="Trial accounts do not include API key access — purchase a paid subscription to unlock this feature."
+            text="Passez à un abonnement payant pour créer des clés API."
+            description="Les comptes en période d'essai n'incluent pas l'accès aux clés API — souscrivez un abonnement payant pour débloquer cette fonctionnalité."
           />
         )}
 
@@ -309,13 +309,13 @@ export default function ServiceAccountsPage() {
             hasItems={hasKeys}
             searchQuery={search}
             onSearchQueryChange={setSearch}
-            placeholder="Search service accounts..."
-            emptyStateText="Create service account API keys with user-level access."
+            placeholder="Rechercher des comptes de service..."
+            emptyStateText="Créez des clés API de compte de service avec un accès utilisateur."
             onAction={() => {
               setSelectedApiKey(undefined);
               setShowCreateUpdateForm(true);
             }}
-            actionLabel="New Service Account"
+            actionLabel="Nouveau compte de service"
           />
 
           {hasKeys && (
@@ -332,10 +332,10 @@ export default function ServiceAccountsPage() {
       <Modal open={!!fullApiKey}>
         <Modal.Content width="sm" height="sm">
           <Modal.Header
-            title="Service Account API Key"
+            title="Clé API du compte de service"
             icon={SvgKey}
             onClose={() => setFullApiKey(null)}
-            description="Save this key before continuing. It won't be shown again."
+            description="Enregistrez cette clé avant de continuer. Elle ne sera plus affichée."
           />
           <Modal.Body>
             <Code showCopyButton={false}>{fullApiKey ?? ""}</Code>
@@ -359,7 +359,7 @@ export default function ServiceAccountsPage() {
                     URL.revokeObjectURL(url);
                   }}
                 >
-                  Download
+                  Télécharger
                 </Button>
               }
               submit={
@@ -368,11 +368,11 @@ export default function ServiceAccountsPage() {
                   onClick={() => {
                     if (fullApiKey) {
                       navigator.clipboard.writeText(fullApiKey);
-                      toast.success("API key copied to clipboard.");
+                      toast.success("Clé API copiée dans le presse-papiers.");
                     }
                   }}
                 >
-                  Copy API Key
+                  Copier la clé API
                 </Button>
               }
             />
@@ -397,7 +397,7 @@ export default function ServiceAccountsPage() {
       {regenerateTarget && (
         <ConfirmationModalLayout
           icon={SvgRefreshCw}
-          title="Regenerate API Key"
+          title="Régénérer la clé API"
           onClose={() => setRegenerateTarget(null)}
           submit={
             <Button
@@ -408,17 +408,17 @@ export default function ServiceAccountsPage() {
                 await handleRegenerate(target);
               }}
             >
-              Regenerate Key
+              Régénérer la clé
             </Button>
           }
         >
           <Text as="p" color="text-03">
             {markdown(
-              `Your current API key *${
-                regenerateTarget.api_key_name || "Unnamed"
+              `Votre clé API actuelle *${
+                regenerateTarget.api_key_name || "Sans nom"
               }* (\`${
                 regenerateTarget.api_key_display
-              }\`) will be revoked and a new key will be generated. You will need to update any applications using this key with the new one.`
+              }\`) sera révoquée et une nouvelle clé sera générée. Vous devrez mettre à jour toutes les applications utilisant cette clé avec la nouvelle.`
             )}
           </Text>
         </ConfirmationModalLayout>
@@ -427,7 +427,7 @@ export default function ServiceAccountsPage() {
       {deleteTarget && (
         <ConfirmationModalLayout
           icon={SvgTrash}
-          title="Delete Account"
+          title="Supprimer le compte"
           onClose={() => setDeleteTarget(null)}
           submit={
             <Button
@@ -437,22 +437,22 @@ export default function ServiceAccountsPage() {
                 setDeleteTarget(null);
               }}
             >
-              Delete
+              Supprimer
             </Button>
           }
         >
           <Section alignItems="start" gap={0.5}>
             <Text as="p" color="text-03">
               {markdown(
-                `Any application using the API key of account *${
-                  deleteTarget.api_key_name || "Unnamed"
+                `Toute application utilisant la clé API du compte *${
+                  deleteTarget.api_key_name || "Sans nom"
                 }* (\`${
                   deleteTarget.api_key_display
-                }\`) will lose access to Onyx.`
+                }\`) perdra l'accès à Onyx.`
               )}
             </Text>
             <Text as="p" color="text-03">
-              Deletion cannot be undone.
+              La suppression est irréversible.
             </Text>
           </Section>
         </ConfirmationModalLayout>

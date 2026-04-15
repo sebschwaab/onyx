@@ -12,26 +12,26 @@ export default function AdvancedFormPage() {
 
       <NumberInput
         description={`
-          Checks all documents against the source to delete those that no longer exist.
-          Note: This process checks every document, so be cautious when increasing frequency.
-          Default is 720 hours (30 days). Decimal hours are supported (e.g., 0.1 hours = 6 minutes).
-          Enter 0 to disable pruning for this connector.
+          Vérifie tous les documents par rapport à la source pour supprimer ceux qui n'existent plus.
+          Remarque : ce processus vérifie chaque document, soyez donc prudent en augmentant la fréquence.
+          Par défaut : 720 heures (30 jours). Les heures décimales sont prises en charge (ex. : 0,1 heure = 6 minutes).
+          Saisissez 0 pour désactiver l'élagage pour ce connecteur.
         `}
-        label="Prune Frequency (hours)"
+        label="Fréquence d'élagage (heures)"
         name="pruneFreq"
       />
 
       <NumberInput
-        description="This is how frequently we pull new documents from the source (in minutes). If you input 0, we will never pull new documents for this connector."
-        label="Refresh Frequency (minutes)"
+        description="C'est la fréquence à laquelle nous récupérons de nouveaux documents depuis la source (en minutes). Si vous saisissez 0, nous ne récupérerons jamais de nouveaux documents pour ce connecteur."
+        label="Fréquence de rafraîchissement (minutes)"
         name="refreshFreq"
       />
 
       <TextFormField
         type="date"
-        subtext="Documents prior to this date will not be pulled in"
+        subtext="Les documents antérieurs à cette date ne seront pas récupérés"
         optional
-        label="Indexing Start Date"
+        label="Date de début d'indexation"
         name="indexingStart"
       />
       <div className="mt-4 flex w-full mx-auto max-w-2xl justify-start">

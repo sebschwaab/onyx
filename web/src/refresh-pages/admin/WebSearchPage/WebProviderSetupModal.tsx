@@ -124,11 +124,11 @@ export const WebProviderSetupModal = memo(
                 }
                 className="w-full"
               >
-                <FormField.Label>API Key</FormField.Label>
+                <FormField.Label>Clé API</FormField.Label>
                 <FormField.Control asChild>
                   <PasswordInputTypeIn
                     data-testid="web-provider-api-key-input"
-                    placeholder="Enter API key"
+                    placeholder="Saisir la clé API"
                     value={apiKeyValue}
                     autoFocus={apiKeyAutoFocus}
                     isNonRevealable={isStoredApiKey}
@@ -148,7 +148,7 @@ export const WebProviderSetupModal = memo(
                       loading:
                         typeof helperMessage === "string"
                           ? helperMessage
-                          : "Validating API key...",
+                          : "Validation de la clé API...",
                     }}
                   />
                 ) : typeof helperMessage === "string" ? (
@@ -216,7 +216,7 @@ export const WebProviderSetupModal = memo(
                           loading:
                             typeof helperMessage === "string"
                               ? helperMessage
-                              : "Testing connection...",
+                              : "Test de la connexion...",
                         }}
                       />
                     ) : typeof helperMessage === "string" ? (
@@ -247,14 +247,14 @@ export const WebProviderSetupModal = memo(
           </Modal.Body>
           <Modal.Footer>
             <Button prominence="secondary" type="button" onClick={onClose}>
-              Cancel
+              Annuler
             </Button>
             <Button
               disabled={!canConnect || isProcessing}
               type="button"
               onClick={onConnect}
             >
-              {isProcessing ? "Connecting..." : "Connect"}
+              {isProcessing ? "Connexion en cours..." : "Connecter"}
             </Button>
           </Modal.Footer>
         </Modal.Content>

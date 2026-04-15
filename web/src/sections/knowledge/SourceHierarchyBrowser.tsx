@@ -687,7 +687,7 @@ export default function SourceHierarchyBrowser({
             leftSearchIcon
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="Search..."
+            placeholder="Rechercher..."
             variant="internal"
           />
         </GeneralLayouts.Section>

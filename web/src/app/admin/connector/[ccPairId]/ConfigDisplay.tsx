@@ -85,7 +85,7 @@ function ConfigItem({ label, value, onEdit }: ConfigItemProps) {
     } else if (typeof value === "boolean") {
       return (
         <Text secondaryBody text03 className="text-right">
-          {value ? "True" : "False"}
+          {value ? "Vrai" : "Faux"}
         </Text>
       );
     }

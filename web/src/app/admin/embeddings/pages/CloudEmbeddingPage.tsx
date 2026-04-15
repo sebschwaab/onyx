@@ -286,7 +286,7 @@ export default function CloudEmbeddingPage({
         <Spacer rem={1.5} />
         <Text as="p">
           {
-            "You can also use Azure OpenAI models for embeddings. Azure requires separate configuration for each model."
+            "Vous pouvez également utiliser les modèles Azure OpenAI pour les embeddings. Azure nécessite une configuration séparée pour chaque modèle."
           }
         </Text>
 

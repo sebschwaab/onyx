@@ -83,12 +83,12 @@ const RerankingDetailsForm = forwardRef<
           }
         ),
       rerank_api_url: Yup.string()
-        .url("Must be a valid URL")
-        .matches(/^https?:\/\//, "URL must start with http:// or https://")
+        .url("Doit être une URL valide")
+        .matches(/^https?:\/\//, "L'URL doit commencer par http:// ou https://")
         .nullable()
         .test(
           "required-if-litellm",
-          "API URL is required for LiteLLM reranking",
+          "L'URL de l'API est requise pour le reclassement LiteLLM",
           function (value) {
             const { rerank_provider_type } = this.parent;
             return (
@@ -311,7 +311,7 @@ const RerankingDetailsForm = forwardRef<
                           {card.description}
                         </p>
                         <div className="text-xs text-text-500">
-                          {card.cloud ? "Cloud-based" : "Self-hosted"}
+                          {card.cloud ? "Basé sur le cloud" : "Auto-hébergé"}
                         </div>
                       </div>
                     );
@@ -326,24 +326,20 @@ const RerankingDetailsForm = forwardRef<
                     <Modal.Content width="sm" height="sm">
                       <Modal.Header
                         icon={SvgAlertTriangle}
-                        title="GPU Not Enabled"
+                        title="GPU non activé"
                         onClose={() => setShowGpuWarningModalModel(null)}
                       />
                       <Modal.Body>
-                        <p className="text-error font-semibold">Warning:</p>
+                        <p className="text-error font-semibold">Avertissement :</p>
                         <p>
-                          Local reranking models require significant
-                          computational resources and may perform slowly without
-                          GPU acceleration. Consider switching to GPU-enabled
-                          infrastructure or using a cloud-based alternative for
-                          better performance.
+                          Les modèles de reclassement locaux nécessitent des ressources de calcul importantes et peuvent être lents sans accélération GPU. Envisagez de passer à une infrastructure compatible GPU ou d&apos;utiliser une alternative basée sur le cloud pour de meilleures performances.
                         </p>
                       </Modal.Body>
                       <Modal.Footer>
                         <Button
                           onClick={() => setShowGpuWarningModalModel(null)}
                         >
-                          Understood
+                          Compris
                         </Button>
                       </Modal.Footer>
                     </Modal.Content>
@@ -361,7 +357,7 @@ const RerankingDetailsForm = forwardRef<
                     <Modal.Content>
                       <Modal.Header
                         icon={SvgKey}
-                        title="API Key Configuration"
+                        title="Configuration de la clé API"
                         onClose={() => {
                           resetForm();
                           setShowLiteLLMConfigurationModal(false);
@@ -370,7 +366,7 @@ const RerankingDetailsForm = forwardRef<
                       <Modal.Body>
                         <div className="w-full flex flex-col gap-y-4">
                           <TextFormField
-                            subtext="Set the URL at which your LiteLLM Proxy is hosted"
+                            subtext="Définissez l'URL à laquelle votre proxy LiteLLM est hébergé"
                             placeholder={values.rerank_api_url || undefined}
                             onChange={(
                               e: React.ChangeEvent<HTMLInputElement>
@@ -383,12 +379,12 @@ const RerankingDetailsForm = forwardRef<
                               setFieldValue("rerank_api_url", value);
                             }}
                             type="text"
-                            label="LiteLLM Proxy  URL"
+                            label="URL du proxy LiteLLM"
                             name="rerank_api_url"
                           />
 
                           <TextFormField
-                            subtext="Set the key to access your LiteLLM Proxy"
+                            subtext="Définissez la clé pour accéder à votre proxy LiteLLM"
                             placeholder={
                               values.rerank_api_key
                                 ? "*".repeat(values.rerank_api_key.length)
@@ -405,13 +401,13 @@ const RerankingDetailsForm = forwardRef<
                               setFieldValue("rerank_api_key", value);
                             }}
                             type="password"
-                            label="LiteLLM Proxy Key"
+                            label="Clé du proxy LiteLLM"
                             name="rerank_api_key"
                             optional
                           />
 
                           <TextFormField
-                            subtext="Set the model name to use for LiteLLM Proxy"
+                            subtext="Définissez le nom du modèle à utiliser pour le proxy LiteLLM"
                             placeholder={
                               values.rerank_model_name
                                 ? "*".repeat(values.rerank_model_name.length)
@@ -427,7 +423,7 @@ const RerankingDetailsForm = forwardRef<
                               });
                               setFieldValue("rerank_model_name", value);
                             }}
-                            label="LiteLLM Model Name"
+                            label="Nom du modèle LiteLLM"
                             name="rerank_model_name"
                             optional
                           />
@@ -439,7 +435,7 @@ const RerankingDetailsForm = forwardRef<
                             setShowLiteLLMConfigurationModal(false);
                           }}
                         >
-                          Update
+                          Mettre à jour
                         </Button>
                       </Modal.Footer>
                     </Modal.Content>
@@ -465,7 +461,7 @@ const RerankingDetailsForm = forwardRef<
                     <Modal.Content>
                       <Modal.Header
                         icon={SvgKey}
-                        title="API Key Configuration"
+                        title="Configuration de la clé API"
                         onClose={() => {
                           Object.keys(originalRerankingDetails).forEach(
                             (key) => {
@@ -490,7 +486,7 @@ const RerankingDetailsForm = forwardRef<
                                 : values.rerank_provider_type ===
                                     RerankerProvider.BEDROCK
                                   ? "aws_ACCESSKEY_SECRETKEY_REGION"
-                                  : "Enter your API key"
+                                  : "Saisir votre clé API"
                             }
                             onChange={(
                               e: React.ChangeEvent<HTMLInputElement>
@@ -506,8 +502,8 @@ const RerankingDetailsForm = forwardRef<
                             label={
                               values.rerank_provider_type ===
                               RerankerProvider.BEDROCK
-                                ? "AWS Credentials in format: aws_ACCESSKEY_SECRETKEY_REGION"
-                                : "Cohere API Key"
+                                ? "Identifiants AWS au format : aws_ACCESSKEY_SECRETKEY_REGION"
+                                : "Clé API Cohere"
                             }
                             name="rerank_api_key"
                           />
@@ -515,7 +511,7 @@ const RerankingDetailsForm = forwardRef<
                       </Modal.Body>
                       <Modal.Footer>
                         <Button onClick={() => setIsApiKeyModalOpen(false)}>
-                          Update
+                          Mettre à jour
                         </Button>
                       </Modal.Footer>
                     </Modal.Content>

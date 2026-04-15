@@ -30,9 +30,9 @@ interface ScimModalProps {
 async function copyToClipboard(text: string) {
   try {
     await navigator.clipboard.writeText(text);
-    toast.success("Token copied to clipboard");
+    toast.success("Token copié dans le presse-papiers");
   } catch {
-    toast.error("Failed to copy token");
+    toast.error("Impossible de copier le token");
   }
 }
 
@@ -51,7 +51,7 @@ export default function ScimModal({
       return (
         <ConfirmationModalLayout
           icon={SvgRefreshCw}
-          title="Regenerate SCIM Token"
+          title="Régénérer le token SCIM"
           onClose={onClose}
           submit={
             <Button
@@ -59,15 +59,15 @@ export default function ScimModal({
               variant="danger"
               onClick={onRegenerate}
             >
-              Regenerate Token
+              Régénérer le token
             </Button>
           }
         >
           <Section alignItems="start" gap={0.5}>
             <Text as="p" text03>
-              Your current SCIM token will be revoked and a new token will be
-              generated. You will need to update the token on your identity
-              provider before SCIM provisioning will resume.
+              Votre token SCIM actuel sera révoqué et un nouveau token sera
+              généré. Vous devrez mettre à jour le token sur votre fournisseur d&apos;identité
+              avant que le provisionnement SCIM reprenne.
             </Text>
           </Section>
         </ConfirmationModalLayout>
@@ -79,8 +79,8 @@ export default function ScimModal({
           <Modal.Content width="sm">
             <Modal.Header
               icon={SvgKey}
-              title="SCIM Token"
-              description="Save this key before continuing. It won't be shown again."
+              title="Token SCIM"
+              description="Sauvegardez cette clé avant de continuer. Elle ne sera plus affichée."
               onClose={onClose}
             />
             <Modal.Body>
@@ -121,7 +121,7 @@ export default function ScimModal({
                       })
                     }
                   >
-                    Download
+                    Télécharger
                   </Button>
                 }
                 submit={
@@ -129,7 +129,7 @@ export default function ScimModal({
                     autoFocus
                     onClick={() => copyToClipboard(view.rawToken)}
                   >
-                    Copy Token
+                    Copier le token
                   </Button>
                 }
               />

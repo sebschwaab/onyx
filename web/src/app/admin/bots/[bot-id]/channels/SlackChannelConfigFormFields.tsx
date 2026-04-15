@@ -157,7 +157,7 @@ export function SlackChannelConfigFormFields({
         )
       );
       toast.warning(
-        "We removed one or more document sets from your selection because they are no longer valid. Please review and update your configuration."
+        "Nous avons supprimé un ou plusieurs ensembles de documents de votre sélection car ils ne sont plus valides. Veuillez vérifier et mettre à jour votre configuration."
       );
     }
   }, [unselectableSets, values.document_sets, setFieldValue]);
@@ -274,9 +274,9 @@ export function SlackChannelConfigFormFields({
                         className="text-sm text-action-link-05"
                       >
                         {viewUnselectableSets
-                          ? "Hide un-selectable "
-                          : "View all "}
-                        document sets
+                          ? "Masquer les non-sélectionnables "
+                          : "Tout afficher "}
+                        ensembles de documents
                       </button>
                     </span>
                   ) : (
@@ -323,7 +323,7 @@ export function SlackChannelConfigFormFields({
                               key={documentSet.id}
                               documentSet={documentSet}
                               disabled
-                              disabledTooltip="Unable to use this document set because it contains a connector with auto-sync permissions. OnyxBot's responses in this channel are visible to all Slack users, so mirroring the asker's permissions could inadvertently expose private information."
+                              disabledTooltip="Impossible d'utiliser cet ensemble de documents car il contient un connecteur avec des permissions de synchronisation automatique. Les réponses d'OnyxBot dans ce canal sont visibles par tous les utilisateurs Slack, donc reproduire les permissions du demandeur pourrait exposer involontairement des informations privées."
                               isSelected={false}
                             />
                           ))}
@@ -363,8 +363,8 @@ export function SlackChannelConfigFormFields({
                         className="text-sm text-action-link-05"
                       >
                         {viewSyncEnabledAgents
-                          ? "Hide un-selectable "
-                          : "View all "}
+                          ? "Masquer les non-sélectionnables "
+                          : "Tout afficher "}
                         agents
                       </button>
                     </span>
@@ -374,7 +374,7 @@ export function SlackChannelConfigFormFields({
             </SubLabel>
 
             <InputComboBox
-              placeholder="Search for an agent..."
+              placeholder="Rechercher un agent..."
               value={String(values.persona_id ?? "")}
               onValueChange={(val) =>
                 setFieldValue("persona_id", val ? Number(val) : null)
@@ -429,8 +429,8 @@ export function SlackChannelConfigFormFields({
                         className="text-sm text-action-link-05"
                       >
                         {viewSyncEnabledAgents
-                          ? "Hide un-selectable "
-                          : "View all "}
+                          ? "Masquer les non-sélectionnables "
+                          : "Tout afficher "}
                         agents
                       </button>
                     </span>
@@ -440,7 +440,7 @@ export function SlackChannelConfigFormFields({
             </SubLabel>
 
             <InputComboBox
-              placeholder="Search for an agent..."
+              placeholder="Rechercher un agent..."
               value={String(values.persona_id ?? "")}
               onValueChange={(val) =>
                 setFieldValue("persona_id", val ? Number(val) : null)
@@ -463,7 +463,7 @@ export function SlackChannelConfigFormFields({
                 <div className="w-64">
                   <SelectorFormField
                     name="response_type"
-                    label="Answer Type"
+                    label="Type de réponse"
                     tooltip="Contrôle le format des réponses d'OnyxBot."
                     options={[
                       { name: "Standard", value: "citations" },
@@ -504,20 +504,17 @@ export function SlackChannelConfigFormFields({
                       demandant à l'utilisateur s'il a encore besoin d'aide.`}
               />
               {values.still_need_help_enabled && (
-                <CollapsibleSection prompt="Configure Still Need Help Button">
+                <CollapsibleSection prompt="Configurer le bouton Encore besoin d'aide">
                   <TextArrayField
                     name="follow_up_tags"
-                    label="(Optional) Users / Groups to Tag"
+                    label="(Optionnel) Utilisateurs / Groupes à mentionner"
                     values={values}
                     subtext={
                       <div>
-                        The Slack users / groups we should tag if the user
-                        clicks the &quot;Still need help?&quot; button. If no
-                        emails are provided, we will not tag anyone and will
-                        just react with a 🆘 emoji to the original message.
+                        Les utilisateurs / groupes Slack à mentionner si l&apos;utilisateur clique sur le bouton &quot;Encore besoin d&apos;aide ?&quot;. Si aucun email n&apos;est fourni, nous ne mentionnerons personne et réagirons simplement avec un emoji 🆘 au message original.
                       </div>
                     }
-                    placeholder="User email or user group name..."
+                    placeholder="Email d'utilisateur ou nom de groupe..."
                   />
                 </CollapsibleSection>
               )}
@@ -540,9 +537,7 @@ export function SlackChannelConfigFormFields({
               <CheckboxField
                 name="is_ephemeral"
                 label="Répondre à l'utilisateur en message privé (éphémère)"
-                tooltip="If set, OnyxBot will respond only to the user in a private (ephemeral) message. If you also
-                chose 'Search' Agent above, selecting this option will make documents that are private to the user
-                available for their queries."
+                tooltip="Si activé, OnyxBot répondra uniquement à l'utilisateur en message privé (éphémère). Si vous avez également choisi l'agent 'Recherche' ci-dessus, cette option rendra les documents privés de l'utilisateur disponibles pour ses requêtes."
               />
 
               <TextArrayField

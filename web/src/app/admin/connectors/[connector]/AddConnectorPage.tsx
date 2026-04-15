@@ -96,7 +96,7 @@ export async function submitConnector<T>(
       );
       if (response.ok) {
         const responseJson = await response.json();
-        return { message: "Success!", isSuccess: true, response: responseJson };
+        return { message: "Succès !", isSuccess: true, response: responseJson };
       } else {
         const errorData = await response.json();
         return { message: `Error: ${errorData.detail}`, isSuccess: false };
@@ -115,7 +115,7 @@ export async function submitConnector<T>(
 
       if (response.ok) {
         const responseJson = await response.json();
-        return { message: "Success!", isSuccess: true, response: responseJson };
+        return { message: "Succès !", isSuccess: true, response: responseJson };
       } else {
         const errorData = await response.json();
         return { message: `Error: ${errorData.detail}`, isSuccess: false };

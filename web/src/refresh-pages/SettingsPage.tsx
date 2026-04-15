@@ -1404,7 +1404,7 @@ function AccountsAccessSettings() {
                       </Section>
                     ) : (
                       <InputTypeIn
-                        placeholder="Search..."
+                        placeholder="Rechercher..."
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         leftSearchIcon

@@ -192,14 +192,14 @@ export default function AppHealthBanner() {
     return (
       <Modal open>
         <Modal.Content width="sm" height="sm">
-          <Modal.Header icon={SvgLogOut} title="You Have Been Logged Out" />
+          <Modal.Header icon={SvgLogOut} title="Vous avez été déconnecté" />
           <Modal.Body>
             <p className="text-sm">
-              Your session has expired. Please log in again to continue.
+              Votre session a expiré. Veuillez vous reconnecter pour continuer.
             </p>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={handleLogin}>Log In</Button>
+            <Button onClick={handleLogin}>Se connecter</Button>
           </Modal.Footer>
         </Modal.Content>
       </Modal>
@@ -220,8 +220,8 @@ export default function AppHealthBanner() {
       <div className="fixed top-0 left-0 z-[101] w-full bg-status-error-01 p-3">
         <Content
           icon={SvgAlertTriangle}
-          title="The backend is currently unavailable"
-          description="If this is your initial setup or you just updated your Onyx deployment, this is likely because the backend is still starting up. Give it a minute or two, and then refresh the page. If that does not work, make sure the backend is setup and/or contact an administrator."
+          title="Le backend est actuellement indisponible"
+          description="Si c'est votre configuration initiale ou si vous venez de mettre à jour votre déploiement Onyx, c'est probablement parce que le backend est encore en cours de démarrage. Attendez une minute ou deux, puis actualisez la page. Si cela ne fonctionne pas, vérifiez la configuration du backend et/ou contactez un administrateur."
           sizePreset="main-content"
           variant="section"
         />

@@ -31,7 +31,7 @@ function Main() {
   };
 
   if (isMostLikedDocumentsLoading || isMostLikedDocumentLoading) {
-    return <LoadingAnimation text="Loading" />;
+    return <LoadingAnimation text="Chargement" />;
   }
 
   if (

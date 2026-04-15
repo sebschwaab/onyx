@@ -48,7 +48,7 @@ function Main({ documentSetId }: { documentSetId: number }) {
   if (documentSetsError || !documentSets) {
     return (
       <ErrorCallout
-        errorTitle="Failed to fetch document sets"
+        errorTitle="Impossible de récupérer les ensembles de documents"
         errorMsg={documentSetsError}
       />
     );
@@ -57,7 +57,7 @@ function Main({ documentSetId }: { documentSetId: number }) {
   if (vectorDbEnabled && (ccPairsError || !ccPairs)) {
     return (
       <ErrorCallout
-        errorTitle="Failed to fetch Connectors"
+        errorTitle="Impossible de récupérer les connecteurs"
         errorMsg={ccPairsError}
       />
     );
@@ -69,8 +69,8 @@ function Main({ documentSetId }: { documentSetId: number }) {
   if (!documentSet) {
     return (
       <ErrorCallout
-        errorTitle="Document set not found"
-        errorMsg={`Document set with id ${documentSetId} not found`}
+        errorTitle="Ensemble de documents introuvable"
+        errorMsg={`Ensemble de documents avec l'id ${documentSetId} introuvable`}
       />
     );
   }
@@ -100,7 +100,7 @@ export default function Page(props: {
     <SettingsLayouts.Root>
       <SettingsLayouts.Header
         icon={route.icon}
-        title="Edit Document Set"
+        title="Modifier l'ensemble de documents"
         separator
         backButton
       />

@@ -53,13 +53,13 @@ function renderCreatedByColumn(
       sizePreset="main-ui"
       variant="section"
       icon={SvgUser}
-      title={row.builtin_persona ? "System" : row.owner?.email ?? "\u2014"}
+      title={row.builtin_persona ? "Système" : row.owner?.email ?? "\u2014"}
     />
   );
 }
 
 function getAccessTitle(row: AgentRow): string {
-  if (row.is_public) return "Public";
+  if (row.is_public) return "Public"; // "Public" is universally understood
   if (row.groups.length > 0 || row.users.length > 0) return "Partagé";
   return "Privé";
 }

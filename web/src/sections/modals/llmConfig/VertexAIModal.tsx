@@ -63,7 +63,7 @@ export default function VertexAIModal({
     extra: {
       custom_config: Yup.object({
         vertex_credentials: Yup.string().required(
-          "Credentials file is required"
+          "Le fichier de credentials est requis"
         ),
         vertex_location: Yup.string(),
       }),
@@ -111,8 +111,8 @@ export default function VertexAIModal({
               await refreshLlmProviderCaches(mutate);
               toast.success(
                 existingLlmProvider
-                  ? "Provider updated successfully!"
-                  : "Provider enabled successfully!"
+                  ? "Fournisseur mis à jour avec succès !"
+                  : "Fournisseur activé avec succès !"
               );
             }
           },
@@ -122,8 +122,8 @@ export default function VertexAIModal({
       <InputLayouts.FieldPadder>
         <InputLayouts.Vertical
           name="custom_config.vertex_location"
-          title="Google Cloud Region Name"
-          subDescription="Region where your Google Vertex AI models are hosted. See full list of regions supported at Google Cloud."
+          title="Nom de la région Google Cloud"
+          subDescription="Région où vos modèles Google Vertex AI sont hébergés. Voir la liste complète des régions supportées sur Google Cloud."
         >
           <InputTypeInField
             name="custom_config.vertex_location"
@@ -135,8 +135,8 @@ export default function VertexAIModal({
       <InputLayouts.FieldPadder>
         <InputLayouts.Vertical
           name="custom_config.vertex_credentials"
-          title="API Key"
-          subDescription="Attach your API key JSON from Google Cloud to access your models."
+          title="Clé API"
+          subDescription="Joignez votre JSON de clé API de Google Cloud pour accéder à vos modèles."
         >
           <FileUploadFormField
             name="custom_config.vertex_credentials"

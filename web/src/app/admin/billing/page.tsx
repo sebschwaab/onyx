@@ -57,8 +57,8 @@ function FooterLinks({
 }) {
   const { user } = useUser();
   const licenseText = hasSubscription
-    ? "Update License Key"
-    : "Activate License Key";
+    ? "Mettre à jour la clé de licence"
+    : "Activer la clé de licence";
   const billingHelpHref = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(
     `[Billing] support for ${user?.email ?? "unknown"}`
   )}`;
@@ -68,7 +68,7 @@ function FooterLinks({
       {onActivateLicense && !hideLicenseLink && (
         <>
           <Text secondaryBody text03>
-            Have a license key?
+            Vous avez une clé de licence ?
           </Text>
           {/* TODO(@raunakab): migrate to opal Button once className/iconClassName is resolved */}
           <Button action tertiary onClick={onActivateLicense}>
@@ -86,7 +86,7 @@ function FooterLinks({
         className="billing-text-link"
       >
         <Text secondaryBody text03 className="underline">
-          Billing Help
+          Aide facturation
         </Text>
       </Button>
     </Section>
@@ -323,7 +323,7 @@ export default function BillingPage() {
     if (isLoading || view === null) {
       return {
         icon: SvgWallet,
-        title: "Plans & Billing",
+        title: "Abonnements & Facturation",
         showBackButton: false,
       };
     }
@@ -331,13 +331,13 @@ export default function BillingPage() {
       case "checkout":
         return {
           icon: SvgArrowUpCircle,
-          title: "Upgrade Plan",
+          title: "Mettre à niveau l'abonnement",
           showBackButton: false,
         };
       case "plans":
         return {
           icon: hasSubscription ? SvgWallet : SvgArrowUpCircle,
-          title: hasSubscription ? "View Plans" : "Upgrade Plan",
+          title: hasSubscription ? "Voir les abonnements" : "Mettre à niveau l'abonnement",
           showBackButton: !!(
             hasSubscription ||
             (isSelfHosted && licenseData?.has_license)
@@ -346,7 +346,7 @@ export default function BillingPage() {
       case "details":
         return {
           icon: SvgWallet,
-          title: "Plans & Billing",
+          title: "Abonnements & Facturation",
           showBackButton: false,
         };
     }
@@ -479,8 +479,8 @@ export default function BillingPage() {
               static
               warning
               large
-              text="Your license is still activating"
-              description="Your license is being processed. You'll be taken to billing details automatically once confirmed."
+              text="Votre licence est en cours d'activation"
+              description="Votre licence est en cours de traitement. Vous serez redirigé vers les détails de facturation automatiquement une fois confirmée."
               icon
               close
               onClose={() => {

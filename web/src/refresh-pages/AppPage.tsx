@@ -514,7 +514,7 @@ export default function AppPage({ firstMessage }: ChatPageProps) {
       .reverse()
       .find((m) => m.type === "user");
     if (!lastUserMsg) {
-      toast.error("No previously-submitted user message found.");
+      toast.error("Aucun message utilisateur précédemment soumis trouvé.");
       return;
     }
 
@@ -731,7 +731,7 @@ export default function AppPage({ firstMessage }: ChatPageProps) {
             <Modal.Content>
               <Modal.Header
                 icon={SvgFileText}
-                title="Sources"
+                title="Sources de données"
                 onClose={() => updateCurrentDocumentSidebarVisible(false)}
               />
               <Modal.Body>

@@ -107,11 +107,11 @@ export default function ImageGenerationContent() {
     if (config) {
       try {
         await setDefaultImageGenerationConfig(config.image_provider_id);
-        toast.success(`${provider.title} set as default`);
+        toast.success(`${provider.title} défini comme modèle par défaut`);
         refetchConfigs();
       } catch (error) {
         toast.error(
-          error instanceof Error ? error.message : "Failed to set default"
+          error instanceof Error ? error.message : "Impossible de définir comme défaut"
         );
       }
     }
@@ -124,11 +124,11 @@ export default function ImageGenerationContent() {
     if (config) {
       try {
         await unsetDefaultImageGenerationConfig(config.image_provider_id);
-        toast.success(`${provider.title} deselected`);
+        toast.success(`${provider.title} désélectionné`);
         refetchConfigs();
       } catch (error) {
         toast.error(
-          error instanceof Error ? error.message : "Failed to deselect"
+          error instanceof Error ? error.message : "Impossible de désélectionner"
         );
       }
     }
@@ -152,13 +152,13 @@ export default function ImageGenerationContent() {
       }
 
       await deleteImageGenerationConfig(disconnectProvider.image_provider_id);
-      toast.success(`${disconnectProvider.title} disconnected`);
+      toast.success(`${disconnectProvider.title} déconnecté`);
       refetchConfigs();
       refetchProviders();
     } catch (error) {
       console.error("Failed to disconnect image generation provider:", error);
       toast.error(
-        error instanceof Error ? error.message : "Failed to disconnect"
+        error instanceof Error ? error.message : "Impossible de déconnecter"
       );
     } finally {
       setDisconnectProvider(null);
@@ -167,7 +167,7 @@ export default function ImageGenerationContent() {
   };
 
   const handleModalSuccess = () => {
-    toast.success("Provider configured successfully");
+    toast.success("Fournisseur configuré avec succès");
     setEditConfig(null);
     refetchConfigs();
     refetchProviders();
@@ -176,7 +176,7 @@ export default function ImageGenerationContent() {
   if (llmError || configError) {
     return (
       <div className="text-error">
-        Failed to load configuration. Please refresh the page.
+        Impossible de charger la configuration. Veuillez rafraîchir la page.
       </div>
     );
   }
@@ -215,8 +215,8 @@ export default function ImageGenerationContent() {
     <>
       <div className="flex flex-col gap-4">
         <Content
-          title="Image Generation Model"
-          description="Select a model to generate images in chat."
+          title="Modèle de génération d'images"
+          description="Sélectionnez un modèle pour générer des images dans le chat."
           sizePreset="main-content"
           variant="section"
         />
@@ -227,7 +227,7 @@ export default function ImageGenerationContent() {
             static
             large
             close={false}
-            text="Connect an image generation model to use in chat."
+            text="Connectez un modèle de génération d'images pour l'utiliser dans le chat."
             className="w-full"
           />
         )}
@@ -281,7 +281,7 @@ export default function ImageGenerationContent() {
                               handleConnect(provider);
                             }}
                           >
-                            Connect
+                            Connecter
                           </Button>
                         ) : isConnected ? (
                           <Button
@@ -292,12 +292,12 @@ export default function ImageGenerationContent() {
                               handleSelect(provider);
                             }}
                           >
-                            Set as Default
+                            Définir par défaut
                           </Button>
                         ) : isSelected ? (
                           <div className="p-2">
                             <Content
-                              title="Current Default"
+                              title="Défaut actuel"
                               sizePreset="main-ui"
                               variant="section"
                               icon={SvgCheckSquare}
@@ -311,8 +311,8 @@ export default function ImageGenerationContent() {
                             <Hoverable.Item group="image-gen/ProviderCard">
                               <Button
                                 icon={SvgUnplug}
-                                tooltip="Disconnect"
-                                aria-label={`Disconnect ${provider.title}`}
+                                tooltip="Déconnecter"
+                                aria-label={`Déconnecter ${provider.title}`}
                                 prominence="tertiary"
                                 onClick={(e) => {
                                   e.stopPropagation();
@@ -323,8 +323,8 @@ export default function ImageGenerationContent() {
                             </Hoverable.Item>
                             <Button
                               icon={SvgSettings}
-                              tooltip="Edit"
-                              aria-label={`Edit ${provider.title}`}
+                              tooltip="Modifier"
+                              aria-label={`Modifier ${provider.title}`}
                               prominence="tertiary"
                               onClick={(e) => {
                                 e.stopPropagation();
@@ -348,7 +348,7 @@ export default function ImageGenerationContent() {
         <ConfirmationModalLayout
           icon={SvgUnplug}
           title={markdown(`Disconnect *${disconnectProvider.title}*`)}
-          description="This will remove the stored credentials for this provider."
+          description="Cela supprimera les identifiants stockés pour ce fournisseur."
           onClose={() => {
             setDisconnectProvider(null);
             setReplacementProviderId(null);
@@ -361,7 +361,7 @@ export default function ImageGenerationContent() {
                 needsReplacement && hasReplacements && !replacementProviderId
               }
             >
-              Disconnect
+              Déconnecter
             </Button>
           }
         >
@@ -370,18 +370,18 @@ export default function ImageGenerationContent() {
               <Section alignItems="start">
                 <Text as="p" color="text-03">
                   {markdown(
-                    `**${disconnectProvider.title}** is currently the default image generation model. Session history will be preserved.`
+                    `**${disconnectProvider.title}** est actuellement le modèle de génération d'images par défaut. L'historique des sessions sera préservé.`
                   )}
                 </Text>
                 <Section alignItems="start" gap={0.25}>
                   <Text as="p" color="text-04">
-                    Set New Default
+                    Définir un nouveau défaut
                   </Text>
                   <InputSelect
                     value={replacementProviderId ?? undefined}
                     onValueChange={(v) => setReplacementProviderId(v)}
                   >
-                    <InputSelect.Trigger placeholder="Select a replacement model" />
+                    <InputSelect.Trigger placeholder="Sélectionner un modèle de remplacement" />
                     <InputSelect.Content>
                       {replacementGroups.map((group) => (
                         <InputSelect.Group key={group.name}>
@@ -408,10 +408,10 @@ export default function ImageGenerationContent() {
                         icon={SvgSlash}
                       >
                         <span>
-                          <b>No Default</b>
+                          <b>Aucun défaut</b>
                           <span className="text-text-03">
                             {" "}
-                            (Disable Image Generation)
+                            (Désactiver la génération d&apos;images)
                           </span>
                         </span>
                       </InputSelect.Item>
@@ -423,11 +423,11 @@ export default function ImageGenerationContent() {
               <>
                 <Text as="p" color="text-03">
                   {markdown(
-                    `**${disconnectProvider.title}** is currently the default image generation model.`
+                    `**${disconnectProvider.title}** est actuellement le modèle de génération d'images par défaut.`
                   )}
                 </Text>
                 <Text as="p" color="text-03">
-                  Connect another provider to continue using image generation.
+                  Connectez un autre fournisseur pour continuer à utiliser la génération d&apos;images.
                 </Text>
               </>
             )
@@ -435,11 +435,11 @@ export default function ImageGenerationContent() {
             <>
               <Text as="p" color="text-03">
                 {markdown(
-                  `**${disconnectProvider.title}** models will no longer be used to generate images.`
+                  `Les modèles **${disconnectProvider.title}** ne seront plus utilisés pour générer des images.`
                 )}
               </Text>
               <Text as="p" color="text-03">
-                Session history will be preserved.
+                L&apos;historique des sessions sera préservé.
               </Text>
             </>
           )}

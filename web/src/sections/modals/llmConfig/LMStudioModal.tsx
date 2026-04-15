@@ -67,14 +67,14 @@ function LMStudioModalInternals({
   return (
     <>
       <APIBaseField
-        subDescription="The base URL for your LM Studio server."
-        placeholder="Your LM Studio API base URL"
+        subDescription="L'URL de base de votre serveur LM Studio."
+        placeholder="Votre URL de base de l'API LM Studio"
       />
 
       <APIKeyField
         name="custom_config.LM_STUDIO_API_KEY"
         optional
-        subDescription="Optional API key if your LM Studio server requires authentication."
+        subDescription="Clé API optionnelle si votre serveur LM Studio requiert une authentification."
       />
 
       {!isOnboarding && (
@@ -167,8 +167,8 @@ export default function LMStudioModal({
               await refreshLlmProviderCaches(mutate);
               toast.success(
                 existingLlmProvider
-                  ? "Provider updated successfully!"
-                  : "Provider enabled successfully!"
+                  ? "Fournisseur mis à jour avec succès !"
+                  : "Fournisseur activé avec succès !"
               );
             }
           },

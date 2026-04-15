@@ -139,22 +139,21 @@ export default function UpgradingPage({
           <Modal.Content width="sm" height="sm">
             <Modal.Header
               icon={SvgX}
-              title="Cancel Embedding Model Switch"
+              title="Annuler le changement de modèle d'embedding"
               onClose={() => setIsCancelling(false)}
             />
             <Modal.Body>
               <div>
-                Are you sure you want to cancel? Cancelling will revert to the
-                previous model and all progress will be lost.
+                Êtes-vous sûr de vouloir annuler ? L&apos;annulation reviendra au modèle précédent et toute la progression sera perdue.
               </div>
             </Modal.Body>
             <Modal.Footer>
-              <OpalButton onClick={onCancel}>Confirm</OpalButton>
+              <OpalButton onClick={onCancel}>Confirmer</OpalButton>
               <OpalButton
                 prominence="secondary"
                 onClick={() => setIsCancelling(false)}
               >
-                Cancel
+                Annuler
               </OpalButton>
             </Modal.Footer>
           </Modal.Content>
@@ -206,10 +205,10 @@ export default function UpgradingPage({
                   <Text as="p">
                     {futureEmbeddingModel.switchover_type === "active_only"
                       ? markdown(
-                          "The table below shows the re-indexing progress of active (non-paused) connectors. Once all active connectors have been re-indexed successfully, the new model will be used for all search queries. Paused connectors will continue to be indexed in the background but won't block the switchover. Until then, we will use the old model so that no downtime is necessary during this transition.\nNote: User file re-indexing progress is not shown. You will see this page until all active connectors are re-indexed!"
+                          "Le tableau ci-dessous montre la progression de la réindexation des connecteurs actifs (non mis en pause). Une fois tous les connecteurs actifs réindexés avec succès, le nouveau modèle sera utilisé pour toutes les requêtes de recherche. Les connecteurs mis en pause continueront d'être indexés en arrière-plan mais ne bloqueront pas le basculement. En attendant, nous utiliserons l'ancien modèle pour qu'aucune interruption de service ne soit nécessaire pendant cette transition.\nRemarque : La progression de la réindexation des fichiers utilisateurs n'est pas affichée. Vous verrez cette page jusqu'à ce que tous les connecteurs actifs soient réindexés !"
                         )
                       : markdown(
-                          "The table below shows the re-indexing progress of all existing connectors. Once all connectors have been re-indexed successfully, the new model will be used for all search queries. Until then, we will use the old model so that no downtime is necessary during this transition.\nNote: User file re-indexing progress is not shown. You will see this page until all user files are re-indexed!"
+                          "Le tableau ci-dessous montre la progression de la réindexation de tous les connecteurs existants. Une fois tous les connecteurs réindexés avec succès, le nouveau modèle sera utilisé pour toutes les requêtes de recherche. En attendant, nous utiliserons l'ancien modèle pour qu'aucune interruption de service ne soit nécessaire pendant cette transition.\nRemarque : La progression de la réindexation des fichiers utilisateurs n'est pas affichée. Vous verrez cette page jusqu'à ce que tous les fichiers utilisateurs soient réindexés !"
                         )}
                   </Text>
                   <Spacer rem={1} />
@@ -221,9 +220,7 @@ export default function UpgradingPage({
                           <>
                             <Spacer rem={1} />
                             <Text as="p">
-                              All connectors are currently paused, so none are
-                              blocking the switchover. Paused connectors will
-                              keep re-indexing in the background.
+                              Tous les connecteurs sont actuellement mis en pause, aucun ne bloque donc le basculement. Les connecteurs mis en pause continueront de se réindexer en arrière-plan.
                             </Text>
                           </>
                         )}
@@ -234,7 +231,7 @@ export default function UpgradingPage({
                       )}
                     </>
                   ) : (
-                    <ErrorCallout errorTitle="Failed to fetch re-indexing progress" />
+                    <ErrorCallout errorTitle="Impossible de récupérer la progression de la réindexation" />
                   )}
                 </>
               )

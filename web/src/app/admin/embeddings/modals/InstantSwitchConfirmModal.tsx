@@ -16,23 +16,23 @@ export default function InstantSwitchConfirmModal({
       <Modal.Content width="sm" height="sm">
         <Modal.Header
           icon={SvgAlertTriangle}
-          title="Are you sure you want to do an instant switch?"
+          title="Êtes-vous sûr de vouloir effectuer un changement instantané ?"
           onClose={onClose}
         />
         <Modal.Body>
           <Text as="p">
-            Instant switching will immediately change the embedding model
-            without re-indexing. Searches will be over a partial set of
-            documents (starting with 0 documents) until re-indexing is complete.
+            Le changement instantané modifiera immédiatement le modèle d&apos;embeddings
+            sans réindexer. Les recherches porteront sur un ensemble partiel de
+            documents (en commençant par 0 document) jusqu&apos;à la fin de la réindexation.
           </Text>
           <Text as="p">
-            <strong>This is not reversible.</strong>
+            <strong>Cette action est irréversible.</strong>
           </Text>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={onConfirm}>Confirm</Button>
+          <Button onClick={onConfirm}>Confirmer</Button>
           <Button prominence="secondary" onClick={onClose}>
-            Cancel
+            Annuler
           </Button>
         </Modal.Footer>
       </Modal.Content>

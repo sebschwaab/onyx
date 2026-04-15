@@ -81,7 +81,7 @@ export default function ScimSyncCard({
                 <SvgClock size={15} className="text-theme-amber-05" />
               )}
               <Text as="p" mainUiBody text04>
-                {isConnected ? "Connected" : "Waiting for Connection"}
+                {isConnected ? "Connecté" : "En attente de connexion"}
               </Text>
             </Section>
 

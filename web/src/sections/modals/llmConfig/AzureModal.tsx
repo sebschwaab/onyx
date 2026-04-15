@@ -90,7 +90,7 @@ const processValues = (values: AzureModalValues): AzureModalValues => {
         deployment_name: deploymentName || processedValues.deployment_name,
       };
     } catch {
-      toast.warning("Failed to parse target URI — using original values.");
+      toast.warning("Impossible d'analyser l'URI cible — utilisation des valeurs d'origine.");
     }
   }
   return processedValues;
@@ -121,10 +121,10 @@ export default function AzureModal({
     apiKey: true,
     extra: {
       target_uri: Yup.string()
-        .required("Target URI is required")
+        .required("L'URI cible est requis")
         .test(
           "valid-target-uri",
-          "Target URI must be a valid URL with api-version query parameter and either a deployment name in the path or /openai/responses",
+          "L'URI cible doit être une URL valide avec le paramètre api-version et un nom de déploiement ou /openai/responses",
           (value) => (value ? isValidAzureTargetUri(value) : false)
         ),
     },
@@ -159,8 +159,8 @@ export default function AzureModal({
               await refreshLlmProviderCaches(mutate);
               toast.success(
                 existingLlmProvider
-                  ? "Provider updated successfully!"
-                  : "Provider enabled successfully!"
+                  ? "Fournisseur mis à jour avec succès !"
+                  : "Fournisseur activé avec succès !"
               );
             }
           },
@@ -170,8 +170,8 @@ export default function AzureModal({
       <InputLayouts.FieldPadder>
         <InputLayouts.Vertical
           name="target_uri"
-          title="Target URI"
-          subDescription="Paste your endpoint target URI from Azure OpenAI (including API endpoint base, deployment name, and API version)."
+          title="URI cible"
+          subDescription="Collez l'URI cible de votre point de terminaison Azure OpenAI (incluant la base de l'endpoint, le nom du déploiement et la version de l'API)."
         >
           <InputTypeInField
             name="target_uri"

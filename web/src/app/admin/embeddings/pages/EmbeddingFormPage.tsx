@@ -287,7 +287,7 @@ export default function EmbeddingForm() {
                     setSwitchoverType(SwitchoverType.REINDEX);
                   }}
                 >
-                  <SimpleTooltip tooltip="Re-runs all connectors in the background before switching over. Takes longer but ensures no degredation of search during the switch.">
+                  <SimpleTooltip tooltip="Relance tous les connecteurs en arrière-plan avant le basculement. Plus long mais garantit aucune dégradation de la recherche pendant la transition.">
                     <span className="w-full text-left">
                       (Recommandé) Réindexer
                     </span>
@@ -298,7 +298,7 @@ export default function EmbeddingForm() {
                     setSwitchoverType(SwitchoverType.ACTIVE_ONLY);
                   }}
                 >
-                  <SimpleTooltip tooltip="Re-runs only active (non-paused) connectors in the background before switching over. Paused connectors won't block the switchover.">
+                  <SimpleTooltip tooltip="Relance uniquement les connecteurs actifs (non mis en pause) en arrière-plan avant le basculement. Les connecteurs mis en pause ne bloqueront pas le basculement.">
                     <span className="w-full text-left">
                       Connecteurs actifs seulement
                     </span>
@@ -309,7 +309,7 @@ export default function EmbeddingForm() {
                     setSwitchoverType(SwitchoverType.INSTANT);
                   }}
                 >
-                  <SimpleTooltip tooltip="Immediately switches to new settings without re-indexing. Searches will be degraded until the re-indexing is complete.">
+                  <SimpleTooltip tooltip="Bascule immédiatement vers les nouveaux paramètres sans réindexation. Les recherches seront dégradées jusqu'à la fin de la réindexation.">
                     <span className="w-full text-left">Bascule instantanée</span>
                   </SimpleTooltip>
                 </DropdownMenuItem>

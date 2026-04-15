@@ -61,7 +61,7 @@ function BifrostModalInternals({
   return (
     <>
       <APIBaseField
-        subDescription="Paste your Bifrost gateway endpoint URL (including API version)."
+        subDescription="Collez l'URL de votre endpoint Bifrost (incluant la version de l'API)."
         placeholder="https://your-bifrost-gateway.com/v1"
       />
 
@@ -144,8 +144,8 @@ export default function BifrostModal({
               await refreshLlmProviderCaches(mutate);
               toast.success(
                 existingLlmProvider
-                  ? "Provider updated successfully!"
-                  : "Provider enabled successfully!"
+                  ? "Fournisseur mis à jour avec succès !"
+                  : "Fournisseur activé avec succès !"
               );
             }
           },

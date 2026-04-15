@@ -57,12 +57,12 @@ export function DisplayNameField({ disabled = false }: DisplayNameFieldProps) {
     <InputLayouts.FieldPadder>
       <InputLayouts.Vertical
         name="name"
-        title="Display Name"
-        subDescription="Used to identify this provider in the app."
+        title="Nom d'affichage"
+        subDescription="Utilisé pour identifier ce fournisseur dans l'application."
       >
         <InputTypeInField
           name="name"
-          placeholder="Display Name"
+          placeholder="Nom d'affichage"
           variant={disabled ? "disabled" : undefined}
         />
       </InputLayouts.Vertical>
@@ -89,15 +89,15 @@ export function APIKeyField({
     <InputLayouts.FieldPadder>
       <InputLayouts.Vertical
         name={name}
-        title="API Key"
+        title="Clé API"
         subDescription={
           subDescription
             ? subDescription
             : providerName
-              ? `Paste your API key from ${providerName} to access your models.`
-              : "Paste your API key to access your models."
+              ? `Collez votre clé API de ${providerName} pour accéder à vos modèles.`
+              : "Collez votre clé API pour accéder à vos modèles."
         }
-        suffix={optional ? "optional" : undefined}
+        suffix={optional ? "optionnel" : undefined}
       >
         <PasswordInputTypeInField name={name} />
       </InputLayouts.Vertical>
@@ -121,9 +121,9 @@ export function APIBaseField({
     <InputLayouts.FieldPadder>
       <InputLayouts.Vertical
         name="api_base"
-        title="API Base URL"
+        title="URL de base de l'API"
         subDescription={subDescription}
-        suffix={optional ? "optional" : undefined}
+        suffix={optional ? "optionnel" : undefined}
       >
         <InputTypeInField name="api_base" placeholder={placeholder} />
       </InputLayouts.Vertical>
@@ -224,20 +224,20 @@ export function ModelAccessField() {
       <InputLayouts.FieldPadder>
         <InputLayouts.Horizontal
           name="is_public"
-          title="Models Access"
-          description="Who can access this provider."
+          title="Accès aux modèles"
+          description="Qui peut accéder à ce fournisseur."
         >
           <InputSelect
             value={isPublic ? "public" : "private"}
             onValueChange={handleAccessChange}
           >
-            <InputSelect.Trigger placeholder="Select access level" />
+            <InputSelect.Trigger placeholder="Sélectionner le niveau d'accès" />
             <InputSelect.Content>
               <InputSelect.Item value="public" icon={SvgOrganization}>
-                All Users & Agents
+                Tous les utilisateurs & agents
               </InputSelect.Item>
               <InputSelect.Item value="private" icon={SvgUsers}>
-                Named Groups & Agents
+                Groupes & agents désignés
               </InputSelect.Item>
             </InputSelect.Content>
           </InputSelect>
@@ -248,7 +248,7 @@ export function ModelAccessField() {
         <Card background="light" border="none" padding="sm">
           <Section gap={0.5}>
             <InputComboBox
-              placeholder="Add groups and agents"
+              placeholder="Ajouter des groupes et agents"
               value=""
               onChange={() => {}}
               onValueChange={handleSelect}
@@ -262,13 +262,13 @@ export function ModelAccessField() {
                 icon={SvgUserManage}
                 title="Admin"
                 description={`${adminCount} ${
-                  adminCount === 1 ? "member" : "members"
+                  adminCount === 1 ? "membre" : "membres"
                 }`}
                 sizePreset="main-ui"
                 variant="section"
                 rightChildren={
                   <Text secondaryBody text03>
-                    Always shared
+                    Toujours partagé
                   </Text>
                 }
                 paddingVariant="fit"
@@ -286,7 +286,7 @@ export function ModelAccessField() {
                           icon={SvgUsers}
                           title={group?.name ?? `Group ${id}`}
                           description={`${memberCount} ${
-                            memberCount === 1 ? "member" : "members"
+                            memberCount === 1 ? "membre" : "membres"
                           }`}
                           sizePreset="main-ui"
                           variant="section"
@@ -347,8 +347,8 @@ export function ModelAccessField() {
               <div className="w-full p-2">
                 <Content
                   icon={SvgOnyxOctagon}
-                  title="No agents added"
-                  description="This provider will not be used by any agents."
+                  title="Aucun agent ajouté"
+                  description="Ce fournisseur ne sera utilisé par aucun agent."
                   variant="section"
                   sizePreset="main-ui"
                 />
@@ -392,7 +392,7 @@ function RefetchButton({ onRefetch }: RefetchButtonProps) {
         } catch (err) {
           if (err instanceof DOMException && err.name === "AbortError") return;
           toast.error(
-            err instanceof Error ? err.message : "Failed to fetch models"
+            err instanceof Error ? err.message : "Impossible de récupérer les modèles"
           );
         } finally {
           if (!controller.signal.aborted) {
@@ -481,8 +481,8 @@ export function ModelSelectionField({
     <Card background="light" border="none" padding="sm">
       <Section gap={0.5}>
         <InputLayouts.Horizontal
-          title="Models"
-          description="Select models to make available for this provider."
+          title="Modèles"
+          description="Sélectionnez les modèles à rendre disponibles pour ce fournisseur."
           nonInteractive
           center
         >
@@ -493,14 +493,14 @@ export function ModelSelectionField({
               size="md"
               onClick={handleToggleSelectAll}
             >
-              {allSelected ? "Deselect All" : "Select All"}
+              {allSelected ? "Tout désélectionner" : "Tout sélectionner"}
             </Button>
             {onRefetch && <RefetchButton onRefetch={onRefetch} />}
           </Section>
         </InputLayouts.Horizontal>
 
         {models.length === 0 ? (
-          <EmptyMessageCard title="No models available." padding="sm" />
+          <EmptyMessageCard title="Aucun modèle disponible." padding="sm" />
         ) : (
           <Section gap={0.25}>
             {(() => {
@@ -548,7 +548,7 @@ export function ModelSelectionField({
                         <Content
                           sizePreset="secondary"
                           variant="body"
-                          title={isExpanded ? "Fold Models" : "More Models"}
+                          title={isExpanded ? "Réduire les modèles" : "Plus de modèles"}
                           icon={() => (
                             <SvgChevronDown
                               className={cn(
@@ -572,7 +572,7 @@ export function ModelSelectionField({
           <Section flexDirection="row" gap={0.5}>
             <div className="flex-1">
               <InputTypeIn
-                placeholder="Enter model name"
+                placeholder="Saisir le nom du modèle"
                 value={newModelName}
                 onChange={(e) => setNewModelName(e.target.value)}
                 onKeyDown={(e) => {
@@ -604,15 +604,15 @@ export function ModelSelectionField({
                 }
               }}
             >
-              Add Model
+              Ajouter un modèle
             </Button>
           </Section>
         )}
 
         {shouldShowAutoUpdateToggle && (
           <InputLayouts.Horizontal
-            title="Auto Update"
-            description="Update the available models when new models are released."
+            title="Mise à jour auto"
+            description="Mettre à jour les modèles disponibles lors de la sortie de nouveaux modèles."
           >
             <Switch
               checked={isAutoMode}
@@ -709,9 +709,9 @@ function ModalWrapperInner({
   const disabledTooltip = busy
     ? undefined
     : !isValid
-      ? "Please fill in all required fields."
+      ? "Veuillez remplir tous les champs obligatoires."
       : !dirty
-        ? "No changes to save."
+        ? "Aucune modification à enregistrer."
         : undefined;
 
   const {
@@ -721,11 +721,11 @@ function ModalWrapperInner({
   } = getProvider(providerName);
 
   const title = llmProvider
-    ? markdown(`Configure *${llmProvider.name}*`)
-    : `Set up ${providerProductName}`;
+    ? markdown(`Configurer *${llmProvider.name}*`)
+    : `Configurer ${providerProductName}`;
   const description =
     descriptionOverride ??
-    `Connect to ${providerDisplayName} and set up your ${providerProductName} models.`;
+    `Connectez-vous à ${providerDisplayName} et configurez vos modèles ${providerProductName}.`;
 
   return (
     <Modal open onOpenChange={onClose}>
@@ -744,7 +744,7 @@ function ModalWrapperInner({
           </Modal.Body>
           <Modal.Footer>
             <Button prominence="secondary" onClick={onClose} type="button">
-              Cancel
+              Annuler
             </Button>
             <Button
               disabled={!isValid || !dirty || busy}
@@ -754,11 +754,11 @@ function ModalWrapperInner({
             >
               {llmProvider?.name
                 ? busy
-                  ? "Updating"
-                  : "Update"
+                  ? "Mise à jour..."
+                  : "Mettre à jour"
                 : busy
-                  ? "Connecting"
-                  : "Connect"}
+                  ? "Connexion..."
+                  : "Connecter"}
             </Button>
           </Modal.Footer>
         </Form>

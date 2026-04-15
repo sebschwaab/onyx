@@ -240,7 +240,7 @@ const DocumentSetTable = ({
                                   iconSize={16}
                                 />
                                 <div className="ml-1 my-auto text-xs font-medium truncate">
-                                  {ccPairSummary.name || "Unnamed"}
+                                  {ccPairSummary.name || "Sans nom"}
                                 </div>
                               </div>
                             </div>
