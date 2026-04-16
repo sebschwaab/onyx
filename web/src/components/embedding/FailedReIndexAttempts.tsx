@@ -48,7 +48,7 @@ export function FailedReIndexAttempts({
           danger
           entityType="connector"
           entityName={pendingConnectorDeletion.name}
-          additionalDetails="Deleting this connector schedules a deletion job that removes its indexed documents and deletes it for every user."
+          additionalDetails="La suppression de ce connecteur planifie une tâche qui supprime ses documents indexés pour tous les utilisateurs."
           onClose={() => setPendingConnectorDeletion(null)}
           onSubmit={async () => {
             try {
@@ -60,7 +60,7 @@ export function FailedReIndexAttempts({
               );
             } catch (error) {
               console.error("Error deleting connector:", error);
-              toast.error("Failed to delete connector. Please try again.");
+              toast.error("Impossible de supprimer le connecteur. Veuillez réessayer.");
             } finally {
               setPendingConnectorDeletion(null);
             }

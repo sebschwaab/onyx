@@ -82,7 +82,7 @@ export default function AccessRestricted() {
       }
     } catch (error) {
       console.error("Error creating resubscription session:", error);
-      setError("Error opening resubscription page. Please try again later.");
+      setError("Erreur lors de l'ouverture de la page de réabonnement. Veuillez réessayer plus tard.");
     } finally {
       setIsLoading(false);
     }
@@ -100,7 +100,7 @@ export default function AccessRestricted() {
       {isSeatLimitExceeded ? (
         <>
           <Text text03>
-            If you are an administrator, you can manage users on the{" "}
+            Si vous êtes administrateur, vous pouvez gérer les utilisateurs sur la page{" "}
             <Link className={linkClassName} href="/admin/users">
               Gestion des utilisateurs
             </Link>{" "}
@@ -146,7 +146,7 @@ export default function AccessRestricted() {
                 window.location.reload();
               }}
             >
-              Log out
+              Se déconnecter
             </Button>
           </div>
 
@@ -156,21 +156,21 @@ export default function AccessRestricted() {
         <>
           <Text text03>
             {hadPreviousLicense
-              ? "To reinstate your access and continue using Onyx, please contact your system administrator to renew your license."
-              : "To get started, please contact your system administrator to obtain an Enterprise license."}
+              ? "Pour rétablir votre accès et continuer à utiliser Onyx, veuillez contacter votre administrateur système pour renouveler votre licence."
+              : "Pour commencer, veuillez contacter votre administrateur système pour obtenir une licence Enterprise."}
           </Text>
 
           <Text text03>
-            If you are the administrator, please visit the{" "}
+            Si vous êtes administrateur, veuillez consulter la page{" "}
             <Link className={linkClassName} href="/admin/billing">
-              Admin Billing
+              Facturation Admin
             </Link>{" "}
-            page to {hadPreviousLicense ? "renew" : "activate"} your license,
-            sign up through Stripe or reach out to{" "}
+            pour {hadPreviousLicense ? "renouveler" : "activer"} votre licence,
+            s&apos;inscrire via Stripe ou contacter{" "}
             <a className={linkClassName} href="mailto:support@onyx.app">
               support@onyx.app
             </a>{" "}
-            for billing assistance.
+            pour toute assistance concernant la facturation.
           </Text>
 
           <div className="flex flex-row gap-2">
@@ -180,21 +180,21 @@ export default function AccessRestricted() {
                 window.location.reload();
               }}
             >
-              Log out
+              Se déconnecter
             </Button>
           </div>
         </>
       )}
 
       <Text text03>
-        Need help? Join our{" "}
+        Besoin d&apos;aide ? Rejoignez notre{" "}
         <InlineExternalLink
           className={linkClassName}
           href="https://discord.gg/4NA5SbzrWb"
         >
-          Discord community
+          communauté Discord
         </InlineExternalLink>{" "}
-        for support.
+        pour obtenir de l&apos;aide.
       </Text>
     </ErrorPageLayout>
   );

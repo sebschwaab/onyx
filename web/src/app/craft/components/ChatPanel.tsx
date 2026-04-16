@@ -259,7 +259,7 @@ export default function BuildChatPanel({
         // Existing session flow
         // Check if response is still streaming - show toast like main chat does
         if (isRunning) {
-          toast.error("Please wait for the current operation to complete.");
+          toast.error("Veuillez attendre la fin de l'opération en cours.");
           return;
         }
 
@@ -283,7 +283,7 @@ export default function BuildChatPanel({
         if (!newSessionId) {
           // This should not happen if UI properly disables input until ready
           console.error("[ChatPanel] No pre-provisioned session available");
-          toast.error("Please wait for sandbox to initialize");
+          toast.error("Veuillez attendre l'initialisation du bac à sable");
           return;
         }
 
@@ -403,7 +403,7 @@ export default function BuildChatPanel({
             <IconButton
               icon={SvgSidebar}
               onClick={toggleOutputPanel}
-              tooltip="Open output panel"
+              tooltip="Ouvrir le panneau de sortie"
               tertiary
               className="!bg-background-tint-00 border rounded-full"
               iconClassName="!stroke-text-04"
@@ -444,7 +444,7 @@ export default function BuildChatPanel({
               {/* Scroll to bottom button - shown when user has scrolled away */}
               {showScrollButton && (
                 <div className="absolute -top-12 left-1/2 -translate-x-1/2 z-10">
-                  <SimpleTooltip tooltip="Scroll to bottom" delayDuration={200}>
+                  <SimpleTooltip tooltip="Défiler vers le bas" delayDuration={200}>
                     <button
                       onClick={scrollToBottom}
                       className={cn(
@@ -483,7 +483,7 @@ export default function BuildChatPanel({
                 ref={inputBarRef}
                 onSubmit={handleSubmit}
                 isRunning={isRunning}
-                placeholder="Continue the conversation..."
+                placeholder="Continuer la conversation..."
               />
             </div>
           </div>

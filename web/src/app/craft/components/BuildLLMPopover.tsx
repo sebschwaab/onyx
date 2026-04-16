@@ -258,7 +258,7 @@ export function BuildLLMPopover({
       currentSelection?.provider === option.providerKey;
 
     // Build description with recommendation badge
-    const description = option.isRecommended ? "Recommended" : undefined;
+    const description = option.isRecommended ? "Recommandé" : undefined;
 
     return (
       <div
@@ -305,7 +305,7 @@ export function BuildLLMPopover({
               {/* Toggle for recommended only */}
               <div className="flex items-center justify-between py-3 gap-3 border-b border-border-01 px-1">
                 <Text secondaryBody text03>
-                  Recommended Models Only
+                  Modèles recommandés uniquement
                 </Text>
                 <Switch
                   checked={showRecommendedOnly}
@@ -319,7 +319,7 @@ export function BuildLLMPopover({
                   ? [
                       <div key="empty" className="py-3 px-2">
                         <Text secondaryBody text03>
-                          No models found
+                          Aucun modèle trouvé
                         </Text>
                       </div>,
                     ]
@@ -335,7 +335,7 @@ export function BuildLLMPopover({
                           ) : (
                             <div className="flex items-center justify-between px-2 py-2">
                               <Text secondaryBody text03>
-                                Not configured
+                                Non configuré
                               </Text>
                               <button
                                 onClick={() =>
@@ -346,7 +346,7 @@ export function BuildLLMPopover({
                                 className="flex items-center gap-1 px-2 py-1 text-xs rounded-08 bg-background-02 hover:bg-background-03 transition-colors"
                               >
                                 <SvgPlug className="w-3 h-3" />
-                                <span>Connect</span>
+                                <span>Connecter</span>
                               </button>
                             </div>
                           )}
@@ -398,7 +398,7 @@ export function BuildLLMPopover({
                                       className="flex items-center gap-1 px-2 py-0.5 mr-1 text-xs rounded-08 bg-background-02 hover:bg-background-03 transition-colors"
                                     >
                                       <SvgPlug className="w-3 h-3" />
-                                      <span>Connect</span>
+                                      <span>Connecter</span>
                                     </button>
                                   )}
                                   <div className="flex items-center justify-center size-6 shrink-0">

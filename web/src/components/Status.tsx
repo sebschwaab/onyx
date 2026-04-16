@@ -28,7 +28,7 @@ export function IndexAttemptStatus({
   if (status === "failed") {
     const icon = (
       <Badge variant="destructive" icon={FiAlertTriangle}>
-        Failed
+        Échoué
       </Badge>
     );
     if (errorMsg) {
@@ -43,43 +43,43 @@ export function IndexAttemptStatus({
   } else if (status === "completed_with_errors") {
     badge = (
       <Badge variant="secondary" icon={FiAlertTriangle}>
-        Completed with errors
+        Terminé avec des erreurs
       </Badge>
     );
   } else if (status === "success") {
     badge = (
       <Badge variant="success" icon={FiCheckCircle}>
-        Succeeded
+        Réussi
       </Badge>
     );
   } else if (status === "in_progress") {
     badge = (
       <Badge variant="in_progress" icon={FiClock}>
-        In Progress
+        En cours
       </Badge>
     );
   } else if (status === "not_started") {
     badge = (
       <Badge variant="not_started" icon={FiClock}>
-        Scheduled
+        Planifié
       </Badge>
     );
   } else if (status === "canceled") {
     badge = (
       <Badge variant="canceled" icon={FiClock}>
-        Canceled
+        Annulé
       </Badge>
     );
   } else if (status === "invalid") {
     badge = (
       <Badge variant="invalid" icon={FiAlertTriangle}>
-        Invalid
+        Invalide
       </Badge>
     );
   } else {
     badge = (
       <Badge variant="outline" icon={FiMinus}>
-        None
+        Aucun
       </Badge>
     );
   }
@@ -99,7 +99,7 @@ export function PermissionSyncStatus({
   if (status === PermissionSyncStatusEnum.FAILED) {
     const icon = (
       <Badge variant="destructive" icon={FiAlertTriangle}>
-        Failed
+        Échoué
       </Badge>
     );
     if (errorMsg) {
@@ -114,31 +114,31 @@ export function PermissionSyncStatus({
   } else if (status === PermissionSyncStatusEnum.COMPLETED_WITH_ERRORS) {
     badge = (
       <Badge variant="secondary" icon={FiAlertTriangle}>
-        Completed with errors
+        Terminé avec des erreurs
       </Badge>
     );
   } else if (status === PermissionSyncStatusEnum.SUCCESS) {
     badge = (
       <Badge variant="success" icon={FiCheckCircle}>
-        Succeeded
+        Réussi
       </Badge>
     );
   } else if (status === PermissionSyncStatusEnum.IN_PROGRESS) {
     badge = (
       <Badge variant="in_progress" icon={FiClock}>
-        In Progress
+        En cours
       </Badge>
     );
   } else if (status === PermissionSyncStatusEnum.NOT_STARTED) {
     badge = (
       <Badge variant="not_started" icon={FiClock}>
-        Scheduled
+        Planifié
       </Badge>
     );
   } else {
     badge = (
       <Badge variant="secondary" icon={FiClock}>
-        Not Started
+        Non démarré
       </Badge>
     );
   }
@@ -162,48 +162,48 @@ export function CCPairStatus({
   if (ccPairStatus == ConnectorCredentialPairStatus.DELETING) {
     badge = (
       <Badge variant="destructive" icon={FiAlertTriangle}>
-        Deleting
+        Suppression
       </Badge>
     );
   } else if (ccPairStatus == ConnectorCredentialPairStatus.PAUSED) {
     badge = (
       <Badge variant="paused" icon={FiPauseCircle}>
-        Paused
+        En pause
       </Badge>
     );
   } else if (inRepeatedErrorState) {
     badge = (
       <Badge variant="destructive" icon={FiAlertTriangle}>
-        Error
+        Erreur
       </Badge>
     );
   } else if (ccPairStatus == ConnectorCredentialPairStatus.SCHEDULED) {
     badge = (
       <Badge variant="not_started" icon={FiClock}>
-        Scheduled
+        Planifié
       </Badge>
     );
   } else if (ccPairStatus == ConnectorCredentialPairStatus.INITIAL_INDEXING) {
     badge = (
       <Badge variant="in_progress" icon={FiClock}>
-        Initial Indexing
+        Indexation initiale
       </Badge>
     );
   } else if (ccPairStatus == ConnectorCredentialPairStatus.INVALID) {
     badge = (
       <Badge
-        tooltip="Connector is in an invalid state. Please update the credentials or create a new connector."
+        tooltip="Le connecteur est dans un état invalide. Veuillez mettre à jour les identifiants ou créer un nouveau connecteur."
         circle
         variant="invalid"
       >
-        Invalid
+        Invalide
       </Badge>
     );
   } else {
     if (lastIndexAttemptStatus && lastIndexAttemptStatus === "in_progress") {
       badge = (
         <Badge variant="in_progress" icon={FiClock}>
-          Indexing
+          Indexation
         </Badge>
       );
     } else if (
@@ -212,7 +212,7 @@ export function CCPairStatus({
     ) {
       badge = (
         <Badge variant="not_started" icon={FiClock}>
-          Scheduled
+          Planifié
         </Badge>
       );
     } else if (
@@ -221,13 +221,13 @@ export function CCPairStatus({
     ) {
       badge = (
         <Badge variant="canceled" icon={FiClock}>
-          Canceled
+          Annulé
         </Badge>
       );
     } else {
       badge = (
         <Badge variant="success" icon={FiCheckCircle}>
-          Indexed
+          Indexé
         </Badge>
       );
     }

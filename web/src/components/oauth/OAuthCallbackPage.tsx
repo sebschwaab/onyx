@@ -37,10 +37,10 @@ export default function OAuthCallbackPage({ config }: OAuthCallbackPageProps) {
   const searchParams = useSearchParams();
 
   const [statusMessage, setStatusMessage] = useState(
-    config.processingMessage || "Processing..."
+    config.processingMessage || "Traitement..."
   );
   const [statusDetails, setStatusDetails] = useState(
-    config.processingDetails || "Please wait while we complete the setup."
+    config.processingDetails || "Veuillez patienter pendant la finalisation de la configuration."
   );
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -91,10 +91,10 @@ export default function OAuthCallbackPage({ config }: OAuthCallbackPageProps) {
     const handleOAuthCallback = async () => {
       // Handle OAuth error from provider
       if (error) {
-        setStatusMessage(config.errorMessage || "Authorization Failed");
+        setStatusMessage(config.errorMessage || "Autorisation échouée");
         setStatusDetails(
           errorDescription ||
-            "The authorization was cancelled or failed. Please try again."
+            "L'autorisation a été annulée ou a échoué. Veuillez réessayer."
         );
         setIsError(true);
         setIsLoading(false);
@@ -103,9 +103,9 @@ export default function OAuthCallbackPage({ config }: OAuthCallbackPageProps) {
 
       // Validate required parameters
       if (!code || !state) {
-        setStatusMessage("Invalid Request");
+        setStatusMessage("Requête invalide");
         setStatusDetails(
-          "The authorization request was incomplete. Please try again."
+          "La demande d'autorisation était incomplète. Veuillez réessayer."
         );
         setIsError(true);
         setIsLoading(false);
@@ -128,7 +128,7 @@ export default function OAuthCallbackPage({ config }: OAuthCallbackPageProps) {
         });
 
         if (!response.ok) {
-          let errorMessage = "Failed to complete authorization";
+          let errorMessage = "Impossible de finaliser l'autorisation";
           try {
             const errorData = await response.json();
             if (errorData.detail && config.errorMessageMap) {
@@ -175,16 +175,16 @@ export default function OAuthCallbackPage({ config }: OAuthCallbackPageProps) {
         const redirectUrl = new URL(sanitizedPath, window.location.origin);
         redirectUrl.searchParams.set("message", "oauth_connected");
         setRedirectPath(redirectUrl.pathname + redirectUrl.search);
-        setStatusMessage(config.successMessage || "Success!");
+        setStatusMessage(config.successMessage || "Succès !");
 
         const successDetails = config.successDetailsTemplate
           ? config.successDetailsTemplate.replace(
               "{serviceName}",
               result.serviceName || "service"
             )
-          : `Your ${
+          : `L'autorisation de ${
               result.serviceName || "service"
-            } authorization completed successfully.`;
+            } a été complétée avec succès.`;
 
         setStatusDetails(successDetails);
         setIsSuccess(true);
@@ -193,11 +193,11 @@ export default function OAuthCallbackPage({ config }: OAuthCallbackPageProps) {
       } catch (error) {
         if (controller.signal.aborted) return;
         console.error("OAuth callback error:", error);
-        setStatusMessage(config.errorMessage || "Something Went Wrong");
+        setStatusMessage(config.errorMessage || "Une erreur s'est produite");
         setStatusDetails(
           error instanceof Error
             ? error.message
-            : "An error occurred during the OAuth process. Please try again."
+            : "Une erreur est survenue lors du processus OAuth. Veuillez réessayer."
         );
         setIsError(true);
         setIsLoading(false);
@@ -274,7 +274,7 @@ export default function OAuthCallbackPage({ config }: OAuthCallbackPageProps) {
                     }}
                     width="full"
                   >
-                    {config.backButtonText || "Back to Chat"}
+                    {config.backButtonText || "Retour au chat"}
                   </Button>
                 </div>
               )}

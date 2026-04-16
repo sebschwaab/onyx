@@ -74,7 +74,7 @@ const DocumentFeedback = ({
           feedbackType
         );
         if (!errorMsg) {
-          toast.success("Thanks for your feedback!");
+          toast.success("Merci pour votre retour !");
         } else {
           toast.error(`Error giving feedback - ${errorMsg}`);
         }
@@ -99,7 +99,7 @@ export const DocumentFeedbackBlock = ({
 }: DocumentFeedbackBlockProps) => {
   return (
     <div className="flex items-center gap-x-2">
-      <CustomTooltip showTick line content="Good response">
+      <CustomTooltip showTick line content="Bonne réponse">
         <DocumentFeedback
           documentId={documentId}
           messageId={messageId}
@@ -107,7 +107,7 @@ export const DocumentFeedbackBlock = ({
           feedbackType="endorse"
         />
       </CustomTooltip>
-      <CustomTooltip showTick line content="Bad response">
+      <CustomTooltip showTick line content="Mauvaise réponse">
         <DocumentFeedback
           documentId={documentId}
           messageId={messageId}

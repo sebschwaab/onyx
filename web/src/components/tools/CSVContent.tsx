@@ -150,12 +150,12 @@ const CsvContent: React.FC<ContentComponentProps> = ({
                   <SvgAlertCircle className="w-8 h-8 stroke-error" />
                   <Text as="p" text03 mainUiBody>
                     {headers.length === 0
-                      ? "Error loading CSV"
-                      : "No data available"}
+                      ? "Erreur lors du chargement du CSV"
+                      : "Aucune donnée disponible"}
                   </Text>
                   <Text as="p" text04 mainUiBody>
                     {headers.length === 0
-                      ? "The CSV file may be too large or couldn't be loaded properly."
+                      ? "Le fichier CSV est peut-être trop volumineux ou n'a pas pu être chargé correctement."
                       : ""}
                   </Text>
                 </div>

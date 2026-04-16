@@ -152,7 +152,7 @@ export default function LLMSelector({
   const defaultModelDisplayName = defaultModelConfig
     ? defaultModelConfig.display_name || defaultModelConfig.name
     : defaultModelName || null;
-  const defaultLabel = userSettings ? "System Default" : "User Default";
+  const defaultLabel = userSettings ? "Valeur par défaut du système" : "Valeur par défaut de l'utilisateur";
 
   // Determine if we should show grouped view (only if we have multiple vendors)
   const showGrouped = groupedOptions.length > 1;

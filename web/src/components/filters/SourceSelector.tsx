@@ -122,7 +122,7 @@ export function HorizontalFilters({
               <FiMap size={16} />
             </div>
           }
-          defaultDisplay="All Sources"
+          defaultDisplay="Toutes les sources"
         />
         {availableDocumentSets.length > 0 && (
           <FilterDropdown
@@ -147,7 +147,7 @@ export function HorizontalFilters({
                 <FiBook size={16} />
               </div>
             }
-            defaultDisplay="All Document Sets"
+            defaultDisplay="Tous les ensembles de documents"
           />
         )}
       </div>

@@ -11,7 +11,7 @@ export function DocumentUpdatedAtBadge({
   return (
     <MetadataBadge
       flexNone={modal}
-      value={(modal ? "" : "Updated ") + timeAgo(updatedAt)}
+      value={(modal ? "" : "Mis à jour ") + timeAgo(updatedAt)}
     />
   );
 }

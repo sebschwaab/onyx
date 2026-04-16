@@ -164,8 +164,8 @@ export function ChatSessionMorePopup({
             icon={SvgFolder}
             onClick={noProp(() => handleRemoveChatSessionFromProject())}
           >
-            {`Remove from ${
-              projects.find((p) => p.id === projectId)?.name ?? "Project"
+            {`Retirer de ${
+              projects.find((p) => p.id === projectId)?.name ?? "Projet"
             }`}
           </LineItem>
         ),
@@ -176,7 +176,7 @@ export function ChatSessionMorePopup({
           onClick={noProp(() => setIsDeleteModalOpen(true))}
           danger
         >
-          Delete
+          Supprimer
         </LineItem>,
       ];
     }
@@ -248,12 +248,12 @@ export function ChatSessionMorePopup({
       </div>
       {isDeleteModalOpen && (
         <ConfirmationModalLayout
-          title="Delete Chat"
+          title="Supprimer la conversation"
           icon={SvgTrash}
           onClose={() => setIsDeleteModalOpen(false)}
           submit={
             <Button variant="danger" onClick={handleConfirmDelete}>
-              Delete
+              Supprimer
             </Button>
           }
         >

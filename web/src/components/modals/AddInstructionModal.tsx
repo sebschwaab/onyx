@@ -34,15 +34,15 @@ export default function AddInstructionModal() {
       <Modal.Content width="sm">
         <Modal.Header
           icon={SvgAddLines}
-          title="Set Project Instructions"
-          description="Specify the behaviors or tone for the chat sessions in this project."
+          title="Définir les instructions du projet"
+          description="Précisez les comportements ou le ton pour les sessions de chat dans ce projet."
           onClose={() => modal.toggle(false)}
         />
         <Modal.Body>
           <InputTextArea
             value={instructionText}
             onChange={(event) => setInstructionText(event.target.value)}
-            placeholder="My goal with is to... be sure to... in your responses."
+            placeholder="Mon objectif est de... assurez-vous de... dans vos réponses."
           />
         </Modal.Body>
         <Modal.Footer>

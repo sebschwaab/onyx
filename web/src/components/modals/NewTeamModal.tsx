@@ -72,7 +72,7 @@ export default function NewTeamModal() {
       setExistingTenant(data);
     } catch (error) {
       console.error("Failed to fetch tenant info:", error);
-      setError("Could not retrieve team information. Please try again later.");
+      setError("Impossible de récupérer les informations de l'équipe. Veuillez réessayer plus tard.");
     } finally {
       setIsLoading(false);
     }
@@ -96,15 +96,15 @@ export default function NewTeamModal() {
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(
-          errorData.detail || errorData.message || "Failed to request invite"
+          errorData.detail || errorData.message || "Impossible d'envoyer la demande d'invitation"
         );
       }
 
       setHasRequestedInvite(true);
-      toast.success("Your invite request has been sent to the team admin.");
+      toast.success("Votre demande d'invitation a été envoyée à l'administrateur de l'équipe.");
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Failed to request an invite";
+        error instanceof Error ? error.message : "Impossible de demander une invitation";
       setError(message);
       toast.error(message);
     } finally {
@@ -199,8 +199,8 @@ export default function NewTeamModal() {
                   icon={isSubmitting ? SimpleLoader : SvgArrowUp}
                 >
                   {isSubmitting
-                    ? "Sending request..."
-                    : "Request to join your team"}
+                    ? "Envoi de la demande..."
+                    : "Demander à rejoindre votre équipe"}
                 </Button>
               </div>
               <Button

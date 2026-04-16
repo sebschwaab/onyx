@@ -34,8 +34,8 @@ export default function ProviderModal({
   onSubmit,
   submitDisabled = false,
   isSubmitting = false,
-  submitLabel = "Connect",
-  cancelLabel = "Cancel",
+  submitLabel = "Connecter",
+  cancelLabel = "Annuler",
 }: ProviderModalProps) {
   const SpinningLoader: React.FunctionComponent<IconProps> = (props) => (
     <SvgLoader

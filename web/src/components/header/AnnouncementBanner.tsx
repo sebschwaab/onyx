@@ -68,24 +68,22 @@ export function AnnouncementBanner() {
             >
               {notification.notif_type == "reindex" ? (
                 <p className="text-center">
-                  Your index is out of date - we strongly recommend updating
-                  your search settings.{" "}
+                  Votre index est obsolète - nous vous recommandons vivement de mettre à jour vos paramètres de recherche.{" "}
                   <Link
                     href={"/admin/configuration/search"}
                     className="ml-2 underline cursor-pointer"
                   >
-                    Update here
+                    Mettre à jour ici
                   </Link>
                 </p>
               ) : notification.notif_type == "two_day_trial_ending" ? (
                 <p className="text-center">
-                  Your trial is ending soon - submit your billing information to
-                  continue using Onyx.{" "}
+                  Votre période d&apos;essai se termine bientôt - soumettez vos informations de facturation pour continuer à utiliser Onyx.{" "}
                   <Link
                     href={"/admin/billing" as Route}
                     className="ml-2 underline cursor-pointer"
                   >
-                    Update here
+                    Mettre à jour ici
                   </Link>
                 </p>
               ) : null}
@@ -94,7 +92,7 @@ export function AnnouncementBanner() {
                 className="absolute top-0 right-0 mt-2 mr-2"
                 aria-label="Dismiss"
               >
-                <CustomTooltip showTick citation delay={100} content="Dismiss">
+                <CustomTooltip showTick citation delay={100} content="Ignorer">
                   <SvgX className="stroke-text-04 h-5 w-5" />
                 </CustomTooltip>
               </button>

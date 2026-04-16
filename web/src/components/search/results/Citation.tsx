@@ -69,7 +69,7 @@ export function Citation({
   const citationText =
     (sourceType && sourceType != ValidSources.Web
       ? getSourceDisplayName(sourceType)
-      : truncateText(title || "", MAX_CITATION_TEXT_LENGTH)) || "Unknown";
+      : truncateText(title || "", MAX_CITATION_TEXT_LENGTH)) || "Inconnu";
 
   return (
     <TooltipProvider>

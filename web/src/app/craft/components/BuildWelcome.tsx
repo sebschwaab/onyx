@@ -44,7 +44,7 @@ export default function BuildWelcome({
       <div className="flex flex-col items-center gap-4 mb-6">
         <Logo folded size={48} />
         <Text headingH2 text05>
-          What shall we craft today?
+          Que souhaitons-nous créer aujourd&apos;hui ?
         </Text>
       </div>
       <div className="w-full max-w-2xl">
@@ -52,7 +52,7 @@ export default function BuildWelcome({
           ref={inputBarRef}
           onSubmit={onSubmit}
           isRunning={isRunning}
-          placeholder="Analyze my data and create a dashboard..."
+          placeholder="Analysez mes données et créez un tableau de bord..."
           sandboxInitializing={sandboxInitializing}
           isWelcomePage
         />

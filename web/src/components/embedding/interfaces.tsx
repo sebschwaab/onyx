@@ -85,7 +85,7 @@ export const AVAILABLE_MODELS: HostedEmbeddingModel[] = [
     model_dim: 768,
     normalize: true,
     description:
-      "The recommended default for most situations. If you aren't sure which model to use, this is probably the one.",
+      "La valeur par défaut recommandée pour la plupart des situations. Si vous ne savez pas quel modèle choisir, c'est probablement celui-ci.",
     isDefault: true,
     link: "https://huggingface.co/nomic-ai/nomic-embed-text-v1",
     query_prefix: "search_query: ",
@@ -100,7 +100,7 @@ export const AVAILABLE_MODELS: HostedEmbeddingModel[] = [
     model_dim: 768,
     normalize: true,
     description:
-      "A smaller and faster model than the default. It is around 2x faster than the default model at the cost of lower search quality.",
+      "Un modèle plus petit et plus rapide que celui par défaut. Il est environ 2x plus rapide au prix d'une qualité de recherche moindre.",
     link: "https://huggingface.co/intfloat/e5-base-v2",
     query_prefix: "query: ",
     passage_prefix: "passage: ",
@@ -114,7 +114,7 @@ export const AVAILABLE_MODELS: HostedEmbeddingModel[] = [
     model_dim: 384,
     normalize: true,
     description:
-      "The smallest and fastest version of the E5 line of models. If you're running Onyx on a resource constrained system, then this may be a good choice.",
+      "La version la plus petite et la plus rapide de la gamme E5. Si vous faites tourner Onyx sur un système aux ressources limitées, c'est peut-être un bon choix.",
     link: "https://huggingface.co/intfloat/e5-small-v2",
     query_prefix: "query: ",
     passage_prefix: "passage: ",
@@ -128,7 +128,7 @@ export const AVAILABLE_MODELS: HostedEmbeddingModel[] = [
     model_dim: 768,
     normalize: true,
     description:
-      "For corpora in other languages besides English, this is the one to choose.",
+      "Pour des corpus dans d'autres langues que l'anglais, c'est le modèle à choisir.",
     link: "https://huggingface.co/intfloat/multilingual-e5-base",
     query_prefix: "query: ",
     passage_prefix: "passage: ",
@@ -142,7 +142,7 @@ export const AVAILABLE_MODELS: HostedEmbeddingModel[] = [
     model_dim: 384,
     normalize: true,
     description:
-      "For corpora in other languages besides English, as well as being on a resource constrained system, this is the one to choose.",
+      "Pour des corpus dans d'autres langues que l'anglais et sur un système aux ressources limitées, c'est le modèle à choisir.",
     link: "https://huggingface.co/intfloat/multilingual-e5-base",
     query_prefix: "query: ",
     passage_prefix: "passage: ",
@@ -157,7 +157,7 @@ export const LITELLM_CLOUD_PROVIDER: CloudEmbeddingProvider = {
   provider_type: EmbeddingProvider.LITELLM,
   website: "https://github.com/BerriAI/litellm",
   icon: LiteLLMIcon,
-  description: "Open-source library to call LLM APIs using OpenAI format",
+  description: "Bibliothèque open source pour appeler des APIs LLM en format OpenAI",
   apiLink: "https://docs.litellm.ai/docs/proxy/quick_start",
   embedding_models: [], // No default embedding models
 };
@@ -168,7 +168,7 @@ export const AZURE_CLOUD_PROVIDER: CloudEmbeddingProvider = {
     "https://azure.microsoft.com/en-us/products/cognitive-services/openai/",
   icon: AzureIcon,
   description:
-    "Azure OpenAI is a cloud-based AI service that provides access to OpenAI models.",
+    "Azure OpenAI est un service IA cloud qui donne accès aux modèles OpenAI.",
   apiLink:
     "https://docs.microsoft.com/en-us/azure/ai-services/openai/how-to/create-resource",
   costslink:
@@ -183,7 +183,7 @@ export const AVAILABLE_CLOUD_PROVIDERS: CloudEmbeddingProvider[] = [
     icon: CohereIcon,
     docsLink: `${DOCS_ADMINS_PATH}/advanced_configs/search_configs`,
     description:
-      "AI company specializing in NLP models for various text-based tasks",
+      "Entreprise IA spécialisée dans les modèles NLP pour diverses tâches textuelles",
     apiLink: "https://dashboard.cohere.ai/api-keys",
     costslink: "https://cohere.com/pricing",
     embedding_models: [
@@ -191,7 +191,7 @@ export const AVAILABLE_CLOUD_PROVIDERS: CloudEmbeddingProvider[] = [
         provider_type: EmbeddingProvider.COHERE,
         model_name: "embed-english-v3.0",
         description:
-          "Cohere's English embedding model. Good performance for English-language tasks.",
+          "Modèle d'embedding anglais de Cohere. Bonnes performances pour les tâches en anglais.",
         pricePerMillion: 0.1,
         model_dim: 1024,
         normalize: false,
@@ -205,7 +205,7 @@ export const AVAILABLE_CLOUD_PROVIDERS: CloudEmbeddingProvider[] = [
         model_name: "embed-english-light-v3.0",
         provider_type: EmbeddingProvider.COHERE,
         description:
-          "Cohere's lightweight English embedding model. Faster and more efficient for simpler tasks.",
+          "Modèle d'embedding anglais léger de Cohere. Plus rapide et efficace pour des tâches simples.",
         pricePerMillion: 0.1,
         model_dim: 384,
         normalize: false,
@@ -221,7 +221,7 @@ export const AVAILABLE_CLOUD_PROVIDERS: CloudEmbeddingProvider[] = [
     provider_type: EmbeddingProvider.OPENAI,
     website: "https://openai.com",
     icon: OpenAIISVG,
-    description: "AI industry leader known for ChatGPT and DALL-E",
+    description: "Leader de l'IA, connu pour ChatGPT et DALL-E",
     apiLink: "https://platform.openai.com/api-keys",
     docsLink: `${DOCS_ADMINS_PATH}/advanced_configs/search_configs`,
     costslink: "https://openai.com/pricing",
@@ -230,7 +230,7 @@ export const AVAILABLE_CLOUD_PROVIDERS: CloudEmbeddingProvider[] = [
         provider_type: EmbeddingProvider.OPENAI,
         model_name: "text-embedding-3-large",
         description:
-          "OpenAI's large embedding model. Best performance, but more expensive.",
+          "Grand modèle d'embedding d'OpenAI. Meilleures performances, mais plus coûteux.",
         pricePerMillion: 0.13,
         model_dim: 3072,
         normalize: false,
@@ -248,7 +248,7 @@ export const AVAILABLE_CLOUD_PROVIDERS: CloudEmbeddingProvider[] = [
         query_prefix: "",
         passage_prefix: "",
         description:
-          "OpenAI's newer, more efficient embedding model. Good balance of performance and cost.",
+          "Modèle d'embedding plus récent et efficace d'OpenAI. Bon équilibre performance/coût.",
         pricePerMillion: 0.02,
         index_name: "",
         api_key: null,
@@ -263,14 +263,14 @@ export const AVAILABLE_CLOUD_PROVIDERS: CloudEmbeddingProvider[] = [
     icon: GoogleIcon,
     docsLink: `${DOCS_ADMINS_PATH}/advanced_configs/search_configs`,
     description:
-      "Offers a wide range of AI services including language and vision models",
+      "Offre une large gamme de services IA incluant des modèles de langage et de vision",
     apiLink: "https://console.cloud.google.com/apis/credentials",
     costslink: "https://cloud.google.com/vertex-ai/pricing",
     embedding_models: [
       {
         provider_type: EmbeddingProvider.GOOGLE,
         model_name: "gemini-embedding-001",
-        description: "Google's Gemini embedding model. Powerful and efficient.",
+        description: "Modèle d'embedding Gemini de Google. Puissant et efficace.",
         pricePerMillion: 0.025,
         model_dim: 3072,
         normalize: false,
@@ -283,7 +283,7 @@ export const AVAILABLE_CLOUD_PROVIDERS: CloudEmbeddingProvider[] = [
       {
         provider_type: EmbeddingProvider.GOOGLE,
         model_name: "text-embedding-005",
-        description: "Smaller, lighter-weight embedding model from Google.",
+        description: "Modèle d'embedding plus petit et léger de Google.",
         pricePerMillion: 0.025,
         model_dim: 768,
         normalize: false,
@@ -337,7 +337,7 @@ export const AVAILABLE_CLOUD_PROVIDERS: CloudEmbeddingProvider[] = [
 ];
 
 export const getFormattedProviderName = (providerType: string | null) => {
-  if (!providerType) return "Self-hosted";
+  if (!providerType) return "Auto-hébergé";
 
   switch (providerType) {
     case "openai":
@@ -360,11 +360,11 @@ export const getFormattedProviderName = (providerType: string | null) => {
 export const getTitleForRerankType = (type: string) => {
   switch (type) {
     case "nomic-ai":
-      return "Nomic (recommended)";
+      return "Nomic (recommandé)";
     case "intfloat":
       return "Microsoft";
     default:
-      return "Open Source";
+      return "Open source";
   }
 };
 

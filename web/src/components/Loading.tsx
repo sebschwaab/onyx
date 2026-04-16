@@ -38,7 +38,7 @@ export const LoadingAnimation: React.FC<LoadingAnimationProps> = ({
   return (
     <span className="loading-animation inline-flex">
       <span className={cn("mx-auto inline-flex", size)}>
-        {text === undefined ? "Thinking" : text}
+        {text === undefined ? "Réflexion" : text}
         <span className="dots">{dots}</span>
       </span>
     </span>

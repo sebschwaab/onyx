@@ -22,8 +22,8 @@ export const StandardAnswerCategoryDropdownField: FC<
   if (standardAnswerCategoryResponse.error != null) {
     return (
       <ErrorCallout
-        errorTitle="Something went wrong :("
-        errorMsg={`Failed to fetch standard answer categories - ${standardAnswerCategoryResponse.error.message}`}
+        errorTitle="Une erreur s'est produite :("
+        errorMsg={`Impossible de récupérer les catégories de réponses standard - ${standardAnswerCategoryResponse.error.message}`}
       />
     );
   }
@@ -35,7 +35,7 @@ export const StandardAnswerCategoryDropdownField: FC<
   return (
     <>
       <div>
-        <Label>Standard Answer Categories</Label>
+        <Label>Catégories de réponses standard</Label>
         <div className="w-64">
           <MultiSelectDropdown
             name="standard_answer_categories"

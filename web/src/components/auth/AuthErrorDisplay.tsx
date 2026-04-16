@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { toast } from "@/hooks/useToast";
 
 const ERROR_MESSAGES = {
-  Anonymous: "Your team does not have anonymous access enabled.",
+  Anonymous: "L'accès anonyme n'est pas activé pour votre équipe.",
 };
 
 export default function AuthErrorDisplay({
@@ -18,7 +18,7 @@ export default function AuthErrorDisplay({
     if (error) {
       toast.error(
         ERROR_MESSAGES[error as keyof typeof ERROR_MESSAGES] ||
-          "An error occurred."
+          "Une erreur s'est produite."
       );
     }
   }, [error]);

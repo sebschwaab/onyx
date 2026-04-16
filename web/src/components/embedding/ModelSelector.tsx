@@ -32,7 +32,7 @@ export function ModelPreview({
       <div className="text-sm mt-1 mx-1 mb-3">
         {model.description ||
           currentModelCopy?.description ||
-          "Custom model—no description is available."}
+          "Modèle personnalisé — aucune description disponible."}
       </div>
 
       {showDetails && (
@@ -53,9 +53,9 @@ export function ModelPreview({
             </div>
 
             <div>
-              <span className="font-semibold text-text-700">Normalized:</span>
+              <span className="font-semibold text-text-700">Normalisé :</span>
               <div className="text-text-600">
-                {model.normalize ? "Yes" : "No"}
+                {model.normalize ? "Oui" : "Non"}
               </div>
             </div>
 
@@ -196,10 +196,10 @@ export function ModelOption({
       <p className="text-sm k text-text-600 dark:text-neutral-400 text-left mb-2">
         {model.description ||
           currentModelCopy?.description ||
-          "Custom model—no description is available."}
+          "Modèle personnalisé — aucune description disponible."}
       </p>
       <div className="text-xs text-text-500">
-        {model.isDefault ? "Default" : "Self-hosted"}
+        {model.isDefault ? "Par défaut" : "Auto-hébergé"}
       </div>
       {onSelect && (
         <div className="mt-3">
@@ -215,7 +215,7 @@ export function ModelOption({
             }}
             disabled={selected}
           >
-            {selected ? "Selected Model" : "Select Model"}
+            {selected ? "Modèle sélectionné" : "Sélectionner ce modèle"}
           </button>
         </div>
       )}

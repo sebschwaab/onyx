@@ -48,7 +48,7 @@ export default function EditPropertyModal({
                   vertical
                   label={propertyDetails || ""}
                   name="propertyValue"
-                  placeholder="Property value"
+                  placeholder="Valeur de la propriété"
                 />
 
                 <Modal.Footer>
@@ -60,7 +60,7 @@ export default function EditPropertyModal({
                     }
                     type="submit"
                   >
-                    {isSubmitting ? "Updating..." : "Update property"}
+                    {isSubmitting ? "Mise à jour..." : "Mettre à jour la propriété"}
                   </Button>
                 </Modal.Footer>
               </Form>

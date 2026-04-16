@@ -44,9 +44,9 @@ export function ConfirmEntityModal({
   const buttonText = actionButtonText
     ? actionButtonText
     : danger
-      ? "Delete"
-      : "Confirm";
-  const actionText = action ? action : danger ? "delete" : "modify";
+      ? "Supprimer"
+      : "Confirmer";
+  const actionText = action ? action : danger ? "supprimer" : "modifier";
 
   return (
     <Modal
@@ -62,7 +62,7 @@ export function ConfirmEntityModal({
       <div className="flex flex-col gap-4">
         {!removeConfirmationText && (
           <Text as="p">
-            Are you sure you want to {actionText} <b>{entityName}</b>?
+            Êtes-vous sûr de vouloir {actionText} <b>{entityName}</b> ?
           </Text>
         )}
 

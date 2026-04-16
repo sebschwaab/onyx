@@ -40,9 +40,9 @@ function getIcon(
 function getDescription(file: ProjectFile): string {
   const s = String(file.status || "");
   const typeLabel = getFileExtension(file.name);
-  if (s === UserFileStatus.PROCESSING) return "Processing...";
-  if (s === UserFileStatus.UPLOADING) return "Uploading...";
-  if (s === UserFileStatus.DELETING) return "Deleting...";
+  if (s === UserFileStatus.PROCESSING) return "Traitement...";
+  if (s === UserFileStatus.UPLOADING) return "Téléversement...";
+  if (s === UserFileStatus.DELETING) return "Suppression...";
   if (s === UserFileStatus.COMPLETED) return typeLabel;
   return file.status ?? typeLabel;
 }
@@ -181,7 +181,7 @@ export default function UserFilesModal({
             <Section flexDirection="row" gap={0.5}>
               <InputTypeIn
                 ref={searchInputRef}
-                placeholder="Search files..."
+                placeholder="Rechercher des fichiers..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 leftSearchIcon
@@ -253,7 +253,7 @@ export default function UserFilesModal({
                 {!query.trim() && !showOnlySelected && (
                   <TextSeparator
                     count={recentFiles.length}
-                    text={recentFiles.length === 1 ? "File" : "Files"}
+                    text={recentFiles.length === 1 ? "Fichier" : "Fichiers"}
                   />
                 )}
               </ScrollIndicatorDiv>
