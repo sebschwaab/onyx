@@ -288,12 +288,12 @@ export default function FilesTab({
       >
         <SvgHardDrive size={48} className="stroke-text-02" />
         <Text headingH3 text03>
-          {isProvisioning ? "Preparing sandbox..." : "No files yet"}
+          {isProvisioning ? "Préparation du bac à sable..." : "Aucun fichier pour l'instant"}
         </Text>
         <Text secondaryBody text02>
           {isProvisioning
-            ? "Setting up your development environment"
-            : "Files created during the build will appear here"}
+            ? "Configuration de votre environnement de développement"
+            : "Les fichiers créés durant la construction apparaîtront ici"}
         </Text>
       </Section>
     );
@@ -309,7 +309,7 @@ export default function FilesTab({
       >
         <SvgHardDrive size={48} className="stroke-text-02" />
         <Text headingH3 text03>
-          Error loading files
+          Erreur lors du chargement des fichiers
         </Text>
         <Text secondaryBody text02>
           {error.message}
@@ -327,7 +327,7 @@ export default function FilesTab({
         padding={2}
       >
         <Text secondaryBody text03>
-          Loading files...
+          Chargement des fichiers...
         </Text>
       </Section>
     );
@@ -384,7 +384,7 @@ export default function FilesTab({
             padding={2}
           >
             <Text secondaryBody text03>
-              No files in this directory
+              Aucun fichier dans ce répertoire
             </Text>
           </Section>
         ) : (
@@ -583,7 +583,7 @@ function FileTreeNode({
                   style={{ paddingLeft: `${(depth + 1) * 20 + 24}px` }}
                 >
                   <Text secondaryBody text02>
-                    Loading...
+                    Chargement...
                   </Text>
                 </div>
               )}

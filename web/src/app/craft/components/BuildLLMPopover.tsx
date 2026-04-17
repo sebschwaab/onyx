@@ -418,7 +418,7 @@ export function BuildLLMPopover({
                                     ) : (
                                       <div className="py-1.5 px-3">
                                         <Text secondaryBody text03>
-                                          Not configured
+                                          Non configuré
                                         </Text>
                                       </div>
                                     )}

@@ -43,9 +43,9 @@ import ArtifactsTab from "@/app/craft/components/output-panel/ArtifactsTab";
 type TabValue = OutputTabType;
 
 const tabs: { value: TabValue; label: string; icon: React.FC<IconProps> }[] = [
-  { value: "preview", label: "Preview", icon: SvgGlobe },
-  { value: "files", label: "Files", icon: SvgHardDrive },
-  { value: "artifacts", label: "Artifacts", icon: SvgFiles },
+  { value: "preview", label: "Aperçu", icon: SvgGlobe },
+  { value: "files", label: "Fichiers", icon: SvgHardDrive },
+  { value: "artifacts", label: "Artefacts", icon: SvgFiles },
 ];
 
 interface BuildOutputPanelProps {
@@ -398,7 +398,7 @@ const BuildOutputPanel = memo(({ onClose, isOpen }: BuildOutputPanelProps) => {
             <button
               onClick={onClose}
               className="relative w-3.5 h-3.5 rounded-full bg-[#ffbd2e] hover:bg-[#ffa000] transition-colors flex-shrink-0 flex items-center justify-center"
-              aria-label="Close panel"
+              aria-label="Fermer le panneau"
             >
               <SvgMinus
                 size={12}
@@ -410,7 +410,7 @@ const BuildOutputPanel = memo(({ onClose, isOpen }: BuildOutputPanelProps) => {
             <button
               onClick={handleMaximize}
               className="relative w-3.5 h-3.5 rounded-full bg-[#28ca42] hover:bg-[#1fb832] transition-colors flex-shrink-0 flex items-center justify-center"
-              aria-label="Maximize panel"
+              aria-label="Agrandir le panneau"
             >
               <SvgMaximize2
                 size={8}
@@ -435,7 +435,7 @@ const BuildOutputPanel = memo(({ onClose, isOpen }: BuildOutputPanelProps) => {
                   disabled={isDisabled}
                   title={
                     isDisabled
-                      ? "Start building something to see artifacts!"
+                      ? "Commencez à créer quelque chose pour voir les artefacts !"
                       : undefined
                   }
                   className={cn(
@@ -576,7 +576,7 @@ const BuildOutputPanel = memo(({ onClose, isOpen }: BuildOutputPanelProps) => {
             ? `sandbox://${activeFilePreviewPath}`
             : activeOutputTab === "preview"
               ? session
-                ? displayUrl || "Loading..."
+                ? displayUrl || "Chargement..."
                 : "no-active-sandbox://"
               : activeOutputTab === "files"
                 ? session
@@ -608,10 +608,10 @@ const BuildOutputPanel = memo(({ onClose, isOpen }: BuildOutputPanelProps) => {
         }
         downloadRawTooltip={
           isPdfPreview
-            ? "Download PDF"
+            ? "Télécharger le PDF"
             : isPptxPreview
-              ? "Download PPTX"
-              : "Download MD file"
+              ? "Télécharger le PPTX"
+              : "Télécharger le fichier MD"
         }
         onDownload={isMarkdownPreview ? handleDocxDownload : undefined}
         isDownloading={isExportingDocx}

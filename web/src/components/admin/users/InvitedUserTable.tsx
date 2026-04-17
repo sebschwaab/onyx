@@ -28,7 +28,7 @@ const InvitedUserTable = ({ users, mutate, error, isLoading, q }: Props) => {
   const [currentPageNum, setCurrentPageNum] = useState<number>(1);
 
   if (!users.length)
-    return <p>Users that have been invited will show up here</p>;
+    return <p>Les utilisateurs invités apparaîtront ici</p>;
 
   const totalPages = Math.ceil(users.length / USERS_PER_PAGE);
 
@@ -86,7 +86,7 @@ const InvitedUserTable = ({ users, mutate, error, isLoading, q }: Props) => {
           ) : (
             <TableRow>
               <TableCell colSpan={2} className="h-24 text-center">
-                {`No users found matching "${q}"`}
+                {`Aucun utilisateur trouvé pour "${q}"`}
               </TableCell>
             </TableRow>
           )}

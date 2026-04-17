@@ -41,7 +41,7 @@ export function AgentsMultiSelect<T extends AgentsMultiSelectFormType>({
       items={agents}
       isLoading={isLoading}
       error={error}
-      emptyMessage="No agents available. Please create an agent first from the Agents page."
+      emptyMessage="Aucun agent disponible. Veuillez d'abord créer un agent depuis la page Agents."
       disabled={disabled}
       disabledMessage={disabledMessage}
     />

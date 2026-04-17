@@ -66,7 +66,7 @@ export default function WorkingPill({
               <SvgPencilRuler className="size-4 stroke-text-03 shrink-0" />
 
               {/* Title */}
-              <span className="text-sm font-medium text-text-04">Working</span>
+              <span className="text-sm font-medium text-text-04">En cours</span>
             </div>
 
             {/* Expand arrow */}

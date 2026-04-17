@@ -43,7 +43,7 @@ export default function FilePreviewModal({
         const text = await response.text();
         setContent(text);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to load file");
+        setError(err instanceof Error ? err.message : "Impossible de charger le fichier");
       } finally {
         setIsLoading(false);
       }
@@ -94,11 +94,11 @@ export default function FilePreviewModal({
               prominence="secondary"
               icon={SvgDownloadCloud}
             >
-              Download
+              Télécharger
             </Button>
           </a>
           <Button variant="action" onClick={onClose}>
-            Close
+            Fermer
           </Button>
         </Modal.Footer>
       </Modal.Content>

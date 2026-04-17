@@ -128,10 +128,10 @@ export default function ArtifactsTab({
       >
         <SvgFiles size={48} className="stroke-text-02" />
         <Text headingH3 text03>
-          No artifacts yet
+          Aucun artefact pour l&apos;instant
         </Text>
         <Text secondaryBody text02>
-          Output files and web apps will appear here
+          Les fichiers de sortie et les applications web apparaîtront ici
         </Text>
       </Section>
     );
@@ -165,7 +165,7 @@ export default function ArtifactsTab({
                   icon={SvgDownloadCloud}
                   onClick={handleWebappDownload}
                 >
-                  Download
+                  Télécharger
                 </Button>
               </div>
             </div>
@@ -269,7 +269,7 @@ function OutputEntryRow({
               onDownload(entry.path, entry.is_directory);
             }}
           >
-            Download
+            Télécharger
           </Button>
         </div>
       </div>

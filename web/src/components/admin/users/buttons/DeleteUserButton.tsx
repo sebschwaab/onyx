@@ -26,7 +26,7 @@ const DeleteUserButton = ({
         toast.success("Utilisateur supprimé avec succès !");
       },
       onError: (errorMsg) =>
-        toast.error(`Unable to delete user - ${errorMsg.message}`),
+        toast.error(`Impossible de supprimer l'utilisateur - ${errorMsg.message}`),
     }
   );
 

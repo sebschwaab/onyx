@@ -180,8 +180,8 @@ export const DefaultDropdown = forwardRef<HTMLDivElement, DefaultDropdownProps>(
             <p className="line-clamp-1">
               {selectedOption?.name ||
                 (includeDefault
-                  ? defaultValue || "Default"
-                  : "Select an option...")}
+                  ? defaultValue || "Par défaut"
+                  : "Sélectionner une option...")}
             </p>
             <FiChevronDown className="my-auto ml-auto" />
           </div>
@@ -206,7 +206,7 @@ export const DefaultDropdown = forwardRef<HTMLDivElement, DefaultDropdownProps>(
             {includeDefault && (
               <DefaultDropdownElement
                 key={-1}
-                name="Default"
+                name="Par défaut"
                 onSelect={() => handleSelect(null)}
                 isSelected={selected === null}
               />

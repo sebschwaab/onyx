@@ -53,7 +53,7 @@ export default function RequestConnectorModal({
 
       setSuccessMessage(
         data.message ||
-          "Connector request submitted successfully. We'll prioritize popular requests!"
+          "Demande de connecteur soumise avec succès. Nous prioriserons les demandes les plus populaires !"
       );
 
       setTimeout(() => {
@@ -64,7 +64,7 @@ export default function RequestConnectorModal({
       setErrorMessage(
         error instanceof Error
           ? error.message
-          : "Failed to submit connector request. Please try again."
+          : "Échec de la soumission de la demande. Veuillez réessayer."
       );
     } finally {
       setIsSubmitting(false);
@@ -89,15 +89,15 @@ export default function RequestConnectorModal({
         <div className="p-6 flex flex-col gap-6">
           <div className="flex items-center justify-center">
             <Text headingH2 text05>
-              Request a Connector
+              Demander un connecteur
             </Text>
           </div>
 
           <div className="flex flex-col gap-3">
             <Text mainUiBody text04 className="text-center">
-              Let us know which connectors you'd like to craft with
+              Dites-nous quels connecteurs vous souhaitez utiliser
               <br />
-              We'll prioritize popular requests!
+              Nous prioriserons les demandes les plus populaires !
             </Text>
 
             {successMessage && (
@@ -145,7 +145,7 @@ export default function RequestConnectorModal({
                     className="flex-1 px-4 py-2 rounded-12 bg-background-neutral-01 border border-border-02 hover:opacity-90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Text mainUiBody text05>
-                      {successMessage ? "Close" : "Cancel"}
+                      {successMessage ? "Fermer" : "Annuler"}
                     </Text>
                   </button>
                   {!successMessage && (
@@ -168,7 +168,7 @@ export default function RequestConnectorModal({
                             : "text-text-light-05 dark:text-text-dark-05"
                         }
                       >
-                        {isSubmitting ? "Submitting..." : "Submit Request"}
+                        {isSubmitting ? "Envoi en cours..." : "Soumettre la demande"}
                       </Text>
                     </button>
                   )}

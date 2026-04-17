@@ -31,17 +31,17 @@ export default function DemoDataConfirmModal({
           {/* Header */}
           <div className="flex items-center justify-center">
             <Text headingH2 text05>
-              Confirm Demo Data Change
+              Confirmer le changement de données de démonstration
             </Text>
           </div>
 
           {/* Message */}
           <div className="flex justify-center">
             <Text mainUiBody text04 className="text-center">
-              Are you sure you want to{" "}
-              {pendingDemoDataEnabled ? "enable" : "disable"} demo data?
+              Êtes-vous sûr(e) de vouloir{" "}
+              {pendingDemoDataEnabled ? "activer" : "désactiver"} les données de démonstration ?
               <br />
-              Your sandbox will be re-initialized with your new data set
+              Votre bac à sable sera réinitialisé avec votre nouveau jeu de données
             </Text>
           </div>
 
@@ -53,7 +53,7 @@ export default function DemoDataConfirmModal({
               className="px-4 py-2 rounded-12 bg-background-neutral-01 border border-border-02 hover:opacity-90 transition-colors"
             >
               <Text mainUiBody text05>
-                Cancel
+                Annuler
               </Text>
             </button>
             <button
@@ -65,7 +65,7 @@ export default function DemoDataConfirmModal({
                 mainUiAction
                 className="text-text-light-05 dark:text-text-dark-05"
               >
-                Confirm
+                Confirmer
               </Text>
             </button>
           </div>

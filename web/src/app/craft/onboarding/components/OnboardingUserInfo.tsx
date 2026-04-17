@@ -91,7 +91,7 @@ export default function OnboardingUserInfo({
       {/* Header */}
       <div className="flex flex-col items-center gap-3">
         <Text headingH2 text05>
-          Demo Data Configuration
+          Configuration des données de démonstration
         </Text>
       </div>
 
@@ -128,15 +128,15 @@ export default function OnboardingUserInfo({
         */}
 
         <Text mainUiBody text04 className="text-center">
-          While you wait for your data to sync, try out our simulated demo
-          dataset! <br />
-          The simulated data will adapt to your role and level choices below.
+          En attendant la synchronisation de vos données, essayez notre
+          jeu de données de démonstration simulé ! <br />
+          Les données simulées s&apos;adapteront à votre rôle et niveau ci-dessous.
         </Text>
 
         {/* Work area */}
         <div className="flex flex-col gap-3 items-center">
           <Text mainUiBody text04>
-            Select your role:
+            Sélectionnez votre rôle :
           </Text>
           <div className="grid grid-cols-3 gap-3 w-full">
             {WORK_AREA_OPTIONS.map((option) => (
@@ -154,7 +154,7 @@ export default function OnboardingUserInfo({
         {/* Level */}
         <div className="flex flex-col gap-3 items-center">
           <Text mainUiBody text04>
-            Level{" "}
+            Niveau{" "}
             {requiresLevel && <span className="text-status-error-05">*</span>}
           </Text>
           <div className="flex justify-center gap-3 w-full">
@@ -180,8 +180,8 @@ export default function OnboardingUserInfo({
         <div className="flex justify-center min-h-[1.5rem]">
           {personaInfo && positionText && (
             <Text mainContentBody text03 className="text-center">
-              You will play the role of {positionText} named {personaInfo.name}{" "}
-              working at <br />
+              Vous jouerez le rôle de {positionText} nommé(e) {personaInfo.name}{" "}
+              travaillant chez <br />
               {DEMO_COMPANY_NAME}
             </Text>
           )}

@@ -241,7 +241,7 @@ export default function BuildOnboardingModal({
 
     if (!testResult.ok) {
       setErrorMessage(
-        "There was an issue with this provider and model, please try a different one."
+        "Un problème est survenu avec ce fournisseur et ce modèle, veuillez en essayer un autre."
       );
       setConnectionStatus("error");
       return;
@@ -259,7 +259,7 @@ export default function BuildOnboardingModal({
 
       if (!response.ok) {
         setErrorMessage(
-          "There was an issue creating the provider. Please try again."
+          "Un problème est survenu lors de la création du fournisseur. Veuillez réessayer."
         );
         setConnectionStatus("error");
         return;
@@ -290,7 +290,7 @@ export default function BuildOnboardingModal({
     } catch (error) {
       console.error("Error connecting LLM provider:", error);
       setErrorMessage(
-        "There was an issue connecting the provider. Please try again."
+        "Un problème est survenu lors de la connexion au fournisseur. Veuillez réessayer."
       );
       setConnectionStatus("error");
     }
@@ -329,7 +329,7 @@ export default function BuildOnboardingModal({
 
       // Validate workArea is provided before submission
       if (!workArea) {
-        setErrorMessage("Please select a work area.");
+        setErrorMessage("Veuillez sélectionner un domaine de travail.");
         setIsSubmitting(false);
         return;
       }
@@ -338,7 +338,7 @@ export default function BuildOnboardingModal({
 
       // Validate level if required
       if (requiresLevel && !level) {
-        setErrorMessage("Please select a level.");
+        setErrorMessage("Veuillez sélectionner un niveau.");
         setIsSubmitting(false);
         return;
       }
@@ -355,7 +355,7 @@ export default function BuildOnboardingModal({
     } catch (error) {
       console.error("Error completing onboarding:", error);
       setErrorMessage(
-        "There was an issue completing onboarding. Please try again."
+        "Un problème est survenu lors de la finalisation de l'intégration. Veuillez réessayer."
       );
     } finally {
       setIsSubmitting(false);
@@ -439,7 +439,7 @@ export default function BuildOnboardingModal({
                   className="flex items-center gap-1.5 px-4 py-2 rounded-12 border border-border-01 bg-background-tint-00 text-text-04 hover:bg-background-tint-02 transition-colors"
                 >
                   <SvgArrowLeft className="w-4 h-4" />
-                  <Text mainUiAction>Back</Text>
+                  <Text mainUiAction>Retour</Text>
                 </button>
               )}
             </div>
@@ -498,9 +498,9 @@ export default function BuildOnboardingModal({
                 >
                   {isLastStep
                     ? isSubmitting
-                      ? "Saving..."
-                      : "Get Started!"
-                    : "Continue"}
+                      ? "Enregistrement..."
+                      : "Commencer !"
+                    : "Continuer"}
                 </Text>
                 {!isLastStep && (
                   <SvgArrowRight
@@ -522,7 +522,7 @@ export default function BuildOnboardingModal({
                 className="flex items-center gap-1.5 px-4 py-2 rounded-12 transition-colors bg-black dark:bg-white text-white dark:text-black hover:opacity-90"
               >
                 <Text mainUiAction className="text-white dark:text-black">
-                  Continue
+                  Continuer
                 </Text>
                 <SvgArrowRight className="w-4 h-4 text-white dark:text-black" />
               </button>
@@ -538,7 +538,7 @@ export default function BuildOnboardingModal({
                     disabled={isConnecting}
                     className="flex items-center gap-1.5 px-4 py-2 rounded-12 border border-border-01 bg-background-tint-00 text-text-04 hover:bg-background-tint-02 transition-colors"
                   >
-                    <Text mainUiAction>Skip</Text>
+                    <Text mainUiAction>Passer</Text>
                     <SvgArrowRight className="w-4 h-4" />
                   </button>
                 )}
@@ -562,7 +562,7 @@ export default function BuildOnboardingModal({
                         : "text-text-02"
                     )}
                   >
-                    {isConnecting ? "Connecting..." : "Connect"}
+                    {isConnecting ? "Connexion..." : "Connecter"}
                   </Text>
                 </button>
               </div>
@@ -575,7 +575,7 @@ export default function BuildOnboardingModal({
                 className="flex items-center gap-1.5 px-4 py-2 rounded-12 bg-black dark:bg-white text-white dark:text-black hover:opacity-90 transition-colors"
               >
                 <Text mainUiAction className="text-white dark:text-black">
-                  {isLastStep ? "Done" : "Continue"}
+                  {isLastStep ? "Terminé" : "Continuer"}
                 </Text>
                 {!isLastStep && (
                   <SvgArrowRight className="w-4 h-4 text-white dark:text-black" />

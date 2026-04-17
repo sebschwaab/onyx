@@ -53,15 +53,16 @@ export default function NoLlmProvidersModal({
             {/* Header */}
             <div className="flex flex-col items-center gap-2 text-center">
               <Text headingH2 text05>
-                LLM Provider Required
+                Fournisseur LLM requis
               </Text>
               <Text mainUiBody text03 className="max-w-sm">
-                Onyx Craft requires an LLM provider to be configured, but only
-                admins can set this up.
+                Onyx Craft nécessite qu&apos;un fournisseur LLM soit configuré,
+                mais seuls les administrateurs peuvent le faire.
                 <br />
                 <br />
-                Please ask your admin to configure an LLM provider, or create a
-                new Onyx account to become an admin yourself!
+                Veuillez demander à votre administrateur de configurer un
+                fournisseur LLM, ou créez un nouveau compte Onyx pour devenir
+                vous-même administrateur !
               </Text>
             </div>
           </div>
@@ -73,7 +74,7 @@ export default function NoLlmProvidersModal({
               onClick={onClose}
               className="flex items-center gap-1.5 px-4 py-2 rounded-12 border border-border-01 bg-background-tint-00 text-text-04 hover:bg-background-tint-02 transition-colors"
             >
-              <Text mainUiAction>Go Back</Text>
+              <Text mainUiAction>Retour</Text>
             </button>
             <button
               type="button"
@@ -92,7 +93,7 @@ export default function NoLlmProvidersModal({
                   !isLoading ? "text-white dark:text-black" : "text-text-02"
                 )}
               >
-                {isLoading ? "Signing out..." : "Create a new account"}
+                {isLoading ? "Déconnexion..." : "Créer un nouveau compte"}
               </Text>
               {!isLoading && (
                 <SvgArrowRight className="w-4 h-4 text-white dark:text-black" />

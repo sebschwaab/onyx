@@ -162,7 +162,7 @@ function Waveform({
               onClick={onMuteToggle}
               prominence="tertiary"
               size="sm"
-              tooltip={isMuted ? "Unmute" : "Mute"}
+              tooltip={isMuted ? "Activer le son" : "Désactiver le son"}
             />
           </div>
         )}
@@ -196,7 +196,7 @@ function Waveform({
           onClick={onMuteToggle}
           prominence="tertiary"
           size="sm"
-          aria-label={isMuted ? "Unmute microphone" : "Mute microphone"}
+          aria-label={isMuted ? "Activer le microphone" : "Désactiver le microphone"}
         />
       )}
     </div>

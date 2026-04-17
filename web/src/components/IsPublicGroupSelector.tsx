@@ -57,13 +57,13 @@ export const IsPublicGroupSelector = <T extends IsPublicGroupSelectorFormType>({
   }, [user, userGroups, isPaidEnterpriseFeaturesEnabled]);
 
   if (userGroupsIsLoading) {
-    return <div>Loading...</div>;
+    return <div>Chargement...</div>;
   }
   if (!isPaidEnterpriseFeaturesEnabled) {
     return null;
   }
 
-  let firstUserGroupName = "Unknown";
+  let firstUserGroupName = "Inconnu";
   if (userGroups) {
     const userGroup = userGroups[0];
     if (userGroup) {
@@ -76,7 +76,7 @@ export const IsPublicGroupSelector = <T extends IsPublicGroupSelectorFormType>({
       <>
         {userGroups && (
           <div className="mb-1 font-medium text-base">
-            This {objectName} will be assigned to group{" "}
+            Cet élément ({objectName}) sera assigné au groupe{" "}
             <b>{firstUserGroupName}</b>.
           </div>
         )}
@@ -94,16 +94,16 @@ export const IsPublicGroupSelector = <T extends IsPublicGroupSelectorFormType>({
             small={smallLabels}
             label={
               publicToWhom === "Curators"
-                ? `Make this ${objectName} Curator Accessible?`
-                : `Make this ${objectName} Public?`
+                ? `Rendre cet élément (${objectName}) accessible aux curateurs ?`
+                : `Rendre cet élément (${objectName}) public ?`
             }
             disabled={!isAdmin}
             subtext={
               <span className="block mt-2 text-sm text-text-600 dark:text-neutral-400">
-                If set, then this {objectName} will be usable by{" "}
-                <b>All {publicToWhom}</b>. Otherwise, only <b>Admins</b> and{" "}
-                <b>{publicToWhom}</b> who have explicitly been given access to
-                this {objectName} (e.g. via a User Group) will have access.
+                Si activé, cet élément ({objectName}) sera utilisable par{" "}
+                <b>Tous les {publicToWhom}</b>. Sinon, seuls les <b>Administrateurs</b> et les{" "}
+                <b>{publicToWhom}</b> ayant explicitement reçu l&apos;accès à
+                cet élément ({objectName}) (via un Groupe d&apos;utilisateurs, par exemple) y auront accès.
               </span>
             }
           />
@@ -112,14 +112,14 @@ export const IsPublicGroupSelector = <T extends IsPublicGroupSelectorFormType>({
 
       <GroupsMultiSelect
         formikProps={formikProps}
-        label={`Assign group access for this ${objectName}`}
+        label={`Attribuer l'accès groupe pour cet élément (${objectName})`}
         subtext={
           isAdmin || !enforceGroupSelection
-            ? `This ${objectName} will be visible/accessible by the groups selected below`
-            : `Curators must select one or more groups to give access to this ${objectName}`
+            ? `Cet élément (${objectName}) sera visible/accessible par les groupes sélectionnés ci-dessous`
+            : `Les curateurs doivent sélectionner un ou plusieurs groupes pour donner accès à cet élément (${objectName})`
         }
         disabled={formikProps.values.is_public && !isCurator}
-        disabledMessage={`This ${objectName} is public and available to all users.`}
+        disabledMessage={`Cet élément (${objectName}) est public et disponible pour tous les utilisateurs.`}
       />
     </div>
   );

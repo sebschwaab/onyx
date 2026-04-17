@@ -32,18 +32,18 @@ export function ToggleWarningModal({
           {/* Header */}
           <div className="flex items-center justify-center">
             <Text headingH2 text05>
-              Show all models?
+              Afficher tous les modèles ?
             </Text>
           </div>
 
           {/* Message */}
           <div className="flex justify-center">
             <Text mainUiBody text04 className="text-center">
-              We recommend using <strong>Claude Opus 4.6</strong> for Crafting.
+              Nous recommandons d&apos;utiliser <strong>Claude Opus 4.6</strong> pour la création.
               <br />
-              Other models may have reduced capabilities for code creation,
+              D&apos;autres modèles peuvent avoir des capacités réduites pour la création de code,
               <br />
-              data analysis, and artifact creation.
+              l&apos;analyse de données et la génération d&apos;artefacts.
             </Text>
           </div>
 
@@ -58,7 +58,7 @@ export function ToggleWarningModal({
               className="px-4 py-2 rounded-12 bg-background-neutral-01 border border-border-02 hover:opacity-90 transition-colors"
             >
               <Text mainUiBody text05>
-                Show All Models
+                Afficher tous les modèles
               </Text>
             </button>
             <button
@@ -73,7 +73,7 @@ export function ToggleWarningModal({
                 mainUiAction
                 className="text-text-light-05 dark:text-text-dark-05"
               >
-                Keep Recommended
+                Garder le recommandé
               </Text>
             </button>
           </div>

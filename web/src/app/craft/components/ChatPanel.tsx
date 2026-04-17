@@ -455,7 +455,7 @@ export default function BuildChatPanel({
                         "transition-all duration-200",
                         "hover:bg-background-tint-inverted-01"
                       )}
-                      aria-label="Scroll to bottom"
+                      aria-label="Défiler vers le bas"
                     >
                       <SvgChevronDown
                         size={20}

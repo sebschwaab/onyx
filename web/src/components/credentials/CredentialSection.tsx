@@ -203,7 +203,7 @@ export default function CredentialSection({
                   {ccPair.credential.user_email && (
                     <>
                       {" "}
-                      by <i>{ccPair.credential.user_email}</i>
+                      par <i>{ccPair.credential.user_email}</i>
                     </>
                   )}
                 </div>

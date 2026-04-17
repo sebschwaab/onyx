@@ -3,14 +3,14 @@
 import { useState, useEffect, useRef } from "react";
 
 const messages = [
-  "Punching wood...",
-  "Gathering resources...",
-  "Placing blocks...",
-  "Crafting your workspace...",
-  "Mining for dependencies...",
-  "Smelting the code...",
-  "Enchanting with magic...",
-  "World generation complete...",
+  "Récupération du bois...",
+  "Collecte des ressources...",
+  "Placement des blocs...",
+  "Création de votre espace de travail...",
+  "Extraction des dépendances...",
+  "Fonte du code...",
+  "Enchantement en cours...",
+  "Génération du monde terminée...",
   "/gamemode 1",
 ];
 
@@ -127,7 +127,7 @@ export default function CraftingLoader() {
       </div>
 
       <p className="mt-6 text-neutral-500 text-sm font-mono">
-        Crafting your next great idea...
+        Fabrication de votre prochaine grande idée...
       </p>
     </div>
   );

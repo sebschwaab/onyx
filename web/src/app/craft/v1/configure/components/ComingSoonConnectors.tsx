@@ -70,10 +70,10 @@ export default function ComingSoonConnectors() {
       <div className="w-full flex items-center justify-between pb-2">
         <div className="flex flex-col gap-0.25">
           <Text mainContentEmphasis text04>
-            Coming Soon
+            Bientôt disponible
           </Text>
           <Text secondaryBody text03>
-            Don't see what you're looking for? Submit a connector request!
+            Vous ne trouvez pas ce que vous cherchez ? Soumettez une demande de connecteur !
           </Text>
         </div>
         <button
@@ -85,7 +85,7 @@ export default function ComingSoonConnectors() {
             mainUiAction
             className="text-text-dark-05 dark:text-text-light-05"
           >
-            Submit a request
+            Soumettre une demande
           </Text>
         </button>
       </div>

@@ -109,7 +109,7 @@ export default function ConnectorBannersRow({
         {/* Center: Text and Arrow */}
         <div className="flex items-center justify-center gap-1">
           <Text secondaryBody text03>
-            Connect your data
+            Connecter vos données
           </Text>
           <SvgChevronRight className="h-4 w-4 text-text-03" />
         </div>
@@ -162,7 +162,7 @@ export default function ConnectorBannersRow({
 
         {/* Text */}
         <Text secondaryBody text03>
-          Get help setting up connectors
+          Obtenir de l&apos;aide pour configurer les connecteurs
         </Text>
 
         {/* Arrow indicator */}

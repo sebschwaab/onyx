@@ -62,7 +62,7 @@ const AddUserFormRenderer = ({
     )}
     {/* TODO(@raunakab): migrate to opal Button once className/iconClassName is resolved */}
     <Button type="submit" disabled={isSubmitting} className="self-end">
-      Add
+      Ajouter
     </Button>
   </Form>
 );
@@ -80,7 +80,7 @@ const AddUserForm = withFormik<FormProps, FormValues>({
     }
     for (let email of emails) {
       if (!email.match(EMAIL_REGEX)) {
-        return { emails: `${email} is not a valid email` };
+        return { emails: `${email} n'est pas une adresse email valide` };
       }
     }
     return {};

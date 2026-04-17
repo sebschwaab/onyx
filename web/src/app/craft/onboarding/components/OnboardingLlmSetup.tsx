@@ -155,7 +155,7 @@ function ModelSelectButton({
       </Disabled>
       {recommended && (
         <Text figureSmallLabel text02>
-          Recommended
+          Recommandé
         </Text>
       )}
     </div>
@@ -227,14 +227,14 @@ export default function OnboardingLlmSetup({
       {/* Header */}
       <div className="flex items-center justify-center">
         <Text headingH2 text05>
-          Connect your LLM
+          Connecter votre LLM
         </Text>
       </div>
 
       {/* Provider selection */}
       <div className="flex flex-col gap-3 items-center">
         <Text mainUiBody text04>
-          Provider
+          Fournisseur
         </Text>
         <div className="flex justify-center gap-3 w-full max-w-md">
           {PROVIDERS.map((provider) => {
@@ -246,15 +246,15 @@ export default function OnboardingLlmSetup({
                   onClick={() => handleProviderChange(provider.key)}
                   subtext={
                     isConfigured
-                      ? "Already configured"
+                      ? "Déjà configuré"
                       : provider.recommended
-                        ? "Recommended"
+                        ? "Recommandé"
                         : undefined
                   }
                   disabled={connectionStatus === "testing" || isConfigured}
                   tooltip={
                     isConfigured
-                      ? "This provider is already configured"
+                      ? "Ce fournisseur est déjà configuré"
                       : undefined
                   }
                 >
@@ -269,7 +269,7 @@ export default function OnboardingLlmSetup({
       {/* Model selection */}
       <div className="flex flex-col gap-3 items-center">
         <Text mainUiBody text04>
-          Default Model
+          Modèle par défaut
         </Text>
         <div className="flex justify-center gap-3 flex-wrap w-full max-w-md">
           {currentProviderConfig.models.map((model) => (
@@ -289,7 +289,7 @@ export default function OnboardingLlmSetup({
       {/* API Key input */}
       <div className="flex flex-col gap-3 items-center">
         <Text mainUiBody text04>
-          API Key
+          Clé API
         </Text>
         <div className="w-full max-w-md">
           <Disabled disabled={connectionStatus === "testing"} allowClick>
@@ -317,7 +317,7 @@ export default function OnboardingLlmSetup({
             >
               <SvgCheckCircle className="w-4 h-4 stroke-status-success-05 shrink-0" />
               <Text secondaryBody className="text-status-success-05">
-                Success!
+                Succès !
               </Text>
             </div>
           </div>

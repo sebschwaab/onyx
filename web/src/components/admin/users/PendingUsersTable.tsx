@@ -31,7 +31,7 @@ const PendingUsersTable = ({ users, mutate, error, isLoading, q }: Props) => {
   const [userToApprove, setUserToApprove] = useState<string | null>(null);
 
   if (!users.length)
-    return <p>Users that have requested to join will show up here</p>;
+    return <p>Les utilisateurs ayant demandé à rejoindre apparaîtront ici</p>;
 
   const totalPages = Math.ceil(users.length / USERS_PER_PAGE);
 
@@ -111,7 +111,7 @@ const PendingUsersTable = ({ users, mutate, error, isLoading, q }: Props) => {
                       onClick={() => setUserToApprove(user.email.toLowerCase())}
                       icon={SvgCheck}
                     >
-                      Accept Join Request
+                      Approuver la demande
                     </Button>
                   </div>
                 </TableCell>
@@ -120,7 +120,7 @@ const PendingUsersTable = ({ users, mutate, error, isLoading, q }: Props) => {
           ) : (
             <TableRow>
               <TableCell colSpan={2} className="h-24 text-center">
-                {`No pending users found matching "${q}"`}
+                {`Aucun utilisateur en attente trouvé pour "${q}"`}
               </TableCell>
             </TableRow>
           )}

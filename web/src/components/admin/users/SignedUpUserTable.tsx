@@ -127,7 +127,7 @@ export default function SignedUpUserTable({
   const onRoleChangeSuccess = () =>
     handlePopup("Rôle de l'utilisateur mis à jour avec succès !", "success");
   const onRoleChangeError = (errorMsg: string) =>
-    handlePopup(`Unable to update user role - ${errorMsg}`, "error");
+    handlePopup(`Impossible de mettre à jour le rôle de l'utilisateur - ${errorMsg}`, "error");
 
   const toggleRole = (roleEnum: UserRole) => {
     setFilters((prev) => {
@@ -179,9 +179,9 @@ export default function SignedUpUserTable({
             <InputSelect.Trigger />
 
             <InputSelect.Content>
-              <InputSelect.Item value="all">All Status</InputSelect.Item>
-              <InputSelect.Item value="true">Active</InputSelect.Item>
-              <InputSelect.Item value="false">Inactive</InputSelect.Item>
+              <InputSelect.Item value="all">Tous les statuts</InputSelect.Item>
+              <InputSelect.Item value="true">Actif</InputSelect.Item>
+              <InputSelect.Item value="false">Inactif</InputSelect.Item>
             </InputSelect.Content>
           </InputSelect>
 
@@ -235,7 +235,7 @@ export default function SignedUpUserTable({
 
   const renderUserRoleDropdown = (user: User) => {
     if (user.role === UserRole.SLACK_USER) {
-      return <p className="ml-2">Slack User</p>;
+      return <p className="ml-2">Utilisateur Slack</p>;
     }
     return (
       <UserRoleDropdown
@@ -269,7 +269,7 @@ export default function SignedUpUserTable({
                 className={buttonClassName}
               >
                 <LogOut className="mr-2 h-4 w-4" />
-                <span>Leave Organization</span>
+                <span>Quitter l&apos;organisation</span>
               </LeaveOrganizationButton>
             ) : (
               <>
@@ -280,7 +280,7 @@ export default function SignedUpUserTable({
                     className={buttonClassName}
                   >
                     <UserMinus className="mr-2 h-4 w-4" />
-                    <span>Delete User</span>
+                    <span>Supprimer l&apos;utilisateur</span>
                   </DeleteUserButton>
                 )}
                 <DeactivateUserButton
@@ -301,7 +301,7 @@ export default function SignedUpUserTable({
                 onClick={() => handleResetPassword(user)}
                 leftIcon={SvgKey}
               >
-                Reset Password
+                Réinitialiser le mot de passe
               </Button>
             )}
           </div>
@@ -338,8 +338,8 @@ export default function SignedUpUserTable({
         <TableHeader>
           <TableRow>
             <TableHead>Email</TableHead>
-            <TableHead className="text-center">Role</TableHead>
-            <TableHead className="text-center">Status</TableHead>
+            <TableHead className="text-center">Rôle</TableHead>
+            <TableHead className="text-center">Statut</TableHead>
             <TableHead>
               <div className="flex">
                 <div className="ml-auto">Actions</div>

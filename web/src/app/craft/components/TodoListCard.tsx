@@ -126,11 +126,11 @@ export default function TodoListCard({
               )}
 
               {/* Title */}
-              <span className="text-sm font-medium text-text-04">Tasks</span>
+              <span className="text-sm font-medium text-text-04">Tâches</span>
 
               {/* Progress count */}
               <span className="text-xs text-text-03">
-                {completed}/{total} completed
+                {completed}/{total} terminées
               </span>
             </div>
 
@@ -150,7 +150,7 @@ export default function TodoListCard({
               <TodoItemRow key={`${todoList.id}-${index}`} todo={todo} />
             ))}
             {todoList.todos.length === 0 && (
-              <span className="text-sm text-text-03 italic">No tasks</span>
+              <span className="text-sm text-text-03 italic">Aucune tâche</span>
             )}
           </div>
         </CollapsibleContent>

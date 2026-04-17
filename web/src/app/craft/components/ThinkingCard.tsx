@@ -58,7 +58,7 @@ export default function ThinkingCard({
                   isStreaming ? "text-theme-blue-05" : "text-text-04"
                 )}
               >
-                Thinking
+                Réflexion
               </span>
               {isStreaming && (
                 <span className="text-xs text-theme-blue-04 animate-pulse">

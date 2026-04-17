@@ -44,7 +44,7 @@ export default function OnboardingInfoPages({
   };
 
   // Get position text using shared helper (only if workArea is valid enum)
-  const positionText = workArea ? getPositionText(workArea, level) : "Not set";
+  const positionText = workArea ? getPositionText(workArea, level) : "Non défini";
 
   // Determine article based on position text
   const article = getArticle(positionText);
@@ -53,7 +53,7 @@ export default function OnboardingInfoPages({
     return (
       <div className="flex-1 flex flex-col gap-6 items-center justify-center">
         <Text headingH2 text05>
-          What is Onyx Craft?
+          Qu&apos;est-ce qu&apos;Onyx Craft ?
         </Text>
         <img
           src="/craft_demo_image_1.png"
@@ -61,9 +61,9 @@ export default function OnboardingInfoPages({
           className="max-w-full h-auto rounded-12"
         />
         <Text mainContentBody text04 className="text-center">
-          Beautiful dashboards, slides, and reports.
+          De beaux tableaux de bord, diaporamas et rapports.
           <br />
-          Built by AI agents that know your world. Privately and securely.
+          Créés par des agents IA qui connaissent votre univers. En toute confidentialité et sécurité.
         </Text>
       </div>
     );
@@ -73,7 +73,7 @@ export default function OnboardingInfoPages({
   return (
     <div className="flex-1 flex flex-col gap-6 items-center justify-center">
       <Text headingH2 text05>
-        Let's get started!
+        Commençons !
       </Text>
       <img
         src="/craft_demo_image_2.png"

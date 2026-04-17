@@ -371,7 +371,7 @@ export function TextFormField({
         {!isTextArea && isPasswordField && showPasswordToggle && (
           <button
             type="button"
-            aria-label={isPasswordVisible ? "Hide password" : "Show password"}
+            aria-label={isPasswordVisible ? "Masquer le mot de passe" : "Afficher le mot de passe"}
             className="absolute right-3 top-1/2 -translate-y-1/2 stroke-text-02 hover:stroke-text-03 mt-0.5"
             onClick={() => setIsPasswordVisible((v) => !v)}
             tabIndex={0}
@@ -462,12 +462,12 @@ export function TypedFileUploadFormField({
         if (validation?.isValid) {
           setCustomError("");
         } else {
-          setCustomError(validation?.errors.join(", ") || "Unknown error");
+          setCustomError(validation?.errors.join(", ") || "Erreur inconnue");
           helpers.setValue(null);
         }
       } catch (error) {
         setCustomError(
-          error instanceof Error ? error.message : "Validation error"
+          error instanceof Error ? error.message : "Erreur de validation"
         );
         helpers.setValue(null);
       } finally {
@@ -487,7 +487,7 @@ export function TypedFileUploadFormField({
 
     const file = files[0];
     if (!file) {
-      setCustomError("File selection error");
+      setCustomError("Erreur lors de la sélection du fichier");
       return;
     }
 
@@ -503,7 +503,7 @@ export function TypedFileUploadFormField({
       helpers.setValue(typedFile);
       setCustomError("");
     } catch (error) {
-      setCustomError(error instanceof Error ? error.message : "Unknown error");
+      setCustomError(error instanceof Error ? error.message : "Erreur inconnue");
       helpers.setValue(null);
     } finally {
       setIsValidating(false);
@@ -524,7 +524,7 @@ export function TypedFileUploadFormField({
       {/* Validation feedback */}
       {isValidating && (
         <div className="text-status-info-05 text-sm mt-1">
-          Validating file...
+          Validation du fichier...
         </div>
       )}
 
@@ -623,7 +623,7 @@ export const MarkdownFormField = ({
   name,
   label,
   error,
-  placeholder = "Enter your markdown here...",
+  placeholder = "Saisir votre contenu Markdown ici...",
 }: MarkdownPreviewProps) => {
   const [field] = useField(name);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -646,7 +646,7 @@ export const MarkdownFormField = ({
             onClick={togglePreview}
             className="text-sm font-semibold text-text-04 hover:text-text-05 focus:outline-none"
           >
-            {isPreviewOpen ? "Write" : "Preview"}
+            {isPreviewOpen ? "Éditer" : "Aperçu"}
           </button>
         </div>
         {isPreviewOpen ? (
@@ -768,7 +768,7 @@ export const BooleanFormField = memo(function BooleanFormField({
                   >
                     <div className="flex items-center gap-x-2">
                       <Label small={small}>{`${label}${
-                        optional ? " (Optional)" : ""
+                        optional ? " (Optionnel)" : ""
                       }`}</Label>
                       {tooltip && <ToolTipDetails>{tooltip}</ToolTipDetails>}
                     </div>
@@ -882,7 +882,7 @@ export function TextArrayField<T extends Yup.AnyObject>({
               type="button"
               disabled={disabled}
             >
-              Add New
+              Ajouter
             </CreateButton>
           </div>
         )}
@@ -993,7 +993,7 @@ export function SelectorFormField({
           disabled={disabled}
         >
           <SelectTrigger className={sizeClass.input} disabled={disabled}>
-            <SelectValue placeholder="Select...">
+            <SelectValue placeholder="Sélectionner...">
               {currentlySelected?.name || defaultValue || ""}
             </SelectValue>
           </SelectTrigger>
@@ -1009,7 +1009,7 @@ export function SelectorFormField({
               container={container}
             >
               {options.length === 0 ? (
-                <SelectItem value="default">Select...</SelectItem>
+                <SelectItem value="default">Sélectionner...</SelectItem>
               ) : (
                 options.map((option) => (
                   <SelectItem
@@ -1028,7 +1028,7 @@ export function SelectorFormField({
                   value={"__none__"}
                   onSelect={() => setFieldValue(name, null)}
                 >
-                  None
+                  Aucun
                 </SelectItem>
               )}
             </SelectContent>

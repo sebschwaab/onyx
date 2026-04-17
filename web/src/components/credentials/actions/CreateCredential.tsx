@@ -239,7 +239,7 @@ export default function CreateCredential({
                         {(showAdvancedOptions || !isAdmin) && (
                           <IsPublicGroupSelector
                             formikProps={formikProps}
-                            objectName="credential"
+                            objectName="identifiant"
                             publicToWhom="Curateurs"
                           />
                         )}

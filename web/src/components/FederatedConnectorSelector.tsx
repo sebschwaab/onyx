@@ -30,7 +30,7 @@ export const FederatedConnectorSelector = ({
   selectedConfigs,
   onChange,
   disabled = false,
-  placeholder = "Search federated connectors...",
+  placeholder = "Rechercher des connecteurs fédérés...",
   showError = false,
 }: FederatedConnectorSelectorProps) => {
   const [open, setOpen] = useState(false);
@@ -121,7 +121,7 @@ export const FederatedConnectorSelector = ({
   };
 
   const effectivePlaceholder = allConnectorsSelected
-    ? "All federated connectors selected"
+    ? "Tous les connecteurs fédérés sélectionnés"
     : placeholder;
 
   const isInputDisabled = disabled || allConnectorsSelected;
@@ -135,8 +135,7 @@ export const FederatedConnectorSelector = ({
       )}
 
       <Text as="p" mainUiMuted text03>
-        Documents from selected federated connectors will be searched in
-        real-time during queries.
+        Les documents des connecteurs fédérés sélectionnés seront recherchés en temps réel lors des requêtes.
       </Text>
       <div className="relative">
         <InputTypeIn
@@ -170,8 +169,8 @@ export const FederatedConnectorSelector = ({
             {filteredUnselectedConnectors.length === 0 ? (
               <div className="py-4 text-center text-xs text-text-03">
                 {searchQuery
-                  ? "No matching federated connectors found"
-                  : "No more federated connectors available"}
+                  ? "Aucun connecteur fédéré correspondant trouvé"
+                  : "Aucun connecteur fédéré disponible"}
               </div>
             ) : (
               <div>
@@ -230,7 +229,7 @@ export const FederatedConnectorSelector = ({
                     {hasEntitiesConfigured && (
                       <div
                         className="ml-1 w-2 h-2 bg-green-500 rounded-full flex-shrink-0"
-                        title="Entities configured"
+                        title="Entités configurées"
                       />
                     )}
                   </div>
@@ -239,8 +238,8 @@ export const FederatedConnectorSelector = ({
                       prominence="tertiary"
                       size="sm"
                       type="button"
-                      aria-label="Remove connector"
-                      tooltip="Remove connector"
+                      aria-label="Retirer le connecteur"
+                      tooltip="Retirer le connecteur"
                       onClick={() => removeConnector(connector.id)}
                       icon={SvgX}
                     />
@@ -252,7 +251,7 @@ export const FederatedConnectorSelector = ({
         </div>
       ) : (
         <div className="mt-3 p-3 border border-dashed border-border-02 rounded-12 bg-background-neutral-01 text-text-03 text-xs">
-          No federated connectors selected. Search and select connectors above.
+          Aucun connecteur fédéré sélectionné. Recherchez et sélectionnez des connecteurs ci-dessus.
         </div>
       )}
 

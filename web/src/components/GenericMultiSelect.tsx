@@ -62,7 +62,7 @@ export function GenericMultiSelect<
           {label}
         </Text>
         <Text as="p" text03 className="text-action-danger-05">
-          Failed to load {label.toLowerCase()}. Please try again.
+          Impossible de charger {label.toLowerCase()}. Veuillez réessayer.
         </Text>
       </div>
     );
@@ -116,7 +116,7 @@ export function GenericMultiSelect<
       <Disabled disabled={disabled}>
         <div>
           <InputComboBox
-            placeholder="Search..."
+            placeholder="Rechercher..."
             value=""
             onChange={() => {}}
             onValueChange={(selectedValue) => {

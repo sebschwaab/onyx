@@ -42,7 +42,7 @@ export const ConnectorTitle = ({
       typedConnector.connector_specific_config.repositories
         ? `${typedConnector.connector_specific_config.repo_owner}/${
             typedConnector.connector_specific_config.repositories.includes(",")
-              ? "multiple repos"
+              ? "plusieurs dépôts"
               : typedConnector.connector_specific_config.repositories
           }`
         : `${typedConnector.connector_specific_config.repo_owner}/*`

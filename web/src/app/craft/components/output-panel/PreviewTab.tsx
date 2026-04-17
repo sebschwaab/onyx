@@ -49,7 +49,7 @@ export default function PreviewTab({ webappUrl, refreshKey }: PreviewTabProps) {
               iframeLoaded ? "opacity-100" : "opacity-0"
             )}
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
-            title="Web App Preview"
+            title="Aperçu de l'application web"
           />
         )}
       </div>

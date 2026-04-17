@@ -57,7 +57,7 @@ function DirectoryNode({
       const listing = await listDirectory(sessionId, entry.path);
       setChildren(listing.entries);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load directory");
+      setError(err instanceof Error ? err.message : "Impossible de charger le répertoire");
     } finally {
       setIsLoading(false);
     }
@@ -188,7 +188,7 @@ function FileNode({ entry, sessionId, depth, onPreview }: FileNodeProps) {
               onPreview(entry);
             }}
           >
-            Preview
+            Aperçu
           </Button>
         )}
         <a
@@ -201,7 +201,7 @@ function FileNode({ entry, sessionId, depth, onPreview }: FileNodeProps) {
             prominence="tertiary"
             icon={SvgDownloadCloud}
           >
-            Download
+            Télécharger
           </Button>
         </a>
       </div>
@@ -228,7 +228,7 @@ export default function FileBrowser({ sessionId }: FileBrowserProps) {
       setRootEntries(listing.entries);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "Failed to load file system"
+        err instanceof Error ? err.message : "Impossible de charger le système de fichiers"
       );
     } finally {
       setIsLoading(false);
@@ -270,7 +270,7 @@ export default function FileBrowser({ sessionId }: FileBrowserProps) {
               )}
               <SvgHardDrive className="size-4 stroke-text-03" />
               <Text mainUiAction text03>
-                Workspace Files
+                Fichiers de l&apos;espace de travail
               </Text>
             </button>
           </CollapsibleTrigger>
@@ -283,7 +283,7 @@ export default function FileBrowser({ sessionId }: FileBrowserProps) {
               )}
               {rootEntries?.length === 0 && (
                 <Text secondaryBody text03 className="p-2 text-center">
-                  No files yet
+                  Aucun fichier pour l&apos;instant
                 </Text>
               )}
               {rootEntries?.map((entry) =>

@@ -26,13 +26,13 @@ const SCOPE_OPTIONS: {
 }[] = [
   {
     value: "private",
-    label: "Private",
-    description: "Only you can view this app.",
+    label: "Privé",
+    description: "Seul vous pouvez voir cette application.",
   },
   {
     value: "public_org",
-    label: "Organization",
-    description: "Anyone logged into your Onyx can view this app.",
+    label: "Organisation",
+    description: "Toute personne connectée à votre Onyx peut voir cette application.",
   },
 ];
 
@@ -101,9 +101,9 @@ export default function ShareButton({
             variant="action"
             prominence={isShared ? "primary" : "tertiary"}
             icon={SvgLink}
-            aria-label="Share webapp"
+            aria-label="Partager l'application web"
           >
-            {isShared ? "Shared" : "Share"}
+            {isShared ? "Partagé" : "Partager"}
           </Button>
         </Popover.Trigger>
         <Popover.Content side="bottom" align="end" width="lg" sideOffset={4}>
@@ -172,7 +172,7 @@ export default function ShareButton({
                           : SvgCopy
                     }
                     onClick={handleCopy}
-                    aria-label="Copy link"
+                    aria-label="Copier le lien"
                   />
                 </Section>
               </div>

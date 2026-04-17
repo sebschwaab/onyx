@@ -118,7 +118,7 @@ export default function RawOutputBlock({
         )}
         style={{ fontFamily: "var(--font-dm-mono)" }}
       >
-        No output yet...
+        Aucune sortie pour l&apos;instant...
       </div>
     );
   }

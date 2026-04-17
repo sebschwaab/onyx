@@ -49,15 +49,15 @@ export default function NotAllowedModal({
             {/* Header */}
             <div className="flex flex-col items-center gap-2 text-center">
               <Text headingH2 text05>
-                Custom Crafting Restricted
+                Création personnalisée restreinte
               </Text>
               <Text mainUiBody text03 className="max-w-sm">
-                Unfortunately, connecting your own data to Craft requires admin
-                permissions.
+                Malheureusement, connecter vos propres données à Craft
+                nécessite des permissions d&apos;administrateur.
                 <br />
                 <br />
-                Luckily, you can create a new Onyx account to become an admin
-                and craft with your own data!
+                Heureusement, vous pouvez créer un nouveau compte Onyx pour
+                devenir administrateur et créer avec vos propres données !
               </Text>
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function NotAllowedModal({
               onClick={onClose}
               className="flex items-center gap-1.5 px-4 py-2 rounded-12 border border-border-01 bg-background-tint-00 text-text-04 hover:bg-background-tint-02 transition-colors"
             >
-              <Text mainUiAction>Go Back</Text>
+              <Text mainUiAction>Retour</Text>
             </button>
             <button
               type="button"
@@ -88,7 +88,7 @@ export default function NotAllowedModal({
                   !isLoading ? "text-white dark:text-black" : "text-text-02"
                 )}
               >
-                {isLoading ? "Signing out..." : "Create a new account"}
+                {isLoading ? "Déconnexion..." : "Créer un nouveau compte"}
               </Text>
               {!isLoading && (
                 <SvgArrowRight className="w-4 h-4 text-white dark:text-black" />

@@ -101,7 +101,7 @@ export function CredentialForm<T extends Yup.AnyObject>({
                 disabled:pointer-events-none disabled:opacity-50 
                 shadow hover:bg-primary/90 h-9 px-4 py-2"
               >
-                Update
+                Mettre à jour
               </button>
             </div>
           </Form>

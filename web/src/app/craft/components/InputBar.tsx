@@ -127,7 +127,7 @@ function BuildFileCard({
 
   if (isPending) {
     return (
-      <SimpleTooltip tooltip="Waiting for session to be ready..." side="top">
+      <SimpleTooltip tooltip="En attente que la session soit prête..." side="top">
         {cardContent}
       </SimpleTooltip>
     );
@@ -156,7 +156,7 @@ const InputBar = memo(
         onSubmit,
         isRunning,
         disabled = false,
-        placeholder = "Describe your task...",
+        placeholder = "Décrivez votre tâche...",
         sandboxInitializing = false,
         noBottomRounding = false,
         isWelcomePage = false,
@@ -367,14 +367,14 @@ const InputBar = memo(
                 <Button
                   disabled={disabled}
                   icon={SvgPaperclip}
-                  tooltip="Attach Files"
+                  tooltip="Joindre des fichiers"
                   prominence="tertiary"
                   onClick={() => fileInputRef.current?.click()}
                 />
                 {/* Demo Data indicator pill - only show on welcome page (no session) when demo data is enabled */}
                 {demoDataEnabled && isWelcomePage && (
                   <SimpleTooltip
-                    tooltip="Switch to your data in the Configure panel!"
+                    tooltip="Passez à vos données dans le panneau Configurer !"
                     side="top"
                   >
                     <span>
@@ -387,7 +387,7 @@ const InputBar = memo(
                         onClick={() => router.push(CRAFT_CONFIGURE_PATH)}
                         className="bg-action-link-01"
                       >
-                        Demo Data Active
+                        Données de démonstration actives
                       </SelectButton>
                     </span>
                   </SimpleTooltip>
@@ -403,7 +403,7 @@ const InputBar = memo(
                   onClick={handleSubmit}
                   disabled={!canSubmit}
                   tooltip={
-                    sandboxInitializing ? "Initializing sandbox..." : "Send"
+                    sandboxInitializing ? "Initialisation du bac à sable..." : "Envoyer"
                   }
                   iconClassName={
                     sandboxInitializing ? "animate-spin" : undefined

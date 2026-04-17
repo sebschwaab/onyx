@@ -15,43 +15,43 @@ const STATUS_CONFIG = {
   provisioning: {
     color: "bg-status-warning-05",
     pulse: true,
-    label: "Initializing sandbox...",
+    label: "Initialisation du bac à sable...",
   },
   running: {
     color: "bg-status-success-05",
     pulse: false,
-    label: "Sandbox running",
+    label: "Bac à sable en cours d'exécution",
   },
-  idle: { color: "bg-status-warning-05", pulse: false, label: "Sandbox idle" },
+  idle: { color: "bg-status-warning-05", pulse: false, label: "Bac à sable inactif" },
   sleeping: {
     color: "bg-status-info-05",
     pulse: false,
-    label: "Sandbox sleeping",
+    label: "Bac à sable en veille",
   },
   restoring: {
     color: "bg-status-warning-05",
     pulse: true,
-    label: "Restoring sandbox...",
+    label: "Restauration du bac à sable...",
   },
   terminated: {
     color: "bg-status-error-05",
     pulse: false,
-    label: "Sandbox terminated",
+    label: "Bac à sable arrêté",
   },
   failed: {
     color: "bg-status-error-05",
     pulse: false,
-    label: "Failed to provision sandbox",
+    label: "Échec de la création du bac à sable",
   },
   ready: {
     color: "bg-status-success-05",
     pulse: false,
-    label: "Sandbox ready",
+    label: "Bac à sable prêt",
   },
   loading: {
     color: "bg-text-03",
     pulse: true,
-    label: "Finding sandbox...",
+    label: "Recherche du bac à sable...",
   },
 } as const;
 

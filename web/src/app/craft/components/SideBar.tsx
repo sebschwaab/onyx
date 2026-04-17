@@ -47,21 +47,21 @@ import { CRAFT_PATH, CRAFT_CONFIGURE_PATH } from "@/app/craft/v1/constants";
 // ============================================================================
 
 const DELETING_MESSAGES = [
-  "Mining away your blocks...",
-  "Returning diamonds to the caves...",
-  "Creeper blew up your save file...",
-  "Throwing items into lava...",
-  "Despawning your entities...",
-  "Breaking bedrock illegally...",
-  "Enderman teleported your data away...",
-  "Falling into the void...",
-  "Your build ran out of hearts...",
-  "Respawning at world spawn...",
-  "Feeding your code to the Ender Dragon...",
-  "Activating TNT chain reaction...",
-  "Zombie horde consumed your bytes...",
-  "Wither withering your session...",
-  "Herobrine deleted your world...",
+  "Destruction de vos blocs...",
+  "Renvoi des diamants dans les grottes...",
+  "Un Creeper a fait exploser votre sauvegarde...",
+  "Envoi des objets dans la lave...",
+  "Suppression de vos entités...",
+  "Destruction illégale du bedrock...",
+  "L'Enderman a téléporté vos données...",
+  "Chute dans le vide...",
+  "Votre construction n'a plus de cœurs...",
+  "Réapparition au spawn du monde...",
+  "Votre code donné au Dragon de l'End...",
+  "Activation de la réaction en chaîne de TNT...",
+  "La horde de zombies a consommé vos octets...",
+  "Le Wither dévore votre session...",
+  "Herobrine a supprimé votre monde...",
 ];
 
 function DeletingMessage() {
@@ -167,7 +167,7 @@ function BuildSessionButton({
       } catch (err) {
         setIsDeleting(false);
         setDeleteError(
-          err instanceof Error ? err.message : "Failed to delete session"
+          err instanceof Error ? err.message : "Échec de la suppression de la session"
         );
       }
     },
@@ -198,7 +198,7 @@ function BuildSessionButton({
               icon={SvgEdit}
               onClick={noProp(() => setRenaming(true))}
             >
-              Rename
+              Renommer
             </LineItem>,
             null,
             <LineItem
@@ -207,7 +207,7 @@ function BuildSessionButton({
               onClick={noProp(() => setIsDeleteModalOpen(true))}
               danger
             >
-              Delete
+              Supprimer
             </LineItem>,
           ]}
         </PopoverMenu>
@@ -258,10 +258,10 @@ function BuildSessionButton({
         <ConfirmationModalLayout
           title={
             deleteSuccess
-              ? "Deleted"
+              ? "Supprimé"
               : deleteError
-                ? "Delete Failed"
-                : "Delete Craft"
+                ? "Échec de la suppression"
+                : "Supprimer la création"
           }
           icon={deleteSuccess ? SvgCheckCircle : SvgTrash}
           onClose={isDeleting || deleteSuccess ? undefined : closeModal}
@@ -270,11 +270,11 @@ function BuildSessionButton({
           submit={
             deleteSuccess ? (
               <Button disabled variant="action" icon={SvgCheckCircle}>
-                Done
+                Terminé
               </Button>
             ) : deleteError ? (
               <Button variant="danger" onClick={closeModal}>
-                Close
+                Fermer
               </Button>
             ) : (
               <Button
@@ -283,14 +283,14 @@ function BuildSessionButton({
                 onClick={handleConfirmDelete}
                 icon={isDeleting ? SimpleLoader : undefined}
               >
-                {isDeleting ? "Deleting..." : "Delete"}
+                {isDeleting ? "Suppression..." : "Supprimer"}
               </Button>
             )
           }
         >
           {deleteSuccess ? (
             <Text as="p" text03>
-              Build deleted successfully.
+              Création supprimée avec succès.
             </Text>
           ) : deleteError ? (
             <Text as="p" text03 className="text-status-error-02">
@@ -299,7 +299,7 @@ function BuildSessionButton({
           ) : isDeleting ? (
             <DeletingMessage />
           ) : (
-            "Are you sure you want to delete this craft? This action cannot be undone."
+            "Êtes-vous sûr de vouloir supprimer cette création ? Cette action est irréversible."
           )}
         </ConfirmationModalLayout>
       )}
@@ -343,7 +343,7 @@ const MemoizedBuildSidebarInner = memo(
     // limit=0 indicates unlimited (local/self-hosted mode), so hide the count
     const sessionsTitle = useMemo(() => {
       if (isEnabled && limits && limits.limit > 0) {
-        return `Total Messages (${limits.messagesUsed}/${limits.limit})`;
+        return `Messages totaux (${limits.messagesUsed}/${limits.limit})`;
       }
       return "Sessions";
     }, [isEnabled, limits]);
@@ -365,7 +365,7 @@ const MemoizedBuildSidebarInner = memo(
     const newBuildButton = useMemo(
       () => (
         <SidebarTab icon={SvgEditBig} folded={folded} onClick={handleNewBuild}>
-          Start Crafting
+          Commencer à créer
         </SidebarTab>
       ),
       [folded, handleNewBuild]
@@ -379,7 +379,7 @@ const MemoizedBuildSidebarInner = memo(
           href={CRAFT_CONFIGURE_PATH}
           selected={pathname.startsWith(CRAFT_CONFIGURE_PATH)}
         >
-          Configure
+          Configurer
         </SidebarTab>
       ),
       [folded, pathname]
@@ -388,7 +388,7 @@ const MemoizedBuildSidebarInner = memo(
     const backToChatButton = useMemo(
       () => (
         <SidebarTab icon={SvgArrowLeft} folded={folded} href="/app">
-          Back to Chat
+          Retour au chat
         </SidebarTab>
       ),
       [folded]
@@ -421,7 +421,7 @@ const MemoizedBuildSidebarInner = memo(
               {sessionHistory.length === 0 ? (
                 <div className="pl-2 pr-1.5 py-1">
                   <Text text01>
-                    Start building! Session history will appear here.
+                    Commencez à créer ! L&apos;historique des sessions apparaîtra ici.
                   </Text>
                 </div>
               ) : (

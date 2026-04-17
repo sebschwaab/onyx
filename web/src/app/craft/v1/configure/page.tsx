@@ -172,7 +172,7 @@ export default function BuildConfigPage() {
 
   // Compute display name for the pending LLM selection
   const pendingLlmDisplayName = useMemo(() => {
-    if (!pendingLlmSelection) return "Select model";
+    if (!pendingLlmSelection) return "Sélectionner un modèle";
 
     // 1. Try to get display name from backend llmProviders
     if (llmProviders) {
@@ -286,7 +286,7 @@ export default function BuildConfigPage() {
   // Get position text using shared helper
   const positionText = workAreaValue
     ? getPositionText(workAreaValue, levelValue)
-    : "Not set";
+    : "Non défini";
 
   const hasLlmProvider = (llmProviders?.length ?? 0) > 0;
 
@@ -372,8 +372,8 @@ export default function BuildConfigPage() {
       <SettingsLayouts.Root>
         <SettingsLayouts.Header
           icon={SvgPlug}
-          title="Configure Onyx Craft"
-          description="Select data sources and your default LLM"
+          title="Configurer Onyx Craft"
+          description="Sélectionnez vos sources de données et votre LLM par défaut"
           rightChildren={
             <div className="flex items-center gap-2">
               <Button
@@ -381,13 +381,13 @@ export default function BuildConfigPage() {
                 prominence="secondary"
                 onClick={handleRestoreChanges}
               >
-                Restore Changes
+                Restaurer les modifications
               </Button>
               <Button
                 disabled={!hasChanges || isUpdating || isPreProvisioning}
                 onClick={handleUpdate}
               >
-                {isUpdating || isPreProvisioning ? "Updating..." : "Update"}
+                {isUpdating || isPreProvisioning ? "Mise à jour..." : "Mettre à jour"}
               </Button>
             </div>
           }
@@ -396,7 +396,7 @@ export default function BuildConfigPage() {
           {isLoading ? (
             <Card variant="tertiary">
               <Section alignItems="center" gap={0.5} height="fit">
-                <Text mainContentBody>Loading...</Text>
+                <Text mainContentBody>Chargement...</Text>
               </Section>
             </Card>
           ) : (
@@ -409,20 +409,20 @@ export default function BuildConfigPage() {
               >
                 <Card>
                   <InputLayouts.Horizontal
-                    title="Your Demo Persona"
+                    title="Votre persona de démonstration"
                     description={
                       firstName && lastName && positionText
-                        ? `${firstName} ${lastName}, ${positionText} at ${DEMO_COMPANY_NAME}`
+                        ? `${firstName} ${lastName}, ${positionText} chez ${DEMO_COMPANY_NAME}`
                         : positionText
-                          ? `${positionText} at ${DEMO_COMPANY_NAME}`
-                          : "Not set"
+                          ? `${positionText} chez ${DEMO_COMPANY_NAME}`
+                          : "Non défini"
                     }
                     center
                   >
                     <SimpleTooltip
                       tooltip={
                         !hasLlmProvider
-                          ? "Configure an LLM provider first"
+                          ? "Configurez d'abord un fournisseur LLM"
                           : undefined
                       }
                       disabled={hasLlmProvider}
@@ -456,8 +456,8 @@ export default function BuildConfigPage() {
                     }`}
                   >
                     <InputLayouts.Horizontal
-                      title="Default LLM"
-                      description="Select the language model to craft with"
+                      title="LLM par défaut"
+                      description="Sélectionnez le modèle de langage avec lequel créer"
                       center
                     >
                       <BuildLLMPopover
@@ -491,19 +491,19 @@ export default function BuildConfigPage() {
                 <div className="w-full flex items-center justify-between">
                   <div className="flex flex-col gap-0.25">
                     <Text mainContentEmphasis text04>
-                      Connectors
+                      Connecteurs
                     </Text>
                     <Text secondaryBody text03>
-                      Connect your own data sources
+                      Connectez vos propres sources de données
                     </Text>
                   </div>
                   <div className="w-fit flex-shrink-0">
                     <SimpleTooltip
                       tooltip={
                         isUpdating || isPreProvisioning
-                          ? "Please wait while your session is being provisioned"
+                          ? "Veuillez patienter pendant la mise en service de votre session"
                           : !hasConnectorEverSucceeded
-                            ? "Connect and sync a data source to disable demo data"
+                            ? "Connectez et synchronisez une source de données pour désactiver les données de démonstration"
                             : undefined
                       }
                       disabled={
@@ -532,7 +532,7 @@ export default function BuildConfigPage() {
                           }`}
                         >
                           <div className="flex items-center gap-2">
-                            <SimpleTooltip tooltip="The demo dataset contains 1000 files across various connectors">
+                            <SimpleTooltip tooltip="Le jeu de données de démonstration contient 1000 fichiers répartis sur divers connecteurs">
                               <span className="inline-flex items-center cursor-help">
                                 <SvgInfoSmall
                                   size={16}
@@ -540,7 +540,7 @@ export default function BuildConfigPage() {
                                 />
                               </span>
                             </SimpleTooltip>
-                            <Text mainUiAction>Use Demo Dataset</Text>
+                            <Text mainUiAction>Utiliser le jeu de données de démonstration</Text>
                           </div>
                           <Switch
                             checked={pendingDemoData ?? demoDataEnabled}
@@ -625,8 +625,8 @@ export default function BuildConfigPage() {
                 .displayName
             }
             action="disconnect"
-            actionButtonText="Disconnect"
-            additionalDetails="This will remove access to this data source. You can reconnect it later."
+            actionButtonText="Déconnecter"
+            additionalDetails="Cela supprimera l'accès à cette source de données. Vous pourrez la reconnecter ultérieurement."
             onClose={() => setConnectorToDelete(null)}
             onSubmit={handleDeleteConfirm}
           />

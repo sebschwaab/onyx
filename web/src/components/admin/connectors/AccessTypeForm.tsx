@@ -101,9 +101,9 @@ export function AccessTypeForm({
       {isPaidEnterpriseEnabled && (
         <>
           <div>
-            <label className="text-text-950 font-medium">Document Access</label>
+            <label className="text-text-950 font-medium">Accès aux documents</label>
             <p className="text-sm text-text-500">
-              Control who has access to the documents indexed by this connector.
+              Contrôlez qui a accès aux documents indexés par ce connecteur.
             </p>
           </div>
           <DefaultDropdown

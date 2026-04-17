@@ -180,7 +180,7 @@ function FetchedFilePreview({
           padding={2}
         >
           <Text secondaryBody text03>
-            Loading file...
+            Chargement du fichier...
           </Text>
         </Section>
       );
@@ -188,7 +188,7 @@ function FetchedFilePreview({
     return (
       <div className="p-4">
         <Text secondaryBody text03>
-          Loading file...
+          Chargement du fichier...
         </Text>
       </div>
     );
@@ -205,7 +205,7 @@ function FetchedFilePreview({
         >
           <SvgFileText size={48} className="stroke-text-02" />
           <Text headingH3 text03>
-            Error loading file
+            Erreur lors du chargement du fichier
           </Text>
           <Text secondaryBody text02>
             {error.message}
@@ -216,7 +216,7 @@ function FetchedFilePreview({
     return (
       <div className="p-4">
         <Text secondaryBody text02>
-          Error: {error.message}
+          Erreur : {error.message}
         </Text>
       </div>
     );
@@ -232,7 +232,7 @@ function FetchedFilePreview({
           padding={2}
         >
           <Text secondaryBody text03>
-            No content
+            Aucun contenu
           </Text>
         </Section>
       );
@@ -240,7 +240,7 @@ function FetchedFilePreview({
     return (
       <div className="p-4">
         <Text secondaryBody text03>
-          No content
+          Aucun contenu
         </Text>
       </div>
     );
@@ -257,7 +257,7 @@ function FetchedFilePreview({
         >
           <SvgFileText size={48} className="stroke-text-02" />
           <Text headingH3 text03>
-            Cannot preview file
+            Impossible d&apos;afficher le fichier
           </Text>
           <Text secondaryBody text02 className="text-center max-w-md">
             {data.error}

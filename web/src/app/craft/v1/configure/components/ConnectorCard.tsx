@@ -44,20 +44,20 @@ function getStatusText(status: ConnectorStatus, docsIndexed: number): string {
     case "connected":
       return docsIndexed > 0
         ? `${docsIndexed.toLocaleString()} docs`
-        : "Connected";
+        : "Connecté";
     case "connected_with_errors":
       return docsIndexed > 0
         ? `${docsIndexed.toLocaleString()} docs`
-        : "Connected, has errors";
+        : "Connecté, avec erreurs";
     case "indexing":
-      return "Syncing...";
+      return "Synchronisation...";
     case "error":
-      return "Error";
+      return "Erreur";
     case "deleting":
-      return "Deleting...";
+      return "Suppression...";
     case "not_connected":
     default:
-      return "Not connected";
+      return "Non connecté";
   }
 }
 
@@ -121,7 +121,7 @@ export default function ConnectorCard({
               router.push(`/admin/connector/${config?.cc_pair_id}`);
             }}
           >
-            Manage connector
+            Gérer le connecteur
           </LineItem>
           <LineItem
             key="delete"
@@ -133,7 +133,7 @@ export default function ConnectorCard({
               onDelete();
             }}
           >
-            Disconnect
+            Déconnecter
           </LineItem>
         </Popover.Menu>
       </Popover.Content>

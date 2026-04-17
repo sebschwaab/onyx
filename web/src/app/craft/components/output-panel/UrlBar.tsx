@@ -64,7 +64,7 @@ export default function UrlBar({
   onForward,
   previewUrl,
   onDownloadRaw,
-  downloadRawTooltip = "Download file",
+  downloadRawTooltip = "Télécharger le fichier",
   onDownload,
   isDownloading = false,
   onRefresh,
@@ -93,7 +93,7 @@ export default function UrlBar({
                   ? "hover:bg-background-tint-03 text-text-03"
                   : "text-text-02 cursor-not-allowed"
               )}
-              aria-label="Go back"
+              aria-label="Retour"
             >
               <SvgArrowLeft size={16} />
             </button>
@@ -106,7 +106,7 @@ export default function UrlBar({
                   ? "hover:bg-background-tint-03 text-text-03"
                   : "text-text-02 cursor-not-allowed"
               )}
-              aria-label="Go forward"
+              aria-label="Suivant"
             >
               <SvgArrowRight size={16} />
             </button>
@@ -114,7 +114,7 @@ export default function UrlBar({
               <button
                 onClick={onRefresh}
                 className="p-1.5 rounded-full transition-colors hover:bg-background-tint-03 text-text-03"
-                aria-label="Refresh"
+                aria-label="Actualiser"
               >
                 <SvgRevert size={14} className="-scale-x-100" />
               </button>
@@ -137,11 +137,11 @@ export default function UrlBar({
           )}
           {/* Open in new tab button - only shown for Preview tab with valid URL */}
           {previewUrl && (
-            <SimpleTooltip tooltip="open in a new tab" delayDuration={200}>
+            <SimpleTooltip tooltip="Ouvrir dans un nouvel onglet" delayDuration={200}>
               <button
                 onClick={handleOpenInNewTab}
                 className="flex-shrink-0 p-0.5 rounded transition-colors hover:bg-background-tint-03 text-text-03"
-                aria-label="open in a new tab"
+                aria-label="Ouvrir dans un nouvel onglet"
               >
                 <SvgExternalLink size={14} />
               </button>
@@ -160,7 +160,7 @@ export default function UrlBar({
             icon={isDownloading ? SpinningLoader : SvgExternalLink}
             onClick={onDownload}
           >
-            {isDownloading ? "Exporting..." : "Export to .docx"}
+            {isDownloading ? "Exportation..." : "Exporter en .docx"}
           </Button>
         )}
         {/* Share button — shown when webapp preview is active */}

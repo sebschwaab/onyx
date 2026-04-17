@@ -126,7 +126,7 @@ function collapseUnchanged(
   if (changeIndices.length === 0) {
     // No changes, show a summary
     if (lines.length > 10) {
-      return [{ type: "header", content: `(${lines.length} unchanged lines)` }];
+      return [{ type: "header", content: `(${lines.length} lignes inchangées)` }];
     }
     return lines;
   }
@@ -151,7 +151,7 @@ function collapseUnchanged(
         const skipped = idx - lastShownIdx - 1;
         result.push({
           type: "header",
-          content: `... ${skipped} unchanged line${skipped > 1 ? "s" : ""} ...`,
+          content: `... ${skipped} ligne${skipped > 1 ? "s" : ""} inchangée${skipped > 1 ? "s" : ""} ...`,
         });
       }
       result.push(line);
