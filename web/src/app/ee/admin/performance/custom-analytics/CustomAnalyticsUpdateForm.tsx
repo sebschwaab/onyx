@@ -19,7 +19,7 @@ export function CustomAnalyticsUpdateForm() {
   const [secretKey, setSecretKey] = useState<string>("");
 
   if (!settings) {
-    return <Callout type="danger" title="Failed to fetch settings"></Callout>;
+    return <Callout type="danger" title="Impossible de récupérer les paramètres"></Callout>;
   }
 
   return (
@@ -42,11 +42,11 @@ export function CustomAnalyticsUpdateForm() {
             }
           );
           if (response.ok) {
-            toast.success("Custom analytics script updated successfully!");
+            toast.success("Script d'analytics personnalisé mis à jour avec succès !");
           } else {
             const errorMsg = (await response.json()).detail;
             toast.error(
-              `Failed to update custom analytics script: "${errorMsg}"`
+              `Échec de la mise à jour du script d'analytics personnalisé : "${errorMsg}"`
             );
           }
           setSecretKey("");
@@ -55,13 +55,13 @@ export function CustomAnalyticsUpdateForm() {
         <div className="mb-4">
           <Label>Script</Label>
           <Text as="p">
-            Specify the Javascript that should run on page load in order to
-            initialize your custom tracking/analytics.
+            Spécifiez le JavaScript qui doit s&apos;exécuter au chargement de la page afin
+            d&apos;initialiser votre suivi/analytics personnalisé.
           </Text>
           <Spacer rem={0.75} />
           <Text as="p">
             {markdown(
-              "Do not include the `<script></script>` tags. If you upload a script below but you are not receiving any events in your analytics platform, try removing all extra whitespace before each line of JavaScript."
+              "N'incluez pas les balises `<script></script>`. Si vous téléversez un script ci-dessous mais ne recevez aucun événement dans votre plateforme d'analytics, essayez de supprimer tous les espaces superflus avant chaque ligne de JavaScript."
             )}
           </Text>
           <Spacer rem={0.5} />
@@ -73,13 +73,12 @@ export function CustomAnalyticsUpdateForm() {
           />
         </div>
 
-        <Label>Secret Key</Label>
+        <Label>Clé secrète</Label>
         <SubLabel>
           <>
-            For security reasons, you must provide a secret key to update this
-            script. This should be the value of the{" "}
-            <i>CUSTOM_ANALYTICS_SECRET_KEY</i> environment variable set when
-            initially setting up Onyx.
+            Pour des raisons de sécurité, vous devez fournir une clé secrète pour mettre à jour ce
+            script. Il doit s&apos;agir de la valeur de la variable d&apos;environnement{" "}
+            <i>CUSTOM_ANALYTICS_SECRET_KEY</i> définie lors de la configuration initiale d&apos;Onyx.
           </>
         </SubLabel>
         <input
@@ -96,7 +95,7 @@ export function CustomAnalyticsUpdateForm() {
           onChange={(e) => setSecretKey(e.target.value)}
         />
         <Spacer rem={1} />
-        <Button type="submit">Update</Button>
+        <Button type="submit">Mettre à jour</Button>
       </form>
     </div>
   );

@@ -218,8 +218,8 @@ export default function UserLibraryModal({
         <Modal.Content width="xl" height="fit">
           <Modal.Header
             icon={SvgFileText}
-            title="Your Files"
-            description="Upload files for your agent to read (Excel, Word, PowerPoint, etc.)"
+            title="Vos fichiers"
+            description="Téléversez des fichiers que votre agent pourra lire (Excel, Word, PowerPoint, etc.)"
             onClose={onClose}
           />
           <Modal.Body>
@@ -250,7 +250,7 @@ export default function UserLibraryModal({
                     prominence="secondary"
                     icon={SvgFolderPlus}
                     onClick={() => setShowNewFolderModal(true)}
-                    tooltip="New Folder"
+                    tooltip="Nouveau dossier"
                   />
                   <input
                     ref={fileInputRef}
@@ -266,32 +266,32 @@ export default function UserLibraryModal({
                     prominence="secondary"
                     icon={SvgUploadCloud}
                     onClick={() => handleUploadToFolder("/")}
-                    tooltip={isUploading ? "Uploading..." : "Upload"}
-                    aria-label={isUploading ? "Uploading..." : "Upload"}
+                    tooltip={isUploading ? "Téléversement..." : "Téléverser"}
+                    aria-label={isUploading ? "Téléversement..." : "Téléverser"}
                   />
                 </Section>
 
                 {isLoading ? (
                   <Section padding={2} height="fit">
                     <Text secondaryBody text03>
-                      Loading files...
+                      Chargement des fichiers...
                     </Text>
                   </Section>
                 ) : error ? (
                   <Section padding={2} height="fit">
                     <Text secondaryBody text03>
-                      Failed to load files
+                      Impossible de charger les fichiers
                     </Text>
                   </Section>
                 ) : fileCount === 0 ? (
                   <Section padding={2} height="fit" gap={0.5}>
                     <SvgFileText size={32} className="stroke-text-02" />
                     <Text secondaryBody text03>
-                      No files uploaded yet
+                      Aucun fichier téléversé pour l&apos;instant
                     </Text>
                     <Text secondaryBody text02>
-                      Upload Excel, Word, PowerPoint, or other files for your
-                      agent to work with
+                      Téléversez des fichiers Excel, Word, PowerPoint ou autres
+                      pour que votre agent puisse les utiliser
                     </Text>
                   </Section>
                 ) : (
@@ -312,7 +312,7 @@ export default function UserLibraryModal({
           </Modal.Body>
 
           <Modal.Footer>
-            <Button onClick={onClose}>Done</Button>
+            <Button onClick={onClose}>Terminer</Button>
           </Modal.Footer>
         </Modal.Content>
       </Modal>
@@ -321,14 +321,14 @@ export default function UserLibraryModal({
       {entryToDelete && (
         <ConfirmEntityModal
           danger
-          entityType={entryToDelete.is_directory ? "folder" : "file"}
+          entityType={entryToDelete.is_directory ? "dossier" : "fichier"}
           entityName={entryToDelete.name}
-          action="delete"
-          actionButtonText="Delete"
+          action="supprimer"
+          actionButtonText="Supprimer"
           additionalDetails={
             entryToDelete.is_directory
-              ? "This will delete the folder and all its contents."
-              : "This file will be removed from your library."
+              ? "Cela supprimera le dossier et tout son contenu."
+              : "Ce fichier sera supprimé de votre bibliothèque."
           }
           onClose={() => setEntryToDelete(null)}
           onSubmit={handleDeleteConfirm}
@@ -348,7 +348,7 @@ export default function UserLibraryModal({
         <Modal.Content width="sm" height="fit">
           <Modal.Header
             icon={SvgFolder}
-            title="New Folder"
+            title="Nouveau dossier"
             onClose={() => {
               setShowNewFolderModal(false);
               setNewFolderName("");
@@ -357,12 +357,12 @@ export default function UserLibraryModal({
           <Modal.Body>
             <Section flexDirection="column" gap={0.5} alignItems="stretch">
               <Text secondaryBody text03>
-                Folder name
+                Nom du dossier
               </Text>
               <InputTypeIn
                 value={newFolderName}
                 onChange={(e) => setNewFolderName(e.target.value)}
-                placeholder="Enter folder name"
+                placeholder="Entrez le nom du dossier"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && newFolderName.trim()) {
                     handleCreateDirectory();
@@ -380,13 +380,13 @@ export default function UserLibraryModal({
                 setNewFolderName("");
               }}
             >
-              Cancel
+              Annuler
             </Button>
             <Button
               disabled={!newFolderName.trim()}
               onClick={handleCreateDirectory}
             >
-              Create
+              Créer
             </Button>
           </Modal.Footer>
         </Modal.Content>
@@ -463,7 +463,7 @@ function LibraryTreeView({
                   icon={SvgChevronRight}
                   onClick={() => onToggleFolder(entry.path)}
                   small
-                  tooltip={isExpanded ? "Collapse" : "Expand"}
+                  tooltip={isExpanded ? "Réduire" : "Développer"}
                   style={{
                     transform: isExpanded ? "rotate(90deg)" : undefined,
                     transition: "transform 150ms ease",
@@ -527,7 +527,7 @@ function LibraryTreeView({
                         entry.path.replace(/^user_library/, "") || "/";
                       onUploadToFolder(uploadPath);
                     }}
-                    tooltip="Upload to this folder"
+                    tooltip="Téléverser dans ce dossier"
                   />
                 )}
                 <Button
@@ -535,7 +535,7 @@ function LibraryTreeView({
                   size="sm"
                   icon={SvgTrash}
                   onClick={() => onDelete(entry)}
-                  tooltip="Delete"
+                  tooltip="Supprimer"
                 />
               </Section>
 
@@ -543,8 +543,8 @@ function LibraryTreeView({
               <SimpleTooltip
                 tooltip={
                   entry.sync_enabled
-                    ? "Synced to sandbox - click to disable"
-                    : "Not synced - click to enable"
+                    ? "Synchronisé avec le bac à sable - cliquez pour désactiver"
+                    : "Non synchronisé - cliquez pour activer"
                 }
               >
                 <Switch

@@ -36,7 +36,7 @@ export default function KickoffCSVExport({
     retryCount.current = 0;
 
     if (failure) {
-      toast.error("Failed to download the query-history.");
+      toast.error("Impossible de télécharger l'historique des requêtes.");
     }
 
     rerender();

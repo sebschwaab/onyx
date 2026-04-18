@@ -61,7 +61,7 @@ const GmailCredentialUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
           );
         }
       } catch (e) {
-        toast.error(`Invalid file provided - ${e}`);
+        toast.error(`Fichier invalide - ${e}`);
         setIsUploading(false);
         return;
       }
@@ -85,7 +85,7 @@ const GmailCredentialUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
           }
         } else {
           const errorMsg = await response.text();
-          toast.error(`Failed to upload app credentials - ${errorMsg}`);
+          toast.error(`Échec du téléversement des identifiants d'application - ${errorMsg}`);
         }
       }
 
@@ -108,7 +108,7 @@ const GmailCredentialUpload = ({ onSuccess }: { onSuccess?: () => void }) => {
           }
         } else {
           const errorMsg = await response.text();
-          toast.error(`Failed to upload service account key - ${errorMsg}`);
+          toast.error(`Échec du téléversement de la clé de compte de service - ${errorMsg}`);
         }
       }
       setIsUploading(false);
@@ -257,8 +257,7 @@ export const GmailJsonUploadSection = ({
         <div className="flex items-start py-3 px-4 bg-yellow-50/30 dark:bg-yellow-900/5 rounded">
           <FiAlertTriangle className="text-yellow-500 h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
           <p className="text-sm">
-            Curators are unable to set up the Gmail credentials. To add a Gmail
-            connector, please contact an administrator.
+            Les curateurs ne peuvent pas configurer les identifiants Gmail. Pour ajouter un connecteur Gmail, veuillez contacter un administrateur.
           </p>
         </div>
       </div>
@@ -268,8 +267,7 @@ export const GmailJsonUploadSection = ({
   return (
     <div>
       <p className="text-sm mb-3">
-        To connect your Gmail, create credentials (either OAuth App or Service
-        Account), download the JSON file, and upload it below.
+        Pour connecter votre Gmail, créez des identifiants (OAuth App ou Compte de service), téléchargez le fichier JSON et téléversez-le ci-dessous.
       </p>
       <div className="mb-4">
         <a
@@ -279,7 +277,7 @@ export const GmailJsonUploadSection = ({
           rel="noreferrer"
         >
           <FiLink className="h-3 w-3" />
-          View detailed setup instructions
+          Voir les instructions détaillées
         </a>
       </div>
 
@@ -354,11 +352,11 @@ export const GmailJsonUploadSection = ({
                     handleSuccess();
                   } else {
                     const errorMsg = await response.text();
-                    toast.error(`Failed to delete credentials - ${errorMsg}`);
+                    toast.error(`Échec de la suppression des identifiants - ${errorMsg}`);
                   }
                 }}
               >
-                Delete Credentials
+                Supprimer les identifiants
               </Button>
             </div>
           )}
@@ -460,10 +458,9 @@ export const GmailAuthSection = ({
           <div className="py-3 px-4 bg-blue-50/30 dark:bg-blue-900/5 rounded mb-4 flex items-start">
             <FiCheck className="text-blue-500 h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
             <div className="flex-1">
-              <span className="font-medium block">Authentication Complete</span>
+              <span className="font-medium block">Authentification réussie</span>
               <p className="text-sm mt-1 text-text-500 dark:text-text-400 break-words">
-                Your Gmail credentials have been successfully uploaded and
-                authenticated.
+                Vos identifiants Gmail ont été téléversés et authentifiés avec succès.
               </p>
             </div>
           </div>
@@ -478,11 +475,11 @@ export const GmailAuthSection = ({
                 );
               }}
             >
-              Revoke Access
+              Révoquer l&apos;accès
             </Button>
             {buildMode && onCredentialCreated && (
               <Button onClick={() => onCredentialCreated(existingCredential)}>
-                Continue
+                Continuer
               </Button>
             )}
           </Section>
@@ -498,13 +495,12 @@ export const GmailAuthSection = ({
   ) {
     return (
       <div>
-        <SectionHeader>Gmail Authentication</SectionHeader>
+        <SectionHeader>Authentification Gmail</SectionHeader>
         <div className="mt-4">
           <div className="flex items-start py-3 px-4 bg-yellow-50/30 dark:bg-yellow-900/5 rounded">
             <FiAlertTriangle className="text-yellow-500 h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
             <p className="text-sm">
-              Please complete Step 1 by uploading either OAuth credentials or a
-              Service Account key before proceeding with authentication.
+              Veuillez d&apos;abord compléter l&apos;étape 1 en téléversant des identifiants OAuth ou une clé de compte de service avant de procéder à l&apos;authentification.
             </p>
           </div>
         </div>
@@ -549,7 +545,7 @@ export const GmailAuthSection = ({
                 } else {
                   const errorMsg = await response.text();
                   toast.error(
-                    `Failed to create service account credential - ${errorMsg}`
+                    `Échec de la création de l'identifiant de compte de service - ${errorMsg}`
                   );
                 }
               } catch (error) {
@@ -586,8 +582,7 @@ export const GmailAuthSection = ({
       <div>
         <div className="bg-background-50/30 dark:bg-background-900/20 rounded mb-4">
           <p className="text-sm">
-            Next, you need to authenticate with Gmail via OAuth. This gives us
-            read access to the emails you have access to in your Gmail account.
+            Vous devez maintenant vous authentifier avec Gmail via OAuth. Cela nous donne un accès en lecture aux e-mails accessibles dans votre compte Gmail.
           </p>
         </div>
         <Button
@@ -612,7 +607,7 @@ export const GmailAuthSection = ({
                 setIsAuthenticating(false);
               }
             } catch (error) {
-              toast.error(`Failed to authenticate with Gmail - ${error}`);
+              toast.error(`Échec de l'authentification avec Gmail - ${error}`);
               setIsAuthenticating(false);
             }
           }}

@@ -61,7 +61,7 @@ export async function pinAgents(pinnedAgentIds: number[]) {
     }),
   });
   if (!response.ok) {
-    throw new Error("Failed to update pinned assistants");
+    throw new Error("Impossible de mettre à jour les assistants épinglés");
   }
 }
 
@@ -100,7 +100,7 @@ export async function deleteAgent(agentId: number): Promise<string | null> {
     return errorMessage;
   } catch (error) {
     console.error("deleteAgent: Network error", error);
-    return "Network error. Please check your connection and try again.";
+    return "Erreur réseau. Veuillez vérifier votre connexion et réessayer.";
   }
 }
 
@@ -161,7 +161,7 @@ export async function updateAgentSharedStatus(
     return errorMessage;
   } catch (error) {
     console.error("updateAgentSharedStatus: Network error", error);
-    return "Network error. Please check your connection and try again.";
+    return "Erreur réseau. Veuillez vérifier votre connexion et réessayer.";
   }
 }
 
@@ -191,7 +191,7 @@ export async function updateAgentLabels(
     return errorMessage;
   } catch (error) {
     console.error("updateAgentLabels: Network error", error);
-    return "Network error. Please check your connection and try again.";
+    return "Erreur réseau. Veuillez vérifier votre connexion et réessayer.";
   }
 }
 
@@ -221,6 +221,6 @@ export async function updateAgentFeaturedStatus(
     return errorMessage;
   } catch (error) {
     console.error("updateAgentFeaturedStatus: Network error", error);
-    return "Network error. Please check your connection and try again.";
+    return "Erreur réseau. Veuillez vérifier votre connexion et réessayer.";
   }
 }

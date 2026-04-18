@@ -39,9 +39,9 @@ function MigrationStatusSection() {
   if (isLoading) {
     return (
       <Card>
-        <Text headingH3>Migration Status</Text>
+        <Text headingH3>Statut de la migration</Text>
         <Text mainUiBody text03>
-          Loading...
+          Chargement...
         </Text>
       </Card>
     );
@@ -50,9 +50,9 @@ function MigrationStatusSection() {
   if (error) {
     return (
       <Card>
-        <Text headingH3>Migration Status</Text>
+        <Text headingH3>Statut de la migration</Text>
         <Text mainUiBody text03>
-          Failed to load migration status.
+          Impossible de charger le statut de la migration.
         </Text>
       </Card>
     );

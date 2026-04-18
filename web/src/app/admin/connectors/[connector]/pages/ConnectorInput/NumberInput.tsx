@@ -31,7 +31,7 @@ export default function NumberInput({
       <Label>
         <>
           {label}
-          {optional && <span className="text-text-500 ml-1">(optional)</span>}
+          {optional && <span className="text-text-500 ml-1">(optionnel)</span>}
         </>
       </Label>
       {description && <SubLabel>{description}</SubLabel>}

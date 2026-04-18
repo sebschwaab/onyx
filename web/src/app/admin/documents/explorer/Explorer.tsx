@@ -79,7 +79,7 @@ const DocumentDisplay = ({
             {document.hidden ? (
               <div className="text-error">Masqué</div>
             ) : (
-              "Visible"
+              "Visible" // universally understood
             )}
           </div>
           <div className="ml-1 my-auto">

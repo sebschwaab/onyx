@@ -84,8 +84,8 @@ export default function QueryPage(props: { params: Promise<{ id: string }> }) {
   if (!chatSessionSnapshot || error) {
     return (
       <ErrorCallout
-        errorTitle="Something went wrong :("
-        errorMsg={`Failed to fetch chat session - ${error}`}
+        errorTitle="Une erreur s'est produite :("
+        errorMsg={`Impossible de récupérer la session de chat - ${error}`}
       />
     );
   }
@@ -95,7 +95,7 @@ export default function QueryPage(props: { params: Promise<{ id: string }> }) {
       <BackButton />
 
       <CardSection className="mt-4">
-        <Title>Chat Session Details</Title>
+        <Title>Détails de la session de chat</Title>
 
         <Spacer rem={0.25} />
         {chatSessionSnapshot.assistant_name && (

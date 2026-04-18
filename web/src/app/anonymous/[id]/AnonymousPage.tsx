@@ -24,7 +24,7 @@ export default function AnonymousPage({
 
       if (!response.ok) {
         console.error("Failed to login as anonymous user", response);
-        throw new Error("Failed to login as anonymous user");
+        throw new Error("Impossible de se connecter en tant qu'utilisateur anonyme");
       }
       // Redirect to the chat page and force a refresh
       window.location.href = "/app";

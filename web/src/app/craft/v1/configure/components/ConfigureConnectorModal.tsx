@@ -132,20 +132,20 @@ export default function ConfigureConnectorModal({
   // Dynamic title and description based on flow type
   const getStepTitle = () => {
     if (isSingleStep) {
-      return `Connect ${sourceMetadata.displayName}`;
+      return `Connecter ${sourceMetadata.displayName}`;
     }
     return step === "credential"
-      ? `Connect ${sourceMetadata.displayName}`
-      : `Configure ${sourceMetadata.displayName}`;
+      ? `Connecter ${sourceMetadata.displayName}`
+      : `Configurer ${sourceMetadata.displayName}`;
   };
 
   const getStepDescription = () => {
     if (isSingleStep) {
-      return "Select or create a credential to connect";
+      return "Sélectionnez ou créez un identifiant pour vous connecter";
     }
     return step === "credential"
-      ? "Step 1: Select or create a credential"
-      : "Step 2: Configure your connector";
+      ? "Étape 1 : Sélectionnez ou créez un identifiant"
+      : "Étape 2 : Configurez votre connecteur";
   };
 
   return (
@@ -169,7 +169,7 @@ export default function ConfigureConnectorModal({
                     href={getSourceDocLink(connectorType)!}
                     target="_blank"
                   >
-                    View setup documentation
+                    Voir la documentation
                   </Button>
                 </div>
               </Section>

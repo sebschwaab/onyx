@@ -83,7 +83,7 @@ export async function createChatSession(
     console.error(
       `Failed to create chat session - ${createChatSessionResponse.status}`
     );
-    throw Error("Failed to create chat session");
+    throw Error("Impossible de créer la session de chat");
   }
   const chatSessionResponseJson = await createChatSessionResponse.json();
   return chatSessionResponseJson.chat_session_id;

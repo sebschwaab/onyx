@@ -219,9 +219,9 @@ export const SlackChannelConfigCreationForm = ({
             const responseJson = await response.json();
             const errorMsg = responseJson.detail || responseJson.message;
             toast.error(
-              `Error ${
-                isUpdate ? "updating" : "creating"
-              } OnyxBot config - ${errorMsg}`
+              `Erreur lors de la ${
+                isUpdate ? "mise à jour" : "création"
+              } de la configuration OnyxBot - ${errorMsg}`
             );
           }
         }}

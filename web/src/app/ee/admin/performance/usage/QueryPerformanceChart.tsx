@@ -97,8 +97,8 @@ export function QueryPerformanceChart({
 
   return (
     <CardSection className="mt-8">
-      <Title>Usage</Title>
-      <Text as="p">Usage over time</Text>
+      <Title>Utilisation</Title>
+      <Text as="p">Utilisation au fil du temps</Text>
       {chart}
     </CardSection>
   );

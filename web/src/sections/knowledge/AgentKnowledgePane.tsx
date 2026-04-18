@@ -186,9 +186,9 @@ function KnowledgeTable<T>({
   onToggleItem,
   searchValue,
   onSearchChange,
-  searchPlaceholder = "Search...",
+  searchPlaceholder = "Rechercher...",
   headerActions,
-  emptyMessage = "No items available.",
+  emptyMessage = "Aucun élément disponible.",
   ariaLabelPrefix,
 }: KnowledgeTableProps<T> & { ariaLabelPrefix?: string }) {
   return (

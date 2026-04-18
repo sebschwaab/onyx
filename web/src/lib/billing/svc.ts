@@ -37,7 +37,7 @@ async function billingPost<T>(endpoint: string, body?: unknown): Promise<T> {
 
   if (!response.ok) {
     const error = await response.json().catch(() => ({}));
-    throw new Error(error.detail || "Billing request failed");
+    throw new Error(error.detail || "Échec de la requête de facturation");
   }
 
   return response.json();
@@ -79,7 +79,7 @@ async function selfHostedPost<T>(endpoint: string): Promise<T> {
 
   if (!response.ok) {
     const error = await response.json().catch(() => ({}));
-    throw new Error(error.detail || "License request failed");
+    throw new Error(error.detail || "Échec de la requête de licence");
   }
 
   return response.json();
@@ -112,7 +112,7 @@ export async function uploadLicense(
   licenseKey: string
 ): Promise<{ success: boolean; message?: string }> {
   if (NEXT_PUBLIC_CLOUD_ENABLED) {
-    throw new Error("License upload is only available for self-hosted");
+    throw new Error("Le téléversement de licence n'est disponible que pour les installations auto-hébergées");
   }
 
   // Create a file from the license key string
@@ -127,7 +127,7 @@ export async function uploadLicense(
 
   if (!response.ok) {
     const error = await response.json().catch(() => ({}));
-    throw new Error(error.detail || "License upload failed");
+    throw new Error(error.detail || "Échec du téléversement de la licence");
   }
 
   return response.json();

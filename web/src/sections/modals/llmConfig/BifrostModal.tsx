@@ -68,7 +68,7 @@ function BifrostModalInternals({
       <APIKeyField
         optional
         subDescription={markdown(
-          "Paste your API key from [Bifrost](https://docs.getbifrost.ai/overview) to access your models."
+          "Collez votre clé API de [Bifrost](https://docs.getbifrost.ai/overview) pour accéder à vos modèles."
         )}
       />
 

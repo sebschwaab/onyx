@@ -33,13 +33,13 @@ function TableHeader() {
   return (
     <div className="grid grid-cols-12 gap-y-4 px-8 p-4 border-b bg-background-tint-00">
       <div className="col-span-1">
-        <Text as="p">Entity Name</Text>
+        <Text as="p">Nom de l&apos;entité</Text>
       </div>
       <div className="col-span-10">
         <Text as="p">Description</Text>
       </div>
       <div className="col-span-1 flex flex-1 justify-center">
-        <Text as="p">Active</Text>
+        <Text as="p">Actif</Text>
       </div>
     </div>
   );

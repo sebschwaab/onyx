@@ -19,8 +19,8 @@ export function ConnectorInfoOverlay({ visible }: ConnectorInfoOverlayProps) {
     >
       <Message
         info
-        text="Existing sessions won't have access to this data"
-        description="Once synced, documents from this connector will be available in your new sessions!"
+        text="Les sessions existantes n'auront pas accès à ces données"
+        description="Une fois synchronisés, les documents de ce connecteur seront disponibles dans vos nouvelles sessions !"
         close={false}
       />
     </div>
@@ -49,10 +49,10 @@ export function ReprovisionWarningOverlay({
     >
       <Message
         warning
-        text={isUpdating ? "Updating..." : "Click Update to apply your changes"}
-        description="Your sandbox will be recreated with your new settings. Previously running sessions will not be affected by your changes."
+        text={isUpdating ? "Mise à jour..." : "Cliquez sur Mettre à jour pour appliquer vos modifications"}
+        description="Votre bac à sable sera recréé avec vos nouveaux paramètres. Les sessions en cours ne seront pas affectées."
         close={false}
-        actions={isUpdating ? false : "Update"}
+        actions={isUpdating ? false : "Mettre à jour"}
         onAction={isUpdating ? undefined : onUpdate}
       />
     </div>

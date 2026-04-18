@@ -37,7 +37,7 @@ import AccountPopover from "@/sections/sidebar/AccountPopover";
 const SECTIONS = {
   UNLABELED: "",
   AGENTS_AND_ACTIONS: "Agents & Actions",
-  DOCUMENTS_AND_KNOWLEDGE: "Documents & Knowledge",
+  DOCUMENTS_AND_KNOWLEDGE: "Documents & Connaissances",
   INTEGRATIONS: "Intégrations",
   PERMISSIONS: "Permissions",
   ORGANIZATION: "Organisation",

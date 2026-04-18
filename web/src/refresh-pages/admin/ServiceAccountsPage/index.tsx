@@ -288,7 +288,7 @@ export default function ServiceAccountsPage() {
       <SettingsLayouts.Header
         title={route.title}
         icon={route.icon}
-        description="Use service accounts to programmatically access Onyx API."
+        description="Utilisez les comptes de service pour accéder à l'API Onyx par programmation."
         separator
       />
 

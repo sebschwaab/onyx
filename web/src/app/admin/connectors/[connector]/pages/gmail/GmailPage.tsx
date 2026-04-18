@@ -131,13 +131,13 @@ export const GmailMain = ({
     !serviceAccountKeySuccessfullyFetched
   ) {
     return (
-      <ErrorCallout errorTitle="Error loading Gmail app credentials. Contact an administrator." />
+      <ErrorCallout errorTitle="Erreur lors du chargement des identifiants de l'application Gmail. Contactez un administrateur." />
     );
   }
 
   if (gmailConnectorsError) {
     return (
-      <ErrorCallout errorTitle="Failed to load Gmail associated connectors." />
+      <ErrorCallout errorTitle="Impossible de charger les connecteurs associés à Gmail." />
     );
   }
 

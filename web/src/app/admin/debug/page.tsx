@@ -30,7 +30,7 @@ function Main() {
     const fetchCategories = async () => {
       try {
         const response = await fetch("/api/admin/long-term-logs");
-        if (!response.ok) throw new Error("Failed to fetch categories");
+        if (!response.ok) throw new Error("Impossible de récupérer les catégories");
         const data = await response.json();
         setCategories(data);
       } catch (error) {
@@ -49,7 +49,7 @@ function Main() {
       const response = await fetch(
         `/api/admin/long-term-logs/${category}/download`
       );
-      if (!response.ok) throw new Error("Failed to download logs");
+      if (!response.ok) throw new Error("Impossible de télécharger les journaux");
 
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
@@ -78,7 +78,7 @@ function Main() {
       <div className="mb-8">
         <Text as="p">
           {markdown(
-            "**Debug Logs** provide detailed information about system operations and events. You can download logs for each category to analyze system behavior or troubleshoot issues."
+            "**Journaux de débogage** fournissent des informations détaillées sur les opérations et événements du système. Vous pouvez télécharger les journaux pour chaque catégorie afin d'analyser le comportement du système ou de résoudre des problèmes."
           )}
         </Text>
         <Spacer rem={0.75} />
@@ -88,7 +88,7 @@ function Main() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Category</TableHead>
+                  <TableHead>Catégorie</TableHead>
                   <TableHead>Actions</TableHead>
                 </TableRow>
               </TableHeader>
@@ -105,7 +105,7 @@ function Main() {
                         onClick={() => handleDownload(category)}
                         icon={SvgDownloadCloud}
                       >
-                        Download Logs
+                        Télécharger les journaux
                       </Button>
                     </TableCell>
                   </TableRow>

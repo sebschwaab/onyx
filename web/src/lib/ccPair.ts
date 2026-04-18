@@ -26,14 +26,14 @@ export async function setCCPairStatus(
 
     toast.success(
       ccPairStatus === ConnectorCredentialPairStatus.ACTIVE
-        ? "Enabled connector!"
-        : "Paused connector!"
+        ? "Connecteur activé !"
+        : "Connecteur mis en pause !"
     );
 
     onUpdate && onUpdate();
   } catch (error) {
     console.error("Error updating CC pair status:", error);
-    toast.error("Failed to update connector status");
+    toast.error("Impossible de mettre à jour le statut du connecteur");
   }
 }
 
@@ -43,16 +43,16 @@ export const getCCPairStatusMessage = (
   ccPairStatus: ConnectorCredentialPairStatus
 ) => {
   if (ccPairStatus === ConnectorCredentialPairStatus.INVALID) {
-    return "Connector is in an invalid state. Please update the credentials or configuration before re-indexing.";
+    return "Le connecteur est dans un état invalide. Veuillez mettre à jour les identifiants ou la configuration avant de réindexer.";
   }
   if (ccPairStatus === ConnectorCredentialPairStatus.DELETING) {
-    return "Cannot index while connector is deleting";
+    return "Impossible d'indexer pendant la suppression du connecteur";
   }
   if (isIndexing) {
-    return "Indexing is already in progress";
+    return "L'indexation est déjà en cours";
   }
   if (isDisabled) {
-    return "Connector must be re-enabled before indexing";
+    return "Le connecteur doit être réactivé avant l'indexation";
   }
   return undefined;
 };

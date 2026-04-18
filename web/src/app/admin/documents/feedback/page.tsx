@@ -42,7 +42,7 @@ function Main() {
   ) {
     return (
       <div className="text-red-600">
-        Error loading documents -{" "}
+        Erreur lors du chargement des documents -{" "}
         {mostDislikedDocumentsError || mostLikedDocumentsError}
       </div>
     );
@@ -50,10 +50,10 @@ function Main() {
 
   return (
     <div>
-      <Title className="mb-2">Most Liked Documents</Title>
+      <Title className="mb-2">Documents les plus appréciés</Title>
       <DocumentFeedbackTable documents={mostLikedDocuments} refresh={refresh} />
 
-      <Title className="mb-2 mt-6">Most Disliked Documents</Title>
+      <Title className="mb-2 mt-6">Documents les moins appréciés</Title>
       <DocumentFeedbackTable
         documents={mostDislikedDocuments}
         refresh={refresh}

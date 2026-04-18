@@ -331,15 +331,15 @@ export default function EmbeddingForm() {
                   )}
                   {searchSettings?.multipass_indexing !=
                     advancedEmbeddingDetails.multipass_indexing && (
-                    <li>Multipass indexing modification</li>
+                    <li>Modification de l&apos;indexation multipass</li>
                   )}
                   {searchSettings?.embedding_precision !=
                     advancedEmbeddingDetails.embedding_precision && (
-                    <li>Embedding precision modification</li>
+                    <li>Modification de la précision d&apos;embedding</li>
                   )}
                   {searchSettings?.reduced_dimension !=
                     advancedEmbeddingDetails.reduced_dimension && (
-                    <li>Reduced dimension modification</li>
+                    <li>Modification de la dimension réduite</li>
                   )}
                   {(searchSettings?.enable_contextual_rag !=
                     advancedEmbeddingDetails.enable_contextual_rag ||

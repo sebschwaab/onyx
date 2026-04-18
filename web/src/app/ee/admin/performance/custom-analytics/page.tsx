@@ -13,10 +13,10 @@ function Main() {
     return (
       <div>
         <div className="mt-4">
-          <Callout type="danger" title="Custom Analytics is not enabled.">
-            To set up custom analytics scripts, please work with the team who
-            setup Onyx in your team to set the{" "}
-            <i>CUSTOM_ANALYTICS_SECRET_KEY</i> environment variable.
+          <Callout type="danger" title="L'analytics personnalisé n'est pas activé.">
+            Pour configurer des scripts d&apos;analytics personnalisés, veuillez travailler avec l&apos;équipe qui
+            a configuré Onyx dans votre équipe pour définir la variable d&apos;environnement{" "}
+            <i>CUSTOM_ANALYTICS_SECRET_KEY</i>.
           </Callout>
         </div>
       </div>
@@ -27,7 +27,7 @@ function Main() {
     <div>
       <Text as="p">
         {
-          "This allows you to bring your own analytics tool to Onyx! Copy the Web snippet from your analytics provider into the box below, and we'll start sending usage events."
+          "Cela vous permet d'apporter votre propre outil d'analytics à Onyx ! Copiez le snippet Web de votre fournisseur d'analytics dans la zone ci-dessous, et nous commencerons à envoyer des événements d'utilisation."
         }
       </Text>
       <Spacer rem={2} />

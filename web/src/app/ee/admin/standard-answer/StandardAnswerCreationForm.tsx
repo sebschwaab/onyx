@@ -63,13 +63,13 @@ export const StandardAnswerCreationForm = ({
           }}
           validationSchema={Yup.object().shape({
             keyword: Yup.string()
-              .required("Keywords or pattern is required")
+              .required("Mots-clés ou modèle requis")
               .max(255)
               .min(1),
-            answer: Yup.string().required("Answer is required").min(1),
+            answer: Yup.string().required("La réponse est requise").min(1),
             categories: Yup.array()
               .required()
-              .min(1, "At least one category is required"),
+              .min(1, "Au moins une catégorie est requise"),
           })}
           onSubmit={async (values, formikHelpers) => {
             formikHelpers.setSubmitting(true);
@@ -99,8 +99,8 @@ export const StandardAnswerCreationForm = ({
               const errorMsg = responseJson.detail || responseJson.message;
               toast.error(
                 isUpdate
-                  ? `Error updating Standard Answer - ${errorMsg}`
-                  : `Error creating Standard Answer - ${errorMsg}`
+                  ? `Erreur lors de la mise à jour de la réponse standard - ${errorMsg}`
+                  : `Erreur lors de la création de la réponse standard - ${errorMsg}`
               );
             }
           }}
@@ -110,45 +110,45 @@ export const StandardAnswerCreationForm = ({
               {values.matchRegex ? (
                 <TextFormField
                   name="keyword"
-                  label="Regex pattern"
+                  label="Modèle regex"
                   isCode
-                  tooltip="Triggers if the question matches this regex pattern (using Python `re.search()`)"
+                  tooltip="Se déclenche si la question correspond à ce modèle regex (en utilisant Python `re.search()`)"
                   placeholder="(?:it|support)\s*ticket"
                 />
               ) : values.matchAnyKeywords == "any" ? (
                 <TextFormField
                   name="keyword"
-                  label="Any of these keywords, separated by spaces"
-                  tooltip="A question must match these keywords in order to trigger the answer."
+                  label="N'importe lequel de ces mots-clés, séparés par des espaces"
+                  tooltip="Une question doit correspondre à ces mots-clés pour déclencher la réponse."
                   placeholder="ticket problem issue"
                 />
               ) : (
                 <TextFormField
                   name="keyword"
-                  label="All of these keywords, in any order, separated by spaces"
-                  tooltip="A question must match these keywords in order to trigger the answer."
+                  label="Tous ces mots-clés, dans n'importe quel ordre, séparés par des espaces"
+                  tooltip="Une question doit correspondre à ces mots-clés pour déclencher la réponse."
                   placeholder="it ticket"
                 />
               )}
               <BooleanFormField
-                subtext="Match a regex pattern instead of an exact keyword"
+                subtext="Correspondre à un modèle regex plutôt qu'à un mot-clé exact"
                 optional
-                label="Match regex"
+                label="Correspondance regex"
                 name="matchRegex"
               />
               {values.matchRegex ? null : (
                 <SelectorFormField
                   defaultValue={`all`}
-                  label="Keyword detection strategy"
-                  subtext="Choose whether to require the user's question to contain any or all of the keywords above to show this answer."
+                  label="Stratégie de détection des mots-clés"
+                  subtext="Choisissez si la question de l'utilisateur doit contenir l'un ou tous les mots-clés ci-dessus pour afficher cette réponse."
                   name="matchAnyKeywords"
                   options={[
                     {
-                      name: "All keywords",
+                      name: "Tous les mots-clés",
                       value: "all",
                     },
                     {
-                      name: "Any keywords",
+                      name: "N'importe quel mot-clé",
                       value: "any",
                     },
                   ]}
@@ -160,14 +160,14 @@ export const StandardAnswerCreationForm = ({
               <div className="w-full">
                 <MarkdownFormField
                   name="answer"
-                  label="Answer"
-                  placeholder="The answer in Markdown. Example: If you need any help from the IT team, please email internalsupport@company.com"
+                  label="Réponse"
+                  placeholder="La réponse en Markdown. Exemple : Si vous avez besoin d'aide de l'équipe informatique, veuillez envoyer un e-mail à internalsupport@company.com"
                 />
               </div>
               <div className="w-4/12">
                 <MultiSelectDropdown
                   name="categories"
-                  label="Categories:"
+                  label="Catégories :"
                   onChange={(selected_options) => {
                     const selected_categories = selected_options.map(
                       (option) => {
@@ -204,7 +204,7 @@ export const StandardAnswerCreationForm = ({
                   disabled={isSubmitting}
                   className="mx-auto w-64"
                 >
-                  {isUpdate ? "Update!" : "Create!"}
+                  {isUpdate ? "Mettre à jour !" : "Créer !"}
                 </Button>
               </div>
             </Form>

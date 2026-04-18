@@ -339,13 +339,13 @@ export function CCPairIndexingStatusTable({
                 {!sourceLoadingStates[ccPairStatus.source] && (
                   <>
                     <TableRow className="border border-border dark:border-neutral-700">
-                      <TableHead>Name</TableHead>
-                      <TableHead>Last Indexed</TableHead>
-                      <TableHead>Status</TableHead>
+                      <TableHead>Nom</TableHead>
+                      <TableHead>Dernier indexage</TableHead>
+                      <TableHead>Statut</TableHead>
                       {isPaidEnterpriseFeaturesEnabled && (
-                        <TableHead>Permissions / Access</TableHead>
+                        <TableHead>Permissions / Accès</TableHead>
                       )}
-                      <TableHead>Total Docs</TableHead>
+                      <TableHead>Total docs</TableHead>
                       <TableHead></TableHead>
                     </TableRow>
                     {ccPairStatus.indexing_statuses.map((indexingStatus) => {

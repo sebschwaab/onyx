@@ -197,7 +197,7 @@ export const GenericTokenRateLimitTable = ({
   }
 
   if (!isLoading && error) {
-    return <Text as="p">Failed to load token rate limits</Text>;
+    return <Text as="p">Impossible de charger les limites de débit de tokens</Text>;
   }
 
   let processedData = data;

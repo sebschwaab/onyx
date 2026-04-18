@@ -77,7 +77,7 @@ function QueryHistoryTableRow({
         <FeedbackBadge feedback={chatSessionMinimal.feedback_type} />
       </TableCell>
       <TableCell>{chatSessionMinimal.user_email || "-"}</TableCell>
-      <TableCell>{chatSessionMinimal.assistant_name || "Unknown"}</TableCell>
+      <TableCell>{chatSessionMinimal.assistant_name || "Inconnu"}</TableCell>
       <TableCell>
         {timestampToReadableDate(chatSessionMinimal.time_created)}
       </TableCell>
@@ -104,7 +104,7 @@ function SelectFeedbackType({
   return (
     <Section alignItems="start" gap={0.25}>
       <Text as="p" className="font-medium">
-        Feedback Type
+        Type d&apos;avis
       </Text>
       <InputSelect
         value={value}
@@ -114,16 +114,16 @@ function SelectFeedbackType({
 
         <InputSelect.Content>
           <InputSelect.Item value="all" icon={SvgMinusCircle}>
-            Any
+            Tous
           </InputSelect.Item>
           <InputSelect.Item value="like" icon={SvgThumbsUp}>
-            Like
+            J&apos;aime
           </InputSelect.Item>
           <InputSelect.Item value="dislike" icon={SvgThumbsDown}>
-            Dislike
+            Je n&apos;aime pas
           </InputSelect.Item>
           <InputSelect.Item value="mixed" icon={SvgMinus}>
-            Mixed
+            Mixte
           </InputSelect.Item>
         </InputSelect.Content>
       </InputSelect>
@@ -132,11 +132,11 @@ function SelectFeedbackType({
 }
 
 function ExportBadge({ status }: { status: TaskStatus }) {
-  if (status === "SUCCESS") return <Badge variant="success">Success</Badge>;
+  if (status === "SUCCESS") return <Badge variant="success">Succès</Badge>;
   else if (status === "FAILURE")
-    return <Badge variant="destructive">Failure</Badge>;
+    return <Badge variant="destructive">Échec</Badge>;
   else if (status === "PENDING" || status === "STARTED")
-    return <Badge variant="in_progress">Pending</Badge>;
+    return <Badge variant="in_progress">En attente</Badge>;
   else return <></>;
 }
 
@@ -180,18 +180,18 @@ function PreviousQueryHistoryExportsModal({
       <Modal.Content width="full" height="full">
         <Modal.Header
           icon={SvgFileText}
-          title="Previous Query History Exports"
+          title="Exportations précédentes de l'historique des requêtes"
           onClose={() => setShowModal(false)}
         />
         <Modal.Body>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Generated At</TableHead>
-                <TableHead>Start Range</TableHead>
-                <TableHead>End Range</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Download</TableHead>
+                <TableHead>Généré le</TableHead>
+                <TableHead>Début de la plage</TableHead>
+                <TableHead>Fin de la plage</TableHead>
+                <TableHead>Statut</TableHead>
+                <TableHead>Télécharger</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -214,7 +214,7 @@ function PreviousQueryHistoryExportsModal({
                       disabled={task.status !== "SUCCESS"}
                       tooltip={
                         task.status !== "SUCCESS"
-                          ? "Export is not yet ready"
+                          ? "L'export n'est pas encore prêt"
                           : undefined
                       }
                       href={
@@ -291,7 +291,7 @@ export function QueryHistoryTable() {
   if (error) {
     return (
       <ErrorCallout
-        errorTitle="Error fetching query history"
+        errorTitle="Erreur lors de la récupération de l'historique des requêtes"
         errorMsg={error?.message}
       />
     );
@@ -334,10 +334,10 @@ export function QueryHistoryTable() {
           <Table className="mt-5">
             <TableHeader>
               <TableRow>
-                <TableHead>First User Message</TableHead>
-                <TableHead>First AI Response</TableHead>
-                <TableHead>Feedback</TableHead>
-                <TableHead>User</TableHead>
+                <TableHead>Premier message utilisateur</TableHead>
+                <TableHead>Première réponse IA</TableHead>
+                <TableHead>Avis</TableHead>
+                <TableHead>Utilisateur</TableHead>
                 <TableHead>Persona</TableHead>
                 <TableHead>Date</TableHead>
               </TableRow>

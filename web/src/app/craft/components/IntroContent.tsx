@@ -77,7 +77,7 @@ export default function BuildModeIntroContent({
               onClose();
             }}
           >
-            Return Home
+            Accueil
           </BigButton>
           <BigButton
             primary
@@ -88,7 +88,7 @@ export default function BuildModeIntroContent({
               onTryBuildMode();
             }}
           >
-            Start Crafting
+            Commencer
           </BigButton>
         </motion.div>
       </div>

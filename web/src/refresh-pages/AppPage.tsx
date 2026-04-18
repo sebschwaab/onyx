@@ -915,7 +915,7 @@ export default function AppPage({ firstMessage }: ChatPageProps) {
                         <Button
                           icon={SvgChevronDown}
                           onClick={handleScrollToBottom}
-                          aria-label="Scroll to bottom"
+                          aria-label="Défiler vers le bas"
                           prominence="secondary"
                         />
                       </div>

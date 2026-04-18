@@ -210,7 +210,7 @@ export default function UserFilesModal({
           >
             {/* File display section */}
             {filtered.length === 0 ? (
-              <Text text03>No files found</Text>
+              <Text text03>Aucun fichier trouvé</Text>
             ) : (
               <ScrollIndicatorDiv className="p-2 gap-2 max-h-[70vh]">
                 {filtered.map((projectFle) => {

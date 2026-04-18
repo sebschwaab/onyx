@@ -159,7 +159,7 @@ export function AdvancedConfigDisplay({
     // If it's 60 minutes or more and evenly divisible by 60, show in hours
     if (totalMinutes >= 60 && totalMinutes % 60 === 0) {
       const hours = totalMinutes / 60;
-      return `${hours} hour${hours !== 1 ? "s" : ""}`;
+      return `${hours} heure${hours !== 1 ? "s" : ""}`;
     }
 
     // Otherwise show in minutes
@@ -181,16 +181,16 @@ export function AdvancedConfigDisplay({
     // If it's 24 hours or more and evenly divisible by 24, show in days
     if (hours >= 24 && hours % 24 === 0) {
       const days = hours / 24;
-      return `${days} day${days !== 1 ? "s" : ""}`;
+      return `${days} jour${days !== 1 ? "s" : ""}`;
     }
 
     // Otherwise show in hours
-    return `${hours} hour${hours !== 1 ? "s" : ""}`;
+    return `${hours} heure${hours !== 1 ? "s" : ""}`;
   };
 
   const formatDate = (date: Date | null): string => {
     if (date === null) return "-";
-    return date.toLocaleString("en-US", {
+    return date.toLocaleString("fr-FR", {
       year: "numeric",
       month: "long",
       day: "numeric",

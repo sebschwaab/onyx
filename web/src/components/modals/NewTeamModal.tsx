@@ -141,12 +141,12 @@ export default function NewTeamModal() {
             {hasRequestedInvite ? (
               <>
                 <SvgCheckCircle className="mr-2 h-5 w-5 stroke-text-05" />
-                Join Request Sent
+                Demande envoyée
               </>
             ) : (
               <>
                 <SvgOrganization className="mr-2 h-5 w-5 stroke-text-04" />
-                We found an existing team for {appDomain}
+                Nous avons trouvé une équipe existante pour {appDomain}
               </>
             )}
           </Dialog.Title>
@@ -154,7 +154,7 @@ export default function NewTeamModal() {
           {isLoading ? (
             <div className="py-8 text-center">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-border-05 mx-auto mb-4"></div>
-              <p>Loading team information...</p>
+              <p>Chargement des informations de l&apos;équipe...</p>
             </div>
           ) : error ? (
             <div className="space-y-4">
@@ -165,16 +165,16 @@ export default function NewTeamModal() {
                   width="full"
                   rightIcon={SvgArrowRight}
                 >
-                  Continue with new team
+                  Continuer avec une nouvelle équipe
                 </Button>
               </div>
             </div>
           ) : hasRequestedInvite ? (
             <div className="space-y-4">
               <p className="text-text-04">
-                Your join request has been sent. You can explore as your own
-                team while waiting for an admin of {appDomain} to approve your
-                request.
+                Votre demande a été envoyée. Vous pouvez explorer en tant que
+                votre propre équipe en attendant qu&apos;un administrateur de {appDomain} approuve votre
+                demande.
               </p>
               <div className="flex w-full pt-2">
                 <Button
@@ -182,14 +182,14 @@ export default function NewTeamModal() {
                   width="full"
                   rightIcon={SvgArrowRight}
                 >
-                  Try Onyx while waiting
+                  Essayer Onyx en attendant
                 </Button>
               </div>
             </div>
           ) : (
             <div className="space-y-4">
               <p className="text-text-03 text-sm mb-2">
-                Your join request can be approved by any admin of {appDomain}.
+                Votre demande peut être approuvée par n&apos;importe quel administrateur de {appDomain}.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 mt-4">
                 <Button
@@ -209,7 +209,7 @@ export default function NewTeamModal() {
                 icon={SvgPlus}
                 prominence="secondary"
               >
-                Continue with new team
+                Continuer avec une nouvelle équipe
               </Button>
             </div>
           )}

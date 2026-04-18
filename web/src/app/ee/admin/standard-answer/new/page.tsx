@@ -15,8 +15,8 @@ async function Page() {
   if (!standardAnswerCategoriesResponse.ok) {
     return (
       <ErrorCallout
-        errorTitle="Something went wrong :("
-        errorMsg={`Failed to fetch standard answer categories - ${await standardAnswerCategoriesResponse.text()}`}
+        errorTitle="Une erreur s'est produite :("
+        errorMsg={`Impossible de récupérer les catégories de réponses standard - ${await standardAnswerCategoriesResponse.text()}`}
       />
     );
   }

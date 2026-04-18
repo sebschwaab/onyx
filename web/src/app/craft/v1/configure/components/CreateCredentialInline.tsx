@@ -37,11 +37,11 @@ export default function CreateCredentialInline({
     return (
       <Section gap={0.5} alignItems="center" height="fit">
         <Text secondaryBody text03>
-          No credential configuration available for {sourceMetadata.displayName}
+          Aucune configuration d&apos;identifiant disponible pour {sourceMetadata.displayName}
           .
         </Text>
         <Button variant="action" prominence="secondary" onClick={onCancel}>
-          Cancel
+          Annuler
         </Button>
       </Section>
     );
@@ -58,7 +58,7 @@ export default function CreateCredentialInline({
     }
     initialValues[key] = typeof value === "string" ? value : "";
     schemaFields[key] = Yup.string().required(
-      `${getDisplayNameForCredentialKey(key)} is required`
+      `${getDisplayNameForCredentialKey(key)} est requis`
     );
   });
 
@@ -84,14 +84,14 @@ export default function CreateCredentialInline({
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.detail || "Failed to create credential");
+        throw new Error(errorData.detail || "Impossible de créer l'identifiant");
       }
 
       const credential = await response.json();
       onSuccess(credential);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "Failed to create credential"
+        err instanceof Error ? err.message : "Impossible de créer l'identifiant"
       );
     } finally {
       setIsSubmitting(false);
@@ -109,8 +109,8 @@ export default function CreateCredentialInline({
           <Section gap={1} alignItems="stretch" height="fit">
             <TextFormField
               name="credential_name"
-              label="Credential Name"
-              placeholder={`My ${sourceMetadata.displayName} Credential`}
+              label="Nom de l'identifiant"
+              placeholder={`Mon identifiant ${sourceMetadata.displayName}`}
               type="text"
             />
 
@@ -155,14 +155,14 @@ export default function CreateCredentialInline({
                 prominence="secondary"
                 onClick={onCancel}
               >
-                Cancel
+                Annuler
               </Button>
               <Button
                 disabled={!isValid || !dirty || isSubmitting}
                 variant="action"
                 type="submit"
               >
-                {isSubmitting ? "Creating..." : "Create Credential"}
+                {isSubmitting ? "Création..." : "Créer l'identifiant"}
               </Button>
             </Section>
           </Section>

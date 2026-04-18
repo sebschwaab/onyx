@@ -179,7 +179,7 @@ export default function RequestConnectorModal({
               <>
                 <div className="flex flex-col gap-4 items-center">
                   <Text mainUiBody text04 className="text-center">
-                    Email your request to{" "}
+                    Envoyez votre demande par e-mail à{" "}
                     <a
                       href="mailto:hello@onyx.app?subject=Onyx Craft Connector Request"
                       className="text-blue-600 dark:text-blue-400 hover:underline"
@@ -196,7 +196,7 @@ export default function RequestConnectorModal({
                     className="flex-1 px-4 py-2 rounded-12 bg-background-neutral-01 border border-border-02 hover:opacity-90 transition-colors"
                   >
                     <Text mainUiBody text05>
-                      Close
+                      Fermer
                     </Text>
                   </button>
                   <a
@@ -209,7 +209,7 @@ export default function RequestConnectorModal({
                       mainUiAction
                       className="text-text-light-05 dark:text-text-dark-05"
                     >
-                      Join Onyx Discord
+                      Rejoindre le Discord Onyx
                     </Text>
                   </a>
                 </div>

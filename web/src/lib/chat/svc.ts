@@ -16,7 +16,7 @@ export async function fetchChatFile(fileId: string): Promise<Response> {
   );
 
   if (!response.ok) {
-    throw new Error("Failed to load document.");
+    throw new Error("Impossible de charger le document.");
   }
 
   return response;

@@ -175,7 +175,7 @@ const ChatUI = React.memo(
         const lookup = modelProviderLookupRef.current;
         return multiModelChildren.map((msg, idx): MultiModelResponse => {
           const modelVersion =
-            msg.overridden_model || msg.modelDisplayName || "Model";
+            msg.overridden_model || msg.modelDisplayName || "Modèle";
           const provider = lookup.get(modelVersion) ?? "";
           const displayName = msg.modelDisplayName || modelVersion;
           const isError = msg.type === "error";

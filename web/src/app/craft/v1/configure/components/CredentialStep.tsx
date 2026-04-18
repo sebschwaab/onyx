@@ -110,7 +110,7 @@ export default function CredentialStep({
       onConnectorSuccess?.();
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Failed to create connector"
+        err instanceof Error ? err.message : "Impossible de créer le connecteur"
       );
     } finally {
       setIsConnecting(false);
@@ -166,7 +166,7 @@ export default function CredentialStep({
                   toast.error(
                     err instanceof Error
                       ? err.message
-                      : "Failed to create connector"
+                      : "Impossible de créer le connecteur"
                   );
                 } finally {
                   setIsConnecting(false);
@@ -222,7 +222,7 @@ export default function CredentialStep({
                       }
                     }}
                   >
-                    Create New
+                    Créer nouveau
                   </Button>
                   {oauthSupportedSources.includes(
                     connectorType as ConfigurableSources
@@ -235,8 +235,8 @@ export default function CredentialStep({
                         hidden={!isAuthorizeVisible}
                       >
                         {isAuthorizing
-                          ? "Authorizing..."
-                          : `Authorize with ${getSourceDisplayName(
+                          ? "Autorisation..."
+                          : `Autoriser avec ${getSourceDisplayName(
                               connectorType
                             )}`}
                       </Button>
@@ -249,9 +249,9 @@ export default function CredentialStep({
                   >
                     {isSingleStep
                       ? isConnecting
-                        ? "Connecting..."
-                        : "Connect"
-                      : "Continue"}
+                        ? "Connexion..."
+                        : "Connecter"
+                      : "Continuer"}
                   </Button>
                 )}
               </div>
@@ -265,9 +265,9 @@ export default function CredentialStep({
                 <Modal.Content width="xl" height="fit">
                   <Modal.Header
                     icon={SvgKey}
-                    title={`Create a ${getSourceDisplayName(
+                    title={`Créer un identifiant ${getSourceDisplayName(
                       connectorType
-                    )} credential`}
+                    )}`}
                     onClose={() => setCreateCredentialFormToggle(false)}
                   />
                   <Modal.Body>

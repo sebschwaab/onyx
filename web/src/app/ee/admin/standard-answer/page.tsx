@@ -172,10 +172,10 @@ const StandardAnswersTable = ({
   >([]);
   const columns = [
     { name: "", key: "edit" },
-    { name: "Categories", key: "category" },
-    { name: "Keywords/Pattern", key: "keyword" },
-    { name: "Match regex?", key: "match_regex" },
-    { name: "Answer", key: "answer" },
+    { name: "Catégories", key: "category" },
+    { name: "Mots-clés/Modèle", key: "keyword" },
+    { name: "Correspondance regex ?", key: "match_regex" },
+    { name: "Réponse", key: "answer" },
     { name: "", key: "delete" },
   ];
 
@@ -366,7 +366,7 @@ function Main() {
   if (standardAnswersError || !standardAnswers) {
     return (
       <ErrorCallout
-        errorTitle="Error loading standard answers"
+        errorTitle="Erreur lors du chargement des réponses standard"
         errorMsg={
           standardAnswersError.info?.detail ||
           standardAnswersError.info?.message
@@ -378,7 +378,7 @@ function Main() {
   if (standardAnswerCategoriesError || !standardAnswerCategories) {
     return (
       <ErrorCallout
-        errorTitle="Error loading standard answer categories"
+        errorTitle="Erreur lors du chargement des catégories de réponses standard"
         errorMsg={
           standardAnswerCategoriesError.info?.detail ||
           standardAnswerCategoriesError.info?.message

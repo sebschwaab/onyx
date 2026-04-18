@@ -166,7 +166,7 @@ export const MemoizedLink = memo(
 
       const displayName = document
         ? getDisplayNameForSource(document as OnyxDocument)
-        : question?.question || "Question";
+        : question?.question || "Question"; // "Question" est identique en français
 
       return (
         <SourceTag

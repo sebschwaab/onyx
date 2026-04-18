@@ -40,10 +40,10 @@ export async function submitCredential<T>(
       return { credential, message: "Succès !", isSuccess: true };
     } else {
       const errorData = await response.json();
-      return { message: `Error: ${errorData.detail}`, isSuccess: false };
+      return { message: `Erreur : ${errorData.detail}`, isSuccess: false };
     }
   } catch (error) {
-    return { message: `Error: ${error}`, isSuccess: false };
+    return { message: `Erreur : ${error}`, isSuccess: false };
   }
 }
 

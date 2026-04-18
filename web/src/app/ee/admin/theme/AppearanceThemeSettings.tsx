@@ -237,7 +237,7 @@ export const AppearanceThemeSettings = forwardRef<
               />
             </FormField.Control>
             <FormField.Description>
-              This name will show across the app and replace "Onyx" in the UI.
+              Ce nom s&apos;affichera dans toute l&apos;application et remplacera « Onyx » dans l&apos;interface.
             </FormField.Description>
             <FormField.Message
               messages={{ error: errors.application_name as string }}
@@ -245,7 +245,7 @@ export const AppearanceThemeSettings = forwardRef<
           </FormField>
 
           <FormField state="idle">
-            <FormField.Label>Logo Display Style</FormField.Label>
+            <FormField.Label>Style d&apos;affichage du logo</FormField.Label>
             <FormField.Control>
               <Tabs
                 value={values.logo_display_style}
@@ -256,50 +256,50 @@ export const AppearanceThemeSettings = forwardRef<
                 <Tabs.List>
                   <Tabs.Trigger
                     value="logo_and_name"
-                    tooltip="Show both your application logo and name."
+                    tooltip="Afficher le logo et le nom de votre application."
                     tooltipSide="top"
                     {...getPreviewHandlers("sidebar")}
                   >
-                    Logo & Name
+                    Logo & Nom
                   </Tabs.Trigger>
                   <Tabs.Trigger
                     value="logo_only"
                     disabled={!hasLogo}
                     tooltip={
                       hasLogo
-                        ? "Show only your application logo."
-                        : "Upload a logo to enable this option."
+                        ? "Afficher uniquement le logo de votre application."
+                        : "Téléversez un logo pour activer cette option."
                     }
                     tooltipSide="top"
                     {...getPreviewHandlers("sidebar")}
                   >
-                    Logo Only
+                    Logo seulement
                   </Tabs.Trigger>
                   <Tabs.Trigger
                     value="name_only"
                     disabled={!hasApplicationName}
                     tooltip={
                       hasApplicationName
-                        ? "Show only your application name."
-                        : "Enter an application name to enable this option."
+                        ? "Afficher uniquement le nom de votre application."
+                        : "Entrez un nom d'application pour activer cette option."
                     }
                     tooltipSide="top"
                     {...getPreviewHandlers("sidebar")}
                   >
-                    Name Only
+                    Nom seulement
                   </Tabs.Trigger>
                 </Tabs.List>
               </Tabs>
             </FormField.Control>
             <FormField.Description>
-              Choose what to display at the top of the sidebar. Options become
-              available once you add a logo or application name.
+              Choisissez ce qui s&apos;affiche en haut de la barre latérale. Les options deviennent
+              disponibles une fois que vous ajoutez un logo ou un nom d&apos;application.
             </FormField.Description>
           </FormField>
         </div>
 
         <FormField state="idle">
-          <FormField.Label>Application Logo</FormField.Label>
+          <FormField.Label>Logo de l&apos;application</FormField.Label>
           <FormField.Control>
             <InputImage
               src={logoSrc}
@@ -332,13 +332,13 @@ export const AppearanceThemeSettings = forwardRef<
         logoDisplayStyle={values.logo_display_style}
         applicationDisplayName={values.application_name ?? ""}
         chat_footer_content={
-          values.custom_lower_disclaimer_content || "Chat Footer Content"
+          values.custom_lower_disclaimer_content || "Contenu du pied de page du chat"
         }
         chat_header_content={
-          values.custom_header_content || "Chat Header Content"
+          values.custom_header_content || "Contenu de l'en-tête du chat"
         }
         greeting_message={
-          values.custom_greeting_message || "Welcome to Acme Chat"
+          values.custom_greeting_message || "Bienvenue sur Acme Chat"
         }
         logoSrc={logoSrc}
         highlightTarget={highlightTarget}
@@ -447,10 +447,10 @@ export const AppearanceThemeSettings = forwardRef<
       <div className="flex flex-col gap-4 p-4 bg-background-tint-00 rounded-16">
         <FormField state="idle" className="gap-0">
           <div className="flex justify-between items-center">
-            <FormField.Label>Show First Visit Notice</FormField.Label>
+            <FormField.Label>Afficher l&apos;avis de première visite</FormField.Label>
             <FormField.Control>
               <Switch
-                aria-label="Show First Visit Notice"
+                aria-label="Afficher l&apos;avis de première visite"
                 data-label="first-visit-notice-toggle"
                 checked={values.show_first_visit_notice}
                 onCheckedChange={(checked) =>
@@ -460,7 +460,7 @@ export const AppearanceThemeSettings = forwardRef<
             </FormField.Control>
           </div>
           <FormField.Description>
-            Show a one-time pop-up for new users at their first visit.
+            Afficher une fenêtre contextuelle unique pour les nouveaux utilisateurs lors de leur première visite.
           </FormField.Description>
         </FormField>
 
@@ -527,10 +527,10 @@ export const AppearanceThemeSettings = forwardRef<
 
             <FormField state="idle" className="gap-0">
               <div className="flex justify-between items-center">
-                <FormField.Label>Require Consent to Notice</FormField.Label>
+                <FormField.Label>Exiger le consentement à l&apos;avis</FormField.Label>
                 <FormField.Control>
                   <Switch
-                    aria-label="Require Consent to Notice"
+                    aria-label="Exiger le consentement à l'avis"
                     data-label="require-consent-toggle"
                     checked={values.enable_consent_screen}
                     onCheckedChange={(checked) =>
@@ -540,8 +540,8 @@ export const AppearanceThemeSettings = forwardRef<
                 </FormField.Control>
               </div>
               <FormField.Description>
-                Require the user to read and agree to the notice before
-                accessing the application.
+                Exiger que l&apos;utilisateur lise et accepte l&apos;avis avant
+                d&apos;accéder à l&apos;application.
               </FormField.Description>
             </FormField>
 

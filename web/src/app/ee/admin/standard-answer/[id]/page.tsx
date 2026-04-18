@@ -18,8 +18,8 @@ async function Main({ id }: { id: string }) {
   if (standardAnswersResponse === undefined) {
     return (
       <ErrorCallout
-        errorTitle="Something went wrong :("
-        errorMsg={`Failed to fetch standard answers.`}
+        errorTitle="Une erreur s'est produite :("
+        errorMsg={`Impossible de récupérer les réponses standard.`}
       />
     );
   }
@@ -27,8 +27,8 @@ async function Main({ id }: { id: string }) {
   if (!standardAnswersResponse.ok) {
     return (
       <ErrorCallout
-        errorTitle="Something went wrong :("
-        errorMsg={`Failed to fetch standard answers - ${await standardAnswersResponse.text()}`}
+        errorTitle="Une erreur s'est produite :("
+        errorMsg={`Impossible de récupérer les réponses standard - ${await standardAnswersResponse.text()}`}
       />
     );
   }
@@ -41,8 +41,8 @@ async function Main({ id }: { id: string }) {
   if (!standardAnswer) {
     return (
       <ErrorCallout
-        errorTitle="Something went wrong :("
-        errorMsg={`Did not find standard answer with ID: ${id}`}
+        errorTitle="Une erreur s'est produite :("
+        errorMsg={`Réponse standard introuvable avec l'ID : ${id}`}
       />
     );
   }
@@ -50,8 +50,8 @@ async function Main({ id }: { id: string }) {
   if (standardAnswerCategoriesResponse === undefined) {
     return (
       <ErrorCallout
-        errorTitle="Something went wrong :("
-        errorMsg={`Failed to fetch standard answer categories.`}
+        errorTitle="Une erreur s'est produite :("
+        errorMsg={`Impossible de récupérer les catégories de réponses standard.`}
       />
     );
   }
@@ -59,8 +59,8 @@ async function Main({ id }: { id: string }) {
   if (!standardAnswerCategoriesResponse.ok) {
     return (
       <ErrorCallout
-        errorTitle="Something went wrong :("
-        errorMsg={`Failed to fetch standard answer categories - ${await standardAnswerCategoriesResponse.text()}`}
+        errorTitle="Une erreur s'est produite :("
+        errorMsg={`Impossible de récupérer les catégories de réponses standard - ${await standardAnswerCategoriesResponse.text()}`}
       />
     );
   }
@@ -83,7 +83,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     <SettingsLayouts.Root>
       <SettingsLayouts.Header
         icon={route.icon}
-        title="Edit Standard Answer"
+        title="Modifier la réponse standard"
         backButton
         separator
       />

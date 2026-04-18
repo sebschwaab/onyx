@@ -38,7 +38,7 @@ export const ConnectorTitle = ({
   if (connector.source === "github") {
     const typedConnector = connector as Connector<GithubConfig>;
     additionalMetadata.set(
-      "Repo",
+      "Dépôt",
       typedConnector.connector_specific_config.repositories
         ? `${typedConnector.connector_specific_config.repo_owner}/${
             typedConnector.connector_specific_config.repositories.includes(",")
@@ -50,7 +50,7 @@ export const ConnectorTitle = ({
   } else if (connector.source === "gitlab") {
     const typedConnector = connector as Connector<GitlabConfig>;
     additionalMetadata.set(
-      "Repo",
+      "Dépôt",
       `${typedConnector.connector_specific_config.project_owner}/${typedConnector.connector_specific_config.project_name}`
     );
   } else if (connector.source === "confluence") {
@@ -58,17 +58,17 @@ export const ConnectorTitle = ({
     const wikiUrl = typedConnector.connector_specific_config.is_cloud
       ? `${typedConnector.connector_specific_config.wiki_base}/wiki/spaces/${typedConnector.connector_specific_config.space}`
       : `${typedConnector.connector_specific_config.wiki_base}/spaces/${typedConnector.connector_specific_config.space}`;
-    additionalMetadata.set("Wiki URL", wikiUrl);
+    additionalMetadata.set("URL Wiki", wikiUrl);
     if (typedConnector.connector_specific_config.page_id) {
       additionalMetadata.set(
-        "Page ID",
+        "ID de page",
         typedConnector.connector_specific_config.page_id
       );
     }
   } else if (connector.source === "jira") {
     const typedConnector = connector as Connector<JiraConfig>;
     additionalMetadata.set(
-      "Jira Project URL",
+      "URL du projet Jira",
       typedConnector.connector_specific_config.jira_project_url
     );
   } else if (connector.source === "slack") {
@@ -78,20 +78,20 @@ export const ConnectorTitle = ({
       typedConnector.connector_specific_config?.channels.length > 0
     ) {
       additionalMetadata.set(
-        "Channels",
+        "Canaux",
         typedConnector.connector_specific_config.channels.join(", ")
       );
     }
     if (typedConnector.connector_specific_config.channel_regex_enabled) {
-      additionalMetadata.set("Channel Regex Enabled", "True");
+      additionalMetadata.set("Regex de canal activé", "Oui");
     }
     if (typedConnector.connector_specific_config.include_bot_messages) {
-      additionalMetadata.set("Include Bot Messages", "True");
+      additionalMetadata.set("Messages bot inclus", "Oui");
     }
   } else if (connector.source === "zulip") {
     const typedConnector = connector as Connector<ZulipConfig>;
     additionalMetadata.set(
-      "Realm",
+      "Domaine",
       typedConnector.connector_specific_config.realm_name
     );
   }

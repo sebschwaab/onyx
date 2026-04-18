@@ -7,7 +7,7 @@ export default function AdvancedFormPage() {
   return (
     <div className="py-4 flex flex-col gap-y-6 rounded-lg max-w-2xl mx-auto">
       <h2 className="text-2xl font-bold mb-4 text-text-800">
-        Advanced Configuration
+        Configuration avancée
       </h2>
 
       <NumberInput
@@ -36,7 +36,7 @@ export default function AdvancedFormPage() {
       />
       <div className="mt-4 flex w-full mx-auto max-w-2xl justify-start">
         <Button variant="danger" icon={SvgTrash} type="submit">
-          Reset
+          Réinitialiser
         </Button>
       </div>
     </div>

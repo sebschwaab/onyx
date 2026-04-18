@@ -241,7 +241,7 @@ const LLMStep = memo(
           onboardingActions.setButtonActive(true);
           onboardingActions.goToStep(OnboardingStep.LlmSetup);
         }}
-        aria-label="Edit LLM providers"
+        aria-label="Modifier les fournisseurs LLM"
       >
         <div className="flex items-center gap-1">
           <StackedProviderIcons

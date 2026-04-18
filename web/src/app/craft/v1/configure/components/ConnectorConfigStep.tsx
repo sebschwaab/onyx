@@ -60,7 +60,7 @@ function ConnectorConfigForm({
       onSuccess();
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Failed to create connector"
+        err instanceof Error ? err.message : "Impossible de créer le connecteur"
       );
     } finally {
       setIsSubmitting(false);
@@ -100,10 +100,10 @@ function ConnectorConfigForm({
             prominence="secondary"
             onClick={onBack}
           >
-            Back
+            Retour
           </Button>
           <Button disabled={isSubmitting} type="button" onClick={handleSubmit}>
-            {isSubmitting ? "Creating..." : "Create Connector"}
+            {isSubmitting ? "Création..." : "Créer le connecteur"}
           </Button>
         </Section>
       </CardSection>

@@ -73,7 +73,7 @@ const NameStep = React.memo(
             setButtonActive(true);
             goToStep(OnboardingStep.Name);
           }}
-          aria-label="Edit display name"
+          aria-label="Modifier le nom affiché"
           role="button"
           tabIndex={0}
         >

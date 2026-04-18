@@ -77,7 +77,7 @@ export function IndexAttemptsTable({
                 side="top"
               >
                 <span className="flex items-center">
-                  Total docs
+                  Total docs {/* identique en français */}
                   <InfoIcon className="ml-1 w-4 h-4" />
                 </span>
               </SimpleTooltip>
@@ -92,11 +92,11 @@ export function IndexAttemptsTable({
             const isReindexInProgress =
               indexAttempt.status === "in_progress" ||
               indexAttempt.status === "not_started";
-            const reindexTooltip = `This index attempt ${
-              isReindexInProgress ? "is" : "was"
-            } a full re-index. All documents from the source ${
-              isReindexInProgress ? "are being" : "were"
-            } synced into the system.`;
+            const reindexTooltip = `Cette tentative d'indexation ${
+              isReindexInProgress ? "est" : "était"
+            } une réindexation complète. Tous les documents de la source ${
+              isReindexInProgress ? "sont en cours de synchronisation" : "ont été synchronisés"
+            } dans le système.`;
             return (
               <TableRow
                 key={indexAttempt.id}

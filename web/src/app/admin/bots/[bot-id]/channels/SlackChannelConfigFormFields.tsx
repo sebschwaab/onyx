@@ -257,13 +257,12 @@ export function SlackChannelConfigFormFields({
             <div className="mt-4">
               <SubLabel>
                 <>
-                  Select the document sets OnyxBot will use while answering
-                  questions in Slack.
+                  Sélectionnez les ensembles de documents qu&apos;OnyxBot utilisera pour répondre aux questions dans Slack.
                   <br />
                   {unselectableSets.length > 0 ? (
                     <span>
-                      Some incompatible document sets are{" "}
-                      {viewUnselectableSets ? "visible" : "hidden"}.{" "}
+                      Certains ensembles de documents incompatibles sont{" "}
+                      {viewUnselectableSets ? "visibles" : "masqués"}.{" "}
                       <button
                         type="button"
                         onClick={() =>
@@ -314,8 +313,7 @@ export function SlackChannelConfigFormFields({
                     {viewUnselectableSets && unselectableSets.length > 0 && (
                       <div className="mt-4">
                         <p className="text-sm text-text-dark/80">
-                          These document sets cannot be attached as they have
-                          auto-synced docs:
+                          Ces ensembles de documents ne peuvent pas être attachés car ils contiennent des documents synchronisés automatiquement :
                         </p>
                         <div className="mb-3 mt-2 flex gap-2 flex-wrap text-sm">
                           {unselectableSets.map((documentSet) => (
@@ -344,15 +342,12 @@ export function SlackChannelConfigFormFields({
           <div className="mt-4">
             <SubLabel>
               <>
-                Select the search-enabled agent OnyxBot will use while answering
-                questions in Slack.
+                Sélectionnez l&apos;agent de recherche qu&apos;OnyxBot utilisera pour répondre aux questions dans Slack.
                 {syncEnabledAgents.length > 0 && (
                   <>
                     <br />
                     <span className="text-sm text-text-dark/80">
-                      Note: Some of your agents have auto-synced connectors in
-                      their document sets. You cannot select these agents as
-                      they will not be able to answer questions in Slack.{" "}
+                      Note : certains de vos agents ont des connecteurs synchronisés automatiquement dans leurs ensembles de documents. Vous ne pouvez pas sélectionner ces agents car ils ne pourront pas répondre aux questions dans Slack.{" "}
                       <button
                         type="button"
                         onClick={() =>
@@ -385,7 +380,7 @@ export function SlackChannelConfigFormFields({
             {viewSyncEnabledAgents && syncEnabledAgents.length > 0 && (
               <div className="mt-4">
                 <p className="text-sm text-text-dark/80">
-                  Un-selectable agents:
+                  Agents non sélectionnables :
                 </p>
                 <div className="mb-3 mt-2 flex gap-2 flex-wrap text-sm">
                   {syncEnabledAgents.map((persona: MinimalPersonaSnapshot) => (
@@ -410,15 +405,12 @@ export function SlackChannelConfigFormFields({
           <div className="mt-4">
             <SubLabel>
               <>
-                Select the non-search agent OnyxBot will use while answering
-                questions in Slack.
+                Sélectionnez l&apos;agent sans recherche qu&apos;OnyxBot utilisera pour répondre aux questions dans Slack.
                 {syncEnabledAgents.length > 0 && (
                   <>
                     <br />
                     <span className="text-sm text-text-dark/80">
-                      Note: Some of your agents have auto-synced connectors in
-                      their document sets. You cannot select these agents as
-                      they will not be able to answer questions in Slack.{" "}
+                      Note : certains de vos agents ont des connecteurs synchronisés automatiquement dans leurs ensembles de documents. Vous ne pouvez pas sélectionner ces agents car ils ne pourront pas répondre aux questions dans Slack.{" "}
                       <button
                         type="button"
                         onClick={() =>
@@ -577,14 +569,7 @@ export function SlackChannelConfigFormFields({
                   Alerte de confidentialité
                 </Label>
                 <p className="text-sm text-text-darker mb-4">
-                  Please note that if the private (ephemeral) response is *not
-                  selected*, only public documents within the selected document
-                  sets will be accessible for user queries. If the private
-                  (ephemeral) response *is selected*, user quries can also
-                  leverage documents that the user has already been granted
-                  access to. Note that users will be able to share the response
-                  with others in the channel, so please ensure that this is
-                  aligned with your company sharing policies.
+                  Veuillez noter que si la réponse privée (éphémère) n&apos;est *pas sélectionnée*, seuls les documents publics des ensembles sélectionnés seront accessibles. Si la réponse privée (éphémère) *est sélectionnée*, les requêtes peuvent également utiliser les documents auxquels l&apos;utilisateur a déjà accès. Les utilisateurs pourront partager la réponse dans le canal — assurez-vous que cela est conforme aux politiques de partage de votre entreprise.
                 </p>
                 <div className="space-y-2">
                   <h4 className="text-sm text-text font-medium">

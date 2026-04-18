@@ -64,9 +64,9 @@ export const FileUpload: FC<FileUploadProps> = ({
               <input {...getInputProps()} />
               <b className="text-text-darker">
                 {message ||
-                  `Drag and drop ${
-                    multiple ? "some files" : "a file"
-                  } here, or click to select ${multiple ? "files" : "a file"}`}
+                  `Glissez-déposez ${
+                    multiple ? "des fichiers" : "un fichier"
+                  } ici, ou cliquez pour sélectionner ${multiple ? "des fichiers" : "un fichier"}`}
               </b>
             </div>
           </section>
@@ -76,7 +76,7 @@ export const FileUpload: FC<FileUploadProps> = ({
       {selectedFiles.length > 0 && (
         <div className="mt-4">
           <h2 className="text-sm font-bold">
-            Selected File{multiple ? "s" : ""}
+            Fichier{multiple ? "s" : ""} sélectionné{multiple ? "s" : ""}
           </h2>
           <ul>
             {selectedFiles.map((file) => (

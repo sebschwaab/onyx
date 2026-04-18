@@ -32,7 +32,7 @@ export default function ConnectorWrapper({
 
   useToastFromQuery({
     oauth_failed: {
-      message: "OAuth authentication failed. Please try again.",
+      message: "L'authentification OAuth a échoué. Veuillez réessayer.",
       type: "error",
     },
   });
@@ -46,7 +46,7 @@ export default function ConnectorWrapper({
           <div className="mt-12 w-full max-w-3xl mx-auto">
             <div className="mx-auto flex flex-col gap-y-2">
               <HeaderTitle>
-                <p>&lsquo;{connector}&rsquo; is not a valid Connector Type!</p>
+                <p>&lsquo;{connector}&rsquo; n&apos;est pas un type de connecteur valide !</p>
               </HeaderTitle>
               {/* TODO(@raunakab): migrate to opal Button once className/iconClassName is resolved */}
               <Button
@@ -54,7 +54,7 @@ export default function ConnectorWrapper({
                 className="mr-auto"
               >
                 {" "}
-                Go home{" "}
+                Accueil{" "}
               </Button>
             </div>
           </div>

@@ -26,15 +26,15 @@ export default function SelectModelModal({
         />
         <Modal.Body>
           <Text as="p">
-            You&apos;re selecting a new embedding model,{" "}
-            <strong>{model.model_name}</strong>. If you update to this model,
-            you will need to undergo a complete re-indexing. Are you sure?
+            Vous sélectionnez un nouveau modèle d&apos;intégration,{" "}
+            <strong>{model.model_name}</strong>. Si vous passez à ce modèle,
+            vous devrez procéder à une réindexation complète. Êtes-vous sûr ?
           </Text>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={onConfirm}>Confirm</Button>
+          <Button onClick={onConfirm}>Confirmer</Button>
           <Button prominence="secondary" onClick={onCancel}>
-            Cancel
+            Annuler
           </Button>
         </Modal.Footer>
       </Modal.Content>

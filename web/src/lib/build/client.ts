@@ -200,7 +200,7 @@ export async function executeTask(
 
     const reader = response.body?.getReader();
     if (!reader) {
-      throw new Error("No response body");
+      throw new Error("Aucun corps de réponse");
     }
 
     const decoder = new TextDecoder();
@@ -268,7 +268,7 @@ export async function sendMessage(
 
     const reader = response.body?.getReader();
     if (!reader) {
-      throw new Error("No response body");
+      throw new Error("Aucun corps de réponse");
     }
 
     const decoder = new TextDecoder();

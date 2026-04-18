@@ -67,8 +67,8 @@ export function FeedbackChart({
 
   return (
     <CardSection className="mt-8">
-      <Title>Feedback</Title>
-      <Text as="p">Thumbs Up / Thumbs Down over time</Text>
+      <Title>Avis</Title>
+      <Text as="p">J&apos;aime / Je n&apos;aime pas au fil du temps</Text>
       {chart}
     </CardSection>
   );

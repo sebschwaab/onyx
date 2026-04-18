@@ -30,7 +30,7 @@ export default function BillingInformationPage() {
     const url = new URL(window.location.href);
     if (url.searchParams.has("session_id")) {
       toast.success(
-        "Congratulations! Your subscription has been updated successfully."
+        "Félicitations ! Votre abonnement a été mis à jour avec succès."
       );
       url.searchParams.delete("session_id");
       window.history.replaceState({}, "", url.toString());
@@ -61,12 +61,12 @@ export default function BillingInformationPage() {
       const response = await createCustomerPortalSession();
       console.log("response", response);
       if (!response.stripe_customer_portal_url) {
-        throw new Error("No portal URL returned from the server");
+        throw new Error("Aucune URL de portail retournée par le serveur");
       }
       window.location.href = response.stripe_customer_portal_url;
     } catch (error) {
       console.error("Error creating customer portal session:", error);
-      toast.error("Error creating customer portal session");
+      toast.error("Erreur lors de la création de la session du portail client");
     }
   };
 
